@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :videos
   resources :comments
   root 'home#index'
   devise_for :users
