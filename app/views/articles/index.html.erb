@@ -1,0 +1,49 @@
+<div class="blog-top-img">
+  <div class="effect-over"></div>
+  <div class="container">
+    <div class="col-lg-12">
+      <h1 class="about4-top-title">Describe your<span class="color-txt"> experiences</span> with </h1>
+      <h1 class="about4-top-title about4-top-second"><span class="color-txt">AngularJs</span> code.</h1>
+      <div class="buy-angula"><a href="#" class="btn btn-lg btn-primary">Purchase now! </a></div>
+    </div>
+  </div> 
+</div>
+<div class="breadcrumb-color">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ol class="breadcrumb">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li class="active">Blog</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <% @articles.each do |article| %>
+    <div class="row blog-row-prod">
+      <div class="col-md-1 blog-ico">
+        <p><span class="icon-mic"></span></p>
+        <p class="blog-date"><%= article.created_at.strftime('%b - %d - %Y')%></p>
+      </div>
+      <div class="col-md-5">
+        <a href="shop/store.html">
+          <img alt="" class="img-responsive" src="http://placehold.it/630x300">
+        </a>
+      </div>
+      <div class="col-md-6 blog-info-prod">
+        <h3><a href="shop/store.html"><%= article.title.upcase%></a></h3>
+        <p class="blog-desc-prod"><%= article.description%></p>
+          <a href="shop/store.html" class="btn btn-primary">Read More <i class="fa fa-angle-right"></i></a>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+</div>
+   
+ 
+
+
