@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @publicity.image %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @publicity.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @publicity.status %>
+</p>
+
+<%= link_to 'Edit', edit_publicity_path(@publicity) %> |
+<%= link_to 'Back', publicities_path %>

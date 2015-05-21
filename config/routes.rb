@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :publicities
   resources :videos
   resources :comments
   root 'home#index'
