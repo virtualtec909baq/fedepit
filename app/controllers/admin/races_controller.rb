@@ -1,4 +1,5 @@
-class RacesController < ApplicationController
+class Admin::RacesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_race, only: [:show, :edit, :update, :destroy]
 
   # GET /races

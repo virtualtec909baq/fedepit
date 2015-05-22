@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :type_championships
   resources :sponsors
   resources :type_events
-  resources :races
   resources :videos
   root 'home#index'
   devise_for :users
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
   resources :canines, only: [:index]
   resources :championships, only: [:index]
   resources :events, only: [:index]
+  resources :races, only: [:index]
 
   namespace :admin do
   	get 'home/index'
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :events
     resources :publicities
+    resources :races
   end
 
 end
