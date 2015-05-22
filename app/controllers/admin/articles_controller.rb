@@ -31,7 +31,9 @@ class Admin::ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        flash[:notice] = 'Articulo creado'
+        format.html { redirect_to @article }
+        format.js {}
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
