@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   
   resources :colors
   resources :type_breeders
-  resources :championships
   resources :type_championships
   resources :sponsors
   resources :events
@@ -16,13 +15,14 @@ Rails.application.routes.draw do
   resources :articles, only: [:index]
   resources :breeders, only: [:index]
   resources :canines, only: [:index]
+  resources :championships, only: [:index]
 
-  
   namespace :admin do
   	get 'home/index'
   	resources :articles
     resources :breeders
     resources :canines
+    resources :championships
   end
 
 end
