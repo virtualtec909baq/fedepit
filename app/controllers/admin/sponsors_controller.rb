@@ -1,4 +1,5 @@
-class SponsorsController < ApplicationController
+class Admin::SponsorsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_sponsor, only: [:show, :edit, :update, :destroy]
 
   # GET /sponsors
