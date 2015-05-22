@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :videos
   root 'home#index'
   devise_for :users
   resources :articles, only: [:index]
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
   resources :canines, only: [:index]
   resources :championships, only: [:index]
   resources :events, only: [:index]
+  resources :videos, only: [:index]
 
   namespace :admin do
   	get 'home/index'
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :type_breeders
     resources :type_championships
     resources :type_events
+    resources :videos
   end
 
 end
