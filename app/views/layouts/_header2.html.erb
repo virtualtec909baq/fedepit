@@ -14,50 +14,19 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Ejemplares <b class="caret"></b></a>
           <ul class="dropdown-menu vertical-li">
-            <li><a href="shop/store_dresses_rc.html">Ver mis ejemplares</a></li>
-            <li><a href="shop/store_dresses_lc.html">Agregar un ejemplar</a></li>
+            <li><a href="<%= admin_races_path%>">Crear razas</a></li>
+            <li><a href="<%= admin_canines_path%>">Ver mis ejemplares</a></li>
+            <li><a href="<%= new_admin_canine_path%>">Agregar un ejemplar</a></li>
             <li><a href="shop/shoppingCart.html">Busqueda de pedigree</a></li>
             <li><a href="shop/shoppingCart.html">Realizar cruces</a></li>
           </ul>
         </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Articulos <b class="caret"></b></a>
-          <ul class="dropdown-menu vertical-li">
-            <li><a href="shop/store_dresses_rc.html">Ver mis articulos</a></li>
-            <li><a href="shop/store_dresses_lc.html">Agregar un articulo</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Videos <b class="caret"></b></a>
-          <ul class="dropdown-menu vertical-li">
-            <li><a href="shop/store_dresses_rc.html">Ver mis videos</a></li>
-            <li><a href="shop/store_dresses_lc.html">Agregar un video</a></li>
-
-          </ul>
-        </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Patrocinadores <b class="caret"></b></a>
-          <ul class="dropdown-menu vertical-li">
-            <li><a href="shop/store_dresses_rc.html">Ver mis patrocinadores</a></li>
-            <li><a href="shop/store_dresses_lc.html">Agregar un patrocinadore</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Eventos <b class="caret"></b></a>
-          <ul class="dropdown-menu vertical-li">
-            <li><a href="shop/store_dresses_rc.html">Ver mis eventos</a></li>
-            <li><a href="shop/store_dresses_lc.html">Agregar un evento</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Publicidad <b class="caret"></b></a>
-          <ul class="dropdown-menu vertical-li">
-            <li><a href="shop/store_dresses_rc.html">Administrar publicidad</a></li>
-            <li><a href="shop/store_dresses_lc.html">Agregar un publicidad</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Campeonatos <b class="caret"></b></a>
-          <ul class="dropdown-menu vertical-li">
-            <li><a href="shop/store_dresses_rc.html">Ver campeonatos</a></li>
-            <li><a href="shop/store_dresses_lc.html">Agregar un campeonato</a></li>
-          </ul>
-        </li>
-
+        <li><a href="<%= admin_articles_path%>">Articulos</a></li>
+        <li><a href="<%= admin_videos_path%>">Videos</a></li>
+        <li><a href="<%= admin_sponsors_path%>">Patrocinadores</a></li>
+        <li><a href="<%= admin_events_path%>">Eventos</a></li>
+        <li><a href="<%= admin_publicities_path%>">Publicidad</a></li>
+        <li><a href="<%= admin_championships_path%>">Campeonatos</a></li>
       </ul>
     </div>
   </div>
