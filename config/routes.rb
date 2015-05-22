@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :sponsors
   resources :type_events
   resources :races
-  resources :publicities
   resources :videos
   root 'home#index'
   devise_for :users
@@ -24,6 +23,7 @@ Rails.application.routes.draw do
     resources :colors
     resources :comments
     resources :events
+    resources :publicities
   end
 
 end
