@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :colors
   resources :type_breeders
   resources :type_championships
   resources :sponsors
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
     resources :breeders
     resources :canines
     resources :championships
+    resources :colors
   end
 
 end
