@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :races
   resources :publicities
   resources :videos
   resources :comments
