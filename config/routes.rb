@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
   resources :colors
-  resources :canines
   resources :type_breeders
   resources :championships
   resources :type_championships
@@ -16,12 +15,14 @@ Rails.application.routes.draw do
   devise_for :users
   resources :articles, only: [:index]
   resources :breeders, only: [:index]
+  resources :canines, only: [:index]
 
   
   namespace :admin do
   	get 'home/index'
   	resources :articles
     resources :breeders
+    resources :canines
   end
 
 end
