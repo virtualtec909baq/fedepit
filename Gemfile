@@ -15,6 +15,11 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'devise'
 gem 'carrierwave'
+gem 'bootstrap-datepicker-rails'
+gem "font-awesome-rails"
+gem 'formtastic', github: 'justinfrench/formtastic'
+gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
 
 group :development, :test do
 	gem 'faker'
