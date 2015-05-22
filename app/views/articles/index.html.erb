@@ -31,7 +31,12 @@
       </div>
       <div class="col-md-5">
         <a href="shop/store.html">
-          <img alt="" class="img-responsive" src="http://placehold.it/630x300">
+          <%if article.img.blank?%>
+            <img alt="" class="img-responsive" src="http://placehold.it/630x300">
+          <%else%>
+            <img alt="" class="img-responsive" src="<%= article.img%>">
+            
+          <%end%>
         </a>
       </div>
       <div class="col-md-6 blog-info-prod">

@@ -6,7 +6,7 @@ class Admin::ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @search = Article.ransack(params[:q])
-    @articles = @search.result.page(params[:page])
+    @articles = @search.result.order(created_at: :desc).page(params[:page])
     @article = Article.new()
     respond_to do |format|
       format.html
@@ -22,17 +22,17 @@ class Admin::ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    @article = Article.find(params[:id])
   end
 
   # POST /articles
   # POST /articles.json
   def create
     @article = Article.new(article_params)
-
     respond_to do |format|
       if @article.save
         flash[:notice] = 'Articulo creado'
-        format.html { redirect_to @article }
+        format.html { redirect_to admin_articles_path }
         format.js {}
         format.json { render :show, status: :created, location: @article }
       else
@@ -47,7 +47,7 @@ class Admin::ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to admin_article_path(@article), notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
