@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :type_breeders
   resources :championships
   resources :type_championships
   resources :sponsors
