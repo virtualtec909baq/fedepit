@@ -9,7 +9,7 @@ class CreateBreeders < ActiveRecord::Migration
       t.string :facebook
       t.string :twitter
       t.string :instagram
-      t.instagram :web
+      t.string :web
 
       t.timestamps null: false
     end
