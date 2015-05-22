@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :races
   resources :publicities
   resources :videos
-  resources :comments
   root 'home#index'
   devise_for :users
   resources :articles, only: [:index]
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
     resources :canines
     resources :championships
     resources :colors
+    resources :comments
   end
 
 end
