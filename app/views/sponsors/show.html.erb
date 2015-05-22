@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @sponsor.image %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @sponsor.status %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @sponsor.link %>
+</p>
+
+<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
+<%= link_to 'Back', sponsors_path %>
