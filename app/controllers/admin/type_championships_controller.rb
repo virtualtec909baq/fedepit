@@ -1,4 +1,5 @@
-class TypeChampionshipsController < ApplicationController
+class Admin::TypeChampionshipsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_type_championship, only: [:show, :edit, :update, :destroy]
 
   # GET /type_championships

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   
-  resources :type_championships
+  
   resources :type_events
   resources :videos
   root 'home#index'
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :races
     resources :sponsors
     resources :type_breeders
+    resources :type_championships
   end
 
 end
