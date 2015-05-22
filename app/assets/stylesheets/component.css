@@ -21,6 +21,10 @@ html, body, .container {
 	height: 100%;
 }
 
+.modal-dialog {
+    margin: 200px auto;
+}
+
 .panel {
 	z-index: 0;
 	-webkit-perspective: 1200px;
