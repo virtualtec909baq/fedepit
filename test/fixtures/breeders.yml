@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_breeder_id: 1
+  name: MyString
+  phone: MyString
+  email: MyString
+  name_breed: MyString
+  facebook: MyString
+  twitter: MyString
+  instagram: MyString
+  web: 
+
+two:
+  type_breeder_id: 1
+  name: MyString
+  phone: MyString
+  email: MyString
+  name_breed: MyString
+  facebook: MyString
+  twitter: MyString
+  instagram: MyString
+  web: 

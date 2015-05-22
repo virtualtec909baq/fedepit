@@ -1,0 +1,53 @@
+<%= form_for(@breeder) do |f| %>
+  <% if @breeder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@breeder.errors.count, "error") %> prohibited this breeder from being saved:</h2>
+
+      <ul>
+      <% @breeder.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :type_breeder_id %><br>
+    <%= f.number_field :type_breeder_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :name_breed %><br>
+    <%= f.text_field :name_breed %>
+  </div>
+  <div class="field">
+    <%= f.label :facebook %><br>
+    <%= f.text_field :facebook %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter %><br>
+    <%= f.text_field :twitter %>
+  </div>
+  <div class="field">
+    <%= f.label :instagram %><br>
+    <%= f.text_field :instagram %>
+  </div>
+  <div class="field">
+    <%= f.label :web %><br>
+    <%= f.text_field :web %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

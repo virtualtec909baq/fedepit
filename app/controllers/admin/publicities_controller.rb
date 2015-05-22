@@ -1,4 +1,5 @@
-class PublicitiesController < ApplicationController
+class Admin::PublicitiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_publicity, only: [:show, :edit, :update, :destroy]
 
   # GET /publicities

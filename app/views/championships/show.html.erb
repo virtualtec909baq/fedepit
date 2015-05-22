@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type championship:</strong>
+  <%= @championship.type_championship_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @championship.date %>
+</p>
+
+<%= link_to 'Edit', edit_championship_path(@championship) %> |
+<%= link_to 'Back', championships_path %>
