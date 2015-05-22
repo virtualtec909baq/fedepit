@@ -5,17 +5,19 @@ class Admin::ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @search = Article.ransack(params[:q])
+    @articles = @search.result.page(params[:page])
+    @article = Article.new()
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
+
 
   # GET /articles/1
   # GET /articles/1.json
   def show
-  end
-
-  # GET /articles/new
-  def new
-    @article = Article.new
   end
 
   # GET /articles/1/edit
