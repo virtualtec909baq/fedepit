@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :type_events
   resources :races
   resources :publicities
   resources :videos
