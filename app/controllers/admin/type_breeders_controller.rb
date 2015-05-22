@@ -1,4 +1,5 @@
-class TypeBreedersController < ApplicationController
+class Admin::TypeBreedersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_type_breeder, only: [:show, :edit, :update, :destroy]
 
   # GET /type_breeders
