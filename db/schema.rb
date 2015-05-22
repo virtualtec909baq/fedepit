@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150521215217) do
+ActiveRecord::Schema.define(version: 20150522144305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,50 @@ ActiveRecord::Schema.define(version: 20150521215217) do
     t.string   "img"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "breeders", force: :cascade do |t|
+    t.integer  "type_breeder_id"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "name_breed"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "instagram"
+    t.string   "web"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "canines", force: :cascade do |t|
+    t.integer  "race_id"
+    t.integer  "breeder_id"
+    t.string   "lof"
+    t.string   "chip"
+    t.string   "name"
+    t.integer  "gender"
+    t.integer  "color_id"
+    t.string   "father_lof"
+    t.string   "mother_lof"
+    t.float    "rate"
+    t.date     "birth"
+    t.date     "death"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "championships", force: :cascade do |t|
+    t.integer  "type_championship_id"
+    t.date     "date"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "colors", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -35,10 +79,54 @@ ActiveRecord::Schema.define(version: 20150521215217) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.integer  "type_event_id"
+    t.string   "name"
+    t.string   "description"
+    t.date     "date"
+    t.string   "place"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "publicities", force: :cascade do |t|
     t.string   "image"
     t.string   "name"
     t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "races", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "pdf"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "sponsors", force: :cascade do |t|
+    t.string   "image"
+    t.boolean  "status"
+    t.string   "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "type_breeders", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "type_championships", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "type_events", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

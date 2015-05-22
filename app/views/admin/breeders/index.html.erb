@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Breeders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type breeder</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Name breed</th>
+      <th>Facebook</th>
+      <th>Twitter</th>
+      <th>Instagram</th>
+      <th>Web</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @breeders.each do |breeder| %>
+      <tr>
+        <td><%= breeder.type_breeder_id %></td>
+        <td><%= breeder.name %></td>
+        <td><%= breeder.phone %></td>
+        <td><%= breeder.email %></td>
+        <td><%= breeder.name_breed %></td>
+        <td><%= breeder.facebook %></td>
+        <td><%= breeder.twitter %></td>
+        <td><%= breeder.instagram %></td>
+        <td><%= breeder.web %></td>
+        <td><%= link_to 'Show', breeder %></td>
+        <td><%= link_to 'Edit', edit_breeder_path(breeder) %></td>
+        <td><%= link_to 'Destroy', breeder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Breeder', new_breeder_path %>
