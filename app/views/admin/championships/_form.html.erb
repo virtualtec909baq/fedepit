@@ -1,4 +1,5 @@
-<%= form_for(@championship) do |f| %>
+<%= form_for @championship , url: admin_championships_path(@championship), method: :post do |f| %>
+
   <% if @championship.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@championship.errors.count, "error") %> prohibited this championship from being saved:</h2>

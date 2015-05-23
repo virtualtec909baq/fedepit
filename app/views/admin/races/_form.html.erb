@@ -1,4 +1,4 @@
-<%= form_for(@race) do |f| %>
+<%= form_for @race , url: admin_races_path(@race), method: :post do |f| %>
   <% if @race.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@race.errors.count, "error") %> prohibited this race from being saved:</h2>

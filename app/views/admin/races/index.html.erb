@@ -18,9 +18,9 @@
         <td><%= race.name %></td>
         <td><%= race.description %></td>
         <td><%= race.pdf %></td>
-        <td><%= link_to 'Show', race %></td>
-        <td><%= link_to 'Edit', edit_race_path(race) %></td>
-        <td><%= link_to 'Destroy', race, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_races_path %></td>
+        <td><%= link_to 'Edit', edit_admin_race_path(race) %></td>
+        <td><%= link_to 'Destroy', admin_race_path(race), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

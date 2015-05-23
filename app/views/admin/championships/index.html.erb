@@ -16,9 +16,9 @@
       <tr>
         <td><%= championship.type_championship_id %></td>
         <td><%= championship.date %></td>
-        <td><%= link_to 'Show', championship %></td>
-        <td><%= link_to 'Edit', edit_championship_path(championship) %></td>
-        <td><%= link_to 'Destroy', championship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_championships_path %></td>
+        <td><%= link_to 'Edit', edit_admin_championship_path(championship) %></td>
+        <td><%= link_to 'Destroy', admin_championship_path(championship), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

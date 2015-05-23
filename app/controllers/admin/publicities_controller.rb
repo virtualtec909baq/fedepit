@@ -29,7 +29,7 @@ class Admin::PublicitiesController < ApplicationController
 
     respond_to do |format|
       if @publicity.save
-        format.html { redirect_to @publicity, notice: 'Publicity was successfully created.' }
+        format.html { redirect_to admin_publicities_path, notice: 'Publicity was successfully created.' }
         format.json { render :show, status: :created, location: @publicity }
       else
         format.html { render :new }

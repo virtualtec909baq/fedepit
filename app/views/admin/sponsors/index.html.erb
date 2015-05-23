@@ -18,9 +18,9 @@
         <td><%= sponsor.image %></td>
         <td><%= sponsor.status %></td>
         <td><%= sponsor.link %></td>
-        <td><%= link_to 'Show', sponsor %></td>
-        <td><%= link_to 'Edit', edit_sponsor_path(sponsor) %></td>
-        <td><%= link_to 'Destroy', sponsor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_sponsors_path %></td>
+        <td><%= link_to 'Edit', edit_admin_sponsor_path(sponsor) %></td>
+        <td><%= link_to 'Destroy', admin_sponsor_path(sponsor), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
