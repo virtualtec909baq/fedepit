@@ -1,1 +1,38 @@
-<%= render 'form' %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_for @article , url: admin_article_path(@article), :id => @article.id , method: :put do |f| %>
+      <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this breeder from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+      <div class="field">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :img %><br>
+        <%- if f.object && f.object.img && f.object.img%>
+          <%= image_tag(f.object.img.to_s, :transformation => 'hint', alt: f.object.img.to_s)%>
+          <%= f.file_field :img %>
+        <%else%>
+          <%= f.file_field :img %>
+        <%end %>
+      </div>
+      <div class="actions">
+        <%= f.submit :class =>"btn btn-primary btn-block" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

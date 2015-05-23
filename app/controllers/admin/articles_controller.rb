@@ -7,7 +7,6 @@ class Admin::ArticlesController < ApplicationController
   def index
     @search = Article.ransack(params[:q])
     @articles = @search.result.order(created_at: :desc).page(params[:page])
-    @article = Article.new()
     respond_to do |format|
       format.html
       format.js
@@ -22,7 +21,10 @@ class Admin::ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @article = Article.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # POST /articles
@@ -47,7 +49,8 @@ class Admin::ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to admin_article_path(@article), notice: 'Article was successfully updated.' }
+        flash[:notice] = 'Articulo modificado'
+        format.html { redirect_to admin_article_path(@article) }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
@@ -61,7 +64,8 @@ class Admin::ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      flash[:notice] = 'Articulo eliminado'
+      format.html { redirect_to admin_articles_path}
       format.json { head :no_content }
     end
   end
