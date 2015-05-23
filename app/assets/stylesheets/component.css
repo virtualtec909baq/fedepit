@@ -294,3 +294,24 @@ html, body, .container {
 		height: 50px;
 	}
 }
+
+.m40px{
+	margin-top: 40px;
+}
+.m120px{
+margin-top: 120px;
+}
+.m20px{
+	margin-top: 20px;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #1898ab;
+    border-color: #1898ab;
+    color: #fff !important;
+    cursor: default;
+    z-index: 2;
+}
+.pagination > li > a, .pagination > li > span {
+	color: #1898ab !important;
+}
