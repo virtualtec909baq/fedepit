@@ -14,6 +14,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'devise'
+gem 'mini_magick'
 gem 'carrierwave'
 gem 'bootstrap-datepicker-rails'
 gem "font-awesome-rails"
