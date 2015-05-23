@@ -7,11 +7,13 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<!-- <div id="loader-wrapper">
-      <div id="loader"></div>
-    </div> -->
-    <%= render partial: "layouts/header2"%>
-    <%= yield %>
-	
+	<div class="container m40px">
+		<!-- <div id="loader-wrapper">
+	      <div id="loader"></div>
+	    </div> -->
+		<%= render partial: "layouts/share"%>
+	    <%= render partial: "layouts/header2"%>
+	    <%= yield %>
+	</div >
 </body>
 </html>
