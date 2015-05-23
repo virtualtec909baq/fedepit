@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :type_championships
     resources :type_events
     resources :videos
+    put "sponsors/:id/change_status", to: "sponsors#change_status", as: "change_status"
   end
 
 end

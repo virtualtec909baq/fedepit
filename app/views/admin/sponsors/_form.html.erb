@@ -1,29 +1,31 @@
-<%= form_for @sponsor , url: admin_sponsors_path(@sponsor), method: :post do |f| %>
-  <% if @sponsor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@sponsor.errors.count, "error") %> prohibited this sponsor from being saved:</h2>
+<!-- Modal -->
+<div class="modal fade" id="myModalSponsor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Agregar Patrocinadores</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @sponsor , url: admin_sponsors_path(@sponsor) , method: :post do |f| %>
+        <div class="field">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :url %><br>
+          <%= f.text_field :url , class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :image %><br>
+          <%= f.file_field :image %>
+        </div>
 
-      <ul>
-      <% @sponsor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <div class="actions">
+          <%= f.submit :class =>"btn btn-primary btn-block" %>
+        </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
   </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.check_box :status %>
-  </div>
-  <div class="field">
-    <%= f.label :link %><br>
-    <%= f.text_field :link %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

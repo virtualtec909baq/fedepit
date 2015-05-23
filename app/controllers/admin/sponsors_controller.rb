@@ -4,8 +4,15 @@ class Admin::SponsorsController < ApplicationController
 
   # GET /sponsors
   # GET /sponsors.json
+  
   def index
-    @sponsors = Sponsor.all
+    @search = Sponsor.ransack(params[:q])
+    @sponsors = @search.result.order(created_at: :desc).page(params[:page])
+    @sponsor = Sponsor.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /sponsors/1
@@ -13,23 +20,17 @@ class Admin::SponsorsController < ApplicationController
   def show
   end
 
-  # GET /sponsors/new
-  def new
-    @sponsor = Sponsor.new
-  end
-
   # GET /sponsors/1/edit
   def edit
   end
 
-  # POST /sponsors
-  # POST /sponsors.json
   def create
     @sponsor = Sponsor.new(sponsor_params)
-
     respond_to do |format|
       if @sponsor.save
-        format.html { redirect_to admin_sponsors_path, notice: 'Sponsor was successfully created.' }
+        flash[:notice] = 'Patrocinador creado'
+        format.html { redirect_to admin_sponsors_path }
+        format.js {}
         format.json { render :show, status: :created, location: @sponsor }
       else
         format.html { render :new }
@@ -52,6 +53,16 @@ class Admin::SponsorsController < ApplicationController
     end
   end
 
+  def change_status 
+    @sponsor = Sponsor.find(params[:id])
+    val = @sponsor.status == true ? false : true
+    @sponsor.update_attribute(:status, val)  
+    respond_to do |format|
+      flash[:notice] = 'Patrocinador Modificado'
+      format.html { redirect_to admin_sponsors_path }
+    end    
+  end
+
   # DELETE /sponsors/1
   # DELETE /sponsors/1.json
   def destroy
@@ -70,6 +81,6 @@ class Admin::SponsorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sponsor_params
-      params.require(:sponsor).permit(:image, :status, :link)
+      params.require(:sponsor).permit(:image, :status, :url, :name)
     end
 end
