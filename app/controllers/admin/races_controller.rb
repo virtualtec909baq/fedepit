@@ -29,7 +29,7 @@ class Admin::RacesController < ApplicationController
 
     respond_to do |format|
       if @race.save
-        format.html { redirect_to @race, notice: 'Race was successfully created.' }
+        format.html { redirect_to admin_races_path, notice: 'Race was successfully created.' }
         format.json { render :show, status: :created, location: @race }
       else
         format.html { render :new }

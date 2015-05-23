@@ -1,4 +1,4 @@
-<%= form_for(@publicity) do |f| %>
+<%= form_for @publicity , url: admin_publicities_path(@publicity), method: :post do |f| %>
   <% if @publicity.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@publicity.errors.count, "error") %> prohibited this publicity from being saved:</h2>

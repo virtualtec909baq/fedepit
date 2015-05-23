@@ -18,9 +18,9 @@
         <td><%= publicity.image %></td>
         <td><%= publicity.name %></td>
         <td><%= publicity.status %></td>
-        <td><%= link_to 'Show', publicity %></td>
-        <td><%= link_to 'Edit', edit_publicity_path(publicity) %></td>
-        <td><%= link_to 'Destroy', publicity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_publicities_path %></td>
+        <td><%= link_to 'Edit', edit_admin_publicity_path(publicity) %></td>
+        <td><%= link_to 'Destroy', admin_publicity_path(publicity), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
