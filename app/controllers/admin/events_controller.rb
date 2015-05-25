@@ -5,7 +5,13 @@ class Admin::EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @search = Event.ransack(params[:q])
+    @events = @search.result.order(created_at: :desc).page(params[:page])
+    @event = Event.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /events/1

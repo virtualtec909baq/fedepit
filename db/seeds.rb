@@ -4,3 +4,8 @@ if Article.all.empty?
 	end
 end
 
+if TypeEvent.all.empty?
+	30.times do
+		TypeEvent.create(name: Faker::Name.title)
+	end
+end
