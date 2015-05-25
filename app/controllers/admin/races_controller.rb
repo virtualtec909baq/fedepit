@@ -5,7 +5,13 @@ class Admin::RacesController < ApplicationController
   # GET /races
   # GET /races.json
   def index
-    @races = Race.all
+    @search = Race.ransack(params[:q])
+    @races = @search.result.order(created_at: :desc).page(params[:page])
+    @race = Race.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /races/1
@@ -40,10 +46,11 @@ class Admin::RacesController < ApplicationController
 
   # PATCH/PUT /races/1
   # PATCH/PUT /races/1.json
-  def update
+    def update
     respond_to do |format|
       if @race.update(race_params)
-        format.html { redirect_to @race, notice: 'Race was successfully updated.' }
+        flash[:notice] = 'Raza modificado'
+        format.html { redirect_to admin_races_path }
         format.json { render :show, status: :ok, location: @race }
       else
         format.html { render :edit }
@@ -52,12 +59,14 @@ class Admin::RacesController < ApplicationController
     end
   end
 
+
   # DELETE /races/1
   # DELETE /races/1.json
   def destroy
     @race.destroy
     respond_to do |format|
-      format.html { redirect_to races_url, notice: 'Race was successfully destroyed.' }
+      flash[:notice] = 'Raza eliminada'
+      format.html { redirect_to admin_races_path}
       format.json { head :no_content }
     end
   end

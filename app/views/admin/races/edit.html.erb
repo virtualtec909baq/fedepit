@@ -1,6 +1,32 @@
-<h1>Editing Race</h1>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for @race , url: admin_race_path(@race), :id => @race.id , method: :put do |f| %>
+    <% if @race.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@race.errors.count, "error") %> prohibited this breeder from being saved:</h2>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @race %> |
-<%= link_to 'Back', races_path %>
+      <ul>
+        <% @race.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :pdf %><br>
+      <%= f.file_field :pdf %>
+    </div>
+    <div class="actions">
+      <%= f.submit :class =>"btn btn-primary btn-block" %>
+    </div>
+    <% end %>
+  </div>
+</div>
