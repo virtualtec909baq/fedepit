@@ -5,7 +5,12 @@ class Admin::VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    @search = Video.ransack(params[:q])
+    @videos = @search.result.order(created_at: :desc).page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /videos/1
@@ -29,7 +34,7 @@ class Admin::VideosController < ApplicationController
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to admin_videos_path, notice: 'Video was successfully created.' }
+        format.html { redirect_to admin_videos_path, notice: 'El video ha sido creado.' }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new }
@@ -43,7 +48,8 @@ class Admin::VideosController < ApplicationController
   def update
     respond_to do |format|
       if @video.update(video_params)
-        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
+        flash[:notice] = 'Video modificado'
+        format.html { redirect_to admin_video_path(@video) }
         format.json { render :show, status: :ok, location: @video }
       else
         format.html { render :edit }
@@ -57,7 +63,8 @@ class Admin::VideosController < ApplicationController
   def destroy
     @video.destroy
     respond_to do |format|
-      format.html { redirect_to videos_url, notice: 'Video was successfully destroyed.' }
+      flash[:notice] = 'Video eliminado'
+      format.html { redirect_to admin_videos_path}
       format.json { head :no_content }
     end
   end
@@ -70,6 +77,6 @@ class Admin::VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:title, :number_seen, :url)
+      params.require(:video).permit(:title, :number_seen, :url, :description)
     end
 end
