@@ -1,4 +1,27 @@
-<h1>Editing Sponsor</h1>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="page-header">
+      <h1><%= @sponsor.name.upcase%></h1>
+    </div>
+  </div>
+</div>
+<div class="modal-body">
+  <%= form_for @sponsor , url: admin_sponsor_path(@sponsor), :id => @sponsor.id , method: :put do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url , class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
 
-<%= render 'form' %>
-
+  <div class="actions">
+    <%= f.submit :class =>"btn btn-primary btn-block" %>
+  </div>
+  <% end %>
+</div>

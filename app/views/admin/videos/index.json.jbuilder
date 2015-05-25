@@ -1,4 +1,0 @@
-json.array!(@videos) do |video|
-  json.extract! video, :id, :title, :number_seen, :url
-  json.url video_url(video, format: :json)
-end
