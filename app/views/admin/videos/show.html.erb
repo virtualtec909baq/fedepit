@@ -1,19 +1,53 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @video.title %>
-</p>
-
-<p>
-  <strong>Number seen:</strong>
-  <%= @video.number_seen %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @video.url %>
-</p>
-
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+<div class="row">
+  <div class='col-md-9'>
+    <%= link_to "Editar Video", edit_admin_video_path(@video), :class => "btn btn-primary"%>
+    <div class="blog-info-prod">
+      <div class="pull-right">
+        <h5><i class="fa fa-clock-o"></i> <%= @video.created_at.strftime('%b  %d  %Y')%></h5>
+      </div>
+      <div class="page-header">
+        <h1><%= @video.title%></h1>
+      </div>
+      <a href="#">
+        <%if @video.url.blank?%>
+          <img src="http://placehold.it/1000x500" class="img-responsive" alt=""/>
+        <%else%>
+          <iframe width="810" height="415" src="https://www.youtube.com/embed/<%= @video.url%>" frameborder="0" allowfullscreen></iframe>
+        <%end%>
+      </a>
+      <br>
+      <p class="blog-desc-prod"><%= @video.description%></p>
+    </div>
+  </div>
+  <div class='col-md-3'>
+    <div class="blog-info-prod">
+      <h2 class="t-title-office"><span>Recent post</span></h2>
+      <ul class='post-lateral'>
+        <li>
+          <img src='images/product/img1.jpg' alt='' />
+          <div>
+            <p>Business Cards Design</p><p class='post-data'>Dec 12 2014/ 2 comments</p>
+          </div>
+        </li>
+        <li>
+          <img src='images/product/img2.jpg' alt='' />
+          <div>
+            <p>World Tecnology</p><p class='post-data'>Dec 02 2014/ 2 comments</p>
+          </div>
+        </li>
+        <li>
+          <img src='images/product/img3.jpg' alt='' />
+          <div>
+            <p>Switch Design CO.</p><p class='post-data'>Dec 02 2014/ 2 comments</p>
+          </div>
+        </li>
+        <li>
+          <img src='images/product/img4.jpg' alt='' />
+          <div>
+            <p>Marketing Trip Forest</p><p class='post-data'>Dec 02 2014/ 2 comments</p>
+          </div>
+        </li>
+      </ul>
+    </div>    
+  </div>
+</div>
