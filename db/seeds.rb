@@ -27,3 +27,9 @@ if Breeder.all.empty?
 		Breeder.create(name: Faker::Name.name, type_breeder_id: rand(1..29), phone: Faker::Number.number(10), email: Faker::Internet.email, name_breed: Faker::Company.name, facebook: Faker::Internet.url, twitter: Faker::Internet.url, instagram: Faker::Internet.url, web: Faker::Internet.url)
 	end
 end
+if Color.all.empty?
+	30.times do
+		Color.create(name: Faker::Commerce.color)
+	end
+end
+
