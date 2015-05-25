@@ -14,19 +14,25 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Ejemplares <b class="caret"></b></a>
           <ul class="dropdown-menu vertical-li">
-            <li><a href="<%= admin_races_path%>">Crear razas</a></li>
-            <li><a href="<%= admin_canines_path%>">Ver mis ejemplares</a></li>
-            <li><a href="<%= new_admin_canine_path%>">Agregar un ejemplar</a></li>
-            <li><a href="shop/shoppingCart.html">Busqueda de pedigree</a></li>
+            <li><a href="<%= admin_races_path%>">Ver Razas</a></li>
+            <li><a href="<%= admin_canines_path%>">Ver Ejemplares</a></li>
             <li><a href="shop/shoppingCart.html">Realizar cruces</a></li>
           </ul>
         </li>
         <li><a href="<%= admin_articles_path%>">Articulos</a></li>
         <li><a href="<%= admin_videos_path%>">Videos</a></li>
         <li><a href="<%= admin_sponsors_path%>">Patrocinadores</a></li>
-        <li><a href="<%= admin_events_path%>">Eventos</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Evento <b class="caret"></b></a>
+          <ul class="dropdown-menu vertical-li">
+            <li><a href="<%= admin_events_path%>">Ver Eventos</a></li>
+            <li><a href="<%= admin_canines_path%>">Tipos de eventos</a></li>
+            <li><a href="<%= admin_championships_path%>">Campeonatos</a></li>
+            <li><a href="<%= admin_canines_path%>">Tipos de Campeonatos</a></li>
+          </ul>
+        </li>
         <li><a href="<%= admin_publicities_path%>">Publicidad</a></li>
-        <li><a href="<%= admin_championships_path%>">Campeonatos</a></li>
+        <li><a href="<%= admin_breeders_path%>">Criadores</a></li>
+        
       </ul>
     </div>
   </div>
