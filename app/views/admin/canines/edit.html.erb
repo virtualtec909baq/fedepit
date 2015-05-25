@@ -1,6 +1,59 @@
-<h1>Editing Canine</h1>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="page-header">
+			<h1><%= @canine.name.upcase%></h1>
+		</div>
+	</div>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @canine %> |
-<%= link_to 'Back', canines_path %>
+<div class="modal-body">
+	<%= form_for @canine , url: admin_canine_path(@canine), :id => @canine.id , method: :put do |f| %>
+	<div class="field">
+		<%= f.label :type %><br>
+		<%= f.collection_select :race_id, Race.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
+	</div>
+	<div class="field">
+		<%= f.label :type %><br>
+		<%= f.collection_select :breeder_id, Breeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
+	</div>
+	<div class="field">
+		<%= f.label :lof %><br>
+		<%= f.text_field :lof, class: 'form-control' %>
+	</div>
+	<div class="field">
+		<%= f.label :chip %><br>
+		<%= f.text_field :chip, class: 'form-control' %>
+	</div>
+	<div class="field">
+		<%= f.label :name %><br>
+		<%= f.text_field :name, class: 'form-control' %>
+	</div>            
+	<div class="field">
+		<%= f.label :gender %><br>
+		<%= f.select :gender, [["Macho", "1"],["Hembra", "0"]], {prompt: ""}, {class: "form-control"}%>
+	</div>
+	<div class="field">
+		<%= f.label :father_lof %><br>
+		<%= f.text_field :father_lof , class: 'form-control' %>
+	</div>
+	<div class="field">
+		<%= f.label :mother_lof %><br>
+		<%= f.text_field :mother_lof , class: 'form-control' %>
+	</div>
+	<div class="field">
+		<%= f.label :rate %><br>
+		<%= f.text_field :rate , class: 'form-control' %>
+	</div>
+	<div class="field">
+		<%= f.label :birth %><br>
+		<%= f.date_select :birth , class: 'form-control' %>
+	</div>
+	<div class="field">
+		<%= f.label :death %><br>
+		<%= f.date_select :death , class: 'form-control' %>
+	</div>
+	<div class="actions">
+		<%= f.submit :class =>"btn btn-primary btn-block" %>
+	</div>
+	<% end %>
+</div>

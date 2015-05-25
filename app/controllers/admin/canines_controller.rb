@@ -6,6 +6,13 @@ class Admin::CaninesController < ApplicationController
   # GET /canines.json
   def index
     @canines = Canine.all
+    @search = Canine.ransack(params[:q])
+    @canines = @search.result.order(created_at: :desc).page(params[:page])
+    @canine = Canine.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /canines/1
@@ -29,7 +36,7 @@ class Admin::CaninesController < ApplicationController
 
     respond_to do |format|
       if @canine.save
-        format.html { redirect_to @canine, notice: 'Canine was successfully created.' }
+        format.html { redirect_to admin_canines_path, notice: 'Canine was successfully created.' }
         format.json { render :show, status: :created, location: @canine }
       else
         format.html { render :new }
@@ -40,10 +47,11 @@ class Admin::CaninesController < ApplicationController
 
   # PATCH/PUT /canines/1
   # PATCH/PUT /canines/1.json
+
   def update
     respond_to do |format|
       if @canine.update(canine_params)
-        format.html { redirect_to @canine, notice: 'Canine was successfully updated.' }
+        format.html { redirect_to admin_canines_path, notice: 'canine was successfully updated.' }
         format.json { render :show, status: :ok, location: @canine }
       else
         format.html { render :edit }
@@ -54,10 +62,12 @@ class Admin::CaninesController < ApplicationController
 
   # DELETE /canines/1
   # DELETE /canines/1.json
-  def destroy
+
+    def destroy
     @canine.destroy
     respond_to do |format|
-      format.html { redirect_to canines_url, notice: 'Canine was successfully destroyed.' }
+      flash[:notice] = 'Ejemplar eliminado'
+      format.html { redirect_to admin_canines_path}
       format.json { head :no_content }
     end
   end
