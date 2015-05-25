@@ -15,3 +15,10 @@ if TypeEvent.all.empty?
 		TypeEvent.create(name: Faker::Name.title)
 	end
 end
+
+if Color.all.empty?
+	30.times do
+		Color.create(name: Faker::Commerce.color)
+	end
+end
+
