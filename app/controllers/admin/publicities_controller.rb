@@ -5,9 +5,14 @@ class Admin::PublicitiesController < ApplicationController
   # GET /publicities
   # GET /publicities.json
   def index
-    @publicities = Publicity.all
+    @search = Publicity.ransack(params[:q])
+    @publicities = @search.result.order(created_at: :desc).page(params[:page])
+    @publicity = Publicity.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
-
   # GET /publicities/1
   # GET /publicities/1.json
   def show
@@ -50,6 +55,16 @@ class Admin::PublicitiesController < ApplicationController
         format.json { render json: @publicity.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def change_status 
+    @publicity = Publicity.find(params[:id])
+    val = @publicity.status == true ? false : true
+    @publicity.update_attribute(:status, val)  
+    respond_to do |format|
+      flash[:notice] = 'Publicidad Modificado'
+      format.html { redirect_to admin_publicities_path }
+    end    
   end
 
   # DELETE /publicities/1
