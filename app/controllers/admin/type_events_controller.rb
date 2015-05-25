@@ -5,7 +5,13 @@ class Admin::TypeEventsController < ApplicationController
   # GET /type_events
   # GET /type_events.json
   def index
-    @type_events = TypeEvent.all
+    @search = TypeEvent.ransack(params[:q])
+    @type_events = @search.result.order(created_at: :desc).page(params[:page])
+    @type_event = TypeEvent.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /type_events/1
@@ -29,7 +35,7 @@ class Admin::TypeEventsController < ApplicationController
 
     respond_to do |format|
       if @type_event.save
-        format.html { redirect_to @type_event, notice: 'Type event was successfully created.' }
+        format.html { redirect_to admin_type_events_path, notice: 'Type event was successfully created.' }
         format.json { render :show, status: :created, location: @type_event }
       else
         format.html { render :new }
@@ -43,7 +49,7 @@ class Admin::TypeEventsController < ApplicationController
   def update
     respond_to do |format|
       if @type_event.update(type_event_params)
-        format.html { redirect_to @type_event, notice: 'Type event was successfully updated.' }
+        format.html { redirect_to admin_type_events_path, notice: 'Type event was successfully updated.' }
         format.json { render :show, status: :ok, location: @type_event }
       else
         format.html { render :edit }
@@ -57,7 +63,7 @@ class Admin::TypeEventsController < ApplicationController
   def destroy
     @type_event.destroy
     respond_to do |format|
-      format.html { redirect_to type_events_url, notice: 'Type event was successfully destroyed.' }
+      format.html { redirect_to admin_type_events_path, notice: 'Type event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
