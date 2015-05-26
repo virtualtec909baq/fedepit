@@ -15,14 +15,13 @@
       <th class="center"><%= sort_link @search, :race_id, "race_id"%></th>
       <th class="center"><%= sort_link @search, :breeder_id, "breeder_id"%></th>
       <th class="center">Lof</th>
-      <th class="center">Chip</th>
       <th class="center">Nombre</th>
       <th class="center">Genero</th>
       <th class="center">Lof Padre</th>
       <th class="center">Lof Madre</th>
       <th class="center">Calificacion</th>
+      <th class="center"><%= sort_link @search, :color_id, "color_id"%></th>
       <th class="center"><%= sort_link @search, :date, "Nacimiento"%></th>
-      <th class="center"><%= sort_link @search, :date, "Fallecimiento"%></th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -32,14 +31,13 @@
       <td class="center"><%= canine.race.name %></td>
       <td class="center"><%= canine.breeder.name %></td>
       <td class="center"><%= canine.lof %></td>
-      <td class="center"><%= canine.chip %></td>
       <td class="center"><%= canine.name %></td>
       <td class="center"><%= gender(canine.gender) %></td>
       <td class="center"><%= canine.father_lof %></td>
       <td class="center"><%= canine.mother_lof %></td>
       <td class="center"><%= canine.rate %></td>
+      <td class="center"><%= canine.color.name %></td>
       <td class="center"><%= canine.birth %></td>
-      <td class="center"><%= canine.death %></td>
       <td class="center"><%= link_to edit_admin_canine_path(canine) do %>
         <i class="fa fa-edit"></i>
         <%end%>

@@ -9,6 +9,10 @@
           <%= f.collection_select :breeder_id, Breeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
         </div>
         <div class="field">
+          <%= f.label :type %><br>
+          <%= f.collection_select :color_id, Color.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
+        </div>
+        <div class="field">
           <%= f.label :lof %><br>
           <%= f.text_field :lof, class: 'form-control' %>
         </div>
