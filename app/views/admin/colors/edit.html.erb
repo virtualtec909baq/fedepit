@@ -1,6 +1,18 @@
-<h1>Editing Color</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @color %> |
-<%= link_to 'Back', colors_path %>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="page-header">
+      <h1><%= @color.name%></h1>
+    </div>
+  </div>
+</div>
+<div class="modal-body">
+	<%= form_for @color , url: admin_color_path(@color), :id => @color.id , method: :put do |f| %>
+	<div class="field">
+		<%= f.label :name %><br>
+		<%= f.text_field :name, class: 'form-control' %>
+	</div>
+	<div class="actions">
+		<%= f.submit :class =>"btn btn-primary btn-block" %>
+	</div>
+	<% end %>
+</div>

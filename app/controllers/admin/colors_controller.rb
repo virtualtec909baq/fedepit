@@ -5,7 +5,13 @@ class Admin::ColorsController < ApplicationController
   # GET /colors
   # GET /colors.json
   def index
-    @colors = Color.all
+    @search = Color.ransack(params[:q])
+    @colors = @search.result.order(created_at: :desc).page(params[:page])
+    @color = Color.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /colors/1
@@ -29,7 +35,7 @@ class Admin::ColorsController < ApplicationController
 
     respond_to do |format|
       if @color.save
-        format.html { redirect_to @color, notice: 'Color was successfully created.' }
+        format.html { redirect_to admin_colors_path, notice: 'Color was successfully created.' }
         format.json { render :show, status: :created, location: @color }
       else
         format.html { render :new }
@@ -43,7 +49,7 @@ class Admin::ColorsController < ApplicationController
   def update
     respond_to do |format|
       if @color.update(color_params)
-        format.html { redirect_to @color, notice: 'Color was successfully updated.' }
+        format.html { redirect_to admin_colors_path, notice: 'color event was successfully updated.' }
         format.json { render :show, status: :ok, location: @color }
       else
         format.html { render :edit }
@@ -57,7 +63,8 @@ class Admin::ColorsController < ApplicationController
   def destroy
     @color.destroy
     respond_to do |format|
-      format.html { redirect_to colors_url, notice: 'Color was successfully destroyed.' }
+      flash[:notice] = 'color eliminado'
+      format.html { redirect_to admin_colors_path}
       format.json { head :no_content }
     end
   end

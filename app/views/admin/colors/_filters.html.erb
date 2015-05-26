@@ -1,0 +1,16 @@
+<div class="col-md-12">
+	<div class="row">
+	<%= search_form_for @search, url: admin_colors_path do |f|%>		
+		<div class="col-md-6">
+			<label>Name</label>
+			<%= f.search_field(:name_cont, class: 'form-control')%>
+		</div>
+		<div class="col-md-2">
+			<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModalColor">	Agregar Color
+			</button>
+		</div>
+	<%end%>
+	
+	</div>
+</div>	
+<%= render :partial => "form"%>
