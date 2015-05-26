@@ -3,4 +3,7 @@ class Color < ActiveRecord::Base
 	self.per_page = 15
 	# validates
 	validates :name, presence: true
+
+	has_many :canines
+
 end

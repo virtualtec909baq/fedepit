@@ -1,6 +1,8 @@
 class Canine < ActiveRecord::Base
 	belongs_to :breeder
 	belongs_to :race
+  belongs_to :color
+
 	# default for will_paginate
  	self.per_page = 15
   	# # validates
