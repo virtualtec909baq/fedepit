@@ -1,53 +1,43 @@
-<%= form_for(@breeder) do |f| %>
-  <% if @breeder.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@breeder.errors.count, "error") %> prohibited this breeder from being saved:</h2>
-
-      <ul>
-      <% @breeder.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<div class="modal-body">
+  <%= form_for :breeder , url: admin_breeders_path(@breeder), :remote => true , method: :post do |f| %>
   <div class="field">
-    <%= f.label :type_breeder_id %><br>
-    <%= f.number_field :type_breeder_id %>
+    <%= f.label :type %><br>
+    <%= f.collection_select :type_breeder_id, TypeBreeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
   </div>
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :name_breed %><br>
-    <%= f.text_field :name_breed %>
+    <%= f.text_field :name_breed, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :facebook %><br>
-    <%= f.text_field :facebook %>
+    <%= f.text_field :facebook, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :twitter %><br>
-    <%= f.text_field :twitter %>
+    <%= f.text_field :twitter, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :instagram %><br>
-    <%= f.text_field :instagram %>
+    <%= f.text_field :instagram, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :web %><br>
-    <%= f.text_field :web %>
+    <%= f.text_field :web, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class =>"btn btn-primary btn-block" %>
   </div>
-<% end %>
+  <% end %>
+</div>

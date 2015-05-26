@@ -5,7 +5,12 @@ class Admin::BreedersController < ApplicationController
   # GET /breeders
   # GET /breeders.json
   def index
-    @breeders = Breeder.all
+    @search = Breeder.ransack(params[:q])
+    @breeders = @search.result.order(created_at: :desc).page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /breeders/1
@@ -24,12 +29,12 @@ class Admin::BreedersController < ApplicationController
 
   # POST /breeders
   # POST /breeders.json
-  def create
+   def create
     @breeder = Breeder.new(breeder_params)
 
     respond_to do |format|
       if @breeder.save
-        format.html { redirect_to @breeder, notice: 'Breeder was successfully created.' }
+        format.html { redirect_to admin_breeders_path, notice: 'breeder was successfully created.' }
         format.json { render :show, status: :created, location: @breeder }
       else
         format.html { render :new }
@@ -37,6 +42,7 @@ class Admin::BreedersController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /breeders/1
   # PATCH/PUT /breeders/1.json
@@ -52,15 +58,29 @@ class Admin::BreedersController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @breeder.update(breeder_params)
+        format.html { redirect_to admin_breeders_path, notice: 'breeder was successfully updated.' }
+        format.json { render :show, status: :ok, location: @breeder }
+      else
+        format.html { render :edit }
+        format.json { render json: @breeder.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /breeders/1
   # DELETE /breeders/1.json
   def destroy
     @breeder.destroy
     respond_to do |format|
-      format.html { redirect_to breeders_url, notice: 'Breeder was successfully destroyed.' }
+      flash[:notice] = 'Ejemplar eliminado'
+      format.html { redirect_to admin_breeders_path}
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
