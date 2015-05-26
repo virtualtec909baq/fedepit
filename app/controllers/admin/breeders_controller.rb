@@ -75,7 +75,7 @@ class Admin::BreedersController < ApplicationController
   def destroy
     @breeder.destroy
     respond_to do |format|
-      flash[:notice] = 'Ejemplar eliminado'
+      flash[:notice] = 'Criador eliminado'
       format.html { redirect_to admin_breeders_path}
       format.json { head :no_content }
     end

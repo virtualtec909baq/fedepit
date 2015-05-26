@@ -45,10 +45,10 @@ class Admin::PublicitiesController < ApplicationController
 
   # PATCH/PUT /publicities/1
   # PATCH/PUT /publicities/1.json
-  def update
+   def update
     respond_to do |format|
       if @publicity.update(publicity_params)
-        format.html { redirect_to @publicity, notice: 'Publicity was successfully updated.' }
+        format.html { redirect_to admin_publicities_path, notice: 'publicity was successfully updated.' }
         format.json { render :show, status: :ok, location: @publicity }
       else
         format.html { render :edit }
@@ -72,7 +72,8 @@ class Admin::PublicitiesController < ApplicationController
   def destroy
     @publicity.destroy
     respond_to do |format|
-      format.html { redirect_to publicities_url, notice: 'Publicity was successfully destroyed.' }
+      flash[:notice] = 'Publicidad eliminada'
+      format.html { redirect_to admin_publicities_path}
       format.json { head :no_content }
     end
   end
