@@ -1,123 +1,115 @@
 <%= render partial: "home/boxgallery"%>
 
 <div class="callout-box style3">
-    <div class="container">
-        <div class="callout-content">
-            <div class="callout-text">
-                <h2>Angula will make you fall in love again!</h2>
-            </div>
-            <div class="callout-action">
-                <a href="#" class="btn btn-lg btn-primary style3">Purchase Now</a>
-            </div>
-        </div>
+  <div class="container">
+    <div class="callout-content">
+      <div class="callout-text">
+        <h2>Angula will make you fall in love again!</h2>
+      </div>
+      <div class="callout-action">
+        <a href="#" class="btn btn-lg btn-primary style3">Purchase Now</a>
+      </div>
     </div>
+  </div>
+</div>
+<div class="parallax" id="clients-home2">
+    <div class="black-shadow"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 team">
+            <h1 class="section-title">Ejemplares mas visto</h1>
+                <% @canines.each do |canine| %>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                  <div class="team-img view view-second">
+                 <img alt="" src="http://placehold.it/300x291">
+                   <div class="mask"></div>
+                    <div class="content">
+                        <p>A wonderful serenity has taken possession of my entire soul.</p>
+                        <ul class="list-unstyled list-inline list-social-icons">
+                            <li class="tooltip-social facebook-link">
+                                <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Facebook">
+                                    <i class="fa fa-facebook"></i>
+                                 </a>
+                            </li>
+                            <li class="tooltip-social twitter-link">
+                                <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Twitter">
+                                         <i class="fa fa-twitter"></i>
+                                 </a>
+                            </li>
+                        </ul>
+                    </div>
+                  </div>
+                  <p><%= canine.name %></p>
+                </div> 
+                <% end %>
+            </div>
+          </div>
+     </div>
 </div>
 <div class="section" id="latest-blog-index">
 
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="col-lg-12 text-center">
-               <h1 class="section-title">LATEST FROM <span>BLOG</span></h1>
-                <p class="sub-title">Excepteur sint occaecat cupidatat non proident sunt<br>in culpa officia deserunt</p>
-              </div>
-                <div class="col-sm-4 latest-blog">
-                     <div class="latest-blog-content">
-                            <div class="img_holder">
-                               <div class="overlay"> <a href="blog.html" class="icon"><i class="fa fa-eye"></i></a> </div>
-                               <img alt="" src="http://placehold.it/700x450" class="img-responsive">
-                               <span class="onsaleblog">
-                                    <span>12 <i class="fa fa-comments"></i></span>
-                                </span>
-                            </div>
-                            <div class="blog-l-txt">
-                                <div class="post-author">
-                                    <a href="#"><img alt="" src="images/team/user3.jpg"></a>
-                                </div>
-                                <h3>NULLAM TURPIS CRAS</h3>
-                                <p>Service one description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis
-                                    nisl vestibulum dignissim. In hac habitasse platea dictumst.</p>
-                            </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 latest-blog">
-                     <div class="latest-blog-content">
-                            <div class="img_holder">
-                               <div class="overlay"> <a href="blog.html" class="icon"><i class="fa fa-eye"></i></a> </div>
-                               <img alt="" src="http://placehold.it/700x450" class="img-responsive">
-                               <span class="onsaleblog">
-                                    <span>16 <i class="fa fa-comments"></i></span>
-                                </span>
-                            </div>
-                            <div class="blog-l-txt">
-                                <div class="post-author">
-                                    <a href="#"><img alt="" src="images/team/user2.jpg"></a>
-                                </div>
-                                <h3>NULLAM TURPIS CRAS</h3>
-                                <p>Service one description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis
-                                    nisl vestibulum dignissim. In hac habitasse platea dictumst.</p>
-                            </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 latest-blog">
-                     <div class="latest-blog-content">
-                            <div class="img_holder">
-                               <div class="overlay"> <a href="blog.html" class="icon"><i class="fa fa-eye"></i></a> </div>
-                               <img alt="" src="http://placehold.it/700x450" class="img-responsive">
-                               <span class="onsaleblog">
-                                    <span>25 <i class="fa fa-comments"></i></span>
-                                </span>
-                            </div>
-                            <div class="blog-l-txt">
-                                <div class="post-author">
-                                    <a href="#"><img alt="" src="images/team/user1.jpg"></a>
-                                </div>
-                                <h3>NULLAM TURPIS CRAS</h3>
-                                <p>Service one description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis
-                                    nisl vestibulum dignissim. In hac habitasse platea dictumst.</p>
-                            
-                        </div>
-                    </div>
-                </div>
-                 
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-12 text-center">
+          <h1 class="section-title"><span>Ultimos articulos </span></h1>
         </div>
-        <!-- /.row -->
-
+        <% @articles.each do |article| %>
+        <div class="col-sm-4 latest-blog">
+          <div class="latest-blog-content">
+            <div class="img_holder">
+             <div class="overlay"> <a href="blog.html"></a> </div>
+             <%if article.img.blank?%>
+               <img alt="" class="img-responsive" src="http://placehold.it/700x450">
+               <%else%>
+               <img alt="" class="img-responsive" src="<%= article.img%>">
+               <%end%>
+             <span class="onsaleblog">
+              <span>12 <i class="fa fa-comments"></i></span>
+            </span>
+          </div>
+          <div class="blog-l-txt">
+            <h3><%= article.title %></h3>
+            <p><%= article.description %></p>
+              <%= link_to "Seguir leyendo", article_path(article), :class => "btn btn-primary"  %>
+          </div>
+        </div>
+      </div>   
+      <% end %>    
     </div>
-    <!-- /.container -->
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
 
 </div>
 <div class="parallax-texture" id="iphone-home5">
-    <div class="container">
-      <div class="row">
-       <div class="col-md-7">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
         <img alt="" src="/assets/depth-cart.png">
         <img alt="" src="/assets/depth-cart-trasp.png" class="img-trasp animated fadeInLeftPhone">
-       </div>
-       <div class="col-md-5 iphone-desc">
-         
+      </div>
+      <div class="col-md-5 iphone-desc">
+
         <ul>
-         <li class="animated fadeInDown"><p><span class=" icon-strategy"></span>On-line store no code server side</p></li>
-         <li class="animated fadeInDown"><p><span class=" icon-phone"></span>Your Shopping Cart in one hand</p></li>
-         <li class="animated fadeInDown"><p><span class=" icon-search"></span>On-line store Html5 - AngularJs</p></li>
-         <li class="animated fadeInDown"><p><span class=" icon-layers"></span>Framework MVVM</p></li>
-         <li class="animated fadeInDown"><p><span class=" icon-expand"></span>It is fully extensible </p></li>
+          <li class="animated fadeInDown"><p><span class=" icon-strategy"></span>On-line store no code server side</p></li>
+          <li class="animated fadeInDown"><p><span class=" icon-phone"></span>Your Shopping Cart in one hand</p></li>
+          <li class="animated fadeInDown"><p><span class=" icon-search"></span>On-line store Html5 - AngularJs</p></li>
+          <li class="animated fadeInDown"><p><span class=" icon-layers"></span>Framework MVVM</p></li>
+          <li class="animated fadeInDown"><p><span class=" icon-expand"></span>It is fully extensible </p></li>
         </ul>
-       </div>
-        
+      </div>
+
     </div>
     <!-- /.container -->
 
-</div>
+  </div>
 
 </div>
 
 <div class="clear"></div>
-
 <div class="home5-city-bg-bottom">
   <div class="well">
     <div class="container row-box">
@@ -132,6 +124,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 <script src="/assets/modernizr.js" type="text/javascript"></script>

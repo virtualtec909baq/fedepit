@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
   root 'home#index'
   devise_for :users
-  resources :articles, only: [:index]
+  resources :articles, only: [:index, :show]
   resources :breeders, only: [:index]
   resources :canines, only: [:index]
   resources :championships, only: [:index]
   resources :events, only: [:index]
   resources :videos, only: [:index]
-
+  get "home/contactus", to:"home#contactus"
   namespace :admin do
   	get 'home/index'
   	resources :articles

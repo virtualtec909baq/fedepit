@@ -31,7 +31,7 @@
       <td class="center"><%= canine.race.name %></td>
       <td class="center"><%= canine.breeder.name %></td>
       <td class="center"><%= canine.lof %></td>
-      <td class="center"><%= canine.name %></td>
+      <td class="center"><%= link_to canine.name, admin_canine_path(canine), :class => "link_to"  %></td>
       <td class="center"><%= gender(canine.gender) %></td>
       <td class="center"><%= canine.father_lof %></td>
       <td class="center"><%= canine.mother_lof %></td>
