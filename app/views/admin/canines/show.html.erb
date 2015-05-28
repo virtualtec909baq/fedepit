@@ -1,58 +1,63 @@
 <div class="container shop-dresses" id="product_dresses">
-      <div class="row">
-        <div class="prod-top-img col-md-12" id="single-prod-top">
+  <div class="row">
+    <div class="prod-top-img col-md-12" id="single-prod-top">
 
-          <div class="col-md-4 pp-cont-det">
-              <div class="details-single-img dresses-single-b">
-                <img src="../images/store/product/dresses/5.jpg" alt="Mikore">
-              </div>
-          </div>
-          <div class="col-md-8 det-info-prod">
-             <div class="single-prod-info">
-               <div class="det-dres">
-                 <span class="product-name-title"><%= @canine.name%></span>
-                </div>
-                <span class="shop-price"> <%= @canine.rate%> </span>
-             </div>
-             <div class="single-prod-description">
-                <%= @canine.lof%>
-             </div>
-              <div class="single-prod-description">
-                <%= @canine.race.name%>
-             </div>
-              <div class="single-prod-description">
-                <%= @canine.breeder.name%>
-             </div>
-              <div class="single-prod-description">
-                <%= @canine.chip%>
-             </div>
-              <div class="single-prod-description">
-                <%= gender(@canine.gender)%>
-             </div>
-             <div class="single-prod-description">
-                <%= @canine.color.name%>
-             </div>
-             <div class="single-prod-description">
-                <%= @canine.father_lof%>
-             </div>
-             <div class="single-prod-description">
-                <%= @canine.mother_lof%>
-             </div>
-             <div class="single-prod-description">
-                <%= @canine.birth%>
-             </div>
-             <div class="single-prod-description">
-                <%= @canine.death%>
-             </div>
-             <div class="details-material_dresses">
-              <ul>
-              </ul>
-             </div>
-             <div class="single-prod-button">
-                     <%= link_to "Editar Ejemplar", edit_admin_canine_path(@canine), :class => "btn btn-primary"%>
-              </div>
-          </div>
-          
+      <div class="col-md-4 pp-cont-det">
+        <div class="details-single-img dresses-single-b">
+          <img src="../images/store/product/dresses/5.jpg" alt="Mikore">
         </div>
+      </div>
+      <div class="col-md-8 det-info-prod">
+        <div class="single-prod-info">
+          <div class="det-dres">
+            <span class="product-name-title"><%= @canine.name%></span>
+          </div>
+          <span class="shop-price"> <%= @canine.rate%> </span>
+        </div>
+        <div class=" col-md-13 col-lg-13 "> 
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+                <td>Lof:</td>
+                <td><%= @canine.lof%></td>
+              </tr>
+              <tr>
+                <td>Genero:</td>
+                <td><%= gender(@canine.gender)%></td>
+              </tr>
+              <tr>
+                <td>Raza:</td>
+                <td><%= link_to @canine.race.name, "#{@canine.race.pdf.url}", target: "_blank" %></td>
+              </tr>
+              <tr>
+                <td>Fecha de nacimiento:</td>
+                <td><%= @canine.birth%></td>
+              </tr>
+              <tr>
+                <td>Color:</td>
+                <td><%= @canine.color.name%></td>
+              </tr>
+              <tr>
+                <td>Propietario:</td>
+                <td><%= @canine.breeder.name%></td>
+              </tr>
+              <tr>
+                <td>Criadero:</td>
+                <td><%= @canine.breeder.name_breed%></td>
+              </tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="details-material_dresses">
+        <ul>
+        </ul>
+      </div>
+      <div class="single-prod-button">
+        <%= link_to "Editar Ejemplar", edit_admin_canine_path(@canine), :class => "btn btn-primary"%>
+      </div>
     </div>
+
+  </div>
+</div>
 </div>

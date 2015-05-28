@@ -118,7 +118,7 @@
           <% @sponsors.each do |sponsor| %>
           <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Diesel">
           <a href="#">
-            <%if sponsor.image.blank?%>
+           <%if sponsor.image.blank?%>
              <img alt="" class="img-responsive" src="http://placehold.it/560x391">
             <%else%>
              <img alt="" class="img-responsive" src="<%= sponsor.image%>">
