@@ -115,11 +115,17 @@
     <div class="container row-box">
       <div class="col-lg-12 col-md-12">
         <ul class="clients">
-          <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Diesel"><a href="#"><img src="http://placehold.it/560x391" alt=""/></a></li>
-          <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Google"><a href="#"><img src="http://placehold.it/560x391" alt=""/></a></li>
-          <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Microsoft"><a href="#"><img src="http://placehold.it/560x391" alt=""/></a></li>
-          <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram"><a href="#"><img src="http://placehold.it/560x391" alt=""/></a></li>
-          <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Sony"><a href="#"><img src="http://placehold.it/560x391" alt=""/></a></li>
+          <% @sponsors.each do |sponsor| %>
+          <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Diesel">
+          <a href="#">
+            <%if sponsor.image.blank?%>
+             <img alt="" class="img-responsive" src="http://placehold.it/560x391">
+            <%else%>
+             <img alt="" class="img-responsive" src="<%= sponsor.image%>">
+           <%end%>
+          </a>
+          </li>
+          <% end %>
         </ul>
       </div>
     </div>
