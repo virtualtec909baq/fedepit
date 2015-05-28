@@ -438,7 +438,7 @@ ul.menu-items li.menu-item:last-child {
   margin-top: 30px;
 }
 @-webkit-keyframes hero-imacretina-1-anim {
-  0%,  30%,  96%,  100% {
+  0%,  30%,  100%,  100% {
     opacity:1;
   }
 
@@ -447,7 +447,7 @@ ul.menu-items li.menu-item:last-child {
   }
 
   }@keyframes hero-imacretina-1-anim {
-    0%,  30%,  96%,  100% {
+    0%,  30%,  100%,  100% {
       opacity:1;
     }
 
@@ -1861,7 +1861,7 @@ h2.t-title-office.office2 {
   float: right;
   bottom: 50px;
   color: #fff;
-  left: 96.1%;
+  left: 100.1%;
 }
 .about-generic .job-title span {
   z-index: 10;
@@ -2580,7 +2580,7 @@ PAGE HOME 2
   -moz-box-shadow: 0 0 1px #000;
   box-shadow: 0 0 1px #000;
 }
-.view a.info: hover {
+.view a.info:hover {
   -webkit-box-shadow: 0 0 5px #000;
   -moz-box-shadow: 0 0 5px #000;
   box-shadow: 0 0 5px #000;
