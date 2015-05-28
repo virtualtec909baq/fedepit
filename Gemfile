@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem "therubyracer"
+gem "less-rails"
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
@@ -26,3 +28,6 @@ group :development, :test do
 	gem 'faker'
 end
 
+group :production do
+  gem 'rails_12factor'
+end

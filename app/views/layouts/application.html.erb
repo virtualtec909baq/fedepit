@@ -7,13 +7,17 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="container m40px">
+	<%- if params[:controller].split("/").first == "admin"%>
+		<div class="container m40px">
+	<%end%>
 		<!-- <div id="loader-wrapper">
 	      <div id="loader"></div>
 	    </div> -->
 		<%= render partial: "layouts/share"%>
 	    <%= render partial: "layouts/header2"%>
 	    <%= yield %>
-	</div >
+	<%- if params[:controller].split("/").first == "admin"%>
+		</div >
+	<%end%>
 </body>
 </html>
