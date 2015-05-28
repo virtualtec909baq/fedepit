@@ -17,6 +17,18 @@
     <%= f.text_field :email, class: 'form-control' %>
   </div>
   <div class="field">
+    <%= f.label :country %><br>
+    <%= f.text_field :country, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :adrress %><br>
+    <%= f.text_field :adrress, class: 'form-control' %>
+  </div>
+  <div class="field">
     <%= f.label :name_breed %><br>
     <%= f.text_field :name_breed, class: 'form-control' %>
   </div>
@@ -35,6 +47,10 @@
   <div class="field">
     <%= f.label :web %><br>
     <%= f.text_field :web, class: 'form-control' %>
+  </div>  
+  <div class="field">
+    <%= f.label :img %><br>
+    <%= f.file_field :img %>
   </div>
   <div class="actions">
     <%= f.submit :class =>"btn btn-primary btn-block" %>

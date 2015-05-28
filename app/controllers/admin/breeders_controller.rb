@@ -16,6 +16,7 @@ class Admin::BreedersController < ApplicationController
   # GET /breeders/1
   # GET /breeders/1.json
   def show
+    @canines = @breeder.canines
   end
 
   # GET /breeders/new
@@ -49,18 +50,6 @@ class Admin::BreedersController < ApplicationController
   def update
     respond_to do |format|
       if @breeder.update(breeder_params)
-        format.html { redirect_to @breeder, notice: 'Breeder was successfully updated.' }
-        format.json { render :show, status: :ok, location: @breeder }
-      else
-        format.html { render :edit }
-        format.json { render json: @breeder.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @breeder.update(breeder_params)
         format.html { redirect_to admin_breeders_path, notice: 'breeder was successfully updated.' }
         format.json { render :show, status: :ok, location: @breeder }
       else
@@ -90,6 +79,6 @@ class Admin::BreedersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def breeder_params
-      params.require(:breeder).permit(:type_breeder_id, :name, :phone, :email, :name_breed, :facebook, :twitter, :instagram, :web)
+      params.require(:breeder).permit(:type_breeder_id, :name, :phone, :email, :name_breed, :facebook, :twitter, :instagram, :web, :img, :country, :city, :adrress)
     end
 end

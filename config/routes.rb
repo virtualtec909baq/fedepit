@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
   devise_for :users
   resources :articles, only: [:index, :show]
-  resources :breeders, only: [:index]
+  resources :breeders, only: [:index, :show]
   resources :canines, only: [:index]
   resources :championships, only: [:index]
   resources :events, only: [:index]
