@@ -1922,9 +1922,7 @@ canvas {
   margin-top: 60px;
 }
 .panel-body {
-  background: #262c32!important;
   border-color: #32383f!important;
-  color: #fff;
   padding: 25px 25px 25px 25px;
 }
 .panel-default>.panel-heading {
@@ -2551,6 +2549,7 @@ PAGE HOME 2
 .view img {
   display: block;
   position: relative;
+  width: 100%;
 }
 .view h2 {
   text-transform: uppercase;
@@ -5865,7 +5864,7 @@ PAGE SINGLE PRODUCT DRESSES
   height: 35px;
 }
 .details-material_dresses {
-  margin-top: 20px;
+  margin-top: 0px;
 }
 .details-material_dresses ul{
   padding: 0;
@@ -6029,4 +6028,40 @@ i {
 }
 .fa.fa-trash-o {
     color: #D9534F;
+}
+.user-row {
+    margin-bottom: 14px;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
+.breeders_img
+{width: 100%;
 }
