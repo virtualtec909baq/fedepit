@@ -13,7 +13,7 @@
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse dropdown-prod-cart-scroll scroll-menu">
       <ul class="nav navbar-nav navbar-right">
-        <li><a id="home"href="<%= root_path(:home => "header")%>">Inicio</a></li>
+        <li><a id="home" href="#">Inicio</a></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Ejemplares <b class="caret"></b></a>
           <ul class="dropdown-menu vertical-li">
             <li><a href="<%= admin_races_path%>">Ver Razas</a></li>
@@ -38,8 +38,13 @@
         </li>
         <li><a href="<%= admin_publicities_path%>">Publicidad</a></li>
         <li><a href="<%= admin_breeders_path%>">Salir</a></li>
-        
       </ul>
     </div>
   </div>
 </nav>
+<script type="text/javascript">
+  $('#home').click(function() {
+      window.location.replace("<%= root_path%>");
+    // location.reload();
+  });
+</script>
