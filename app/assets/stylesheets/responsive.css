@@ -1,28 +1,32 @@
-﻿
+﻿@media only screen and (max-width: 2000px) and (min-width: 1281px){
+   .callout-box.style3 {
+        padding: 460px 0;
+    } 
+}
+@media only screen and (max-width: 1366px) {
+    .slide-inner-txt h3 {
+        font-size: 60px;
+    }
+}
+@media only screen and (max-width: 1366px) {
+    .dresses-rc-li {
+        padding-left: 5px;
+        padding-right: 5px;
+    }    
+}
 
-@media only screen and (max-width: 1366px) 
-{
-.slide-inner-txt h3 {
-    font-size: 60px;
-}
-}
-@media only screen and (max-width: 1366px) 
-{
-.dresses-rc-li {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-}
-
-@media only screen and (max-width: 1025px) and (min-width: 1000px)
-{
+@media only screen and (max-width: 1025px) and (min-width: 1000px){
 .about3-team-desc {
     padding: 20px 30px 23px 30px;
     min-height: 300px;
 }
+
 }
-@media only screen and (max-width: 1025px) 
-{
+@media only screen and (max-width: 1025px) {
+
+.callout-box.style3 {
+    padding: 40px 0;
+}
 
 .container-slide {
     position: relative;
@@ -80,11 +84,12 @@ to {
 to {
     background-position: 0 1850px,  0 600px;
 }
-}@keyframes animate-effectopacity {
+}
+@keyframes animate-effectopacity {
     from {
     background-position: 0 -400px,  0 100px;
 }
-to {
+to{
     background-position: 0 1250px,  0 600px;
 }
 }
@@ -151,8 +156,7 @@ to {
 /*Cart*/
 .dropdown-menu.dropdown-prod-cart {left: -200px;}
 }
-@media only screen and (max-width: 1000px) 
-{
+@media only screen and (max-width: 1000px) {
 .nav>li>a {padding: 10px 10px;}
 .home-info-desc{margin:5px 0 0 0;}
 .top-well{padding: 50px 0px 50px 0px;}
@@ -264,8 +268,7 @@ to {
 }
 }
 
-@media only screen and (max-width: 770px) 
-{
+@media only screen and (max-width: 770px) {
  /*Menu*/
  .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
 	margin-top: 9px;
@@ -413,8 +416,7 @@ h2.t-title-office {
 
 }
 
-@media only screen and (max-width: 766px) 
-{
+@media only screen and (max-width: 766px) {
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
   border:0px;
 }
@@ -479,8 +481,7 @@ h2.t-title-office {
 }
 
 
-@media only screen and (max-width: 740px) and (orientation: landscape)
-{
+@media only screen and (max-width: 740px) and (orientation: landscape){
 .content-count-cart-header{margin-right: 15px;}
 .navbar .container {
 	padding-right: 0;
@@ -602,8 +603,7 @@ ul.menu-items li.menu-adwertising{display:none}
 
 }
 
-@media only screen and (max-width: 670px) and (orientation: landscape)
-{
+@media only screen and (max-width: 670px) and (orientation: landscape){
 
 /*Slider*/
 .slide-middle-txt {
@@ -715,8 +715,7 @@ ul.menu-items li.menu-adwertising{display:none}
 
 
 
-@media only screen and (max-width: 480px) 
-{
+@media only screen and (max-width: 480px) {
 
 /*Slider*/
 .slide-middle-txt {
@@ -921,8 +920,7 @@ figure.effect-layla h2 {padding-top: 18%;}
 }
 
 
-@media only screen and (max-width: 400px) 
-{
+@media only screen and (max-width: 400px) {
 .container-slide {height: 300px;}
 .home5-advert {width: 90%;}
 .paral-logo {width: 100%;}
@@ -959,9 +957,8 @@ figure.effect-layla h2 {padding-top: 17%;}
 .content-table-cart .btn-payment .checkout {margin: 5px 0 5px 0;}
 }
 
-@media only screen and (max-width: 320px) 
-{
-    
+@media only screen and (max-width: 320px) {
+
 /*Slider*/
 .slide-middle-txt {
 	margin-top: 17%;
@@ -980,6 +977,9 @@ figure.effect-layla h2 {padding-top: 17%;}
 
 .wave {
     margin-top: 0px; 
+}
+.callout-box.style3{
+     padding: 40px 0;
 }
 
 .navbar-brand img{margin-left: -11px;}

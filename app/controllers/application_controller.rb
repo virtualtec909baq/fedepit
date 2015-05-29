@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
   def after_sign_in_path_for(resource)
-    admin_home_index_path
+    admin_canines_index_path
   end
 
   def js_redirect_to(path)

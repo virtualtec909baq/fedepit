@@ -14,8 +14,15 @@
 	      <div id="loader"></div>
 	    </div> -->
 		<%= render partial: "layouts/share"%>
-	    <%= render partial: "layouts/header2"%>
-	    <%= yield %>
+		<%- if params[:home] == 'header' %>
+	    	<%= render partial: "layouts/header"%>
+	    <%else%>
+	    	<%= render partial: "layouts/header2"%>
+	    <%end%>
+	    	<%= yield %>
+	    	<% if params[:controller] == "home" and params[:action] == "index"%>
+	    		<%= render partial: "layouts/footer"%>
+	    	<%end%>
 	<%- if params[:controller].split("/").first == "admin"%>
 		</div >
 	<%end%>
