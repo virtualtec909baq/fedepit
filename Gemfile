@@ -23,10 +23,7 @@ gem "font-awesome-rails"
 gem 'formtastic', github: 'justinfrench/formtastic'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
-
-group :development, :test do
-	gem 'faker'
-end
+gem 'faker'
 
 group :production do
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets' 
