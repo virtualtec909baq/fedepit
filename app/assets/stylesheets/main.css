@@ -48,7 +48,7 @@ font-size: 20px;
 }
 h4 {
 font-family: 'Open sans', sans-serif;
-font-weight: 700;
+font-weight: 400;
 }
 .btn {
 border-radius:1px;
@@ -6065,4 +6065,7 @@ border-top: 0;
 }
 .breeders_img
 {width: 100%;
+}
+.img_quienes
+{text-align: center;
 }

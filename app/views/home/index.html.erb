@@ -7,6 +7,25 @@
     </div>
   </div>
 </div>
+<div class="city-bg">
+    <div class="effect-cover"></div>
+      <div class="well">
+        <div class="row">
+          <div class="container">
+              <div class="col-md-8">
+                    <h2>Quienes Somos</h2>
+                    <h4>Somos la Federación Intenacional de Registros Para Perros Tipo Pit "FEDEPIT" reconocidas o no por el American Kennel Club o la Federación Cinológica Internacional.</h4>
+                </div>
+                <div class="col-md-4 img_quienes">
+                   <img src="/assets/electra112233.jpg" alt="" width="50%" height="50%" class="img-circle">
+                </div>
+                
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </div>
+</div>
 <div class="parallax" id="clients-home2">
     <div class="black-shadow"></div>
     <div class="container">
@@ -16,21 +35,13 @@
                 <% @canines.each do |canine| %>
                 <div class="col-lg-3 col-md-3 col-sm-3">
                   <div class="team-img view view-second">
-                 <img alt="" src="http://placehold.it/300x291">
+                 <img alt="" src="/assets/TOSKO2.jpg">
                    <div class="mask"></div>
                     <div class="content">
-                        <p>A wonderful serenity has taken possession of my entire soul.</p>
+                        <p><%= canine.race.name %> <br> <%= canine.breeder.name_breed %> <br> <%= canine.breeder.name %></p>
                         <ul class="list-unstyled list-inline list-social-icons">
-                            <li class="tooltip-social facebook-link">
-                                <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Facebook">
-                                    <i class="fa fa-facebook"></i>
-                                 </a>
-                            </li>
-                            <li class="tooltip-social twitter-link">
-                                <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Twitter">
-                                         <i class="fa fa-twitter"></i>
-                                 </a>
-                            </li>
+                          <%= link_to "Ver mas...", :class => "btn btn-primary"  %>
+
                         </ul>
                     </div>
                   </div>
