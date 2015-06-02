@@ -37,7 +37,7 @@
           </ul>
         </li>
         <li><a href="<%= admin_publicities_path%>">Publicidad</a></li>
-        <li><a href="<%= admin_breeders_path%>">Salir</a></li>
+        <li><%=link_to("salir", destroy_user_session_path, :method => :delete)%></li>
       </ul>
     </div>
   </div>
