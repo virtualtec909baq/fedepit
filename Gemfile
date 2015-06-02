@@ -24,6 +24,7 @@ gem 'formtastic', github: 'justinfrench/formtastic'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
 gem 'faker'
+gem 'ancestry'
 
 group :production do
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets' 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529155142) do
+ActiveRecord::Schema.define(version: 20150602193512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,14 +57,16 @@ ActiveRecord::Schema.define(version: 20150529155142) do
     t.date     "death"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "ancestry"
   end
+
+  add_index "canines", ["ancestry"], name: "index_canines_on_ancestry", using: :btree
 
   create_table "championships", force: :cascade do |t|
     t.integer  "type_championship_id"
     t.date     "date"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.string   "name"
   end
 
   create_table "colors", force: :cascade do |t|

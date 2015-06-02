@@ -7,7 +7,7 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<%- if params[:controller].split("/").first == "admin"%>
+	<%- if params[:controller].split("/").first == "admin" or params[:controller] == "articles"%>
 		<div class="container m40px">
 	<%end%>
 		<!-- <div id="loader-wrapper">

@@ -1,12 +1,14 @@
 class Canine < ActiveRecord::Base
+	has_ancestry  # Ancestry Tree
+	
 	belongs_to :breeder
 	belongs_to :race
-  belongs_to :color
-  has_many :images
-  
+	belongs_to :color
+	has_many :images
+
 	# default for will_paginate
- 	
-  self.per_page = 15
+	self.per_page = 15
+	
 	# validates
 	# validates :race_id, presence: true 
 	# validates :breeder_id, presence: true 

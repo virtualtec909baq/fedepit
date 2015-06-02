@@ -15,53 +15,12 @@
         <%end%>
       </a>
       <br>
-      <p class="blog-author"><a href="#">3 Comments</a></p>
       <p class="blog-desc-prod"><%= @article.description%></p>
-      <div class="comments">
-        <div data-example-id="simple-table" class="bs-example">
-          <table class="table table-striped table-hover table-bordered">
-            <caption>Comentarios.</caption>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Comentario</th>
-                <th>alias</th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>sbckjsdbcklascbasklcbaskcbckjsdbcklascbasklcbaskcbckjsdbcklascbasklcbaskcasdsbckjsdbcklascbasklcbaskasklcbaskcasdsbckjsdbcklascbasklcbaskcasd</td>
-                <td>@mdo</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>sbckjsdbcklascbasklcbaskcasd;casdc</td>
-                <td>@fat</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>sbckjsdbcklascbasklcbaskcasdsbckjsdbcklascbasklcbaskcasdsbckjsdbcklascbasklcbaskcasdsbckjsdbcklascbasklcbaskcasd</td>
-                <td>@twitter</td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <p class="blog-author"><a href="#">3 Comments</a></p>
+      
     </div>
   </div>
-  <div class='col-md-3'>
+  <!-- <div class='col-md-3'>
     <div class="blog-info-prod">
       <h2 class="t-title-office"><span>Recent post</span></h2>
       <ul class='post-lateral'>
@@ -91,5 +50,6 @@
         </li>
       </ul>
     </div>    
-  </div>
+  </div> -->
 </div>
+<%= render partial: "articles/comments"%>

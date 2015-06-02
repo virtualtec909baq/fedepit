@@ -83,6 +83,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    ancestry (2.1.0)
+      activerecord (>= 3.0.0)
     arel (6.0.0)
     bcrypt (3.1.10)
     bootstrap-datepicker-rails (1.4.0)
@@ -222,6 +224,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ancestry
   bootstrap-datepicker-rails
   carrierwave
   coffee-rails (~> 4.1.0)
