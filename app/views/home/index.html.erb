@@ -13,8 +13,8 @@
         <div class="row">
           <div class="container">
               <div class="col-md-8">
-                    <h2>Quienes Somos</h2>
-                    <h4>Somos la Federación Intenacional de Registros Para Perros Tipo Pit "FEDEPIT" reconocidas o no por el American Kennel Club o la Federación Cinológica Internacional.</h4>
+                    <h2><%= t('.who_we_are')%></h2>
+                    <h4><%= t('.who_description')%></h4>
                 </div>
                 <div class="col-md-4 img_quienes">
                    <img src="/assets/electra112233.jpg" alt="" width="50%" height="50%" class="img-circle">
@@ -31,7 +31,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 team">
-            <h1 class="section-title">Ejemplares mas visto</h1>
+            <h1 class="section-title"><%= t('.dogs')%></h1>
                 <% @canines.each do |canine| %>
                 <div class="col-lg-3 col-md-3 col-sm-3">
                   <div class="team-img view view-second">
@@ -40,7 +40,7 @@
                     <div class="content">
                         <p><%= canine.race.name %> <br> <%= canine.breeder.name_breed %> <br> <%= canine.breeder.name %></p>
                         <ul class="list-unstyled list-inline list-social-icons">
-                          <%= link_to "Ver mas...", :class => "btn btn-primary"  %>
+                          <%= link_to t('.more'), :class => "btn btn-primary"  %>
 
                         </ul>
                     </div>
@@ -58,7 +58,7 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="col-lg-12 text-center">
-          <h1 class="section-title"><span>Ultimos articulos </span></h1>
+          <h1 class="section-title"><span><%= t('.last_article')%></span></h1>
         </div>
         <% @articles.each do |article| %>
         <div class="col-sm-4 latest-blog">
@@ -71,13 +71,13 @@
                <img alt="" class="img-responsive" src="<%= article.img%>">
                <%end%>
              <span class="onsaleblog">
-              <span>12 <i class="fa fa-comments"></i></span>
+              <span> <%= article.comments.count %> <i class="fa fa-comments"></i></span>
             </span>
           </div>
           <div class="blog-l-txt">
             <h3><%= article.title %></h3>
             <p><%= article.description %></p>
-              <%= link_to "Seguir leyendo", article_path(article), :class => "btn btn-primary"  %>
+              <%= link_to t('.read'), article_path(article), :class => "btn btn-primary"  %>
           </div>
         </div>
       </div>   

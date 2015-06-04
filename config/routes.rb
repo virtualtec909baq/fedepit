@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :features
   root 'home#index'
   devise_for :users
   resources :articles, only: [:index, :show]

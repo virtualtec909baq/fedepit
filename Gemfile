@@ -25,6 +25,8 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
 gem 'faker'
 gem 'ancestry'
+gem 'rails-i18n'
+
 
 group :production do
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets' 

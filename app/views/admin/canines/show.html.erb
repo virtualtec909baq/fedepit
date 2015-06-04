@@ -27,7 +27,7 @@
               </tr>
               <tr>
                 <td>Raza:</td>
-                <td><%= link_to @canine.race.name, "#{@canine.race.pdf.url}", target: "_blank" %></td>
+                <td><%= @canine.race.name%> <br> <%= link_to @canine.race.description, "#{@canine.race.pdf.url}", target: "_blank" %> </td>
               </tr>
               <tr>
                 <td>Fecha de nacimiento:</td>
@@ -58,6 +58,7 @@
       </div>
     </div>
 
+    
   </div>
 </div>
 </div>
