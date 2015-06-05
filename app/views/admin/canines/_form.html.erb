@@ -1,5 +1,5 @@
 <div class="modal-body">
-        <%= form_for @canine , url: admin_canines_path(@canine) , method: :post do |f| %>
+        <%= form_for @canine , url: admin_canines_path(@canine) , :html => { :multipart => true } do |f| %>
         <div class="field">
           <%= f.label :razas %><br>
           <%= f.collection_select :race_id, Race.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
@@ -48,6 +48,14 @@
           <%= f.label :death %><br>
           <%= f.date_select :death , class: 'form-control' %>
         </div>
+
+      <%= f.fields_for :images do |p| %>
+         <div class="field">
+           <%= p.label :file %><br>
+           <%= p.file_field :file, :multiple => true, name: "images[file][]" %>
+         </div>
+       <% end %>
+
         <div class="actions">
           <%= f.submit :class =>"btn btn-primary btn-block" %>
         </div>
