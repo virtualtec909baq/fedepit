@@ -1,6 +1,6 @@
 class Canine < ActiveRecord::Base
-	has_ancestry  # Ancestry Tree
-	
+	acts_as_nested_set
+  	
 	belongs_to :breeder
 	belongs_to :race
 	belongs_to :color

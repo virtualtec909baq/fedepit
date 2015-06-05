@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+[data-role=display] {
+	width: 100%;
+	height: 600px;
+	overflow: hidden;
+}
+
+[data-role=display] .Window {
+	height: 100%;
+	width: 600%;
+}
+[data-role=display] .Window [data-bloque]{
+	float: left;
+	width: 10%;
+	height: 100%;
+	overflow: hidden;
+}
+
+/* Mobile Layout: 480px and menor. hereda los styles de: escritorio. */
+@media only screen and (max-width: 480px){
+[data-role=display] {height: 300px;}
+[data-role=display] .Window [data-bloque]{width: 16.95%;}
+[data-role=display] .Window [data-bloque=linaje]{
+	display: inline-block;
+	vertical-align: top;
+	overflow: auto;
+	height: 100%;
+}
+}
