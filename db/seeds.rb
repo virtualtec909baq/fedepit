@@ -22,8 +22,8 @@ if TypeEvent.all.empty?
 	end
 end
 
-10.times do
-	Canine.create(race_id: rand(1..29), breeder_id: rand(1..2), name: Faker::Name.name, lof: Faker::Internet.url, chip: Faker::Internet.url, color_id: rand(1..19), ancestry: 13 )
+30.times do
+	Canine.create( name: Faker::Name.name, lof: Faker::Code.ean, chip: Faker::Code.ean, color_id: rand(1..19))
 end
 
 

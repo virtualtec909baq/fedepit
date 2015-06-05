@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/activerecord-hackery/ransack.git
-  revision: c09aa177953deb27e28179f55844ced0489613b4
+  revision: d5d1cfaacfb531afe8d58fae6e30a6bf45c86925
   specs:
     ransack (1.6.6)
       actionpack (>= 3.0)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: git://github.com/justinfrench/formtastic.git
-  revision: cdb3e81e34d0512b28761055ac7834def98870cd
+  revision: 1a5f19a1906c5d9fad876737f32b568a9d489c9f
   specs:
     formtastic (3.2.0.pre)
       actionpack (>= 3.2.13)
@@ -84,8 +84,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
-    awesome_nested_set (3.0.2)
-      activerecord (>= 4.0.0, < 5)
     bcrypt (3.1.10)
     bootstrap-datepicker-rails (1.4.0)
       railties (>= 3.0)
@@ -95,6 +93,9 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    closure_tree (5.2.0)
+      activerecord (>= 3.2.0)
+      with_advisory_lock (>= 3.0.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -103,7 +104,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     commonjs (0.2.7)
-    devise (3.4.1)
+    devise (3.5.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -126,7 +127,7 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (1.8.2)
+    json (1.8.3)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (2.7.0)
@@ -139,10 +140,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    mime-types (2.5)
-    mini_magick (4.2.4)
+    mime-types (2.6.1)
+    mini_magick (4.2.7)
     mini_portile (0.6.2)
-    minitest (5.6.1)
+    minitest (5.7.0)
     multi_json (1.11.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
@@ -185,10 +186,11 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+      json (~> 1.4)
     ref (1.0.5)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    sass (3.4.13)
+    sass (3.4.14)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -198,7 +200,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    sprockets (3.1.0)
+    sprockets (3.2.0)
       rack (~> 1.0)
     sprockets-rails (2.3.1)
       actionpack (>= 3.0)
@@ -222,14 +224,17 @@ GEM
     will_paginate (3.0.7)
     will_paginate-bootstrap (1.0.1)
       will_paginate (>= 3.0.3)
+    with_advisory_lock (3.0.0)
+      activerecord (>= 3.2)
+      thread_safe
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_nested_set
   bootstrap-datepicker-rails
   carrierwave
+  closure_tree
   coffee-rails (~> 4.1.0)
   devise
   faker

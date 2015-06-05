@@ -18,6 +18,16 @@ class Admin::CaninesController < ApplicationController
   # GET /canines/1
   # GET /canines/1.json
   def show
+    if !@canine.lft.nil? or !@canine.rgt.nil?
+      @father = Canine.find(@canine.lft)
+      @mother = Canine.find(@canine.rgt)
+      # father
+      @paternal_grandfather = Canine.find(@father.lft)
+      @paternal_grandmother = Canine.find(@father.rgt)
+      # father
+      @grandfather = Canine.find(@mother.lft)
+      @grandmother = Canine.find(@mother.lft)
+    end
   end
 
   # GET /canines/new
