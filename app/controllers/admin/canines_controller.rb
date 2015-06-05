@@ -18,16 +18,7 @@ class Admin::CaninesController < ApplicationController
   # GET /canines/1
   # GET /canines/1.json
   def show
-    if !@canine.lft.nil? or !@canine.rgt.nil?
-      @father = Canine.find(@canine.lft)
-      @mother = Canine.find(@canine.rgt)
-      # father
-      @paternal_grandfather = Canine.find(@father.lft)
-      @paternal_grandmother = Canine.find(@father.rgt)
-      # father
-      @grandfather = Canine.find(@mother.lft)
-      @grandmother = Canine.find(@mother.lft)
-    end
+    @images = @canine.images.all
   end
 
   # GET /canines/1
@@ -48,6 +39,8 @@ class Admin::CaninesController < ApplicationController
   # GET /canines/new
   def new
     @canine = Canine.new
+    @image = @canine.images.build
+
   end
 
   # GET /canines/1/edit
@@ -56,19 +49,23 @@ class Admin::CaninesController < ApplicationController
 
   # POST /canines
   # POST /canines.json
-  def create
-    @canine = Canine.new(canine_params)
 
-    respond_to do |format|
-      if @canine.save
+  def create
+   @canine = Canine.new(canine_params)
+
+   respond_to do |format|
+     if @canine.save
+       params[:images]['file'].each do |a|
+          @image = @canine.images.create!(:file => a, :canine_id => @canine.id)
+       end
         format.html { redirect_to admin_canines_path, notice: 'Canine was successfully created.' }
         format.json { render :show, status: :created, location: @canine }
       else
         format.html { render :new }
         format.json { render json: @canine.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+     end
+   end
+ end
 
   # PATCH/PUT /canines/1
   # PATCH/PUT /canines/1.json
@@ -105,6 +102,6 @@ class Admin::CaninesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def canine_params
-      params.require(:canine).permit(:race_id, :breeder_id, :lof, :chip, :name, :gender, :color_id, :father_lof, :mother_lof, :rate, :birth, :death)
+      params.require(:canine).permit(:race_id, :breeder_id, :lof, :chip, :name, :gender, :color_id, :father_lof, :mother_lof, :rate, :birth, :death,images_attributes: [:id, :canine_id, :file])
     end
 end

@@ -6,6 +6,9 @@ class Canine < ActiveRecord::Base
 
 	# default for will_paginate
 	self.per_page = 15
+
+	has_many :images
+   	accepts_nested_attributes_for :images
 	
 	# validates
 	# validates :race_id, presence: true 
