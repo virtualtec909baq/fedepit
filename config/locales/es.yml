@@ -1,0 +1,61 @@
+es:
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Siguiente &#8594;"
+    page_gap: "&hellip;"
+  layouts:
+    header:
+      contact: "Contactenos"
+      home: "Inicio"
+      pedigree: "Pedigree"
+      article: "Articulos"
+      video: "Videos"
+      championship: "Campeonatos"
+      event: "Eventos"
+      breeder: "Criadores"
+  articles:
+    index:
+      home: "Inicio"
+      article: "Articulos"
+      seguir: "Seguir leyendo"
+    show:
+      comment: "Comentarios"
+      reciente: "Articulos recientes"
+    comments:
+      comment: "Comentarios"
+  videos:
+    index:
+      home: "Inicio"
+      video: "Videos"
+  events:
+    index:
+      home: "Inicio"
+      event: "Eventos"
+  breeders:
+    index:
+      home: "Inicio"
+      Breeder: "Criadores"
+      detail: "Detalle"
+    show: 
+      country: "Pais"
+      city: "Ciudad"
+      address: "Direccion residencia"
+      email: "Correo"
+      phone: "Telefono"
+      name_breed: "Nombre criadero"
+      fb: "Facebook"
+      tw: "Twitter"
+      inst: "Instagram"
+      web: "Web"
+  home:
+    contactus:
+      home: "Inicio"
+      contact: "Contactenos"
+    index:
+      who_description: "Somos la Federación Intenacional de Registros Para Perros Tipo Pit FEDEPIT reconocidas o no por el American Kennel Club o la Federación Cinológica Internacional."
+      who_we_are: "Quienes Somos"
+      dogs: "Ejemplares mas visto"
+      more: "Ver mas..."
+      last_article: "Ultimos articulos"
+      read: "Seguir leyendo"
+

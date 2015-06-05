@@ -27,44 +27,44 @@
               <table class="table table-user-information">
                 <tbody>
                   <tr>
-                    <td>Pais:</td>
+                    <td><%= t('.country')%>:</td>
                     <td><%= @breeder.country%></td>
                   </tr>
                   <tr>
-                    <td>Ciudad:</td>
+                    <td><%= t('.city')%>:</td>
                     <td><%= @breeder.city%></td>
                   </tr>
                   <tr>
                     <tr>
-                      <td>Home Address</td>
+                      <td><%= t('.address')%>:</td>
                       <td><%= @breeder.adrress%></td>
                     </tr>
                     <tr>
-                      <td>Email</td>
+                      <td><%= t('.email')%>:</td>
                       <td><a href="mailto:info@support.com"><%= @breeder.email%></a></td>
                     </tr>
                      <tr>
-                      <td>Telefono:</td>
+                      <td><%= t('.phone')%>:</td>
                       <td><%= @breeder.phone%></td>
                     </tr>
                     <tr>
-                      <td>Nombre criadero:</td>
+                      <td><%= t('.name_breed')%>:</td>
                       <td><%= @breeder.name_breed%></td>
                     </tr>
                     <tr>
-                      <td>Facebook:</td>
+                      <td><%= t('.fb')%>:</td>
                       <td><%= link_to @breeder.facebook, "#{@breeder.facebook}", target: "_blank" %></td>
                     </tr>
                     <tr>
-                      <td>Twitter:</td>
+                      <td><%= t('.tw')%>:</td>
                       <td><%= link_to @breeder.twitter, "#{@breeder.twitter}", target: "_blank" %></td>
                     </tr>
                     <tr>
-                      <td>Instagram:</td>
+                      <td><%= t('.ints')%>:</td>
                       <td><%= link_to @breeder.instagram, "#{@breeder.instagram}", target: "_blank" %></td>
                     </tr>
                     <tr>
-                      <td>Web:</td>
+                      <td><%= t('.web')%>:</td>
                       <td><%= link_to @breeder.web, "#{@breeder.web}", target: "_blank" %></td>
                     </tr>
                   </tr>

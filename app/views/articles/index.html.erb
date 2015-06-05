@@ -13,9 +13,9 @@
       <div class="col-lg-12">
         <ol class="breadcrumb">
           <li>
-            <a href="index.html">Inicio</a>
+            <a href="<%root_path%>"><%=t ('.home')%></a>
           </li>
-          <li class="active">Articulos</li>
+          <li class="active"><%=t ('.article')%></li>
         </ol>
       </div>
     </div>
@@ -41,14 +41,10 @@
     <div class="col-md-6 blog-info-prod">
       <h3><a href="shop/store.html"><%= article.title.upcase%></a></h3>
       <p class="blog-desc-prod"><%= article.description%></p>
-      <%= link_to "Seguir leyendo", article_path(article), :class => "btn btn-primary"  %>
+      <%= link_to t('.seguir'), article_path(article), :class => "btn btn-primary"  %>
     </div>
   </div>
   <hr>
   <% end %>
   <%= will_paginate @articles, :locals => { :articles => @articles }, renderer: BootstrapPagination::Rails%>
 </div>
-
- 
-
-

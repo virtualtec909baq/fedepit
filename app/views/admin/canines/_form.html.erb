@@ -1,15 +1,15 @@
 <div class="modal-body">
         <%= form_for @canine , url: admin_canines_path(@canine) , method: :post do |f| %>
         <div class="field">
-          <%= f.label :type %><br>
+          <%= f.label :razas %><br>
           <%= f.collection_select :race_id, Race.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
         </div>
         <div class="field">
-          <%= f.label :type %><br>
+          <%= f.label :propietario %><br>
           <%= f.collection_select :breeder_id, Breeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
         </div>
         <div class="field">
-          <%= f.label :type %><br>
+          <%= f.label :color %><br>
           <%= f.collection_select :color_id, Color.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
         </div>
         <div class="field">
@@ -25,7 +25,7 @@
           <%= f.text_field :name, class: 'form-control' %>
         </div>            
         <div class="field">
-          <%= f.label :gender %><br>
+          <%= f.label :genero %><br>
           <%= f.select :gender, [["Macho", "1"],["Hembra", "0"]], {prompt: ""}, {class: "form-control"}%>
         </div>
         <div class="field">

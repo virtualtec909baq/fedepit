@@ -4,5 +4,7 @@ class ArticlesController < ApplicationController
   end
   def show
   	@article = Article.find(params[:id])
+  	@articles = Article.last(4).reverse	
+
   end
 end

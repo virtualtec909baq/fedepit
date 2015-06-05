@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
   	# validates
 	validates :title, presence: true 
   	validates :description, presence: true 
-  	has_many :commnets
+  	has_many :comments
 	# img_uploader
   	mount_uploader :img, ArticleUploader
 end
