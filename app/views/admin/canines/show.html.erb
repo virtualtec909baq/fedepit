@@ -1,198 +1,134 @@
-<style type="text/css">
-    
-    .Padre.padrescanino {
-        position: relative;
-    }
-    .canineimage {
-        height: 79%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-    }
-    .caninename {
-        bottom: 0;
-        font-size: 11px;
-        left: 0;
-        padding: 10px;
-        position: absolute;
-        text-align: center;
-        width: 100%;
-    }
-    .caninename.bisabuelos {
-        padding: 0 !important;
-    }
-    .Padre.row, .Madre.row {
-        margin-left: 0;
-        margin-right: 0;
-    }
-</style>
-<div class="row principal">
-    <%- if !@canine.lft.nil? or !@canine.rgt.nil? %>
-        <section data-role="display" data-current="linaje" class="col-lg-12">
-                <div class="Window container" >
-                    <section data-bloque="linaje">
-                        <div data-view="fila" data-conte="Padres">
-                            <div class="Titulo">PADRES</div>
-                            <div data-linea="padres">
-                                <div class="Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename'><%= @father.name%></span>
-                                    <i class="fa fa-mars"></i>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename'><%= @mother.name%></span>
-                                    <i class="fa fa-venus"></i>
-                                </div>
-                            </div>
-                        </div>
-                         <%- if !@mother.lft.nil? or !@mother.rgt.nil? %>
-                            <div data-view="fila" data-conte="Abuelos" class="xCien_25">
-                                <div class="Titulo">ABUELOS</div>
-                                <div data-linea="abuelos">
-                                    <div class="Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename'><%= @paternal_grandfather.name%></span>
-                                        <i class="fa fa-mars"></i>
-                                    </div>
-                                    <div class="Madre Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename'><%= @paternal_grandmother.name%></span>
-                                        <i class="fa fa-venus"></i>
-                                    </div>
-                                    <div class="Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename'> <%= @grandfather.name%></span>
-                                        <i class="fa fa-mars"></i>
-                                    </div>
-                                    <div class="Madre Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename'><%= @grandmother.name%></span>
-                                        <i class="fa fa-venus"></i>
-                                    </div>
-                                </div>                        
-                            </div>
-                        <%end%>
-                        <%- if !@paternal_grandfather.lft.nil? or !@paternal_grandmother.rgt.nil?  or !@grandfather.lft.nil? or !@grandfather.rgt.nil? %>
-                            <div data-view="fila" data-conte="Bisabuelos" class="xCien_12_5">
-                                <div class="Titulo">BISABUELOS</div>
-                                <div data-linea="bisabuelos">
-                                    <div class="Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename bisabuelos'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                        <i class="fa fa-mars"></i>
-                                    </div>
-                                    <div class="Madre Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename bisabuelos'>PR° GARGOYLE PITS SATIVA</span>
-                                        <i class="fa fa-venus"></i>
-                                    </div>
-                                    <div class="Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename bisabuelos'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                        <i class="fa fa-mars"></i>
-                                    </div>
-                                    <div class="Madre Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename bisabuelos'>PR° GARGOYLE PITS SATIVA</span>
-                                        <i class="fa fa-venus"></i>
-                                    </div>
-                                    <div class="Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename bisabuelos'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                        <i class="fa fa-mars"></i>
-                                    </div>
-                                    <div class="Madre Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename bisabuelos'>PR° GARGOYLE PITS SATIVA</span>
-                                        <i class="fa fa-venus"></i>
-                                    </div>
-                                    <div class="Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename bisabuelos'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                        <i class="fa fa-mars"></i>
-                                    </div>
-                                    <div class="Madre Padre padrescanino">
-                                        <img src="http://placehold.it/350x150" class="canineimage">
-                                        <span class='caninename bisabuelos'>PR° GARGOYLE PITS SATIVA</span>
-                                        <i class="fa fa-venus"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        <%end%>
-                        
-                        <div data-view="fila" data-conte="Tatarabuelos" class="xCien_6_25">
-                            <div class="Titulo">TATARABUELOS</div>
-                            <div data-linea="tatarabuelos">
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                               <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="http://placehold.it/350x350" class="img-thumbnail">
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-8">
+            <span class="canine_name"><%= @canine.name%></span>
+            <span></span>
+          </div>
+          <div class="col-md-4">
+            <span class="canine_name pull-right">0.0</span>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-3">
+            <a role="button" href="<%= admin_pedigree_path(@canine)%>" class="btn btn-lg btn-success btn-outlined btn-block">Ver Pedigree</a>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="btn btn-lg btn-danger btn-outlined btn-block">Eliminar</button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="btn  btn-lg btn-info btn-outlined btn-block">Modificar</button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="btn  btn-lg btn-warning btn-outlined btn-block">Metter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+  <div class="row marketing">
+    <div class="col-lg-12">
+      <div data-example-id="togglable-tabs" role="tabpanel" class="bs-example bs-example-tabs">
+        <ul role="tablist" class="nav nav-tabs" id="myTab">
+          <li class="active" role="presentation"><a aria-expanded="true" aria-controls="home" data-toggle="tab" role="tab" id="home-tab" href="#home">Hijo</a></li>
+          <li role="presentation"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#profile">Hermanos</a></li>
+          <li role="presentation"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#profile">Premios</a></li>
+          <li role="presentation"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#profile">Meteer</a></li>
+          <li role="presentation"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#profile">Galeria de Imagenes</a></li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div aria-labelledby="home-tab" id="home" class="tab-pane fade in active" role="tabpanel">
+            <div class="row text">
+              <div class="col-md-12">
+                <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
+                  <div class="col-md-2">
+                      <img src="http://placehold.it/50x50" class="img-thumbnail">
+                  </div>
+                  <div class="col-md-10">
+                      <span>
+                        s mcsweeney's marfa Food truck fixie locavore, accusamunulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim 
+                      </span>
+                  </div>
                 </div>
-        </section>
-    <%end%>
+                
+                <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
+                  <div class="col-md-2">
+                      <img src="http://placehold.it/50x50" class="img-thumbnail">
+                  </div>
+                  <div class="col-md-10">
+                      <span>
+                        s mcsweeney's marfa Food truck fixie locavore, accusamunulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim 
+                      </span>
+                  </div>
+                </div>
+                <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
+                  <div class="col-md-2">
+                      <img src="http://placehold.it/50x50" class="img-thumbnail">
+                  </div>
+                  <div class="col-md-10">
+                      <span>
+                        s mcsweeney's marfa Food truck fixie locavore, accusamunulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim 
+                      </span>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div aria-labelledby="profile-tab" id="profile" class="tab-pane fade" role="tabpanel">
+            <div class="row text">
+              <div class="col-md-12">
+                <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
+                  <div class="col-md-2">
+                      <img src="http://placehold.it/50x50" class="img-thumbnail">
+                  </div>
+                  <div class="col-md-10">
+                      <span>
+                        s mcsweeney's marfa Food truck fixie locavore, accusamunulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim 
+                      </span>
+                  </div>
+                </div>
+                
+                <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
+                  <div class="col-md-2">
+                      <img src="http://placehold.it/50x50" class="img-thumbnail">
+                  </div>
+                  <div class="col-md-10">
+                      <span>
+                        s mcsweeney's marfa Food truck fixie locavore, accusamunulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim 
+                      </span>
+                  </div>
+                </div>
+                <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
+                  <div class="col-md-2">
+                      <img src="http://placehold.it/50x50" class="img-thumbnail">
+                  </div>
+                  <div class="col-md-10">
+                      <span>
+                        s mcsweeney's marfa Food truck fixie locavore, accusamunulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim 
+                      </span>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div aria-labelledby="dropdown1-tab" id="dropdown1" class="tab-pane fade" role="tabpanel">
+            <p class="text">Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+          </div>
+          <div aria-labelledby="dropdown2-tab" id="dropdown2" class="tab-pane fade" role="tabpanel">
+            <p class="text" >Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
