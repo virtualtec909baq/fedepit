@@ -1,63 +1,51 @@
-<div class="container shop-dresses" id="product_dresses">
-  <div class="row">
-    <div class="prod-top-img col-md-12" id="single-prod-top">
-
-      <div class="col-md-4 pp-cont-det">
-        <div class="details-single-img dresses-single-b">
-          <img src="../images/store/product/dresses/5.jpg" alt="Mikore">
-        </div>
-      </div>
-      <div class="col-md-8 det-info-prod">
-        <div class="single-prod-info">
-          <div class="det-dres">
-            <span class="product-name-title"><%= @canine.name%></span>
-          </div>
-          <span class="shop-price"> <%= @canine.rate%> </span>
-        </div>
-        <div class=" col-md-13 col-lg-13 "> 
-          <table class="table table-user-information">
-            <tbody>
-              <tr>
-                <td>Lof:</td>
-                <td><%= @canine.lof%></td>
-              </tr>
-              <tr>
-                <td>Genero:</td>
-                <td><%= gender(@canine.gender)%></td>
-              </tr>
-              <tr>
-                <td>Raza:</td>
-                <td><%= link_to @canine.race.name, "#{@canine.race.pdf.url}", target: "_blank" %></td>
-              </tr>
-              <tr>
-                <td>Fecha de nacimiento:</td>
-                <td><%= @canine.birth%></td>
-              </tr>
-              <tr>
-                <td>Color:</td>
-                <td><%= @canine.color.name%></td>
-              </tr>
-              <tr>
-                <td>Propietario:</td>
-                <td><%= @canine.breeder.name%></td>
-              </tr>
-              <tr>
-                <td>Criadero:</td>
-                <td><%= @canine.breeder.name_breed%></td>
-              </tr>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="details-material_dresses">
-        <ul>
-        </ul>
-      </div>
-      <div class="single-prod-button">
-        <%= link_to "Editar Ejemplar", edit_admin_canine_path(@canine), :class => "btn btn-primary"%>
-      </div>
+<section data-role="display" data-current="linaje" class="row linaje" >
+    <div class="Window">
+        <section data-bloque="linaje">
+            <div data-view="fila"  class="xCien_50">
+                <div class="Titulo">PADRES</div>
+                <div data-linea="padres">
+                    <div class="Padre">
+                        <div class="Foto col-md-6">
+                            <img src="http://placehold.it/250x150">
+                        </div>
+                        <div class="Nombre col-md-6">PR° GARGOYLEPITS HANK THE TANK</div>
+                    </div>
+                    <div class="Madre">
+                        <div class="Foto">
+                        <img src="http://placehold.it/250x150">
+                        </div>
+                        <div class="Nombre">PR° GARGOYLE PITS SATIVA</div>
+                    </div>
+                </div>
+            </div>
+            <div data-view="fila" data-conte="Abuelos" class="xCien_25">
+            <div data-cmdlinaje="next" data-linaje="Bisabuelos"></div>
+            <div data-cmdlinaje="back" data-linaje="Padres"></div>
+            <div class="Titulo">ABUELOS</div>
+            <div data-linea="abuelos">
+            <div class="Padre" data-registro="true" data-id="8">
+            <div class="Foto" style="background-image: url(img/pedigree/143_000000000000003_18022015130857.jpg)"></div><div class="Nombre">PR° CR EXTREME MAXIMUS</div>
+            </div>
+            <div class="Madre" data-registro="true" data-id="5">
+            <div class="Foto" style="background-image: url(img/pedigree/357_000000000000004_18022015130857.jpg)"></div><div class="Nombre">PR° JASONS BLUE ROSE ADEJHA DAWN</div>
+            </div>
+            <div class="Padre" data-registro="true" data-id="14"><div class="Foto" style="background-image: url(img/pedigree/267_000000000000005_18022015130857.jpg)"></div><div class="Nombre">PR° SONIAS REDSKINS BROOZER</div>
+            </div>
+            <div class="Madre" data-registro="true" data-id="13"><div class="Foto" style="background-image: url(img/pedigree/389_000000000000006_18022015130857.jpg)"></div><div class="Nombre">GARGOYLE PITS REDZENA</div></div>
+            </div>                        
+            </div>
+            <div data-view="fila" data-conte="Bisabuelos" class="xCien_12_5">
+            <div data-cmdlinaje="next" data-linaje="Tatarabuelos"></div>
+            <div data-cmdlinaje="back" data-linaje="Abuelos"></div>
+            <div class="Titulo">BISABUELOS</div>
+            <div data-linea="bisabuelos"><div class="Padre" data-registro="true" data-id="12"><div class="Foto" style="background-image: url(img/pedigree/335_000000000000007_18022015130857.jpg)"></div><div class="Nombre">PLEASE EDIT</div></div><div class="Madre" data-registro="true" data-id="11"><div class="Foto" style="background-image: url(img/pedigree/129_000000000000008_18022015130857.jpg)"></div><div class="Nombre">MUGLESTONS WATUKA SPIRIT</div></div><div class="Padre" data-registro="true" data-id="10"><div class="Foto" style="background-image: url(img/pedigree/vacio.jpg)"></div><div class="Nombre">PR°  DOC HOLIDAY OF SHOGUN RYAKIN</div></div><div class="Madre" data-registro="true" data-id="15"><div class="Foto" style="background-image: url(img/pedigree/vacio.jpg)"></div><div class="Nombre">PR° NASSEYS KASEI OF FIRE MOUNTAIN</div></div><div class="Padre" data-registro="true" data-id="16"><div class="Foto" style="background-image: url(img/pedigree/314_000000000000011_18022015130857.jpg)"></div><div class="Nombre">PR° CAMELOT PITS CHIEF DNA P</div></div><div class="Madre" data-registro="true" data-id="17"><div class="Foto" style="background-image: url(img/pedigree/291_000000000000012_18022015130857.jpg)"></div><div class="Nombre">PR° CAMELOT PITS BLONDIE</div></div><div class="Padre" data-registro="true" data-id="18"><div class="Foto" style="background-image: url(img/pedigree/317_000000000000013_18022015130857.jpg)"></div><div class="Nombre">GARGOYLE PITS RED DUKE</div></div><div class="Madre" data-registro="true" data-id="19"><div class="Foto" style="background-image: url(img/pedigree/259_000000000000014_18022015130857.jpg)"></div><div class="Nombre">GARGOYLE PITS BANDANA</div></div></div>
+            </div>
+            <div data-view="fila" data-conte="Tatarabuelos" class="xCien_6_25">
+            <div data-cmdlinaje="back" data-linaje="Bisabuelos"></div>
+            <div class="Titulo">TATARABUELOS</div>
+            <div data-linea="tatarabuelos"><div class="Padre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Madre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Padre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Madre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Padre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Madre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Padre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Madre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Padre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Madre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Padre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Madre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Padre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Madre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div><div class="Padre" data-registro="true" data-id="16"><div class="Foto" style="background-image: url(img/pedigree/314_000000000000011_18022015130857.jpg)"></div><div class="Nombre">PR° CAMELOT PITS CHIEF DNA P</div></div><div class="Madre"><div class="Foto" style="background-image: url(img/desconocido.png)"></div><div class="Nombre">unknown</div></div></div>
+            </div>
+        </section>
     </div>
+</section>
 
-  </div>
-</div>
-</div>

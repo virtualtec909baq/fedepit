@@ -22,6 +22,11 @@ if TypeEvent.all.empty?
 	end
 end
 
+10.times do
+	Canine.create(race_id: rand(1..29), breeder_id: rand(1..2), name: Faker::Name.name, lof: Faker::Internet.url, chip: Faker::Internet.url, color_id: rand(1..19), ancestry: 13 )
+end
+
+
 if Sponsor.all.empty?
 	10.times do
 		Sponsor.create(name: Faker::Name.title, url: Faker::Internet.url, image: Faker::Avatar.image)
