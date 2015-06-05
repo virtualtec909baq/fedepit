@@ -16,7 +16,7 @@
       </a>
       <br>
       <p class="blog-desc-prod"><%= @article.description%></p>
-      <p class="blog-author"><a href="#">3 <%= t('.comment')%></a></p>
+      <p class="blog-author"><%= @article.comments.where(status: true).count %> <%=  t('.comment')%></a></p>
       
     </div>
   </div>
@@ -29,6 +29,8 @@
           <img src='images/product/img1.jpg' alt='' />
           <div>
             <p><%= article.title %></p><p class='post-data'> <%= @article.created_at.strftime('%b  %d  %Y') %></p>
+            <%= link_to t('.seguir'), article_path(article)%>
+
           </div>
         </li>
        <% end %>
@@ -37,3 +39,8 @@
   </div> 
 </div>
 <%= render partial: "articles/comments"%>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalComment" >
+        Nuevo Comentario
+</button>
+<%= render :partial => "form"%>
+

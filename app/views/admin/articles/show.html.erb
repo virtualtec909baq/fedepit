@@ -16,7 +16,8 @@
         <%end%>
       </a>
       <br>
-      <p class="blog-author"><a href="#">3 Comments</a></p>
+      <p class="blog-author"><%= @article.comments.count %> Comentarios</a></p>
+
       <p class="blog-desc-prod"><%= @article.description%></p>
       <div class="comments">
         <div data-example-id="simple-table" class="bs-example">
@@ -27,35 +28,23 @@
                 <th>#</th>
                 <th>Nombre</th>
                 <th>Comentario</th>
-                <th>alias</th>
-                <th colspan="3"></th>
+                <th>Correo</th>
+                <th colspan="1"></th>
               </tr>
             </thead>
             <tbody>
+            <% @comments.each do |comment| %>
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>sbckjsdbcklascbasklcbaskcbckjsdbcklascbasklcbaskcbckjsdbcklascbasklcbaskcasdsbckjsdbcklascbasklcbaskasklcbaskcasdsbckjsdbcklascbasklcbaskcasd</td>
-                <td>@mdo</td>
-                <td></td>
-                <td></td>
+                <td><%= comment.name_user%></td>
+                <td><%= comment.message%></td>
+                <td><%= comment.email_user%></td>
+              <td class="center"><%= link_to admin_change_status_comments_path(comment), method: :put, data: { confirm: 'Are you sure?' } do %>
+                <i class="fa fa-check"></i>
+              <%end%>
+      </td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>sbckjsdbcklascbasklcbaskcasd;casdc</td>
-                <td>@fat</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>sbckjsdbcklascbasklcbaskcasdsbckjsdbcklascbasklcbaskcasdsbckjsdbcklascbasklcbaskcasdsbckjsdbcklascbasklcbaskcasd</td>
-                <td>@twitter</td>
-                <td></td>
-                <td></td>
-              </tr>
+              <% end %>
             </tbody>
           </table>
         </div>
@@ -64,33 +53,18 @@
   </div>
   <div class='col-md-3'>
     <div class="blog-info-prod">
-      <h2 class="t-title-office"><span>Recent post</span></h2>
+      <h2 class="t-title-office"><span><%= t('.reciente')%></span></h2>
       <ul class='post-lateral'>
+       <% @articles.each do |article| %>
         <li>
           <img src='images/product/img1.jpg' alt='' />
           <div>
-            <p>Business Cards Design</p><p class='post-data'>Dec 12 2014/ 2 comments</p>
+            <p><%= article.title %></p><p class='post-data'> <%= @article.created_at.strftime('%b  %d  %Y') %></p>
+            <%= link_to t('.seguir leyendo'), admin_article_path(article)%>
           </div>
         </li>
-        <li>
-          <img src='images/product/img2.jpg' alt='' />
-          <div>
-            <p>World Tecnology</p><p class='post-data'>Dec 02 2014/ 2 comments</p>
-          </div>
-        </li>
-        <li>
-          <img src='images/product/img3.jpg' alt='' />
-          <div>
-            <p>Switch Design CO.</p><p class='post-data'>Dec 02 2014/ 2 comments</p>
-          </div>
-        </li>
-        <li>
-          <img src='images/product/img4.jpg' alt='' />
-          <div>
-            <p>Marketing Trip Forest</p><p class='post-data'>Dec 02 2014/ 2 comments</p>
-          </div>
-        </li>
+       <% end %>
       </ul>
     </div>    
-  </div>
+  </div> 
 </div>
