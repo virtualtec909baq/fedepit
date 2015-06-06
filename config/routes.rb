@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :events, only: [:index]
   resources :videos, only: [:index]
   get "home/contactus", to:"home#contactus"
-  
+  put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
+
   namespace :admin do
   	resources :articles
     resources :breeders
@@ -25,7 +26,6 @@ Rails.application.routes.draw do
     resources :type_events
     resources :videos
     resources :features
-
     get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
     put "comments/:id/change_status", to: "comments#change_status", as: "change_status_comments"
     put "sponsors/:id/change_status", to: "sponsors#change_status", as: "change_status"

@@ -26,10 +26,9 @@ class Admin::CommentsController < ApplicationController
   # POST /comments.json
     def create
     @comment = Comment.new(comment_params)
-
     respond_to do |format|
       if @comment.save
-               flash[:notice] = 'Se ha enviado correctamente su comentrio'
+        flash[:notice] = 'Su comentrio se ha creado'
         format.html { redirect_to article_path(@comment.article_id)}
         format.json { render :show, status: :ok, location: @article }
       else
@@ -63,7 +62,7 @@ class Admin::CommentsController < ApplicationController
     end
   end
 
-    def change_status 
+  def change_status 
     @comment = Comment.find(params[:id])
     val = @comment.status == true ? false : true
     @comment.update_attribute(:status, val)  

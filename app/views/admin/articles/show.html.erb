@@ -22,27 +22,25 @@
       <div class="comments">
         <div data-example-id="simple-table" class="bs-example">
           <table class="table table-striped table-hover table-bordered">
-            <caption>Comentarios.</caption>
             <thead>
               <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Comentario</th>
-                <th>Correo</th>
+                <th class="center">Nombre</th>
+                <th class="center">Comentario</th>
+                <th class="center">Correo</th>
+                <th class="center">N. Reporte</th>
                 <th colspan="1"></th>
               </tr>
             </thead>
             <tbody>
             <% @comments.each do |comment| %>
               <tr>
-                <th scope="row">1</th>
-                <td><%= comment.name_user%></td>
-                <td><%= comment.message%></td>
-                <td><%= comment.email_user%></td>
-              <td class="center"><%= link_to admin_change_status_comments_path(comment), method: :put, data: { confirm: 'Are you sure?' } do %>
-                <i class="fa fa-check"></i>
-              <%end%>
-      </td>
+                <td class="center"><%= comment.name_user%></td>
+                <td class="center"><%= comment.message%></td>
+                <td class="center"><%= comment.email_user%></td>
+                <td class="center"><%= comment.report%></td>
+                <td class="center"><%= link_to admin_change_status_comments_path(comment), method: :put, data: { confirm: 'Are you sure?' } do %>
+                  <i class="fa fa-check"></i>
+                <%end%></td>
               </tr>
               <% end %>
             </tbody>
@@ -57,7 +55,6 @@
       <ul class='post-lateral'>
        <% @articles.each do |article| %>
         <li>
-          <img src='images/product/img1.jpg' alt='' />
           <div>
             <p><%= article.title %></p><p class='post-data'> <%= @article.created_at.strftime('%b  %d  %Y') %></p>
             <%= link_to t('.seguir leyendo'), admin_article_path(article)%>

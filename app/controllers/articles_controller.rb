@@ -2,28 +2,21 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all.order(created_at: :desc).paginate(page: params[:page], per_page: 4)
   end
+  
   def show
   	@article = Article.find(params[:id])
   	@articles = Article.last(4).reverse	
     @comments = @article.comments.where(status: true)
-
   end
-   def new
-    @comment = Comment.new
-  end
-
-  def create
-    @comment = Comment.new(feature_params)
-
+  
+  def denounce
+    @comment = Comment.find(params[:comment_id])
+    val = @comment.report + 1
+    puts val
+    @comment.update(:report => val )
     respond_to do |format|
-      if @Comment.save
-               flash[:notice] = 'Articulo modificado'
-        format.html { redirect_to article_path(@article) }
-        format.json { render :show, status: :ok, location: @article }
-      else
-        format.html { render :edit }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
+      flash[:notice] = 'Se ha reportado'
+      format.html { redirect_to article_path(@comment.article_id)}
     end
   end
 end
