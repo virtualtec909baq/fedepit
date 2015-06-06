@@ -4,7 +4,6 @@
     <div class="col-lg-12">
       <h1 class="about4-top-title">Blog with <span class="color-txt">Right Sidebar</span> </h1>
 
-      <div class="buy-angula"><a href="#" class="btn btn-lg btn-primary">Purchase now! </a></div>
     </div>
   </div> 
 </div>
@@ -39,4 +38,6 @@
         </div>
     </div>
     <% end %>
+      <%= will_paginate @articles, :locals => { :articles => @articles }, renderer: BootstrapPagination::Rails%>
+
 </div>
