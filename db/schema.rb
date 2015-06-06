@@ -57,16 +57,20 @@ ActiveRecord::Schema.define(version: 20150605135921) do
     t.date     "death"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "ancestry"
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "parent_id"
   end
+
+  add_index "canines", ["ancestry"], name: "index_canines_on_ancestry", using: :btree
 
   create_table "championships", force: :cascade do |t|
     t.integer  "type_championship_id"
     t.date     "date"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.string   "name"
   end
 
   create_table "colors", force: :cascade do |t|
