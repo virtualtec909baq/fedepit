@@ -2,7 +2,11 @@
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-4">
-        <img src="http://placehold.it/350x350" class="img-thumbnail">
+       <%if @canine.images.last.blank? %>
+         <img alt="" class="img-responsive" src="http://placehold.it/350x350">
+        <%else%>
+          <img alt="" class="img-responsive" src="<%= @canine.images.last.file%>">
+        <%end%>
       </div>
       <div class="col-md-8">
         <div class="row">
@@ -58,13 +62,15 @@
             <a role="button" href="<%= admin_pedigree_path(@canine)%>" class="btn btn-lg btn-success btn-outlined btn-block">Ver Pedigree</a>
           </div>
           <div class="col-md-3">
-            <button type="button" class="btn btn-lg btn-danger btn-outlined btn-block">Eliminar</button>
+            <%= link_to "Eliminar",admin_canine_path(@canine), method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-lg btn-danger btn-outlined btn-block" %>
+
           </div>
           <div class="col-md-3">
-            <button type="button" class="btn  btn-lg btn-info btn-outlined btn-block">Modificar</button>
+              <%= link_to "Modificar", edit_admin_canine_path(@canine), :class =>"btn  btn-lg btn-info btn-outlined btn-block" %>
           </div>
           <div class="col-md-3">
-            <button type="button" class="btn  btn-lg btn-warning btn-outlined btn-block">Metter</button>
+            <%= link_to "Metter", new_admin_feature_path, :class =>"btn  btn-lg btn-warning btn-outlined btn-block" %>
+
           </div>
         </div>
       </div>

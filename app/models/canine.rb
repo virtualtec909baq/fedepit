@@ -4,6 +4,8 @@ class Canine < ActiveRecord::Base
 	belongs_to :race
 	belongs_to :color
 	has_many :images
+	has_one :feature
+
 
 	# default for will_paginate
 	self.per_page = 15
