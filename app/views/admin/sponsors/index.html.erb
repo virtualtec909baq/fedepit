@@ -20,7 +20,11 @@
   </thead>
   <tbody>
     <% @sponsors.each do |sponsor| %>
-    <tr >
+    <%- if sponsor.status %>
+      <tr >
+    <else>
+      <tr class="danger">
+    <%end%>
       <td class="center"><%= sponsor.name %></td>
       <td class="center"><%= link_to sponsor.url, "http://#{sponsor.url}", :target => "_blank" %>
       </td>
