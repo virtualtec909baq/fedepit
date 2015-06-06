@@ -35,7 +35,12 @@
                 <% @canines.each do |canine| %>
                 <div class="col-lg-3 col-md-3 col-sm-3">
                   <div class="team-img view view-second">
-                 <img alt="" src="/assets/TOSKO2.jpg">
+                    <%if canine.images.last.blank? %>
+                        <img alt="" class="img-responsive" src="http://placehold.it/300x291">
+                     <%else%>
+                         <img alt="" class="img-responsive" src="<%= canine.images.last.file%>">
+                     <%end%>
+                     
                    <div class="mask"></div>
                     <div class="content">
                         <p><%= canine.race %> <br> <%= canine.breeder %> <br> <%= canine.breeder %></p>
