@@ -24,7 +24,7 @@ gem 'formtastic', github: 'justinfrench/formtastic'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
 gem 'faker'
-gem 'awesome_nested_set'
+gem 'closure_tree'
 gem 'rails-i18n'
 
 group :production do

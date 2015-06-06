@@ -1,6 +1,4 @@
 class Canine < ActiveRecord::Base
-	acts_as_nested_set
-  	
 	belongs_to :breeder
 	belongs_to :race
 	belongs_to :color

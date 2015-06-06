@@ -1,6 +1,6 @@
 class Admin::CaninesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_canine, only: [:show, :edit, :update, :destroy]
+  before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree]
 
   # GET /canines
   # GET /canines.json
@@ -21,14 +21,27 @@ class Admin::CaninesController < ApplicationController
     @images = @canine.images.all
   end
 
+  # GET /canines/1
+  # GET /canines/1.json
+  def pedigree
+    if !@canine.lft.nil? or !@canine.rgt.nil?
+      @father = Canine.find(@canine.lft)
+      @mother = Canine.find(@canine.rgt)
+      # father
+      @paternal_grandfather = Canine.find(@father.lft)
+      @paternal_grandmother = Canine.find(@father.rgt)
+      # father
+      @grandfather = Canine.find(@mother.lft)
+      @grandmother = Canine.find(@mother.lft)
+    end
+  end
+
   # GET /canines/new
   def new
     @canine = Canine.new
     @image = @canine.images.build
 
   end
-
-
 
   # GET /canines/1/edit
   def edit

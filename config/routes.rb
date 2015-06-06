@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  resources :features
   root 'home#index'
   devise_for :users
   resources :articles, only: [:index, :show]
@@ -10,8 +8,8 @@ Rails.application.routes.draw do
   resources :events, only: [:index]
   resources :videos, only: [:index]
   get "home/contactus", to:"home#contactus"
+  
   namespace :admin do
-  	get 'home/index'
   	resources :articles
     resources :breeders
     resources :canines
@@ -27,6 +25,8 @@ Rails.application.routes.draw do
     resources :type_events
     resources :videos
     resources :features
+
+    get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
     put "comments/:id/change_status", to: "comments#change_status", as: "change_status_comments"
     put "sponsors/:id/change_status", to: "sponsors#change_status", as: "change_status"
     put "publicities/:id/change_status", to: "publicities#change_status", as: "change_status_publicities"
