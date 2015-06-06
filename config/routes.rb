@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :championships, only: [:index]
   resources :events, only: [:index]
   resources :videos, only: [:index]
+  match 'home/send_mail', to: 'home#send_mail', via: 'post'
   get "home/contactus", to:"home#contactus"
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
 
