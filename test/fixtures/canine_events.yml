@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  canine_id: 1
+  event_id: 1
+  position: MyString
+  reward: MyString
+
+two:
+  canine_id: 1
+  event_id: 1
+  position: MyString
+  reward: MyString
