@@ -4,6 +4,7 @@ class Admin::CaninesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree]
   before_action :init, only: [:create]
+  before_action :set_lof, only: [:create]
 
   # GET /canines
   # GET /canines.json
@@ -31,11 +32,10 @@ class Admin::CaninesController < ApplicationController
       @father = Canine.find(@canine.lft)
       @mother = Canine.find(@canine.rgt)
       # father
-      @paternal_grandfather = Canine.find(@father.lft)
-      @paternal_grandmother = Canine.find(@father.rgt)
-      # father
-      @grandfather = Canine.find(@mother.lft)
-      @grandmother = Canine.find(@mother.lft)
+      if !@father.lft.nil? or !@father.rgt.nil? or !@mother.lft.nil? or !@mother.rgt.nil?
+        @mother_grandmother = Canine.find(@father.lft)
+        @paternal_grandmother = Canine.find(@father.rgt)
+      end
     end
   end
 
@@ -54,12 +54,13 @@ class Admin::CaninesController < ApplicationController
 
   def create
    @canine = Canine.new(canine_params)
-
    respond_to do |format|
      if @canine.save
-       params[:images]['file'].each do |a|
-          @image = @canine.images.create!(:file => a, :canine_id => @canine.id)
-       end
+      if !params[:images].blank?
+         params[:images]['file'].each do |a|
+            @image = @canine.images.create!(:file => a, :canine_id => @canine.id)
+         end
+      end
         format.html { redirect_to admin_canines_path, notice: 'Canine was successfully created.' }
         format.json { render :show, status: :created, location: @canine }
       else
@@ -102,6 +103,15 @@ class Admin::CaninesController < ApplicationController
       @canine = Canine.find(params[:id])
     end
 
+    def set_lof
+      if Canine.exists?(lof: params[:canine][:father_lof] )
+        params[:canine][:lft] = Canine.find_by_lof(params[:canine][:father_lof]).id
+      end
+      if Canine.exists?(lof: params[:canine][:mother_lof])
+        params[:canine][:rgt] = Canine.find_by_lof(params[:canine][:mother_lof]).id
+      end
+    end
+
     def init
       o = [('a'..'z'), ('1'..'9'), ('A'..'Z')].map { |i| i.to_a }.flatten
       string = (0...5).map { o[rand(o.length)] }.join
@@ -111,6 +121,6 @@ class Admin::CaninesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def canine_params
-      params.require(:canine).permit(:race_id, :breeder_id, :lof, :chip, :name, :gender, :color_id, :father_lof, :mother_lof, :rate, :birth, :death,images_attributes: [:id, :canine_id, :file])
+      params.require(:canine).permit(:lft, :rgt ,:race_id, :breeder_id, :lof, :chip, :name, :gender, :color_id, :father_lof, :mother_lof, :rate, :birth, :death,images_attributes: [:id, :canine_id, :file])
     end
 end

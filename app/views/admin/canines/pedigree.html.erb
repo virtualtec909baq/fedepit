@@ -32,7 +32,6 @@
     }
 </style>
 <div class="row principal">
-    <%- if !@canine.lft.nil? or !@canine.rgt.nil? %>
         <div class="row">
             <div class="col-md-12 me">
                 <%= link_to @canine.name, admin_canine_path(@canine) %>
@@ -198,5 +197,4 @@
                     </section>
                 </div>
         </section>
-    <%end%>
 </div>
