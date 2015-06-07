@@ -1,42 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Canines</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Race</th>
-      <th>Breeder</th>
-      <th>Lof</th>
-      <th>Chip</th>
-      <th>Name</th>
-      <th>Gender</th>
-      <th>Color</th>
-      <th>Father lof</th>
-      <th>Mother lof</th>
-      <th>Rate</th>
-      <th>Birth</th>
-      <th>Death</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container m40px">
+  <div class="box-purchase">
+    <div class="col-md-12">
+      <div class="row">
+        <%= search_form_for @search, url: canines_path do |f|%>   
+          <div class="col-md-4">
+            <label>Nombre O LOF</label>
+            <%= f.search_field(:name_or_lof_cont, class: 'form-control')%>
+          </div>
+          <div class="col-md-4">
+            <%= f.submit :class =>"btn btn btn-primary btn-block"%>
+          </div>
+          <div class="col-md-4">
+            <%= link_to t('.clear'), request.path, class:"btn btn-danger btn_white btn-block"%>
+          </div>
+        <%end%>
+      </div>
+    </div>  
+  </div>
+  <p class="white-space"></p>
+  <%- if params[:q]%>
     <% @canines.each do |canine| %>
-      <tr>
-        <td><%= canine.race_id %></td>
-        <td><%= canine.breeder_id %></td>
-        <td><%= canine.lof %></td>
-        <td><%= canine.chip %></td>
-        <td><%= canine.name %></td>
-        <td><%= canine.gender %></td>
-        <td><%= canine.color_id %></td>
-        <td><%= canine.father_lof %></td>
-        <td><%= canine.mother_lof %></td>
-        <td><%= canine.rate %></td>
-        <td><%= canine.birth %></td>
-        <td><%= canine.death %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+      <hr>
+      <div class="jumbotron">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="http://placehold.it/350x350" class="img-thumbnail">
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
+</div>
