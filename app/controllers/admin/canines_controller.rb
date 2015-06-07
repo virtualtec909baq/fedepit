@@ -22,7 +22,7 @@ class Admin::CaninesController < ApplicationController
   # GET /canines/1
   # GET /canines/1.json
   def show
-    @images = @canine.images.all
+    @images = @canine.images
     @canine_awards = @canine.events
   end
 
