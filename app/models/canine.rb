@@ -6,6 +6,10 @@ class Canine < ActiveRecord::Base
 	has_many :images
 	has_one :feature
 
+	has_many :events, :through => :canine_event
+  	has_many :canine_events
+
+
 
 	# default for will_paginate
 	self.per_page = 15
