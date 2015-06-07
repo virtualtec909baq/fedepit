@@ -1,3 +1,3 @@
 class Feature < ActiveRecord::Base
-	has_one :canine
+	belongs_to :canine
 end
