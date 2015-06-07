@@ -1,36 +1,33 @@
-<div class="row text">
-              <div class="col-md-12">
-                <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
-                  <div class="col-md-2">
-                      <img src="http://placehold.it/50x50" class="img-thumbnail">
-                  </div>
-                  <div class="col-md-10">
-                      <span>
-                        s mcsweeney's marfa Food truck fixie locavore
-                      </span>
-                  </div>
-                </div>
-                
-                <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
-                  <div class="col-md-2">
-                      <img src="http://placehold.it/50x50" class="img-thumbnail">
-                  </div>
-                  <div class="col-md-10">
-                      <span>
-                        s mcsweeney's marfa Food truck fixie locavore, accusamunulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim 
-                      </span>
-                  </div>
-                </div>
-                <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
-                  <div class="col-md-2">
-                      <img src="http://placehold.it/50x50" class="img-thumbnail">
-                  </div>
-                  <div class="col-md-10">
-                      <span>
-                        s mcsweeney's marfa Food truck fixie locavore, accusamunulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim 
-                      </span>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
+<div class="col-md-12">
+  <% siblings(@canine.id).each do |canine|%>
+    <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
+      <div class="col-md-2">
+        <%- if canine.images.last%>
+          <img src="<%=canine.images.last%>" class="img-thumbnail">
+        <%else%>
+          <img src="http://placehold.it/50x50" class="img-thumbnail">
+        <%end%>
+      </div>
+      <div class="col-md-10">
+        <span>
+          Nombre:
+          <%= canine.name%>
+        </span>
+        <br>
+        <%- if canine.breeder%>
+          <span>
+            Criador:
+            <%= canine.breeder.name%>
+          </span>
+        <%end%>
+        <br>
+        <%- if canine.breeder%>
+          <span>
+            Criador:
+            <%= canine.breeder.name%>
+          </span>
+        <%end%>
+      </div>
+    </div>
+  <%end%>
+</div>

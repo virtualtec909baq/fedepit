@@ -7,11 +7,14 @@ module ApplicationHelper
 			return "Hembra"
 		end
 	end
-
+	def children(id)
+		return @children = Canine.where("(lft = ? OR rgt = ?)", id, id)
+	end
+	
 	def siblings(id)
 		lft = Canine.find(id).lft
 		rgt = Canine.find(id).rgt
-		@siblings = Canine.where("(lft = ? OR rgt = ?) AND id != ?", lft, rgt, id)
+		return @siblings = Canine.where("(lft = ? OR rgt = ?) AND id != ?", lft, rgt, id)
 	end
 
 	def parent_children(id)
