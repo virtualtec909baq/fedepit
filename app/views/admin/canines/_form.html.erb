@@ -1,63 +1,77 @@
-<div class="modal-body">
-        <%= form_for @canine , url: admin_canines_path(@canine) , :html => { :multipart => true } do |f| %>
-        <div class="field">
-          <%= f.label :razas %><br>
-          <%= f.collection_select :race_id, Race.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
-        </div>
-        <div class="field">
-          <%= f.label :propietario %><br>
-          <%= f.collection_select :breeder_id, Breeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
-        </div>
-        <div class="field">
-          <%= f.label :color %><br>
-          <%= f.collection_select :color_id, Color.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
-        </div>
-        <div class="field">
-          <%= f.label :lof %><br>
-          <%= f.text_field :lof, class: 'form-control' %>
-        </div>
-        <div class="field">
-          <%= f.label :chip %><br>
-          <%= f.text_field :chip, class: 'form-control' %>
-        </div>
-        <div class="field">
-          <%= f.label :name %><br>
-          <%= f.text_field :name, class: 'form-control' %>
-        </div>            
-        <div class="field">
-          <%= f.label :genero %><br>
-          <%= f.select :gender, [["Macho", "1"],["Hembra", "0"]], {prompt: ""}, {class: "form-control"}%>
-        </div>
-        <div class="field">
-          <%= f.label :father_lof %><br>
-          <%= f.text_field :father_lof , class: 'form-control' %>
-        </div>
-        <div class="field">
-          <%= f.label :mother_lof %><br>
-          <%= f.text_field :mother_lof , class: 'form-control' %>
-        </div>
-        <div class="field">
-          <%= f.label :rate %><br>
-          <%= f.text_field :rate , class: 'form-control' %>
-        </div>
-        <div class="field">
-          <%= f.label :birth %><br>
-          <%= f.date_select :birth , class: 'form-control' %>
-        </div>
-        <div class="field">
-          <%= f.label :death %><br>
-          <%= f.date_select :death , class: 'form-control' %>
-        </div>
-
+<script type="text/javascript">
+  $(document).ready(function () {
+    toggleFields();
+    $("#age").change(function () {
+        toggleFields();
+    });
+  });
+  function toggleFields() {
+    if ($("#age").val() <= 13)
+        $("#parentPermission").show();
+    else
+        $("#parentPermission").hide();
+  }
+</script>
+<div class="row">
+  <div class="col-md-12">
+    <h3>Nuevo Canino</h3>
+    <hr>
+  </div>
+  <%= form_for @canine , url: admin_canines_path(@canine) , :html => { :multipart => true } do |f| %>
+    <div class="col-md-12">
+      <%= f.label :tipo_de_ejemplar %><br>
+      <%= f.select :gender, [["Registrar Ejemplar", "1"],["Registro Informativo", "0"]], {prompt: "Escoger Tipo"}, {class: "form-control"}%>
+    </div>
+    <br>
+    <div class="col-md-12">
+      <%= f.label :name %><br>
+      <%= autocomplete_field_tag('canine_name', '', autocomplete_canine_name_admin_canines_path, :id => "canine_name", :class => "form-control"), :name =>"canine[name]"%>
+    <br>
+    </div>
+    <div class="col-md-3">
+      <%= f.label :razas %><br>
+      <%= f.collection_select :race_id, Race.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
+    </div>
+    <div class="col-md-3">
+      <%= f.label :propietario %><br>
+      <%= f.collection_select :breeder_id, Breeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
+    </div>
+    <div class="col-md-3">
+      <%= f.label :color %><br>
+      <%= f.collection_select :color_id, Color.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
+    </div>
+    <div class="col-md-3">
+      <%= f.label :genero %><br>
+      <%= f.select :gender, [["Macho", "1"],["Hembra", "0"]], {prompt: ""}, {class: "form-control"}%>
+    <br>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :father_lof %><br>
+      <%= autocomplete_field_tag('canine_lof', '', autocomplete_canine_lof_admin_canines_path, :id => "canine_father_lof", :class => "form-control", :name =>"canine[father_lof]")%>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :mother_lof %><br>
+      <%= autocomplete_field_tag('canine_lof', '', autocomplete_canine_lof_admin_canines_path, :id => "canine_mother_lof", :class => "form-control", :name =>"canine[mother_lof]")%>
+      <br>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :nacimiento %><br>
+      <%= f.date_select :birth , class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :muerte %><br>
+      <%= f.date_select :death , class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
       <%= f.fields_for :images do |p| %>
          <div class="field">
            <%= p.label :file %><br>
            <%= p.file_field :file, :multiple => true, name: "images[file][]" %>
          </div>
-       <% end %>
-
-        <div class="actions">
-          <%= f.submit :class =>"btn btn-primary btn-block" %>
-        </div>
-        <% end %>
-      </div>
+      <% end %>
+    </div>
+    <div class="col-md-12">
+      <%= f.submit :class =>"btn btn-primary btn-block" %>
+    </div>
+  <% end %>
+</div>

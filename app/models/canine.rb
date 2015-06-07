@@ -1,5 +1,5 @@
 class Canine < ActiveRecord::Base
-	after_initialize :init
+	
 	belongs_to :breeder
 	belongs_to :race
 	belongs_to :color
@@ -32,10 +32,4 @@ class Canine < ActiveRecord::Base
 	# validates :birth, presence: true 
 	# validates :death, presence: true 
 
-	def init
-		o = [('a'..'z'), ('1'..'9'), ('A'..'Z')].map { |i| i.to_a }.flatten
-	  	string = (0...5).map { o[rand(o.length)] }.join
-	  	val = string+Time.now.strftime('%H%S%L')
-		self.lof  ||= val.upcase
-	end
 end

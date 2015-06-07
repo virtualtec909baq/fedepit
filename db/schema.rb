@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150607180350) do
+=======
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20150607141906) do
+=======
+ActiveRecord::Schema.define(version: 20150607171330) do
+>>>>>>> 6ef6cc02251653aa83a657e47f286e3c64baa5bc
+>>>>>>> cc3e121e4d5e49db746935a3a8486fc6d145a251
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +30,12 @@ ActiveRecord::Schema.define(version: 20150607180350) do
     t.string   "img"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "breeders", force: :cascade do |t|
@@ -66,20 +80,16 @@ ActiveRecord::Schema.define(version: 20150607180350) do
     t.date     "death"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "ancestry"
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "parent_id"
   end
-
-  add_index "canines", ["ancestry"], name: "index_canines_on_ancestry", using: :btree
 
   create_table "championships", force: :cascade do |t|
     t.integer  "type_championship_id"
     t.date     "date"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.string   "name"
   end
 
   create_table "colors", force: :cascade do |t|

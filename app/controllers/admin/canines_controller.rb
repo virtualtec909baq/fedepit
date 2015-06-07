@@ -1,6 +1,9 @@
 class Admin::CaninesController < ApplicationController
+  autocomplete :canine, :name, :full => true
+  autocomplete :canine, :lof, :full => true
   before_action :authenticate_user!
   before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree]
+  before_action :init, only: [:create]
 
   # GET /canines
   # GET /canines.json
@@ -40,7 +43,6 @@ class Admin::CaninesController < ApplicationController
   def new
     @canine = Canine.new
     @image = @canine.images.build
-
   end
 
   # GET /canines/1/edit
@@ -98,6 +100,13 @@ class Admin::CaninesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_canine
       @canine = Canine.find(params[:id])
+    end
+
+    def init
+      o = [('a'..'z'), ('1'..'9'), ('A'..'Z')].map { |i| i.to_a }.flatten
+      string = (0...5).map { o[rand(o.length)] }.join
+      val = string+Time.now.strftime('%H%S%L')
+      params[:canine][:lof] = val
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
