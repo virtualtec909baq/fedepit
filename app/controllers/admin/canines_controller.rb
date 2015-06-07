@@ -22,7 +22,8 @@ class Admin::CaninesController < ApplicationController
   # GET /canines/1
   # GET /canines/1.json
   def show
-    @images = @canine.images.all
+    @images = @canine.images
+    @canine_awards = @canine.events
   end
 
   # GET /canines/1
@@ -86,6 +87,20 @@ class Admin::CaninesController < ApplicationController
 
   # GET /canines/1/edit
   def edit
+  end
+  # POST /canines
+  def awards
+
+    @canine_event = CanineEvent.create(canine_id: params[:awards][:canine_id], event_id: params[:awards][:event_id], position: params[:awards][:position], reward: params[:awards][:reward])
+    respond_to do |format|
+      if @canine_event.save
+        format.html { redirect_to admin_canine_path(@canine_event.canine_id), notice: 'Se ha agregado exitosamente tu premio.' }
+        format.json { render :show, status: :created, location: @canine_event }
+      else
+        format.html { render :new }
+        format.json { render json: @canine_event.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /canines

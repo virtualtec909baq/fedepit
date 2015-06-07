@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     put "comments/:id/change_status", to: "comments#change_status", as: "change_status_comments"
     put "sponsors/:id/change_status", to: "sponsors#change_status", as: "change_status"
     put "publicities/:id/change_status", to: "publicities#change_status", as: "change_status_publicities"
+    post "canines/awards", to: "canines#awards", as: "awards"
+
   end
 
 end
