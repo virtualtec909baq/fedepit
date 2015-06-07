@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem "jquery-ui-rails"
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem "therubyracer"
@@ -24,8 +25,8 @@ gem 'formtastic', github: 'justinfrench/formtastic'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
 gem 'faker'
-gem 'closure_tree'
 gem 'rails-i18n'
+gem 'rails4-autocomplete'
 
 group :production do
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets' 

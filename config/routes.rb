@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   namespace :admin do
   	resources :articles
     resources :breeders
-    resources :canines
+    resources :canines do
+      get :autocomplete_canine_name, :on => :collection
+      get :autocomplete_canine_lof, :on => :collection
+    end
     resources :championships
     resources :colors
     resources :comments

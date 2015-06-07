@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require jquery-ui
  *= require bootstrap_and_overrides
  *= require jquery.fancybox
  *= require_self
