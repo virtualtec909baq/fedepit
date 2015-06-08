@@ -33,4 +33,10 @@ module ApplicationHelper
 			return false
 		end
 	end
+	def metter(id)
+		@children = children(id)
+		@children.each do |child|
+			 return child.feaute
+		end
+	end
 end

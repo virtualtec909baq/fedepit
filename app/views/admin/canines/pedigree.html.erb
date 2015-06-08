@@ -34,7 +34,7 @@
 <div class="row principal">
         <div class="row">
             <div class="col-md-12 me">
-                <%= link_to @canine.name, admin_canine_path(@canine) %>
+                <%= link_to @canine.id, admin_canine_path(@canine) %>
             </div>     
         </div>
         <section data-role="display" data-current="linaje" class="col-lg-12">
@@ -44,39 +44,77 @@
                             <div class="Titulo">PADRES</div>
                             <div data-linea="padres">
                                 <div class="Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename'><%= @father.name%></span>
-                                    <i class="fa fa-mars"></i>
+                                    <%-  if !@canine.lft.nil?%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @father.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                         <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%>
                                 </div>
                                 <div class="Madre Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename'><%= @mother.name%></span>
-                                    <i class="fa fa-venus"></i>
+                                    <%-  if !@canine.rgt.nil?%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @mother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                         <i class="fa fa-venus"></i>
+                                    <%end%>
                                 </div>
                             </div>
                         </div>
+
                         <div data-view="fila" data-conte="Abuelos" class="xCien_25">
                             <div class="Titulo">ABUELOS</div>
                             <div data-linea="abuelos">
                                 <div class="Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename'><%= @paternal_grandfather.name%></span>
-                                    <i class="fa fa-mars"></i>
+                                    <%- if !@father.lft.nil?%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @paternal_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                         <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%>
                                 </div>
                                 <div class="Madre Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename'><%= @paternal_grandmother.name%></span>
-                                    <i class="fa fa-venus"></i>
+                                    <%- if !@father.rgt.nil?%>
+                                         <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @paternal_grandmother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
                                 </div>
+
                                 <div class="Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename'> <%= @grandfather.name%></span>
-                                    <i class="fa fa-mars"></i>
+                                    <%-  if !@mother.lft.nil?%>
+                                         <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @maternal_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%>
                                 </div>
                                 <div class="Madre Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename'><%= @grandmother.name%></span>
-                                    <i class="fa fa-venus"></i>
+                                    <%-  if !@mother.rgt.nil?%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'><%= @maternal_grandmother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
                                 </div>
                             </div>                        
                         </div>
@@ -84,116 +122,101 @@
                             <div class="Titulo">BISABUELOS</div>
                             <div data-linea="bisabuelos">
                                 <div class="Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename bisabuelos'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                    <i class="fa fa-mars"></i>
+                                    <%-  if Canine.exists?(id: @paternal_grandmother.lft)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @paternal_great_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%>
                                 </div>
                                 <div class="Madre Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename bisabuelos'>PR° GARGOYLE PITS SATIVA</span>
-                                    <i class="fa fa-venus"></i>
+                                    <%-  if Canine.exists?(id: @father.rgt)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @paternal_great_grandmother.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
+                                </div>
+                               
+                                <div class="Padre padrescanino">
+                                    <%-  if Canine.exists?(id: @mother.lft)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @maternal_great_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%>
+                                </div>
+
+                                <div class="Madre Padre padrescanino">
+                                    <%-  if Canine.exists?(id: @mother.rgt)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @maternal_great_grandmother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
+                                </div>
+                                
+
+                                <div class="Padre padrescanino">
+                                   <%-  if Canine.exists?(id: @mother.lft)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @mother_maternal_great_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%> 
+                                </div>
+                                <div class="Madre Padre padrescanino">
+                                    <%-  if Canine.exists?(id: @mother.rgt)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @mother_paternal_great_grandmother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
                                 </div>
                                 <div class="Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename bisabuelos'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                    <i class="fa fa-mars"></i>
+                                   <%-  if Canine.exists?(id: @mother.lft)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @father_maternal_great_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%> 
                                 </div>
                                 <div class="Madre Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename bisabuelos'>PR° GARGOYLE PITS SATIVA</span>
-                                    <i class="fa fa-venus"></i>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename bisabuelos'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                    <i class="fa fa-mars"></i>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename bisabuelos'>PR° GARGOYLE PITS SATIVA</span>
-                                    <i class="fa fa-venus"></i>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename bisabuelos'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                    <i class="fa fa-mars"></i>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <img src="http://placehold.it/350x150" class="canineimage">
-                                    <span class='caninename bisabuelos'>PR° GARGOYLE PITS SATIVA</span>
-                                    <i class="fa fa-venus"></i>
+                                    <%-  if Canine.exists?(id: @mother.rgt)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @father_paternal_great_grandmother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
                                 </div>
                             </div>
                         </div>
-                        <div data-view="fila" data-conte="Tatarabuelos" class="xCien_6_25">
-                            <div class="Titulo">TATARABUELOS</div>
-                            <div data-linea="tatarabuelos">
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                               <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                                <div class="Padre padrescanino">
-                                    <i class="fa fa-mars"></i>
-                                    <span class='caninename'>PR° GARGOYLEPITS HANK THE TANK</span>
-                                </div>
-                                <div class="Madre Padre padrescanino">
-                                    <i class="fa fa-venus"></i>
-                                    <span class='caninename'>PR° GARGOYLE PITS SATIVA</span>
-                                </div>
-                            </div>
-                        </div>
+                        
+                        
                     </section>
                 </div>
         </section>
