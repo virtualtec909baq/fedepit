@@ -24,6 +24,7 @@ class Admin::CaninesController < ApplicationController
   def show
     @images = @canine.images
     @canine_awards = @canine.events
+    @feature = @canine.feature
   end
 
   # GET /canines/1
