@@ -1,9 +1,33 @@
-<ul>
-	<%collection.arrange.each do |category, sub_item|%>
-		<li><%= category.id%>
-			<%- if category.has_children?%>
-				<%= render partial: "children", locals: { collection: category.children, as: :children }%>
-			<%end%>
-		</li>
-	<%end%>
-</ul>
+<div class="col-md-12">
+  <% children(@canine.id).each do |canine|%>
+    <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
+      <div class="col-md-2">
+        <%- if canine.images.last%>
+          <img src="<%=canine.images.last%>" class="img-thumbnail">
+        <%else%>
+          <img src="http://placehold.it/50x50" class="img-thumbnail">
+        <%end%>
+      </div>
+      <div class="col-md-10">
+        <span>
+          Nombre:
+          <%= canine.name%>
+        </span>
+        <br>
+        <%- if canine.breeder%>
+          <span>
+            Criador:
+            <%= canine.breeder.name%>
+          </span>
+        <%end%>
+        <br>
+        <%- if canine.breeder%>
+          <span>
+            Criador:
+            <%= canine.breeder.name%>
+          </span>
+        <%end%>
+      </div>
+    </div>
+  <%end%>
+</div>

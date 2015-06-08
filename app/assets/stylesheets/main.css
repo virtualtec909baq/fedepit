@@ -6025,7 +6025,6 @@ font-size: 16px !important;
 font-weight: 300 !important;
 padding-left: 10px;
 padding-right: 10px;
-padding-top: 10px;
 }
 .fa.fa-trash-o {
 color: #D9534F;
@@ -6109,4 +6108,10 @@ ul.tree li+li:before
 .pedigreeimg {
     border-radius: 100px;
     width: 32%;
+}
+.white-space {
+    margin: 156px;
+}
+.image_file {
+    width: 30%;
 }

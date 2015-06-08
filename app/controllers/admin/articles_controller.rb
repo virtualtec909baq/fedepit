@@ -17,6 +17,8 @@ class Admin::ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @comments = @article.comments
+    @articles = Article.last(4).reverse 
   end
 
   # GET /articles/1/edit

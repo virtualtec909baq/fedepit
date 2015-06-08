@@ -1,39 +1,55 @@
-<div class="row">
-  <div class='col-md-9'>
-    <div class="blog-info-prod">
-      <div class="pull-right">
-        <h5><i class="fa fa-clock-o"></i> <%= @article.created_at.strftime('%b  %d  %Y')%></h5>
+<div class="container">
+  <div class="row">
+    <div class='col-md-9'>
+      <div class="blog-info-prod">
+        <div class="pull-right">
+          <h5><i class="fa fa-clock-o"></i> <%= @article.created_at.strftime('%b  %d  %Y')%></h5>
+        </div>
+        <div class="page-header">
+          <h1><%= @article.title%></h1>
+        </div>
+        <a href="#">
+          <%if @article.img.blank?%>
+            <img src="http://placehold.it/1000x500" class="img-responsive" alt=""/>
+          <%else%>
+            <img alt="" class="img-responsive" src="<%= @article.img%>">
+          <%end%>
+        </a>
+        <br>
+        <p class="blog-desc-prod"><%= @article.description%></p>
       </div>
-      <div class="page-header">
-        <h1><%= @article.title%></h1>
-      </div>
-      <a href="#">
-        <%if @article.img.blank?%>
-          <img src="http://placehold.it/1000x500" class="img-responsive" alt=""/>
-        <%else%>
-          <img alt="" class="img-responsive" src="<%= @article.img%>">
-        <%end%>
-      </a>
-      <br>
-      <p class="blog-desc-prod"><%= @article.description%></p>
-      <p class="blog-author"><a href="#">3 <%= t('.comment')%></a></p>
-      
+    </div>
+    <br>
+    <div class='col-md-3'>
+      <div class="blog-info-prod">
+        <h2 class="t-title-office"><span><%= t('.reciente')%></span></h2>
+        <ul class='post-lateral'>
+         <% @articles.each do |article| %>
+          <li>
+            <img src='images/product/img1.jpg' alt='' />
+            <div>
+              <p><%= article.title %></p><p class='post-data'> <%= @article.created_at.strftime('%b  %d  %Y') %></p>
+              <%= link_to t('.seguir'), article_path(article)%>
+            </div>
+          </li>
+         <% end %>
+        </ul>
+      </div>    
     </div>
   </div>
-  <div class='col-md-3'>
-    <div class="blog-info-prod">
-      <h2 class="t-title-office"><span><%= t('.reciente')%></span></h2>
-      <ul class='post-lateral'>
-       <% @articles.each do |article| %>
-        <li>
-          <img src='images/product/img1.jpg' alt='' />
-          <div>
-            <p><%= article.title %></p><p class='post-data'> <%= @article.created_at.strftime('%b  %d  %Y') %></p>
-          </div>
-        </li>
-       <% end %>
-      </ul>
-    </div>    
-  </div> 
+  <div class="col-md-12">
+    <p class="blog-author"><%= @article.comments.where(status: true).count %> <%=  t('.comment')%></p>
+  </div>
+  <div class="col-md-12">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalComment" >
+      Nuevo Comentario
+    </button>
+    <br>
+    <br>
+  </div>
+  <div class="col-md-12">
+    <%= render partial: "articles/comments"%>
+  </div>
+  <%= render :partial => "form"%>
 </div>
-<%= render partial: "articles/comments"%>
+

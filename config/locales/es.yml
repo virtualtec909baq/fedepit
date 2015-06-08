@@ -10,7 +10,7 @@ es:
       pedigree: "Pedigree"
       article: "Articulos"
       video: "Videos"
-      championship: "Campeonatos"
+      championship: "Campeones"
       event: "Eventos"
       breeder: "Criadores"
   articles:
@@ -21,6 +21,7 @@ es:
     show:
       comment: "Comentarios"
       reciente: "Articulos recientes"
+      seguir: "Seguir leyendo"
     comments:
       comment: "Comentarios"
   videos:

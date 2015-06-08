@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  resources :features
   root 'home#index'
   devise_for :users
   resources :articles, only: [:index, :show]
@@ -9,12 +7,17 @@ Rails.application.routes.draw do
   resources :championships, only: [:index]
   resources :events, only: [:index]
   resources :videos, only: [:index]
+  match 'home/send_mail', to: 'home#send_mail', via: 'post'
   get "home/contactus", to:"home#contactus"
+  put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
+
   namespace :admin do
-  	get 'home/index'
   	resources :articles
     resources :breeders
-    resources :canines
+    resources :canines do
+      get :autocomplete_canine_name, :on => :collection
+      get :autocomplete_canine_lof, :on => :collection
+    end
     resources :championships
     resources :colors
     resources :comments
@@ -27,8 +30,12 @@ Rails.application.routes.draw do
     resources :type_events
     resources :videos
     resources :features
+    get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
+    put "comments/:id/change_status", to: "comments#change_status", as: "change_status_comments"
     put "sponsors/:id/change_status", to: "sponsors#change_status", as: "change_status"
     put "publicities/:id/change_status", to: "publicities#change_status", as: "change_status_publicities"
+    post "canines/awards", to: "canines#awards", as: "awards"
+
   end
 
 end

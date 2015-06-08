@@ -35,10 +35,15 @@
                 <% @canines.each do |canine| %>
                 <div class="col-lg-3 col-md-3 col-sm-3">
                   <div class="team-img view view-second">
-                 <img alt="" src="/assets/TOSKO2.jpg">
+                    <%if canine.images.last.blank? %>
+                        <img alt="" class="img-responsive" src="http://placehold.it/300x291">
+                     <%else%>
+                         <img alt="" class="img-responsive" src="<%= canine.images.last.file%>" style="height: 230px; width: 281px;">
+                     <%end%>
+                     
                    <div class="mask"></div>
                     <div class="content">
-                        <p><%= canine.race %> <br> <%= canine.breeder.name_breed %> <br> <%= canine.breeder.name %></p>
+                        <p><%= canine.race %> <br> <%= canine.breeder %> <br> <%= canine.breeder %></p>
                         <ul class="list-unstyled list-inline list-social-icons">
                           <%= link_to t('.more'), :class => "btn btn-primary"  %>
 

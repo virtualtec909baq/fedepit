@@ -4,7 +4,6 @@
     <div class="col-lg-12">
       <h1 class="about4-top-title">Blog with <span class="color-txt">Right Sidebar</span> </h1>
 
-      <div class="buy-angula"><a href="#" class="btn btn-lg btn-primary">Purchase now! </a></div>
     </div>
   </div> 
 </div> 
@@ -14,7 +13,7 @@
             <div class="col-lg-12">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html"><%=t('.home')%></a>
+                        <a href="<%= root_path%>"><%=t('.home')%></a>
                     </li>
                     <li class="active"><%=t('.contact')%></li>
                 </ol>
@@ -25,83 +24,27 @@
 <div class="container">
     <div class="row last-inf-dt">
 
-        <div class="col-sm-8">
-            <h4 class="contact-title">Let's Get In Touch!</h4>
-            
-            <p class="contact-sub-txt">Lid est laborum dolo rumes fugats untras. <br>Etharums ser quidem rerum facilis dolores nemis omnis fugats sadips amets.</p>
-
-            <form action="#" method="POST" role="form" id="contact-form">
+        <div class="col-lg-12">
+            <%= form_tag(home_send_mail_path) do %>
                 <div class="row">
                     <div class="form-group col-lg-6">
-                        <label for="input1">Name *</label>
-                        <input type="text" id="input1" class="form-control" placeholder="e.g. Jhon Smith" name="contact_name">
+                        <label for="input1">Nombre *</label>
+                        <%= text_field_tag 'name', nil, class: 'form-control', placeholder: 'Tu Nombre' %>
                     </div>
                     <div class="form-group col-lg-6">
-                        <label for="input1">Company Name</label>
-                        <input type="text" id="input5" class="form-control" placeholder="e.g. Angu Studio" name="contact_name">
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group col-lg-6">
-                        <label for="input2">Email Address *</label>
-                        <input type="email" id="input2" class="form-control" placeholder="e.g. mail@example.com" name="contact_email">
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <label for="input3">Phone Number</label>
-                        <input type="phone" id="input3" class="form-control" placeholder="+004 123 23 456" name="contact_phone">
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group col-lg-12">
-                        <label for="input4">Message</label>
-                        <textarea id="input4" rows="6" class="form-control" name="contact_message"></textarea>
+                        <label for="input2">Email  *</label>
+                        <%= email_field_tag 'email', nil, class: 'form-control', placeholder: 'Tu Email Address' %>
                     </div>
                     <div class="form-group col-lg-12">
-                        <input type="hidden" value="contact" name="save">
-                        <button class="btn btn-primary bt-contact-submit" type="submit">Submit</button>
-                        <p class="success">Your message has been sent successfully.</p>
-                        <p class="error">E-mail must be valid and message must be longer than 20 characters.</p>
+                        <label for="input4">Mensaje</label>
+                        <%= text_area_tag 'comments', nil, class: 'form-control', rows: 4, placeholder: 'Mensaje...' %>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <%= submit_tag "Enviar", class: 'btn btn-default btn-about ' %>
                     </div>
                 </div>
-            </form>
+            <%end%>
         </div>
-
-        <div class="col-sm-4 contact-details">
-            <h4 class="contact-title">Modern Business</h4>
-            
-            <p>
-                5555 44th Street N.<br>
-                Bootstrapville, CA 32323<br>
-            </p>
-
-            <p><i class="fa fa-phone"></i> <abbr title="Phone">P</abbr>: (555) 984-3600</p>
-
-            <p><i class="fa fa-envelope-o"></i> <abbr title="Email">E</abbr>: <a href="mailto:feedback@angula.com">feedback@angula.com</a></p>
-
-            <p><i class="fa fa-clock-o"></i> <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM</p>
-            <ul class="list-unstyled list-inline list-social-icons">
-                <li class="tooltip-social facebook-link">
-                    <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Facebook">
-                        <i class="fa fa-facebook"></i>
-                     </a>
-                </li>
-                <li class="tooltip-social linkedin-link">
-                    <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="LinkedIn">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                </li>
-                <li class="tooltip-social twitter-link">
-                    <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Twitter">
-                             <i class="fa fa-twitter"></i>
-                     </a>
-                </li>
-                <li class="tooltip-social google-plus-link">
-                    <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Google+">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
     </div>
-    <!-- /.row -->
-
 </div>
+<%= render partial: "layouts/footer"%>

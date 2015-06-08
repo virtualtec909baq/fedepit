@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605135921) do
+ActiveRecord::Schema.define(version: 20150607180350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20150605135921) do
     t.string   "img"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "breeders", force: :cascade do |t|
@@ -42,6 +48,15 @@ ActiveRecord::Schema.define(version: 20150605135921) do
     t.string   "adrress"
   end
 
+  create_table "canine_events", force: :cascade do |t|
+    t.integer  "canine_id"
+    t.integer  "event_id"
+    t.string   "position"
+    t.string   "reward"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "canines", force: :cascade do |t|
     t.integer  "race_id"
     t.integer  "breeder_id"
@@ -57,16 +72,20 @@ ActiveRecord::Schema.define(version: 20150605135921) do
     t.date     "death"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "ancestry"
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "parent_id"
   end
+
+  add_index "canines", ["ancestry"], name: "index_canines_on_ancestry", using: :btree
 
   create_table "championships", force: :cascade do |t|
     t.integer  "type_championship_id"
     t.date     "date"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.string   "name"
   end
 
   create_table "colors", force: :cascade do |t|
@@ -191,8 +210,9 @@ ActiveRecord::Schema.define(version: 20150605135921) do
 
   create_table "type_events", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.boolean  "championship"
   end
 
   create_table "users", force: :cascade do |t|

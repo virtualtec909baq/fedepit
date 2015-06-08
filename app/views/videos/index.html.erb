@@ -4,7 +4,6 @@
     <div class="col-lg-12">
       <h1 class="about4-top-title">Describe your<span class="color-txt"> experiences</span> with </h1>
       <h1 class="about4-top-title about4-top-second"><span class="color-txt">AngularJs</span> code.</h1>
-      <div class="buy-angula"><a href="#" class="btn btn-lg btn-primary">Purchase now! </a></div>
     </div>
   </div> 
 </div>
@@ -14,7 +13,7 @@
       <div class="col-lg-12">
         <ol class="breadcrumb">
           <li>
-            <a href="index.html"><%= t('.home')%></a>
+            <a href="<%= root_path%>"><%= t('.home')%></a>
           </li>
           <li class="active"><%= t('.video')%></li>
         </ol>
@@ -40,4 +39,7 @@
     </div>
     <hr>
     <% end %>
+      <%= will_paginate @videos, :locals => { :videos => @videos }, renderer: BootstrapPagination::Rails%>
+
   </div>
+

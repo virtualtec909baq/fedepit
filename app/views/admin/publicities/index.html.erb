@@ -19,7 +19,11 @@
   </thead>
   <tbody>
     <% @publicities.each do |publicity| %>
-    <tr >
+    <%- if publicity.status %>
+      <tr >
+    <else>
+      <tr class="danger">
+    <%end%>
       <td class="center"><%= publicity.name %></td>
       <td class="center">
         <%if publicity.image.blank?%>
@@ -40,7 +44,6 @@
         <i class="fa fa-check"></i>
         <%end%>
       </td>
-      <td></td>
     </tr>
     <% end %>
   </tbody>
