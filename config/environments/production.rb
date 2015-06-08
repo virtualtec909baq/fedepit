@@ -9,7 +9,7 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
   config.log_level = :debug
-  config.serve_static_assets = true
+  config.serve_static_files  = true
   config.assets.compile = true
   config.i18n.fallbacks = true
 
