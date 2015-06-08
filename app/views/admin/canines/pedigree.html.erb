@@ -44,7 +44,7 @@
                             <div class="Titulo">PADRES</div>
                             <div data-linea="padres">
                                 <div class="Padre padrescanino">
-                                    <%-  if !@canine.lft.nil?%>
+                                    <%-  if @canine%>
                                         <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
                                         <span class='caninename'><%= @father.id%></span>
                                         <i class="fa fa-mars"></i>
@@ -55,7 +55,7 @@
                                     <%end%>
                                 </div>
                                 <div class="Madre Padre padrescanino">
-                                    <%-  if !@canine.rgt.nil?%>
+                                    <%-  if @canine%>
                                         <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
                                         <span class='caninename'><%= @mother.id%></span>
                                         <i class="fa fa-venus"></i>
@@ -72,7 +72,7 @@
                             <div class="Titulo">ABUELOS</div>
                             <div data-linea="abuelos">
                                 <div class="Padre padrescanino">
-                                    <%- if !@father.lft.nil?%>
+                                    <%- if @father%>
                                         <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
                                         <span class='caninename'><%= @paternal_grandfather.id%></span>
                                         <i class="fa fa-mars"></i>
@@ -83,7 +83,7 @@
                                     <%end%>
                                 </div>
                                 <div class="Madre Padre padrescanino">
-                                    <%- if !@father.rgt.nil?%>
+                                    <%- if @father%>
                                          <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
                                         <span class='caninename'><%= @paternal_grandmother.id%></span>
                                         <i class="fa fa-venus"></i>
@@ -95,7 +95,7 @@
                                 </div>
 
                                 <div class="Padre padrescanino">
-                                    <%-  if !@mother.lft.nil?%>
+                                    <%-  if @mother%>
                                          <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
                                         <span class='caninename'><%= @maternal_grandfather.id%></span>
                                         <i class="fa fa-mars"></i>
@@ -106,7 +106,7 @@
                                     <%end%>
                                 </div>
                                 <div class="Madre Padre padrescanino">
-                                    <%-  if !@mother.rgt.nil?%>
+                                    <%-  if @mother%>
                                         <img src="http://placehold.it/350x150" class="canineimage">
                                         <span class='caninename'><%= @maternal_grandmother.id%></span>
                                         <i class="fa fa-venus"></i>
