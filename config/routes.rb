@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   	resources :articles
     resources :breeders
     resources :canines do
+      collection { post :import }
       get :autocomplete_canine_name, :on => :collection
       get :autocomplete_canine_lof, :on => :collection
     end
