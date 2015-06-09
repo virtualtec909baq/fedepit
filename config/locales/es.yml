@@ -13,6 +13,8 @@ es:
       championship: "Campeones"
       event: "Eventos"
       breeder: "Criadores"
+    footer:
+      todos_derechos: "Todos los derechos reservados 2015"
   articles:
     index:
       home: "Inicio"
@@ -59,4 +61,8 @@ es:
       more: "Ver mas..."
       last_article: "Ultimos articulos"
       read: "Seguir leyendo"
-
+      my_breed1: "MyBreed una App para todos los que quieren ser diferentes de una manera muy propia"
+      my_breed2: "La forma más fácil de personalizar cada detalle y  armar el pedigree de 4 generación"
+      my_breed3: "Comparte tu arte en tus redes sociales"
+      my_breed4: "Crear tu perfil como criador"
+      my_breed5: "Descargala ya en google play y play store"
