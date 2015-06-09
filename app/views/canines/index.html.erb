@@ -26,32 +26,88 @@
     <div class="col-md-12">
       <div class="row">
         <%= search_form_for @search, url: canines_path do |f|%>   
-          <div class="col-md-4">
-            <label>Nombre O LOF</label>
-            <%= f.search_field(:name_or_lof_cont, class: 'form-control')%>
-          </div>
-          <div class="col-md-4">
-            <%= f.submit :class =>"btn btn btn-primary btn-block"%>
-          </div>
-          <div class="col-md-4">
-            <%= link_to t('.clear'), request.path, class:"btn btn-danger btn_white btn-block"%>
-          </div>
+        <div class="col-md-4">
+          <label>Nombre O LOF</label>
+          <%= f.search_field(:name_or_lof_cont, class: 'form-control')%>
+        </div>
+        <div class="col-md-4">
+          <%= f.submit :class =>"btn btn btn-primary btn-block"%>
+        </div>
+        <div class="col-md-4">
+          <%= link_to t('.clear'), request.path, class:"btn btn-danger btn_white btn-block"%>
+        </div>
         <%end%>
       </div>
     </div>  
   </div>
   <p class="white-space"></p>
   <%- if params[:q]%>
-    <% @canines.each do |canine| %>
-      <hr>
-      <div class="jumbotron">
+  <% @canines.each do |canine| %>
+  <hr>
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-4">
+      <%if canine.images.last.blank? %>
+         <img alt="" class="img-responsive" src="http://placehold.it/350x350">
+        <%else%>
+          <img alt="" class="img-responsive" src="<%= canine.images.last.file%>">
+        <%end%>      </div>
+      <div class="col-md-8">
         <div class="row">
+          <div class="col-md-8">
+            <span class="canine_name"><%= canine.name%></span>
+            <span></span>
+          </div>
           <div class="col-md-4">
-            <img src="http://placehold.it/350x350" class="img-thumbnail">
-            <%= canine.id%>
+            <span class="canine_name pull-right">0.0</span>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <span>Sexo:</span>
+            <span><%= gender(@canine.gender)%></span>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>Criadero:</span>
+            <%-if !@canine.breeder_id.blank?%>
+            <span><%= canine.breeder.name_breed%> </span>
+            <%end%> 
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>Fecha Nacimiento:</span>
+            <span><%= canine.birth%></span>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>Propietario:</span>
+            <%-if !@canine.breeder_id.blank?%>
+            <span><%= canine.breeder.name%> </span>
+            <%end%>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>Color:</span>
+            <%-if !@canine.color_id.blank?%>
+            <span><%= canine.color.name%> </span>
+            <%end%>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>Raza:</span>
+            <%-if !canine.race_id.blank?%>
+            <span><%= canine.race.name%> </span>
+            <%end%>
+          </div>
+          <div class="col-md-3">
+            <%= link_to "Ver mas...", canine_path(canine), :class => "btn  btn-lg btn-info btn-outlined btn-block"  %>
           </div>
         </div>
       </div>
-    <%end%>
+    </div>
+  </div>
+  <%end%>
   <%end%>
 </div>

@@ -14,5 +14,12 @@ class CaninesController < ApplicationController
       format.js
     end
   end
+
+  def show
+    @canine = Canine.find(params[:id])
+    @images = @canine.images
+    @canine_awards = @canine.events
+    @feature = @canine.feature
+  end
   
 end

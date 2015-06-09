@@ -1,0 +1,132 @@
+<div class="blog-top-img">
+  <div class="effect-over"></div>
+  <div class="container">
+    <div class="col-lg-12">
+      <h1 class="about4-top-title">Texto descriptivo<span class="color-txt"> Texto descriptivo</span></h1>
+      <h1 class="about4-top-title about4-top-second"><span class="color-txt">Texto descriptivo</span> </h1>
+    </div>
+  </div> 
+</div>
+<div class="breadcrumb-color">
+
+</div>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-4">
+       <%if @canine.images.last.blank? %>
+         <img alt="" class="img-responsive" src="http://placehold.it/350x350">
+        <%else%>
+          <img alt="" class="img-responsive" src="<%= @canine.images.last.file%>">
+        <%end%>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-8">
+            <span class="canine_name"><%= @canine.name%></span>
+            <span></span>
+          </div>
+          <div class="col-md-4">
+            <span class="canine_name pull-right">0.0</span>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <span>Sexo:</span>
+            <span><%= gender(@canine.gender)%></span>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>Criadero:</span>
+            <%-if !@canine.breeder_id.blank?%>
+              <span><%= @canine.breeder.name_breed%> </span>
+            <%end%> 
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>Fecha Nacimiento:</span>
+            <span><%= @canine.birth%></span>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>Propietario:</span>
+            <%-if !@canine.breeder_id.blank?%>
+              <span><%= @canine.breeder.name%> </span>
+            <%end%>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>Color:</span>
+             <%-if !@canine.color_id.blank?%>
+              <span><%= @canine.color.name%> </span>
+            <%end%>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>Raza:</span>
+            <%-if !@canine.race_id.blank?%>
+              <span><%= @canine.race.name%> </span>
+            <%end%>
+          </div>
+          
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-3">
+
+          </div>
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-3">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+  <div class="row marketing">
+    <div class="col-lg-12">
+      <div data-example-id="togglable-tabs" role="tabpanel" class="bs-example bs-example-tabs">
+        <ul role="tablist" class="nav nav-tabs" id="myTab">
+          
+          <li class="active" role="presentation"><a aria-expanded="true" aria-controls="home" data-toggle="tab" role="tab" id="home-tab" href="#home">Hijo</a></li>
+          
+          <li role="presentation"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#profile">Hermanos</a></li>
+          
+          <li role="presentation"><a aria-controls="profile2" data-toggle="tab" id="profile2-tab" role="tab" href="#profile2">Premios</a></li>
+          
+          <li role="presentation"><a aria-controls="profile3" data-toggle="tab" id="profile3-tab" role="tab" href="#profile3">Meteer</a></li>
+          
+          <li role="presentation"><a aria-controls="profile4" data-toggle="tab" id="profile4-tab" role="tab" href="#profile4">Galeria de Imagenes</a></li>
+        </ul>
+        <!-- tabs -->
+        <div class="tab-content" id="myTabContent">
+          <div aria-labelledby="home-tab" id="home" class="tab-pane fade in active" role="tabpanel">
+            <div class="row text">
+              <%= render partial: "/canines/children"%>
+            </div>
+          </div>
+
+          <div aria-labelledby="profile-tab" id="profile" class="tab-pane fade" role="tabpanel">
+            <%= render partial: "/canines/siblings"%>
+          </div>
+
+          <div aria-labelledby="profile2-tab" id="profile2" class="tab-pane fade" role="tabpanel">
+            <%= render partial: "/canines/awards"%>
+          </div>
+
+          <div aria-labelledby="profile3-tab" id="profile3" class="tab-pane fade" role="tabpanel">
+            <%= render partial: "/canines/metter"%>
+          </div>
+
+          <div aria-labelledby="profile4-tab" id="profile4" class="tab-pane fade" role="tabpanel">
+            <%= render partial: "/canines/images"%>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
