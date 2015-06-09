@@ -53,9 +53,11 @@ class Admin::FeaturesController < ApplicationController
   # PATCH/PUT /features/1
   # PATCH/PUT /features/1.json
   def update
+    
     respond_to do |format|
       if @feature.update(feature_params)
-        format.html { redirect_to @feature, notice: 'Feature was successfully updated.' }
+        flash[:notice] = 'Feature modificado'
+        format.html { redirect_to admin_feature_path(@feature) }
         format.json { render :show, status: :ok, location: @feature }
       else
         format.html { render :edit }
