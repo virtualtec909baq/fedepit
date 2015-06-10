@@ -17,8 +17,26 @@ module ApplicationHelper
 		return @siblings = Canine.where("(lft = ? OR rgt = ?) AND id != ?", lft, rgt, id)
 	end
 
+	def has_parent?(id)
+		if !Canine.find(id).lft.nil?
+			return true
+		else
+			return false
+		end	
+	end
+
+	def parent(id)
+		parent_id ||= []
+		if Canine.exists?(id: id)
+			@canine = Canine.find(id).lft
+			parent_id.push("tree")
+			parent(@canine)
+		end
+		return parent_id
+	end
+	
 	def parent_children(id)
-		@children = Canine.where(lft: id)
+		return @children = Canine.where(lft: id)
 	end
 
 	def mother_children(id)
@@ -28,6 +46,14 @@ module ApplicationHelper
 	def root(id)
 		@canine = Canine.find(id)
 		if @canine.lft.nil? or @canine.rgt.nil?
+			return true
+		else
+			return false
+		end
+	end
+	def root_lft(id)
+		@canine = Canine.find(id)
+		if @canine.lft.nil?
 			return true
 		else
 			return false

@@ -84,6 +84,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
+    atomic (1.1.99)
+    avl_tree (1.2.1)
+      atomic (~> 1.1)
     bcrypt (3.1.10)
     bootstrap-datepicker-rails (1.4.0)
       railties (>= 3.0)
@@ -230,6 +233,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  avl_tree
   bootstrap-datepicker-rails
   carrierwave
   coffee-rails (~> 4.1.0)

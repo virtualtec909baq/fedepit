@@ -34,6 +34,7 @@
 <div class="row principal">
         <div class="row">
             <div class="col-md-12 me">
+<<<<<<< HEAD
                 <%= link_to @canine.name, admin_canine_path(@canine) %>
             </div>     
         </div>
@@ -41,5 +42,192 @@
             <%if @canine.lft.blank? or @canine.rgt.blank?%>
                 <%= render partial: "admin/canines/pedigree2"%>
             <%end%>
+=======
+                <%= link_to @canine.id, admin_canine_path(@canine) %>
+            </div>     
+        </div>
+        <section data-role="display" data-current="linaje" class="col-lg-12">
+                <div class="Window container" >
+                  <section data-bloque="linaje">
+                        <div data-view="fila" data-conte="Padres">
+                            <div class="Titulo">PADRES</div>
+                            <div data-linea="padres">
+                                <div class="Padre padrescanino">
+                                    <%-  if @canine%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @father.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                         <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%>
+                                </div>
+                                <div class="Madre Padre padrescanino">
+                                    <%-  if @canine%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @mother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                         <i class="fa fa-venus"></i>
+                                    <%end%>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-view="fila" data-conte="Abuelos" class="xCien_25">
+                            <div class="Titulo">ABUELOS</div>
+                            <div data-linea="abuelos">
+                                <div class="Padre padrescanino">
+                                    <%- if @father%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @paternal_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                         <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%>
+                                </div>
+                                <div class="Madre Padre padrescanino">
+                                    <%- if @father%>
+                                         <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @paternal_grandmother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
+                                </div>
+
+                                <div class="Padre padrescanino">
+                                    <%-  if @mother%>
+                                         <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @maternal_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%>
+                                </div>
+                                <div class="Madre Padre padrescanino">
+                                    <%-  if @mother%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'><%= @maternal_grandmother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div data-view="fila" data-conte="Bisabuelos" class="xCien_12_5">
+                            <div class="Titulo">BISABUELOS</div>
+                            <div data-linea="bisabuelos">
+                                <div class="Padre padrescanino">
+                                    <%-  if Canine.exists?(id: @paternal_grandmother.lft)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @paternal_great_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%>
+                                </div>
+                                <div class="Madre Padre padrescanino">
+                                    <%-  if Canine.exists?(id: @father.rgt)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @paternal_great_grandmother.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
+                                </div>
+                               
+                                <div class="Padre padrescanino">
+                                    <%-  if Canine.exists?(id: @mother.lft)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @maternal_great_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%>
+                                </div>
+
+                                <div class="Madre Padre padrescanino">
+                                    <%-  if Canine.exists?(id: @mother.rgt)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @maternal_great_grandmother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
+                                </div>
+                                
+
+                                <div class="Padre padrescanino">
+                                   <%-  if Canine.exists?(id: @mother.lft)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @mother_maternal_great_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%> 
+                                </div>
+                                <div class="Madre Padre padrescanino">
+                                    <%-  if Canine.exists?(id: @mother.rgt)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @mother_paternal_great_grandmother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
+                                </div>
+                                <div class="Padre padrescanino">
+                                   <%-  if Canine.exists?(id: @mother.lft)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @father_maternal_great_grandfather.id%></span>
+                                        <i class="fa fa-mars"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-mars"></i>
+                                    <%end%> 
+                                </div>
+                                <div class="Madre Padre padrescanino">
+                                    <%-  if Canine.exists?(id: @mother.rgt)%>
+                                        <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
+                                        <span class='caninename'><%= @father_paternal_great_grandmother.id%></span>
+                                        <i class="fa fa-venus"></i>
+                                    <%else%>
+                                        <img src="http://placehold.it/350x150" class="canineimage">
+                                        <span class='caninename'>No Tiene Nombre</span>
+                                        <i class="fa fa-venus"></i>
+                                    <%end%>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </section>
+                </div>
+>>>>>>> 9f5d0e1e9f1ae3b2a815194d085346ae795fa609
         </section>
 </div>
