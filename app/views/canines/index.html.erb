@@ -15,11 +15,7 @@
           <li>
             <a href="<%= root_path%>"><%=t ('.home')%></a>
           </li>
-<<<<<<< HEAD
           <li class="active"><%=t ('.pedigree')%></li>
-=======
-          <li class="active"><%=t ('.article')%></li>
->>>>>>> 9f5d0e1e9f1ae3b2a815194d085346ae795fa609
         </ol>
       </div>
     </div>
@@ -30,7 +26,6 @@
     <div class="col-md-12">
       <div class="row">
         <%= search_form_for @search, url: canines_path do |f|%>   
-<<<<<<< HEAD
         <div class="col-md-4">
           <label>Nombre o LOF</label>
           <%= f.search_field(:name_or_lof_cont, class: 'form-control')%>
@@ -41,25 +36,12 @@
         <div class="col-md-4">
           <%= link_to t('.clear'), request.path, class:"btn btn-danger btn_white btn-block"%>
         </div>
-=======
-          <div class="col-md-4">
-            <label>Nombre O LOF</label>
-            <%= f.search_field(:name_or_lof_cont, class: 'form-control')%>
-          </div>
-          <div class="col-md-4">
-            <%= f.submit :class =>"btn btn btn-primary btn-block"%>
-          </div>
-          <div class="col-md-4">
-            <%= link_to t('.clear'), request.path, class:"btn btn-danger btn_white btn-block"%>
-          </div>
->>>>>>> 9f5d0e1e9f1ae3b2a815194d085346ae795fa609
         <%end%>
       </div>
     </div>  
   </div>
   <p class="white-space"></p>
   <%- if params[:q]%>
-<<<<<<< HEAD
   <% @canines.each do |canine| %>
   <hr>
   <div class="jumbotron">
@@ -127,18 +109,5 @@
     </div>
   </div>
   <%end%>
-=======
-    <% @canines.each do |canine| %>
-      <hr>
-      <div class="jumbotron">
-        <div class="row">
-          <div class="col-md-4">
-            <img src="http://placehold.it/350x350" class="img-thumbnail">
-            <%= canine.id%>
-          </div>
-        </div>
-      </div>
-    <%end%>
->>>>>>> 9f5d0e1e9f1ae3b2a815194d085346ae795fa609
   <%end%>
 </div>

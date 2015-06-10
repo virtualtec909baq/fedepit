@@ -1,9 +1,4 @@
 <div class="modal-body">
-<<<<<<< HEAD
-  <%= puts params.inspect%>
-=======
-<%= puts params.inspect%>
->>>>>>> 9f5d0e1e9f1ae3b2a815194d085346ae795fa609
   <%= form_for @feature , url: admin_features_path(@feature) , method: :post do |f| %>
   <div class="row">
     <div class="col-lg-12">
@@ -64,7 +59,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
 
     <div class="col-lg-12">
       <div class="panel panel-default">
@@ -96,105 +90,12 @@
             <%= f.label :Correcta %><br>
             <%= f.check_box :bite_right %>
           </div>
-=======
-
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-        <h3 class="panel-title"><%= f.label :Mordida %><br></h3>
-        </div>
-        <div class="panel-body">
-          <div class="field col-xs-2">
-            <%= f.label :Pinza %><br>
-            <%= f.check_box :bite_pin %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :Cruzada_interior %><br>
-            <%= f.check_box :bite_crusade_inside %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :prognato %><br>
-            <%= f.check_box :bite_prognato %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :enognato %><br>
-            <%= f.check_box :bite_enognato %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :Tijera_invertida %><br>
-            <%= f.check_box :bite_fork_inverted %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :Correcta %><br>
-            <%= f.check_box :bite_right %>
-          </div>
         </div>
       </div>
     </div>
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title"><%= f.label :Piezas_dentales %><br></h3>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="field col-xs-4">
-                <%= f.label :dental_full %><br>
-                <%= f.check_box :dental_full %>
-              </div>
-              <div class="field col-xs-4">
-                <%= f.label :dental_incisor %><br>
-                <%= f.check_box :dental_incisor %>
-              </div>
-              <div class="field col-xs-4">
-                <%= f.label :dental_canine %><br>
-                <%= f.check_box :dental_canine %>
-              </div>
-              <div class="field col-xs-4">
-                <%= f.label :dental_molar %><br>
-                <%= f.check_box :dental_molar %>
-              </div>
-              <div class="field col-xs-4">
-                <%= f.label :dental_premolar %><br>
-                <%= f.check_box :dental_premolar %>
-              </div>
-            </div>
-            <div class="col-lg-6">
-                <img src="/assets/fotoMetter.png" alt="" width="90%" height="90%" >
-            </div>
-          </div>    
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= f.label :calidad_muscular %><br></h3>
-        </div>
-        <div class="panel-body">
-
-          <div class="field col-xs-4">
-            <%= f.label :muscular_general %><br>
-            <%= f.text_field :muscular_general, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-4">
-            <%= f.label :muscular_masetero %><br>
-            <%= f.text_field :muscular_masetero, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-4">
-            <%= f.label :muscle_parietale %><br>
-            <%= f.text_field :muscle_parietale, class: 'form-control' %>
-          </div>
-
->>>>>>> 9f5d0e1e9f1ae3b2a815194d085346ae795fa609
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-<<<<<<< HEAD
           <h3 class="panel-title"><%= f.label :Piezas_dentales %><br></h3>
         </div>
         <div class="panel-body">
@@ -225,30 +126,12 @@
               <img src="/assets/fotoMetter.png" alt="" width="90%" height="90%" >
             </div>
           </div>    
-=======
-          <h3 class="panel-title"><%= f.label :cuerpo %><br></h3>
-        </div>
-        <div class="panel-body">
-          <div class="field col-xs-4">
-            <%= f.label :body_long %><br>
-            <%= f.text_field :body_long, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-4">
-            <%= f.label :body_raised %><br>
-            <%= f.text_field :body_raised, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-4">
-            <%= f.label :diamter_thorax %><br>
-            <%= f.text_field :diamter_thorax, class: 'form-control' %>
-          </div>
->>>>>>> 9f5d0e1e9f1ae3b2a815194d085346ae795fa609
         </div>
       </div>
     </div>
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-<<<<<<< HEAD
           <h3 class="panel-title"><%= f.label :calidad_muscular %><br></h3>
         </div>
         <div class="panel-body">
@@ -266,72 +149,10 @@
             <%= f.text_field :muscle_parietale, class: 'form-control' %>
           </div>
 
-=======
-          <h3 class="panel-title"><%= f.label :datos_parentesco %><br></h3>
-        </div>
-        <div class="panel-body">
-         <div class="field  col-xs-2">
-            <%= f.label :recommendation %><br>
-            <%= f.check_box :recommendation %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :title_work %><br>
-            <%= f.check_box :title_work %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :test_strength %><br>
-            <%= f.check_box :test_strength %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :test_dog_safe %><br>
-            <%= f.check_box :test_dog_safe %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :championsihp %><br>
-            <%= f.check_box :championsihp %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :defects_bite %><br>
-            <%= f.check_box :defects_bite %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :lack_dental %><br>
-            <%= f.check_box :lack_dental %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :postponement %><br>
-            <%= f.check_box :postponement %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :entropion %><br>
-            <%= f.check_box :entropion %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :ectropion %><br>
-            <%= f.check_box :ectropion %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :displacia_elbow %><br>
-            <%= f.check_box :displacia_elbow %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :displacia_hip %><br>
-            <%= f.check_box :displacia_hip %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :problem_conduct %><br>
-            <%= f.check_box :problem_conduct %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :defect_tail %><br>
-            <%= f.check_box :defect_tail %>
-          </div>
->>>>>>> 9f5d0e1e9f1ae3b2a815194d085346ae795fa609
         </div>
       </div>
     </div>
     <div class="col-lg-12">
-<<<<<<< HEAD
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title"><%= f.label :cuerpo %><br></h3>
@@ -425,13 +246,3 @@
     <% end %>
   </div>
 </div>
-=======
-     <div class="actions">
-        <%= f.submit  :class =>"btn btn-primary btn-block" %>
-      </div>
-    </div>
-      
-      <% end %>
-    </div>
-  </div>
->>>>>>> 9f5d0e1e9f1ae3b2a815194d085346ae795fa609

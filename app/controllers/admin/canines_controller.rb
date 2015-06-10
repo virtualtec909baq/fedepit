@@ -30,19 +30,19 @@ class Admin::CaninesController < ApplicationController
   # GET /canines/1
   # GET /canines/1.json
   def pedigree
-<<<<<<< HEAD
-    # Father
-    if Canine.exists?(id: @canine.lft)
-      @father = Canine.find(@canine.lft)
-    else
+# <<<<<<< HEAD
+#     # Father
+#     if Canine.exists?(id: @canine.lft)
+#       @father = Canine.find(@canine.lft)
+#     else
 
-    end
-    # Mother
-    if Canine.exists?(id: @canine.rgt)
-      @mother = Canine.find(@canine.rgt)
-    else
+#     end
+#     # Mother
+#     if Canine.exists?(id: @canine.rgt)
+#       @mother = Canine.find(@canine.rgt)
+#     else
       
-=======
+# =======
     if !@canine.lft.nil? or !@canine.rgt.nil?
       @father = Canine.find(@canine.lft)
       
@@ -90,7 +90,7 @@ class Admin::CaninesController < ApplicationController
             @father_paternal_great_grandmother = Canine.find(@maternal_grandmother.rgt)
           end
       end
->>>>>>> 9f5d0e1e9f1ae3b2a815194d085346ae795fa609
+# >>>>>>> 9f5d0e1e9f1ae3b2a815194d085346ae795fa609
     end
     
     
