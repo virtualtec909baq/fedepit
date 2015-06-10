@@ -15,7 +15,7 @@
           <li>
             <a href="<%= root_path%>"><%=t ('.home')%></a>
           </li>
-          <li class="active"><%=t ('.article')%></li>
+          <li class="active"><%=t ('.pedigree')%></li>
         </ol>
       </div>
     </div>
@@ -27,11 +27,11 @@
       <div class="row">
         <%= search_form_for @search, url: canines_path do |f|%>   
         <div class="col-md-4">
-          <label>Nombre O LOF</label>
+          <label>Nombre o LOF</label>
           <%= f.search_field(:name_or_lof_cont, class: 'form-control')%>
         </div>
         <div class="col-md-4">
-          <%= f.submit :class =>"btn btn btn-primary btn-block"%>
+          <%=  f.submit :class =>"btn btn btn-primary btn-block"%>
         </div>
         <div class="col-md-4">
           <%= link_to t('.clear'), request.path, class:"btn btn-danger btn_white btn-block"%>

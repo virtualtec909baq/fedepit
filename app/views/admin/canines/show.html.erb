@@ -2,10 +2,10 @@
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-4">
-       <%if @canine.images.last.blank? %>
-         <img alt="" class="img-responsive" src="http://placehold.it/350x350">
+        <%if @canine.images.last.blank? %>
+        <img alt="" class="img-responsive" src="http://placehold.it/350x350">
         <%else%>
-          <img alt="" class="img-responsive" src="<%= @canine.images.last.file%>">
+        <img alt="" class="img-responsive" src="<%= @canine.images.last.file%>">
         <%end%>
       </div>
       <div class="col-md-8">
@@ -28,7 +28,7 @@
           <div class="col-md-12">
             <span>Criadero:</span>
             <%-if !@canine.breeder_id.blank?%>
-              <span><%= @canine.breeder.name_breed%> </span>
+            <span><%= @canine.breeder.name_breed%> </span>
             <%end%> 
           </div>
           <br>
@@ -40,24 +40,24 @@
           <div class="col-md-12">
             <span>Propietario:</span>
             <%-if !@canine.breeder_id.blank?%>
-              <span><%= @canine.breeder.name%> </span>
+            <span><%= @canine.breeder.name%> </span>
             <%end%>
           </div>
           <br>
           <div class="col-md-12">
             <span>Color:</span>
-             <%-if !@canine.color_id.blank?%>
-              <span><%= @canine.color.name%> </span>
+            <%-if !@canine.color_id.blank?%>
+            <span><%= @canine.color.name%> </span>
             <%end%>
           </div>
           <br>
           <div class="col-md-12">
             <span>Raza:</span>
             <%-if !@canine.race_id.blank?%>
-              <span><%= @canine.race.name%> </span>
+            <span><%= @canine.race.name%> </span>
             <%end%>
           </div>
-          
+
           <div class="col-md-3">
             <a role="button" href="<%= admin_pedigree_path(@canine)%>" class="btn btn-lg btn-success btn-outlined btn-block">Ver Pedigree</a>
           </div>
@@ -66,11 +66,14 @@
 
           </div>
           <div class="col-md-3">
-              <%= link_to "Modificar", edit_admin_canine_path(@canine), :class =>"btn  btn-lg btn-info btn-outlined btn-block" %>
+            <%= link_to "Modificar", edit_admin_canine_path(@canine), :class =>"btn  btn-lg btn-info btn-outlined btn-block" %>
           </div>
           <div class="col-md-3">
+            <%- if @canine.feature%>
+              <%= link_to "Metter", new_admin_feature_path(canine_id: @canine.id), :class =>"btn  btn-lg btn-warning btn-outlined btn-block" %>
+            <%else%>
             <%= link_to "Metter", new_admin_feature_path(canine_id: @canine.id), :class =>"btn  btn-lg btn-warning btn-outlined btn-block" %>
-
+            <% end %>
           </div>
         </div>
       </div>
@@ -82,15 +85,15 @@
     <div class="col-lg-12">
       <div data-example-id="togglable-tabs" role="tabpanel" class="bs-example bs-example-tabs">
         <ul role="tablist" class="nav nav-tabs" id="myTab">
-          
+
           <li class="active" role="presentation"><a aria-expanded="true" aria-controls="home" data-toggle="tab" role="tab" id="home-tab" href="#home">Hijo</a></li>
-          
+
           <li role="presentation"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#profile">Hermanos</a></li>
-          
+
           <li role="presentation"><a aria-controls="profile2" data-toggle="tab" id="profile2-tab" role="tab" href="#profile2">Premios</a></li>
-          
+
           <li role="presentation"><a aria-controls="profile3" data-toggle="tab" id="profile3-tab" role="tab" href="#profile3">Meteer</a></li>
-          
+
           <li role="presentation"><a aria-controls="profile4" data-toggle="tab" id="profile4-tab" role="tab" href="#profile4">Galeria de Imagenes</a></li>
         </ul>
         <!-- tabs -->

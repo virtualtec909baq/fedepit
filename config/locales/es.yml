@@ -73,3 +73,10 @@ es:
       my_breed3: "Comparte tu arte en tus redes sociales"
       my_breed4: "Crear tu perfil como criador"
       my_breed5: "Descargala ya en google play y play store"
+  canine:
+    index:
+      home: "Inicio"
+      pedigree: "Pedigree"
+      name: "Nombre o LOF"
+      search: "Buscar"
+      clear: "Limpiar"
