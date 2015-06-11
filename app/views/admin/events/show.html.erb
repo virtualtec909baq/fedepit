@@ -1,26 +1,39 @@
-
-
-<p>
-  <strong>Type event:</strong>
-  <%= @event.type_event_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-
-<p>
-  <strong>Place:</strong>
-  <%= @event.place %>
-</p>
+<div class="row">
+  <div class='col-md-9'>
+    <%= link_to "Editar Eventos", edit_admin_event_path(@event), :class => "btn btn-primary"%>
+    <div class="blog-info-prod">
+      <div class="pull-right">
+        <h5><i class="fa fa-clock-o"></i> <%= @event.created_at.strftime('%b  %d  %Y')%></h5>
+      </div>
+      <div class="page-header">
+        <h1><%= @event.name%></h1>
+      </div>
+      <a href="#">
+        <%if @event.img.blank?%>
+          <img src="http://placehold.it/1000x500" class="img-responsive" alt=""/>
+        <%else%>
+          <img alt="" class="img-responsive" src="<%= @event.img%>">
+        <%end%>
+      </a>
+      <br>
+      <h5>Lugar: <%= @event.place%></h5>
+      <h5>Fecha: <%= @event.date.strftime('%b  %d  %Y')%></h5>
+      <p class="blog-desc-prod"><%= @event.description%></p>
+    </div>
+  </div>
+  <div class='col-md-3'>
+    <div class="blog-info-prod">
+      <h2 class="t-title-office"><span><%= t('.Ultimos Eventos')%></span></h2>
+      <ul class='post-lateral'>
+       <% @events.each do |event| %>
+        <li>
+          <div>
+            <p><%= event.name %></p><p class='post-data'> <%= @event.created_at.strftime('%b  %d  %Y') %></p>
+            <%= link_to t('.seguir leyendo'), admin_event_path(event)%>
+          </div>
+        </li>
+       <% end %>
+      </ul>
+    </div>    
+  </div> 
+</div>
