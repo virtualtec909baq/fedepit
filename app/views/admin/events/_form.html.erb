@@ -9,28 +9,28 @@
       <div class="modal-body">
       <%= form_for @event , url: admin_events_path(@event) , method: :post do |f| %>
       <div class="field">
-        <%= f.label :type %><br>
+        <%= f.label :Tipo_Evento %><br>
          <%= f.collection_select :type_event_id, TypeEvent.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
       </div>
       <div class="field">
-        <%= f.label :name %><br>
+        <%= f.label :Nombre %><br>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
       <div class="field">
-        <%= f.label :place %><br>
+        <%= f.label :Lugar %><br>
         <%= f.text_field :place , class: 'form-control' %>
       </div>
       <div class="field">
-        <%= f.label :img %><br>
-        <%= f.file_field :img %>
+        <%= f.label :Descripción %><br>
+        <%= f.text_field :description , class: 'form-control'%>
       </div>
       <div class="field">
-        <%= f.label :date %><br>
+        <%= f.label :Fecha %><br>
         <%= f.date_select :date, class: 'form-control'  %>
       </div>
       <div class="field">
-        <%= f.label :description %><br>
-        <%= f.text_field :description , class: 'form-control'%>
+        <%= f.label :Imagen %><br>
+        <%= f.file_field :img %>
       </div>
       <div class="actions">
         <%= f.submit :class =>"btn btn-primary btn-block" %>

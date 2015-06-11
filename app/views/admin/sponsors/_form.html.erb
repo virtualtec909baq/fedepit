@@ -9,7 +9,7 @@
       <div class="modal-body">
         <%= form_for @sponsor , url: admin_sponsors_path(@sponsor) , method: :post do |f| %>
         <div class="field">
-          <%= f.label :name %><br>
+          <%= f.label :Nombre %><br>
           <%= f.text_field :name, class: 'form-control' %>
         </div>
         <div class="field">
@@ -17,7 +17,7 @@
           <%= f.text_field :url , class: 'form-control' %>
         </div>
         <div class="field">
-          <%= f.label :image %><br>
+          <%= f.label :Imagen %><br>
           <%= f.file_field :image %>
         </div>
 

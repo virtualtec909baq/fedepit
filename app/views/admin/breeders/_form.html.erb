@@ -1,35 +1,35 @@
 <div class="modal-body">
   <%= form_for :breeder , url: admin_breeders_path(@breeder), method: :post do |f| %>
   <div class="field">
-    <%= f.label :type %><br>
+    <%= f.label :Tipo_Criador %><br>
     <%= f.collection_select :type_breeder_id, TypeBreeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :Nombre %><br>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label :Telefono %><br>
     <%= f.text_field :phone, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :Correo %><br>
     <%= f.text_field :email, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :country %><br>
+    <%= f.label :Pais %><br>
     <%= f.text_field :country, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :city %><br>
+    <%= f.label :Ciudad %><br>
     <%= f.text_field :city, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :adrress %><br>
+    <%= f.label :Direeción %><br>
     <%= f.text_field :adrress, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :name_breed %><br>
+    <%= f.label :Nombre_Criadero %><br>
     <%= f.text_field :name_breed, class: 'form-control' %>
   </div>
   <div class="field">
@@ -49,7 +49,7 @@
     <%= f.text_field :web, class: 'form-control' %>
   </div>  
   <div class="field">
-    <%= f.label :img %><br>
+    <%= f.label :Imagen %><br>
     <%= f.file_field :img %>
   </div>
   <div class="actions">

@@ -12,15 +12,15 @@
 <table class="table table-striped table-hover table-bordered">
   <thead>
     <tr>
-      <th class="center">Nombre</th>
-      <th class="center"><%= sort_link @search, :race_id, "race_id"%></th>
-      <th class="center"><%= sort_link @search, :breeder_id, "breeder_id"%></th>
+      <th class="center"><%= sort_link @search, :name, "Nombre"%></th>
+      <th class="center"><%= sort_link @search, :race_id, "Raza"%></th>
+      <th class="center"><%= sort_link @search, :breeder_id, "Criador"%></th>
       <th class="center">Lof</th>
       <th class="center">Genero</th>
       <th class="center">Lof Padre</th>
       <th class="center">Lof Madre</th>
       <th class="center">Calificacion</th>
-      <th class="center"><%= sort_link @search, :color_id, "color_id"%></th>
+      <th class="center"><%= sort_link @search, :color_id, "Color"%></th>
       <th class="center"><%= sort_link @search, :date, "Nacimiento"%></th>
       <th colspan="2"></th>
     </tr>

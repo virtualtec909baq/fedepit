@@ -2,7 +2,7 @@
 	<div class="row">
 	<%= search_form_for @search, url: admin_videos_path do |f|%>		
 		<div class="col-md-6">
-			<label>Tilte</label>
+			<label>Nombre</label>
 			<%= f.search_field(:title_cont, class: 'form-control')%>
 		</div>
 		<div class="col-md-2">
