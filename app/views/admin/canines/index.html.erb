@@ -29,14 +29,14 @@
     <% @canines.each do |canine| %>
     <tr >
       <td class="center"><%= link_to canine.name, admin_canine_path(canine), :class => "link_to"  %></td>
-      <td class="center"><%= canine.race %></td>
-      <td class="center"><%= canine.breeder %></td>
+      <td class="center"><%= canine.race.name %></td>
+      <td class="center"><%= canine.breeder.name %></td>
       <td class="center"><%= canine.lof %></td>
       <td class="center"><%= gender(canine.gender) %></td>
       <td class="center"><%= canine.father_lof %></td>
       <td class="center"><%= canine.mother_lof %></td>
       <td class="center"><%= canine.rate %></td>
-      <td class="center"><%= canine.color %></td>
+      <td class="center"><%= canine.color.name %></td>
       <td class="center"><%= canine.birth %></td>
       <td class="center"><%= link_to edit_admin_canine_path(canine) do %>
         <i class="fa fa-edit"></i>

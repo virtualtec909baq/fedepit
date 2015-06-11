@@ -8,9 +8,7 @@ class Canine < ActiveRecord::Base
 
 	has_many :events, :through => :canine_events
   	has_many :canine_events
-
-
-
+  	
 	# default for will_paginate
 	self.per_page = 15
 
@@ -19,17 +17,12 @@ class Canine < ActiveRecord::Base
 	
 	# validates
 	validates_uniqueness_of :lof
-	# validates :race_id, presence: true 
-	# validates :breeder_id, presence: true 
-	# validates :lof, presence: true 
-	# validates :chip, presence: true 
-	# validates :name, presence: true 
-	# validates :gender, presence: true 
-	# validates :color_id, presence: true 
-	# validates :father_lof, presence: true 
-	# validates :mother_lof, presence: true 
-	# validates :rate, presence: true 
-	# validates :birth, presence: true 
-	# validates :death, presence: true 
+	validates :race_id, presence: true 
+	validates :breeder_id, presence: true 
+	validates :lof, presence: true 
+	validates :name, presence: true 
+	validates :gender, presence: true 
+	validates :color_id, presence: true 
+	validates :birth, presence: true 
 
 end
