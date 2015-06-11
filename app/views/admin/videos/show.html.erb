@@ -21,32 +21,16 @@
   </div>
   <div class='col-md-3'>
     <div class="blog-info-prod">
-      <h2 class="t-title-office"><span>Recent post</span></h2>
+      <h2 class="t-title-office"><span>Ultimos Videos</span></h2>
       <ul class='post-lateral'>
+        <% @videos.each do |video| %>
         <li>
-          <img src='images/product/img1.jpg' alt='' />
           <div>
-            <p>Business Cards Design</p><p class='post-data'>Dec 12 2014/ 2 comments</p>
+            <p><%= video.title %></p><p class='post-data'> <%= @video.created_at.strftime('%b  %d  %Y') %></p>
+            <%= link_to t('.Ir al video'), admin_article_path(video)%>
           </div>
         </li>
-        <li>
-          <img src='images/product/img2.jpg' alt='' />
-          <div>
-            <p>World Tecnology</p><p class='post-data'>Dec 02 2014/ 2 comments</p>
-          </div>
-        </li>
-        <li>
-          <img src='images/product/img3.jpg' alt='' />
-          <div>
-            <p>Switch Design CO.</p><p class='post-data'>Dec 02 2014/ 2 comments</p>
-          </div>
-        </li>
-        <li>
-          <img src='images/product/img4.jpg' alt='' />
-          <div>
-            <p>Marketing Trip Forest</p><p class='post-data'>Dec 02 2014/ 2 comments</p>
-          </div>
-        </li>
+       <% end %>
       </ul>
     </div>    
   </div>

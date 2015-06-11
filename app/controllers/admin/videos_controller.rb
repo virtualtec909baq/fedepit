@@ -16,6 +16,7 @@ class Admin::VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+    @videos = Video.last(4).reverse 
   end
 
   # GET /videos/new
