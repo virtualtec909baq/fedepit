@@ -27,13 +27,17 @@
                 <th class="center">Nombre</th>
                 <th class="center">Comentario</th>
                 <th class="center">Correo</th>
-                <th class="center">N. Reporte</th>
-                <th colspan="1"></th>
+                <th class="center">N. Denuncias</th>
+                <th colspan="1" class="center">Aprovado</th>
               </tr>
             </thead>
             <tbody>
             <% @comments.each do |comment| %>
-              <tr>
+              <%- if comment.status %>
+                <tr class="danger">
+              <else>
+                <tr>
+              <%end%>
                 <td class="center"><%= comment.name_user%></td>
                 <td class="center"><%= comment.message%></td>
                 <td class="center"><%= comment.email_user%></td>

@@ -36,11 +36,11 @@
         <i class="fa fa-edit"></i>
         <%end%>
       </td>
-      <td class="center"><%= link_to admin_publicity_path(publicity), method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <td class="center"><%= link_to admin_publicity_path(publicity), method: :delete, data: { confirm: 'Desea eliminar esta publicidad?' } do %>
         <i class="fa fa-trash-o"></i>
         <%end%>
       </td>
-      <td class="center"><%= link_to admin_change_status_publicities_path(publicity), method: :put, data: { confirm: 'Are you sure?' } do %>
+      <td class="center"><%= link_to admin_change_status_publicities_path(publicity), method: :put, data: { confirm: 'Desea cambiar el estatus?' } do %>
         <i class="fa fa-check"></i>
         <%end%>
       </td>

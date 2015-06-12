@@ -28,9 +28,7 @@ class Admin::SponsorsController < ApplicationController
     @sponsor = Sponsor.new(sponsor_params)
     respond_to do |format|
       if @sponsor.save
-        flash[:notice] = 'Patrocinador creado'
-        format.html { redirect_to admin_sponsors_path }
-        format.js {}
+        format.html { redirect_to admin_sponsors_path, notice: 'Sponsor was successfully created.' }
         format.json { render :show, status: :created, location: @sponsor }
       else
         format.html { render :new }
@@ -81,6 +79,6 @@ class Admin::SponsorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sponsor_params
-      params.require(:sponsor).permit(:image, :status, :url, :name)
+      params.require(:sponsor).permit(:image, :status, :url, :name, :email)
     end
 end

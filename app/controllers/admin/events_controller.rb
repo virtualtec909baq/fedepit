@@ -17,6 +17,7 @@ class Admin::EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @events = Event.last(4).reverse 
   end
 
   # GET /events/new

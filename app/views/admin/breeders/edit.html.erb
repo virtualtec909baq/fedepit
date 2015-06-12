@@ -9,35 +9,35 @@
 <div class="modal-body">
 	<%= form_for @breeder , url: admin_breeder_path(@breeder), :id => @breeder.id , method: :put do |f| %>
 	<div class="field">
-		<%= f.label :type %><br>
+		<%= f.label :Tipo_Criardor %><br>
 		<%= f.collection_select :type_breeder_id, TypeBreeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
 	</div>
  <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :Nombre %><br>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label :Telefono %><br>
     <%= f.text_field :phone, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :Correo %><br>
     <%= f.text_field :email, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :country %><br>
+    <%= f.label :Pais %><br>
     <%= f.text_field :country, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :city %><br>
+    <%= f.label :Ciudad %><br>
     <%= f.text_field :city, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :adrress %><br>
+    <%= f.label :Dirección %><br>
     <%= f.text_field :adrress, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :name_breed %><br>
+    <%= f.label :Nombre_Criadero %><br>
     <%= f.text_field :name_breed, class: 'form-control' %>
   </div>
   <div class="field">
@@ -57,8 +57,12 @@
     <%= f.text_field :web, class: 'form-control' %>
   </div>
     <div class="field">
-    <%= f.label :img %><br>
-    <%= f.file_field :img %>
+    <%- if f.object && f.object.img && f.object.img%>
+      <%= image_tag(f.object.img.to_s, :transformation => 'hint', alt: f.object.img.to_s)%>
+      <%= f.file_field :img %>
+      <%else%>
+      <%= f.file_field :img %>
+      <%end %>
   </div>
 	<div class="actions">
 		<%= f.submit :class =>"btn btn-primary btn-block" %>
