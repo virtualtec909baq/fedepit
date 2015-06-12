@@ -1,4 +1,5 @@
 class Admin::CaninesController < ApplicationController
+  include ApplicationHelper
   autocomplete :canine, :name, :extra_data => [:id]
   autocomplete :canine, :lof, :full => true
   before_action :authenticate_user!
@@ -41,14 +42,12 @@ class Admin::CaninesController < ApplicationController
         @children_canine_1 = children(@canine_1.id)
         @children_canine_2 = children(@canine_2.id)
         if  !@children_canine_1.empty? and !@children_canine_2.empty?
-          @children_canine_1.each do |child|
-          end
-          @children_canine_2.each do |child|
-          end
+          @total_children_canine_1 = @children_canine_1.count
+          @total_children_canine_2 = @children_canine_2.count
         end
-        format.html { redirect_to admin_realizarcruce_path() , notice: 'Se Creado un Metter' }\
+        format.html { redirect_to admin_realizarcruce_path(:status => true) , notice: 'Se Creado un Metter'}
       else
-        format.html { redirect_to admin_realizarcruce_path() , notice: 'no se puede crear metter' }
+        format.html { redirect_to admin_realizarcruce_path() , notice: 'no se puede crear metter'}
       end
     end
   end
