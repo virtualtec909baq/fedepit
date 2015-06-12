@@ -1,0 +1,265 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div class="form-group container m40px">
+			<h3> Realizar Cruce</h3>
+	    	<hr>
+	    	<%= form_for :merge , url: admin_enviar_cruce_path, method: :post do |f| %>
+				<label>Nombre Primer Ejemplar</label>
+				<%= autocomplete_field_tag('canine_name', '', autocomplete_canine_name_admin_canines_path, :id_element => '#merge_canine1', :class => "form-control")%>
+				<%= f.hidden_field :canine_id, id: "merge_canine1"%>
+				  <br>
+				<label>Nombre Segundo Ejemplar</label>
+				<%= autocomplete_field_tag('canine_name', '', autocomplete_canine_name_admin_canines_path, :id_element => "#merge_canine2", :class => "form-control")%>
+				<%= f.hidden_field :canine_id_2, id: "merge_canine2"%>
+				<%= f.submit :class =>"btn btn-primary btn-block" %>
+			<%end%>
+			<hr>
+		</div>
+			<div class="nuevoperro">
+				<div class="col-lg-12">
+					<div class="col-lg-12">
+						<br>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Cabeza<br></h3>
+							</div>
+							<div class="panel-body">
+								<div class="field col-xs-4">
+									Craneo ancho:
+									20.0
+								</div>
+								<div class="field col-xs-4">
+									Craneo alto:
+									10.0
+								</div>
+								<div class="field col-xs-4">
+									Diametro del Craneo: 
+									2.0
+								</div>
+								<div class="field col-xs-4">
+									Longitud de la cabeza: 
+									7.0
+								</div>
+								<div class="field col-xs-4">
+									Longitud del craneo:
+									34.0
+								</div>
+								<div class="field col-xs-4">
+									Cabeza alto:
+									6.0
+								</div>
+								<div class="field col-xs-4">
+									Porcentaje Craneo:
+									7.0
+								</div>
+								<div class="field col-xs-4">
+									Alto Ocico con respecto al craneo Craneo:
+									76.0
+								</div>
+								<div class="field col-xs-4">
+									Alto Ocico:
+									3.0
+								</div>
+								<div class="field col-xs-4">
+									Ocico Porcentaje:
+									4.0
+								</div>
+								<div class="field col-xs-4">
+									Ocico alto:
+									3.0
+								</div>
+								<div class="field col-xs-4">
+									Insercion oido:
+									12
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Mordida<br></h3>
+							</div>
+							<div class="panel-body">
+								<div class="field col-xs-4">
+									Pinza:
+									false
+								</div>
+								<div class="field col-xs-4">
+									Cruzada interior:
+									true
+								</div>
+								<div class="field col-xs-4">
+									Prognato: 
+									false
+								</div>
+								<div class="field col-xs-4">
+									Enognato: 
+									false
+								</div>
+								<div class="field col-xs-4">
+									Tijera invertuda:
+									false
+								</div>
+								<div class="field col-xs-4">
+									Correcta:
+									false
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Piezas dentales<br></h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="field col-xs-6">
+											Completo:
+											false
+										</div>
+										<div class="field col-xs-6">
+											Ausencia de incisivo:
+											true
+										</div>
+										<div class="field col-xs-6">
+											Ausencia de canino: 
+											false
+										</div>
+										<div class="field col-xs-6">
+											Ausencia de molar: 
+											false
+										</div>
+										<div class="field col-xs-6">
+											Ausencia de premolar:
+											true
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<img width="90%" height="90%" alt="" src="/assets/fotoMetter.png">
+									</div>
+								</div>    
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Calidad muscular<br></h3>
+							</div>
+							<div class="panel-body">
+								<div class="field col-xs-4">
+									Musculatura General:
+									89.0
+								</div>
+								<div class="field col-xs-4">
+									Maseteros o Pronunciación de Mejillas:
+									10.0
+								</div>
+								<div class="field col-xs-4">
+									Músculos parietales: 
+									3.0
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Cuerpo<br></h3>
+							</div>
+							<div class="panel-body">
+								<div class="field col-xs-4">
+									Largo:
+									5.0
+								</div>
+								<div class="field col-xs-4">
+									Alzada:
+									5.0
+								</div>
+								<div class="field col-xs-4">
+									Diametro tórax: 
+									19.0
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Datos parentezco<br></h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="field col-xs-4">
+											Recomendados para la crianza:
+											false
+										</div>
+										<div class="field col-xs-4">
+											Títulos de trabajo:
+											false
+										</div>
+										<div class="field col-xs-4">
+											Pruebas de resistencia superadas: 
+											true
+										</div>
+										<div class="field col-xs-4">
+											Prueba de perro seguro en el tráfico y de sociabilidad: 
+											false
+										</div>
+										<div class="field col-xs-4">
+											Campeón:
+											false
+											<br>
+											<br>
+										</div>
+										<div class="field col-xs-4">
+											Defectos en la mordida:
+											false
+											<br>
+											<br>
+										</div>
+										<div class="field col-xs-4">
+											Falto de piezas dentales:
+											false
+										</div>
+										<div class="field col-xs-4">
+											Aplazamos desviados: 
+											true
+										</div>
+										<div class="field col-xs-4">
+											Entropión: 
+											true
+										</div>
+										<div class="field col-xs-4">
+											Ectropión:
+											false
+										</div>
+										<div class="field col-xs-4">
+											Displacía de codo:
+											false
+										</div>
+										<div class="field col-xs-4">
+											Displacía de cadera: 
+											false
+										</div>
+										<div class="field col-xs-4">
+											Problemas de comportamiento: 
+											false
+										</div>
+										<div class="field col-xs-4">
+											Defectos de cola:
+											false
+										</div>
+									</div>
+								</div>    
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>

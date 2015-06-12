@@ -3,4 +3,7 @@ class Admin::HomeController < ApplicationController
 
 	def index
 	end
+	def realizarcruce
+    	@canine = Canine.new
+  	end
 end

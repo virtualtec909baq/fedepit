@@ -65,14 +65,11 @@
     <div class="col-md-6">
       <br>
       <%= f.fields_for :images do |p| %>
-         <div class="field">
-           <%- if p.object && p.object.file && p.object.file%>
-            <%= image_tag(p.object.file.to_s, :transformation => 'hint', alt: p.object.file.to_s, :class => "image_file")%>
-            <%= p.file_field :file, :multiple => true, name: "images[file][]" %>
-            <%end%>
-           <br>
-         </div>
-      <% end %>
+        <div class="field">
+         <%= p.label :file %><br>
+         <%= p.file_field :file, :multiple => true, name: "images[file][]" %>
+       </div>
+     <% end %>
     </div>
     <div class="col-md-12">
       <%= f.submit :class =>"btn btn-primary btn-block" %>

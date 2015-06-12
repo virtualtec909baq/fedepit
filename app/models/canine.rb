@@ -9,8 +9,6 @@ class Canine < ActiveRecord::Base
 	has_many :events, :through => :canine_events
   	has_many :canine_events
 
-
-
 	# default for will_paginate
 	self.per_page = 15
 
@@ -32,4 +30,7 @@ class Canine < ActiveRecord::Base
 	# validates :birth, presence: true 
 	# validates :death, presence: true 
 
+	# def display_autocomplete
+	# 	self.id
+	# end
 end
