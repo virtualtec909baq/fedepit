@@ -36,13 +36,21 @@ class Admin::CaninesController < ApplicationController
   def enviar_cruce
     @canine_1 = Canine.find(params[:merge][:canine_id])
     @canine_2 = Canine.find(params[:merge][:canine_id_2])
-    # if @canine_1.feature and @canine_2.feature
-    #   @canine_1.feature.each do |feature|
-    #   end
-      respond_to do |format|
-        format.html { redirect_to admin_realizarcruce_path() , notice: 'Se Creado un Metter' }
+    respond_to do |format|
+      if has_children(@canine_1.id) and has_children(@canine_1.id)
+        @children_canine_1 = children(@canine_1.id)
+        @children_canine_2 = children(@canine_2.id)
+        if  !@children_canine_1.empty? and !@children_canine_2.empty?
+          @children_canine_1.each do |child|
+          end
+          @children_canine_2.each do |child|
+          end
+        end
+        format.html { redirect_to admin_realizarcruce_path() , notice: 'Se Creado un Metter' }\
+      else
+        format.html { redirect_to admin_realizarcruce_path() , notice: 'no se puede crear metter' }
       end
-    # end
+    end
   end
 
   # GET /canines/1/edit

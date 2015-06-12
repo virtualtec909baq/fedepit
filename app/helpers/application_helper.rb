@@ -10,6 +10,15 @@ module ApplicationHelper
 	def children(id)
 		return @children = Canine.where("(lft = ? OR rgt = ?)", id, id)
 	end
+
+	def has_children(id)
+		@children = Canine.where("(lft = ? OR rgt = ?)", id, id)
+		if !@children.empty?
+			return true
+		else
+			return false
+		end
+	end
 	
 	def siblings(id)
 		lft = Canine.find(id).lft
