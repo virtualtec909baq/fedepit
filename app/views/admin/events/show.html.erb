@@ -29,7 +29,7 @@
         <li>
           <div>
             <p><%= event.name %></p><p class='post-data'> <%= @event.created_at.strftime('%b  %d  %Y') %></p>
-            <%= link_to t('.seguir leyendo'), admin_event_path(event)%>
+            <%= link_to t('.ver evento'), admin_event_path(event)%>
           </div>
         </li>
        <% end %>
