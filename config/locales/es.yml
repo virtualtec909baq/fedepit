@@ -80,3 +80,12 @@ es:
       name: "Nombre o LOF"
       search: "Buscar"
       clear: "Limpiar"
+  activerecord:
+    attributes:
+      canine:
+        race_id: "Raza"
+        breeder_id: "Criador"
+        lof: "LOF" 
+        name: "Nombre" 
+        gende: "Genero"
+        birt: "Nacimiento"

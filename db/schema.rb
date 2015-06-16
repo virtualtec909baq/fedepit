@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612151317) do
+ActiveRecord::Schema.define(version: 20150616185337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150612151317) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "parent_id"
+    t.string   "kind"
   end
 
   add_index "canines", ["ancestry"], name: "index_canines_on_ancestry", using: :btree

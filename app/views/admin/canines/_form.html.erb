@@ -1,32 +1,34 @@
-<script type="text/javascript">
-  $(document).ready(function () {
-    toggleFields();
-    $("#age").change(function () {
-        toggleFields();
-    });
-  });
-  function toggleFields() {
-    if ($("#age").val() <= 13)
-        $("#parentPermission").show();
-    else
-        $("#parentPermission").hide();
-  }
-</script>
 <div class="row">
   <div class="col-md-12">
     <h3>Nuevo Canino</h3>
     <hr>
   </div>
   <%= form_for @canine , url: admin_canines_path(@canine) , :html => { :multipart => true } do |f| %>
+    <% if @canine.errors.any? %>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>No se puede crear este canino:</strong>
+        <ul>
+          <% @canine.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>  
+      
     <div class="col-md-12">
       <%= f.label :tipo_de_ejemplar %><br>
-      <%= f.select :gender, [["Registrar Ejemplar", "1"],["Registro Informativo", "0"]], {prompt: "Escoger Tipo"}, {class: "form-control"}%>
+      <%= f.select :kind, [["Registrar Ejemplar", "0"],["Registro Informativo", "1"]], {prompt: "Escoger Tipo"}, {class: "form-control"}%>
     </div>
     <br>
     <div class="col-md-12">
       <%= f.label :Nombre %><br>
       <%= autocomplete_field_tag('canine_name', '', autocomplete_canine_name_admin_canines_path, :id => "canine_name", :class => "form-control", :name =>"canine[name]")%>
-    <br>
+      <br>
     </div>
     <div class="col-md-3">
       <%= f.label :razas %><br>
