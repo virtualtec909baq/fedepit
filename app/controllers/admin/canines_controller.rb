@@ -44,8 +44,20 @@ class Admin::CaninesController < ApplicationController
         if  !@children_canine_1.empty? and !@children_canine_2.empty?
           @total_children_canine_1 = @children_canine_1.count
           @total_children_canine_2 = @children_canine_2.count
+          # canino_1
+          @canino_1_bite_prognato_false = @children_canine_1.joins(:feature).where(features: {bite_prognato: false}).count
+          @canino_1_bite_prognato_true = @children_canine_1.joins(:feature).where(features: {bite_prognato: true}).count
+          
+          @canine_1_prognato_true = (@canino_1_bite_prognato_false/@total_children_canine_1) * 100
+          @canine_1_prognato_false = (@canino_1_bite_prognato_true/@total_children_canine_1) * 100
+          # canino_2
+          @canino_2_bite_prognato_false = @children_canine_2.joins(:feature).where(features: {bite_prognato: false}).count
+          @canino_2_bite_prognato_true = @children_canine_2.joins(:feature).where(features: {bite_prognato: true}).count
+          
+          @canine_2_prognato_true = (@canino_2_bite_prognato_false/@total_children_canine_2) * 100
+          @canine_2_prognato_false = (@canino_2_bite_prognato_true/@total_children_canine_2) * 100
         end
-        format.html { redirect_to admin_realizarcruce_path(:status => true) , notice: 'Se Creado un Metter'}
+        format.html { redirect_to admin_realizarcruce_path(:status => true, :canine_1_prognato_true => @canine_1_prognato_true, :canine_1_prognato_false => @canine_1_prognato_false), notice: 'Se Creado un Metter'}
       else
         format.html { redirect_to admin_realizarcruce_path() , notice: 'no se puede crear metter'}
       end
