@@ -42,22 +42,10 @@ class Admin::CaninesController < ApplicationController
         @children_canine_1 = children(@canine_1.id)
         @children_canine_2 = children(@canine_2.id)
         if  !@children_canine_1.empty? and !@children_canine_2.empty?
-          @total_children_canine_1 = @children_canine_1.count
-          @total_children_canine_2 = @children_canine_2.count
-          # canino_1
-          @canino_1_bite_prognato_false = @children_canine_1.joins(:feature).where(features: {bite_prognato: false}).count
-          @canino_1_bite_prognato_true = @children_canine_1.joins(:feature).where(features: {bite_prognato: true}).count
-          
-          @canine_1_prognato_true = (@canino_1_bite_prognato_false/@total_children_canine_1) * 100
-          @canine_1_prognato_false = (@canino_1_bite_prognato_true/@total_children_canine_1) * 100
-          # canino_2
-          @canino_2_bite_prognato_false = @children_canine_2.joins(:feature).where(features: {bite_prognato: false}).count
-          @canino_2_bite_prognato_true = @children_canine_2.joins(:feature).where(features: {bite_prognato: true}).count
-          
-          @canine_2_prognato_true = (@canino_2_bite_prognato_false/@total_children_canine_2) * 100
-          @canine_2_prognato_false = (@canino_2_bite_prognato_true/@total_children_canine_2) * 100
+            bite_prognato(@children_canine_1, @children_canine_2)
         end
-        format.html { redirect_to admin_realizarcruce_path(:status => true, :canine_1_prognato_true => @canine_1_prognato_true, :canine_1_prognato_false => @canine_1_prognato_false), notice: 'Se Creado un Metter'}
+        
+        format.html { redirect_to admin_realizarcruce_path(:status => true, :canine_1_prognato_true => @@canine_1_prognato_true, :canine_1_prognato_false => @@canine_1_prognato_false, :canine_2_prognato_true => @@canine_2_prognato_true, :canine_2_prognato_false => @@canine_2_prognato_false), notice: 'Se Creado un Metter'}
       else
         format.html { redirect_to admin_realizarcruce_path() , notice: 'no se puede crear metter'}
       end
@@ -70,7 +58,6 @@ class Admin::CaninesController < ApplicationController
 
   # POST /canines
   def awards
-
     @canine_event = CanineEvent.create(canine_id: params[:awards][:canine_id], event_id: params[:awards][:event_id], position: params[:awards][:position], reward: params[:awards][:reward])
     respond_to do |format|
       if @canine_event.save
@@ -132,6 +119,24 @@ class Admin::CaninesController < ApplicationController
   end
 
   private
+    
+    def bite_prognato(children_canine_1, children_canine_2)
+        @children_canine_1 = children_canine_1
+        @children_canine_2 = children_canine_2
+        
+        @canino_1_bite_prognato_false = @children_canine_1.joins(:feature).where(features: {bite_prognato: false}).count
+        @canino_1_bite_prognato_true = @children_canine_1.joins(:feature).where(features: {bite_prognato: true}).count
+        
+        @@canine_1_prognato_true = (@canino_1_bite_prognato_false/@total_children_canine_1) * 100
+        @@canine_1_prognato_false = (@canino_1_bite_prognato_true/@total_children_canine_1) * 100
+        
+        @canino_2_bite_prognato_false = @children_canine_2.joins(:feature).where(features: {bite_prognato: false}).count
+        @canino_2_bite_prognato_true = @children_canine_2.joins(:feature).where(features: {bite_prognato: true}).count
+        
+        @@canine_2_prognato_true = (@canino_2_bite_prognato_false/@total_children_canine_2) * 100
+        @@canine_2_prognato_false = (@canino_2_bite_prognato_true/@total_children_canine_2) * 100
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_canine
       @canine = Canine.find(params[:id])
