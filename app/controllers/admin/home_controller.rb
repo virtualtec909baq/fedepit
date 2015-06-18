@@ -21,9 +21,12 @@ class Admin::HomeController < ApplicationController
 				array_2 ||= []
 				$rest_array_3 = Array.new(42) 
 				$rest_array_4 = Array.new(42)
-				$rest_array ||= []
-				i = 0
-				j = 0
+				
+				$hash = Hash.new
+				@array_num = []
+				@newhash ||= []
+				@b = Hash.new(0)
+				@array_float ||= []
 				
 				@total_canine_1 = @children_canine_1.count
 				@total_canine_2 = @children_canine_2.count
@@ -36,7 +39,6 @@ class Admin::HomeController < ApplicationController
 
 				@children_canine_2.each do |child|
 					if child.feature
-						puts child.id
 						array_2 << child.feature.as_json
 					end
 				end
@@ -53,14 +55,32 @@ class Admin::HomeController < ApplicationController
 							@percent = ((@cont.to_f/@total_canine_2) *100)
 							@a = ["#{key}", "#{@percent}"]
 							@h = Hash[*@a]
-
-							puts @h.inspect
+							$hash[index] = @h
+						elsif (index > 1 and index < 27) and value_hash == false
+							@cont = $rest_array_3[index]
+							@percent = ((@cont.to_f/@total_canine_2) *100)
+							@a = ["#{key}", "#{@percent}"]
+							@h = Hash[*@a]
+							$hash[index] = @h
+						elsif index > 29 and index < 46 
+							@create_array_float = ["#{key}", "#{value_hash}"]
+							@hash_float = Hash[*@create_array_float]
+							@newhash << @hash_float
 						end
 					end
-					# $rest_array << @h
 				end
-				
-
+				@newhash.each do |v|
+					@b[v] += 1
+				end 
+				# puts @b.inspect
+				@b.each do |k, v|
+					average = (v.to_f/@total_canine_2) * 100
+					k.map {|k,str|@array_float << ["#{k} #{str}", "#{average}"]}
+					# k.each do |key|
+					# 	puts key
+					# end
+				end
+				puts @array_float.inspect
 				format.html { redirect_to admin_realizarcruce_path(:status => true), notice: 'Se Creado un Metter'}
 				else
 				format.html { redirect_to admin_realizarcruce_path() , notice: 'no se puede crear metter'}
