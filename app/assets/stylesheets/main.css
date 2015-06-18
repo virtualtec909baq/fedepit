@@ -6115,3 +6115,11 @@ ul.tree li+li:before
 .image_file {
     width: 30%;
 }
+.col-lg-6 > span {
+    font-size: 16px;
+    font-weight: 300;
+}
+.col-lg-6 > span:nth-child(2n+1) {
+    display: block;
+    font-weight: bold;
+}

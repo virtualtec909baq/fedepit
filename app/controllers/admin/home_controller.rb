@@ -27,7 +27,7 @@ class Admin::HomeController < ApplicationController
 				@array_num = []
 				@newhash ||= []
 				@b = Hash.new(0)
-				$array_float ||= []
+				$array_float = []
 				
 				@total_canine_1 = @children_canine_1.count
 				@total_canine_2 = @children_canine_2.count
@@ -75,7 +75,7 @@ class Admin::HomeController < ApplicationController
 				end 
 				@b.each do |k, v|
 					average = (v.to_f/@total_canine_2) * 100
-					k.map {|k,str|$array_float << ["#{k} #{str}", "#{number_to_percentage(average, precision: 0)  }"]}
+					k.map {|k,str|$array_float << ["#{k} #{str}:", "#{number_to_percentage(average, precision: 0)}"]}
 				end
 				format.html { redirect_to admin_realizarcruce_path(:status => true), notice: 'Se Creado un Metter'}
 				else
