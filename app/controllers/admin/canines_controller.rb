@@ -1,5 +1,4 @@
 class Admin::CaninesController < ApplicationController
-  include ApplicationHelper
   autocomplete :canine, :name, :extra_data => [:id]
   autocomplete :canine, :lof, :full => true
   before_action :authenticate_user!
@@ -32,24 +31,6 @@ class Admin::CaninesController < ApplicationController
   def new
     @canine = Canine.new
     @image = @canine.images.build
-  end
-
-  def enviar_cruce
-    @canine_1 = Canine.find(params[:merge][:canine_id])
-    @canine_2 = Canine.find(params[:merge][:canine_id_2])
-    respond_to do |format|
-      if has_children(@canine_1.id) and has_children(@canine_1.id)
-        @children_canine_1 = children(@canine_1.id)
-        @children_canine_2 = children(@canine_2.id)
-        if  !@children_canine_1.empty? and !@children_canine_2.empty?
-            bite_prognato(@children_canine_1, @children_canine_2)
-        end
-        
-        format.html { redirect_to admin_realizarcruce_path(:status => true, :canine_1_prognato_true => @@canine_1_prognato_true, :canine_1_prognato_false => @@canine_1_prognato_false, :canine_2_prognato_true => @@canine_2_prognato_true, :canine_2_prognato_false => @@canine_2_prognato_false), notice: 'Se Creado un Metter'}
-      else
-        format.html { redirect_to admin_realizarcruce_path() , notice: 'no se puede crear metter'}
-      end
-    end
   end
 
   # GET /canines/1/edit
@@ -119,23 +100,6 @@ class Admin::CaninesController < ApplicationController
   end
 
   private
-    
-    def bite_prognato(children_canine_1, children_canine_2)
-        @children_canine_1 = children_canine_1
-        @children_canine_2 = children_canine_2
-        
-        @canino_1_bite_prognato_false = @children_canine_1.joins(:feature).where(features: {bite_prognato: false}).count
-        @canino_1_bite_prognato_true = @children_canine_1.joins(:feature).where(features: {bite_prognato: true}).count
-        
-        @@canine_1_prognato_true = (@canino_1_bite_prognato_false/@total_children_canine_1) * 100
-        @@canine_1_prognato_false = (@canino_1_bite_prognato_true/@total_children_canine_1) * 100
-        
-        @canino_2_bite_prognato_false = @children_canine_2.joins(:feature).where(features: {bite_prognato: false}).count
-        @canino_2_bite_prognato_true = @children_canine_2.joins(:feature).where(features: {bite_prognato: true}).count
-        
-        @@canine_2_prognato_true = (@canino_2_bite_prognato_false/@total_children_canine_2) * 100
-        @@canine_2_prognato_false = (@canino_2_bite_prognato_true/@total_children_canine_2) * 100
-    end
     
     # Use callbacks to share common setup or constraints between actions.
     def set_canine

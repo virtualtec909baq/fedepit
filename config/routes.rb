@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     put "publicities/:id/change_status", to: "publicities#change_status", as: "change_status_publicities"
     post "canines/awards", to: "canines#awards", as: "awards"
     get "home/realizarcruce", to:"home#realizarcruce", as: "realizarcruce"
-    post "canines/enviar_cruce", to: "canines#enviar_cruce", as: "enviar_cruce"
+    post "home/enviar_cruce", to: "home#enviar_cruce", as: "enviar_cruce"
   end
 
 end
