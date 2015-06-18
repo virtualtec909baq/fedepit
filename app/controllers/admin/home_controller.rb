@@ -23,11 +23,19 @@ class Admin::HomeController < ApplicationController
 				$rest_array_3 = Array.new(42) 
 				$rest_array_4 = Array.new(42)
 				
+				$hash_1 = Hash.new
+				@array_num_1 = []
+				@newhash_1 ||= []
+				@b_1 = Hash.new(0)
+				$array_float_1 = []
+
 				$hash = Hash.new
 				@array_num = []
 				@newhash ||= []
 				@b = Hash.new(0)
-				$array_float ||= []
+				$array_float = []
+
+
 				
 				@total_canine_1 = @children_canine_1.count
 				@total_canine_2 = @children_canine_2.count
@@ -43,7 +51,42 @@ class Admin::HomeController < ApplicationController
 						array_2 << child.feature.as_json
 					end
 				end
-				
+				#---------------CALCULAR METTER CANINO UNO----------------------
+				array_1.each_with_index do |(value),index_1|
+					value.each_with_index do |(key,value_hash),index|
+						if index > 0 and index < 27
+							if $rest_array_4[index] == nil 
+								$rest_array_4[index] = 0
+							end
+						end
+						if (index > 1 and index < 27) and value_hash == true
+							@cont = $rest_array_4[index]+=1
+							@percent = ((@cont.to_f/@total_canine_1) *100)
+							@a_1 = ["#{key}", "#{@percent}"]
+							@h_1 = Hash[*@a_1]
+							$hash_1[index] = @h_1
+						elsif (index > 1 and index < 27) and value_hash == false
+							@cont = $rest_array_4[index]
+							@percent = ((@cont.to_f/@total_canine_1) *100)
+							@a_1 = ["#{key}", "#{@percent}"]
+							@h_1 = Hash[*@a_1]
+							$hash_1[index] = @h_1
+						elsif index > 29 and index < 46 
+							@create_array_float_1 = ["#{key}", "#{value_hash}"]
+							@hash_float_1 = Hash[*@create_array_float_1]
+							@newhash_1 << @hash_float_1
+						end
+					end
+				end
+				@newhash_1.each do |v|
+					@b_1[v] += 1
+				end 
+				@b_1.each do |k, v|
+					average = (v.to_f/@total_canine_1) * 100
+					k.map {|k,str|$array_float_1 << ["#{k} #{str}", "#{number_to_percentage(average, precision: 0)  }"]}
+				end
+
+				#---------------CALCULAR METTER CANINO DOS----------------------
 				array_2.each_with_index do |(value),index_1|
 					value.each_with_index do |(key,value_hash),index|
 						if index > 0 and index < 27
