@@ -1,6 +1,7 @@
 class Admin::HomeController < ApplicationController
 	before_action :authenticate_user!
 	include ApplicationHelper
+	include ActionView::Helpers::NumberHelper
 
 	def index
 	end
@@ -74,7 +75,7 @@ class Admin::HomeController < ApplicationController
 				end 
 				@b.each do |k, v|
 					average = (v.to_f/@total_canine_2) * 100
-					k.map {|k,str|$array_float << ["#{k} #{str}", "#{average}"]}
+					k.map {|k,str|$array_float << ["#{k} #{str}", "#{number_to_percentage(average, precision: 0)  }"]}
 				end
 				format.html { redirect_to admin_realizarcruce_path(:status => true), notice: 'Se Creado un Metter'}
 				else
