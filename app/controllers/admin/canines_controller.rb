@@ -4,8 +4,7 @@ class Admin::CaninesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree]
   before_action :init, only: [:create]
-  before_action :set_lof, only: [:create]
-
+  
   # GET /canines
   # GET /canines.json
   def index
@@ -90,7 +89,7 @@ class Admin::CaninesController < ApplicationController
   # DELETE /canines/1
   # DELETE /canines/1.json
 
-    def destroy
+  def destroy
     @canine.destroy
     respond_to do |format|
       flash[:notice] = 'Ejemplar eliminado'
@@ -106,14 +105,6 @@ class Admin::CaninesController < ApplicationController
       @canine = Canine.find(params[:id])
     end
 
-    def set_lof
-      if Canine.exists?(lof: params[:canine][:father_lof] )
-        params[:canine][:lft] = Canine.find_by_lof(params[:canine][:father_lof]).id
-      end
-      if Canine.exists?(lof: params[:canine][:mother_lof])
-        params[:canine][:rgt] = Canine.find_by_lof(params[:canine][:mother_lof]).id
-      end
-    end
 
     def init
       o = [('a'..'z'), ('1'..'9'), ('A'..'Z')].map { |i| i.to_a }.flatten

@@ -1,3 +1,68 @@
+<script>
+  var projects = [];
+  <% @canines = Canine.where(gender: "1")%>
+  <%@canines.each do |canine|%>
+    projects.push({ value: '<%=canine.name%>',label: '<%=canine.name%>', desc: '<%=canine.id%>'})
+  <%end%>
+  <%@canines.each do |canine|%>
+    projects.push({ value: '<%=canine.lof%>',label: '<%=canine.lof%>', desc: '<%=canine.id%>'})
+  <%end%>
+      
+  $(function() {
+    
+    $( "#canine_father_lof" ).autocomplete({
+      minLength: 0,
+      source: projects,
+      focus: function( event, ui ) {
+        $( "#canine_father_lof" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#canine_father_lof" ).val( ui.item.label );
+        $( "#canine_lft" ).val( ui.item.desc );
+        return false;
+      }
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.label + "</a>" )
+        .appendTo( ul );
+    };
+  });
+  </script>
+  
+  <script>
+  var projects_2 = [];
+  <% @canines = Canine.where(gender: "0")%>
+  <%@canines.each do |canine|%>
+    projects_2.push({ value: '<%=canine.name%>',label: '<%=canine.name%>', desc: '<%=canine.id%>'})
+  <%end%>
+  <%@canines.each do |canine|%>
+    projects_2.push({ value: '<%=canine.lof%>',label: '<%=canine.lof%>', desc: '<%=canine.id%>'})
+  <%end%>
+      
+  $(function() {
+    
+    $( "#canine_mother_lof" ).autocomplete({
+      minLength: 0,
+      source: projects_2,
+      focus: function( event, ui ) {
+        $( "#canine_mother_lof" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#canine_mother_lof" ).val( ui.item.label );
+        $( "#canine_rgt" ).val( ui.item.desc );
+        return false;
+      }
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.label + "</a>" )
+        .appendTo( ul );
+    };
+  });
+  </script>
 <div class="row">
   <div class="col-md-12">
     <h3>Nuevo Canino</h3>
@@ -49,11 +114,13 @@
     </div>
     <div class="col-md-6">
       <%= f.label :father_lof %><br>
-      <%= autocomplete_field_tag('canine_lof', '', autocomplete_canine_lof_admin_canines_path, :id => "canine_father_lof", :class => "form-control", :name =>"canine[father_lof]")%>
+      <%= f.text_field :father_lof, class: 'form-control' %>
+      <%= f.hidden_field :lft%>
     </div>
     <div class="col-md-6">
       <%= f.label :mother_lof %><br>
-      <%= autocomplete_field_tag('canine_lof', '', autocomplete_canine_lof_admin_canines_path, :id => "canine_mother_lof", :class => "form-control", :name =>"canine[mother_lof]")%>
+      <%= f.text_field :mother_lof, class: 'form-control' %>
+      <%= f.hidden_field :rgt%>
       <br>
     </div>
     <div class="col-md-6">
