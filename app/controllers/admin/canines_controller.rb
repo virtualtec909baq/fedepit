@@ -1,5 +1,5 @@
 class Admin::CaninesController < ApplicationController
-  autocomplete :canine, :name, :extra_data => [:id]
+  autocomplete :canine, :name, :extra_data => [:id], :full => true
   autocomplete :canine, :lof, :full => true
   before_action :authenticate_user!
   before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree]
