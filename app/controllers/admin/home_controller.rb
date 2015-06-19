@@ -11,7 +11,7 @@ class Admin::HomeController < ApplicationController
   end
 
   def enviar_cruce
-    @canine_1 = Canine.find(params[:merge][:canine_id])
+    @canine_1 = Canine.find(params[:merge][:canine_id_1])
     @canine_2 = Canine.find(params[:merge][:canine_id_2])
     respond_to do |format|
     if has_children(@canine_1.id) and has_children(@canine_1.id)
