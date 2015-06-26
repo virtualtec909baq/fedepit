@@ -11,7 +11,6 @@ class Admin::HomeController < ApplicationController
      @search = Canine.ransack(params[:q])
      @canines = @search.result.includes(:feature).page(params[:page])
      @features = Feature.all
-     puts params[:q]
   end
   
   def clear_search_index

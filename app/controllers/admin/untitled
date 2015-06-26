@@ -1,0 +1,34 @@
+def enviar_cruce(canine)
+  @canine = canine
+  @newhash ||= []
+  @canine_respon = []
+  @has_respon = Hash.new(0)
+  @array_float_1 = []
+  
+  if has_children(@canine)
+    @children = children(@canine)
+    if  !@children.empty?
+      array_1 ||= []
+      @children.each do |child|
+        if child.feature
+          array_1 << child.feature.as_json(except: [:id, :created_at, :updated_at, :insertion_ear])
+        end
+      end
+      array_1.each_with_index do |(value),index_1|
+        value.each_with_index do |(key,value_hash),index|
+          @create_array_float_1 = ["#{key}", "#{value_hash}"]
+          @hash_float_1 = Hash[*@create_array_float_1]
+          @newhash << @hash_float_1
+        end
+      end
+      @newhash.each do |v|
+        @has_respon[v] += 1
+      end 
+      @has_respon.each do |k, v|
+        average = (v.to_f/@total_canine_1) * 100
+        k.map {|k,str|@array_float_1 << ["#{k} #{str}", "#{number_to_percentage(average, precision: 0)  }"]}
+      end
+    end
+    return @array_float_1 
+  end
+end
