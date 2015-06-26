@@ -2,12 +2,27 @@ class Admin::HomeController < ApplicationController
   before_action :authenticate_user!
   include ApplicationHelper
   include ActionView::Helpers::NumberHelper
+  before_action :clear_search_index, :only => [:realizarcruce]
 
   def index
   end
   
   def realizarcruce
-      @canine = Canine.new
+     @search = Canine.ransack(params[:q])
+     @canines = @search.result.includes(:feature).page(params[:page])
+     @features = Feature.all
+     puts params[:q]
+  end
+  
+  def clear_search_index
+    if params[:search_cancel]
+      params.delete(:search_cancel)
+      if(!search_params.nil?)
+        search_params.each do |key, param|
+          search_params[key] = nil
+        end
+      end
+    end
   end
 
   def enviar_cruce
@@ -59,23 +74,12 @@ class Admin::HomeController < ApplicationController
                 $rest_array_4[index] = 0
               end
             end
-            if (index > 1 and index < 27) and value_hash == true
-              @cont = $rest_array_4[index]+=1
-              @percent = ((@cont.to_f/@total_canine_1) *100)
-              @a_1 = ["#{key}", "#{@percent}"]
-              @h_1 = Hash[*@a_1]
-              $hash_1[index] = @h_1
-            elsif (index > 1 and index < 27) and value_hash == false
-              @cont = $rest_array_4[index]
-              @percent = ((@cont.to_f/@total_canine_1) *100)
-              @a_1 = ["#{key}", "#{@percent}"]
-              @h_1 = Hash[*@a_1]
-              $hash_1[index] = @h_1
-            elsif index > 29 and index < 46 
+            
+            
               @create_array_float_1 = ["#{key}", "#{value_hash}"]
               @hash_float_1 = Hash[*@create_array_float_1]
               @newhash_1 << @hash_float_1
-            end
+            
           end
         end
         @newhash_1.each do |v|

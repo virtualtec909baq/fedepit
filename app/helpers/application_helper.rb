@@ -34,6 +34,14 @@ module ApplicationHelper
 		end	
 	end
 
+	def has_parent?(id)
+		if !Canine.find(id).lft.nil?
+			return true
+		else
+			return false
+		end	
+	end
+
 	def parent(id)
 		parent_id ||= []
 		if Canine.exists?(id: id)
@@ -74,4 +82,57 @@ module ApplicationHelper
 			 return child.feaute
 		end
 	end
+	def count_children(canine)
+		@canine = canine
+		if has_children(@canine)
+			@total_children = @children.count
+			return @total_children
+		else
+			return 0 
+		end
+	end
+
+	def enviar_cruce(canine)
+		@canine = canine
+		if has_children(@canine)
+			@array_child_features = []
+			@array_prom_features = []
+			@children = children(@canine)
+			@array_count_features = []
+			@features_count = Hash.new(0)
+			@newhash ||= []
+			
+			@children.each do |child|
+				if child.feature
+					@array_child_features << child.feature.as_json(except: [:id, :created_at, :updated_at, :insertion_ear, :title_work, :championsihp_true, :test_dog_safe,:recommendation, :ectropion, :defect_tail, :problem_conduct, :displacia_hip, :displacia_elbow, :ectropion, :postponement,:lack_dental,:defects_bite, :test_dog_safe, :test_strength])
+					$total_children = @array_child_features.count
+				end
+			end
+			@array_child_features.each do |array_feature|
+				array_feature.each do |key,value_hash|
+					create_hash_whit_values_matriz = [key, value_hash]
+					hash_hash_whit_values_matriz = Hash[*create_hash_whit_values_matriz]
+					@array_prom_features << hash_hash_whit_values_matriz
+				end
+			end
+			@array_prom_features.each do |key|
+				key.each do |key, value|
+					@features_count["#{key}_#{value}"] += 1
+				end
+        	end
+
+			if !@array_prom_features.empty?
+				@features_count = @features_count.sort_by {|key, value| key}
+				return @features_count
+			end
+		end
+	end
 end
+
+
+
+
+
+
+
+

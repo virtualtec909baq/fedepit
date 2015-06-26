@@ -6123,3 +6123,9 @@ ul.tree li+li:before
     display: block;
     font-weight: bold;
 }
+#merge {
+    display: none;
+}
+#ui-id-1, #ui-id-2{
+	z-index: 2147483647;
+}

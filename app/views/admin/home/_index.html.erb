@@ -1,0 +1,32 @@
+<table class="table table-striped table-hover table-bordered" >
+    <thead>
+      <tr>
+        <th class="center"><%= sort_link @search, :name, "Nombre"%></th>
+        <th class="center"><%= sort_link @search, :race_id, "Raza"%></th>
+        <th class="center">No. Hijos</th>
+    </thead>
+    <tbody>
+      <% @canines.each do |canine| %>
+        <tr >
+          <td class="center"><%= link_to canine.name, admin_canine_path(canine), :class => "link_to"  %></td>
+          <td class="center"><%= canine.gender %></td>
+          <th class="center"><%=count_children(canine)%></th>
+          <%if !enviar_cruce(canine).nil?%>
+              <td class="center">
+                <ul>
+                  <% enviar_cruce(canine).each do |feature| %>
+                    <li>
+                    <span><%= feature[0]%>: </span>
+                    <% average =  (feature[1].to_f/$total_children) * 100 %>
+                    <span> <%= number_to_percentage(average, precision: 0) %></span>
+                    </li>
+                  <%end%>
+                 </ul>
+              </td>
+          <%else%>
+          <td class="center"></td>
+          <%end%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

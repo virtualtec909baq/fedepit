@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
 
   namespace :admin do
+    get "home/index", to:"home#index"
   	resources :articles
     resources :breeders
     resources :canines do
