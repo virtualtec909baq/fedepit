@@ -1,8 +1,6 @@
 class Admin::FeaturesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
-
-
+  before_action :set_feature, only: [:show, :edit, :update, :destroy]
 
   # GET /features
   # GET /features.json
@@ -56,8 +54,9 @@ class Admin::FeaturesController < ApplicationController
     
     respond_to do |format|
       if @feature.update(feature_params)
-        flash[:notice] = 'Feature modificado'
-        format.html { redirect_to admin_feature_path(@feature) }
+        flash[:notice] = 'metter modificado'
+        @canine = Canine.find(@feature.canine_id)
+        format.html { redirect_to admin_canine_path(@canine) }
         format.json { render :show, status: :ok, location: @feature }
       else
         format.html { render :edit }

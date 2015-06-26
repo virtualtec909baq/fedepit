@@ -1,5 +1,18 @@
 <div class="modal-body">
   <%= form_for @feature , url: admin_features_path(@feature) , method: :post do |f| %>
+  <% if @feature.errors.any? %>
+      <br>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>No se puede crear el metter:</strong>
+        <ul>
+          <% @feature.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>  
+
   <div class="row">
     <div class="col-lg-12">
       <div class="panel panel-default">
@@ -8,88 +21,88 @@
         </div>
         <div class="panel-body">
           <div class="field col-xs-2">
-            <%= f.label :skull_width %><br>
+            <label>Ancho de cráneo</label><br>
             <%= f.text_field :skull_width, class: 'form-control' %>
           </div>
           <div class="field col-xs-2">
-            <%= f.label :skull_high %><br>
+            <label>Alto de cráneo</label><br>
             <%= f.text_field :skull_high, class: 'form-control' %>
           </div>
           <div class="field col-xs-2">
-            <%= f.label :skull_diameter %><br>
+             <label>Diametro de cráneo</label><br>
             <%= f.text_field :skull_diameter, class: 'form-control' %>
           </div>
           <div class="field col-xs-2">
-            <%= f.label :head_length %><br>
-            <%= f.text_field :head_length, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :skull_length %><br>
+           <label>Longitud cráneo</label><br>
             <%= f.text_field :skull_length, class: 'form-control' %>
           </div>
           <div class="field col-xs-2">
-            <%= f.label :heah_high %><br>
-            <%= f.text_field :heah_high, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :skull_percentage %><br>
+            <label>Porcentaje de cráneo</label><br>
             <%= f.text_field :skull_percentage, class: 'form-control' %>
           </div>
           <div class="field col-xs-2">
-            <%= f.label :muzzle_high_skull %><br>
-            <%= f.text_field :muzzle_high_skull, class: 'form-control' %>
+            <label>Longitud cabeza</label><br>
+            <%= f.text_field :head_length, class: 'form-control' %>
           </div>
           <div class="field col-xs-2">
-            <%= f.label :muzzle_high %><br>
+            <label>Alto de cabeza </label><br>
+            <%= f.text_field :heah_high, class: 'form-control' %>
+          </div>
+          <div class="field col-xs-2">
+            <label>Alto Ocico</label><br>
             <%= f.text_field :muzzle_high, class: 'form-control' %>
           </div>
           <div class="field col-xs-2">
-            <%= f.label :muzzle_percentage %><br>
+            <label>Ocico Porcentaje</label><br>
             <%= f.text_field :muzzle_percentage, class: 'form-control' %>
           </div>
           <div class="field col-xs-2">
-            <%= f.label :insertion_ear %><br>
-            <%= f.text_field :insertion_ear, class: 'form-control' %>
+            <label>Insercion oido</label><br>
+            <%= f.select :insertion_ear, [["Bajo", "0"],["Medio", "1"],["Alto", "2"]], {prompt: " "}, {class: "form-control"}%>
             <%= f.hidden_field :canine_id, :value => "#{params[:canine_id]}" %>
+          </div>
+          <div class="field col-xs-4">
+            <label>Alto Ocico con respecto al craneo Craneo</label><br>
+            <%= f.text_field :muzzle_high_skull, class: 'form-control' %>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col-lg-12">
+    <div class="col-lg-4">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title"><%= f.label :Mordida %><br></h3>
         </div>
         <div class="panel-body">
-          <div class="field col-xs-2">
+          <div class="field col-xs-6">
             <%= f.label :Pinza %><br>
             <%= f.check_box :bite_pin %>
           </div>
-          <div class="field col-xs-2">
+          <div class="field col-xs-6">
             <%= f.label :Cruzada_interior %><br>
             <%= f.check_box :bite_crusade_inside %>
           </div>
-          <div class="field col-xs-2">
+          <div class="field col-xs-6">
             <%= f.label :prognato %><br>
             <%= f.check_box :bite_prognato %>
           </div>
-          <div class="field col-xs-2">
+          <div class="field col-xs-6">
             <%= f.label :enognato %><br>
             <%= f.check_box :bite_enognato %>
           </div>
-          <div class="field col-xs-2">
+          <div class="field col-xs-6">
             <%= f.label :Tijera_invertida %><br>
             <%= f.check_box :bite_fork_inverted %>
           </div>
-          <div class="field col-xs-2">
+          <div class="field col-xs-6">
             <%= f.label :Correcta %><br>
             <%= f.check_box :bite_right %>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-8">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title"><%= f.label :Piezas_dentales %><br></h3>
@@ -97,23 +110,23 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-6">
-              <div class="field col-xs-4">
+              <div class="field col-xs-6">
                 <%= f.label :dental_full %><br>
                 <%= f.check_box :dental_full %>
               </div>
-              <div class="field col-xs-4">
+              <div class="field col-xs-6">
                 <%= f.label :dental_incisor %><br>
                 <%= f.check_box :dental_incisor %>
               </div>
-              <div class="field col-xs-4">
+              <div class="field col-xs-6">
                 <%= f.label :dental_canine %><br>
                 <%= f.check_box :dental_canine %>
               </div>
-              <div class="field col-xs-4">
+              <div class="field col-xs-6">
                 <%= f.label :dental_molar %><br>
                 <%= f.check_box :dental_molar %>
               </div>
-              <div class="field col-xs-4">
+              <div class="field col-xs-6">
                 <%= f.label :dental_premolar %><br>
                 <%= f.check_box :dental_premolar %>
               </div>
@@ -125,45 +138,45 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-6">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title"><%= f.label :calidad_muscular %><br></h3>
         </div>
         <div class="panel-body">
 
-          <div class="field col-xs-4">
-            <%= f.label :muscular_general %><br>
+          <div class="field col-xs-6">
+            <label>Musculatura Genera</label><br>
             <%= f.text_field :muscular_general, class: 'form-control' %>
           </div>
-          <div class="field col-xs-4">
-            <%= f.label :muscular_masetero %><br>
-            <%= f.text_field :muscular_masetero, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-4">
-            <%= f.label :muscle_parietale %><br>
+          <div class="field col-xs-6">
+            <label>Músculos parietales</label><br>
             <%= f.text_field :muscle_parietale, class: 'form-control' %>
+          </div>
+          <div class="field col-xs-6">
+            <label>Maseteros o Pronunciación de Mejillas</label><br>
+            <%= f.text_field :muscular_masetero, class: 'form-control' %>
           </div>
 
         </div>
       </div>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-6">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title"><%= f.label :cuerpo %><br></h3>
         </div>
         <div class="panel-body">
           <div class="field col-xs-4">
-            <%= f.label :body_long %><br>
+            <label>Largo del cuerpo</label><br>
             <%= f.text_field :body_long, class: 'form-control' %>
           </div>
           <div class="field col-xs-4">
-            <%= f.label :body_raised %><br>
+            <label>Alzada</label><br>
             <%= f.text_field :body_raised, class: 'form-control' %>
           </div>
           <div class="field col-xs-4">
-            <%= f.label :diamter_thorax %><br>
+            <label>Diametro tórax</label><br>
             <%= f.text_field :diamter_thorax, class: 'form-control' %>
           </div>
         </div>
@@ -175,61 +188,57 @@
           <h3 class="panel-title"><%= f.label :datos_parentesco %><br></h3>
         </div>
         <div class="panel-body">
-          <div class="field  col-xs-2">
-            <%= f.label :recommendation %><br>
+          <div class="field  col-xs-4">
+            <label>Recomendado para la crianza</label>
             <%= f.check_box :recommendation %>
           </div>
-          <div class="field col-xs-2">
-            <%= f.label :title_work %><br>
+          <div class="field col-xs-4">
+            <label>Títulos de trabajo</label>
             <%= f.check_box :title_work %>
           </div>
-          <div class="field col-xs-2">
-            <%= f.label :test_strength %><br>
-            <%= f.check_box :test_strength %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :test_dog_safe %><br>
+          <div class="field col-xs-4">
+             <label>Prueba de perro seguro y sociable</label>
             <%= f.check_box :test_dog_safe %>
           </div>
-          <div class="field col-xs-2">
-            <%= f.label :championsihp %><br>
+          <div class="field col-xs-4">
+            <label>Campeón</label>
             <%= f.check_box :championsihp %>
           </div>
-          <div class="field col-xs-2">
-            <%= f.label :defects_bite %><br>
+          <div class="field col-xs-4">
+            <label>Defectos en la mordida</label>
             <%= f.check_box :defects_bite %>
           </div>
-          <div class="field col-xs-2">
-            <%= f.label :lack_dental %><br>
+          <div class="field col-xs-4">
+            <label>Falto de piezas dentales</label>
             <%= f.check_box :lack_dental %>
           </div>
-          <div class="field col-xs-2">
-            <%= f.label :postponement %><br>
+          <div class="field col-xs-4">
+            <%= f.label :postponement %>
             <%= f.check_box :postponement %>
           </div>
-          <div class="field col-xs-2">
-            <%= f.label :entropion %><br>
+          <div class="field col-xs-4">
+            <label>Ectropión</label>
             <%= f.check_box :entropion %>
           </div>
-          <div class="field col-xs-2">
-            <%= f.label :ectropion %><br>
-            <%= f.check_box :ectropion %>
-          </div>
-          <div class="field col-xs-2">
-            <%= f.label :displacia_elbow %><br>
+          <div class="field col-xs-4">
+            <label>Displacía de codo</label>
             <%= f.check_box :displacia_elbow %>
           </div>
-          <div class="field col-xs-2">
-            <%= f.label :displacia_hip %><br>
+          <div class="field col-xs-4">
+           <label>Displacía de cadera</label>
             <%= f.check_box :displacia_hip %>
           </div>
-          <div class="field col-xs-2">
-            <%= f.label :problem_conduct %><br>
+          <div class="field col-xs-4">
+            <label>Problemas de comportamiento</label>
             <%= f.check_box :problem_conduct %>
           </div>
-          <div class="field col-xs-2">
-            <%= f.label :defect_tail %><br>
+          <div class="field col-xs-4">
+            <label>Defectos de cola</label>
             <%= f.check_box :defect_tail %>
+          </div>
+          <div class="field col-xs-4">
+           <label>Prueba de perro seguro en el tráfico y de sociabilidad</label>
+            <%= f.check_box :test_strength %>
           </div>
         </div>
       </div>

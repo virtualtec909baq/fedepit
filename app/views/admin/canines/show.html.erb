@@ -69,11 +69,12 @@
             <%= link_to "Modificar", edit_admin_canine_path(@canine), :class =>"btn  btn-lg btn-info btn-outlined btn-block" %>
           </div>
           <div class="col-md-3">
-            <%- if @canine.feature%>
+            <%- if @canine.feature.nil?%>
               <%= link_to "Metter", new_admin_feature_path(canine_id: @canine.id), :class =>"btn  btn-lg btn-warning btn-outlined btn-block" %>
             <%else%>
-            <%= link_to "Metter", new_admin_feature_path(canine_id: @canine.id), :class =>"btn  btn-lg btn-warning btn-outlined btn-block" %>
+            <%= link_to "Metter", edit_admin_feature_path(@canine.feature.id), :class =>"btn  btn-lg btn-warning btn-outlined btn-block" %>
             <% end %>
+            
           </div>
         </div>
       </div>

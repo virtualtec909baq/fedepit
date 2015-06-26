@@ -1,7 +1,7 @@
 <%= javascript_include_tag "welcome"%>
 <div id="page-wrapper">
   <div class="row">
-    <div id="skull"class="col-lg-12">
+    <div id="skull"class="col-lg-12" data-skullgt="<%= @features.sort_by {|obj| obj.skull_width}.first.skull_width.to_i%>" data-skulllt="<%= @features.sort_by {|obj| obj.skull_width}.last.skull_width.to_i%>">
       <h1 class="page-header">Filtros de Busqueda  Cruce</h1>
     </div>
     <div class="modal-body">
