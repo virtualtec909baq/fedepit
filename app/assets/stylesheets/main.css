@@ -5230,9 +5230,7 @@ font-size: 14px;
 padding: 12px 12px 12px 0;
 background: #16a7a7;
 }
-.btn {
-margin-top: 27px !important;
-}
+
 .btn-primary:disabled, .btn-primary[disabled] {
 letter-spacing: 0.04em;
 }

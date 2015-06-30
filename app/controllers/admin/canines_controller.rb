@@ -115,6 +115,6 @@ class Admin::CaninesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def canine_params
-      params.require(:canine).permit(:lft, :rgt ,:race_id, :breeder_id, :lof, :chip, :name, :gender, :color_id, :father_lof, :mother_lof, :rate, :birth, :death,images_attributes: [:id, :canine_id, :file])
+      params.require(:canine).permit(:kind, :lft, :rgt ,:race_id, :breeder_id, :lof, :chip, :name, :gender, :color_id, :father_lof, :mother_lof, :rate, :birth, :death,images_attributes: [:id, :canine_id, :file])
     end
 end

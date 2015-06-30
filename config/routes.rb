@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :type_events
     resources :videos
     resources :features
+    get "home/:id/mergecanines", to:"home#mergecanines", as: "mergecanines"
     get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
     put "comments/:id/change_status", to: "comments#change_status", as: "change_status_comments"
     put "sponsors/:id/change_status", to: "sponsors#change_status", as: "change_status"
