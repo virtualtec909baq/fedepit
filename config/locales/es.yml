@@ -50,6 +50,10 @@ es:
       tw: "Twitter"
       inst: "Instagram"
       web: "Web"
+  admin:
+    home:
+      feature:
+        bite_crusade_inside_false: "Mordida cruzada interior mala"    
   home:
     contactus:
       home: "Inicio"
