@@ -19,11 +19,8 @@ class Canine < ActiveRecord::Base
 	validates :breeder_id, presence: true 
 	validates :lof, presence: true 
 	validates :name, presence: true 
+	validates :kind, presence: true 
 	validates :gender, presence: true 
 	validates :color_id, presence: true 
 	validates :birth, presence: true 
-
-	# def display_autocomplete
-	# 	self.id
-	# end
 end

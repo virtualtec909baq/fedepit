@@ -4,7 +4,8 @@ class Admin::CaninesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree]
   before_action :init, only: [:create]
-  
+  before_action :ancestors, only: [:create]
+
   # GET /canines
   # GET /canines.json
   def index
@@ -113,8 +114,19 @@ class Admin::CaninesController < ApplicationController
       params[:canine][:lof] = val
     end
 
+    def ancestors
+      parent_id ||= []
+      if Canine.exists?(params[:canine][:lft])
+        parent_id << params[:canine][:lft]
+      end
+      if Canine.exists?(params[:canine][:rgt])
+        parent_id << params[:canine][:rgt]
+      end
+      params[:canine][:parent_id] = parent_id
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def canine_params
-      params.require(:canine).permit(:kind, :lft, :rgt ,:race_id, :breeder_id, :lof, :chip, :name, :gender, :color_id, :father_lof, :mother_lof, :rate, :birth, :death,images_attributes: [:id, :canine_id, :file])
+      params.require(:canine).permit(:parent_id,:kind, :lft, :rgt ,:race_id, :breeder_id, :lof, :chip, :name, :gender, :color_id, :father_lof, :mother_lof, :rate, :birth, :death,images_attributes: [:id, :canine_id, :file])
     end
 end

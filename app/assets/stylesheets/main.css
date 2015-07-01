@@ -6121,7 +6121,7 @@ ul.tree li+li:before
     display: block;
     font-weight: bold;
 }
-#merge {
+#merge, #table_canine{
     display: none;
 }
 #ui-id-1, #ui-id-2{

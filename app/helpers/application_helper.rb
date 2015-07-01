@@ -26,15 +26,51 @@ module ApplicationHelper
 		return @siblings = Canine.where("(lft = ? OR rgt = ?) AND id != ?", lft, rgt, id)
 	end
 
-	def get_ancestors(id)
-		@canine = Canine.find(id)
+	
+	def get_left(canine)
+		if canine.lft
+			canine_lft = Canine.find(canine.lft)
+			return canine_lft
+		end
+	end
+	
+	def get_rgt(canine)
+		if canine.rgt
+			canine_rgt = Canine.find(canine.rgt)
+			return canine_rgt
+		end
+	end
+	
+	def get_id(canine)
+		if !canine.nil?
+			id = canine.id
+			return id
+		end
+	end
+	
+	def get_ancestors(canine)
 		@tree ||= []
-	    if @canine.rgt.nil?
-	    	return @tree
-	    else
-	    	@tree << @canine.rgt
-	    	get_ancestors(@canine.rgt)
-	    end
+		if !canine.nil?
+			@tree << get_id(canine)
+			get_ancestors(get_left(canine))
+			get_ancestors(get_rgt(canine))
+			return @tree
+		end
+	end
+
+	def get_ancestors(canine)
+		@tree ||= []
+		if !canine.nil?
+			@tree << get_id(canine)
+			get_ancestors(get_left(canine))
+			get_ancestors(get_rgt(canine))
+			return @tree
+		end
+	end
+
+	
+	def get_leves(canine, data)
+		get_level_canine(canine, data, 1)
 	end
 
 	def count_children(canine)

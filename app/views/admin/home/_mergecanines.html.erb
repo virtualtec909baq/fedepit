@@ -1,0 +1,19 @@
+<table class="table table-striped responstable">
+  <tr>
+    <th data-th="Driver details"><span>Nombre</span></th>
+    <th>COI</th>
+    <th>COR</th>
+    <th>N.C</th>
+  </tr>
+  <% @canines.each do |canine| %>
+    <% get_ancestors(canine).each do |can|%>
+        <% @canine = Canine.find(can)%>
+        <tr>
+        <th><%= @canine.name.upcase%></th>
+          <th><%= can%> </th>
+          <th></th>
+          <th></th>
+        </tr>
+    <%end%>
+  <% end %>
+</table> 
