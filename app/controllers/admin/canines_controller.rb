@@ -4,7 +4,7 @@ class Admin::CaninesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree]
   before_action :init, only: [:create]
-  before_action :ancestors, only: [:create]
+  before_action :ancestors, only: [:create, :update]
 
   # GET /canines
   # GET /canines.json
@@ -106,7 +106,6 @@ class Admin::CaninesController < ApplicationController
       @canine = Canine.find(params[:id])
     end
 
-
     def init
       o = [('a'..'z'), ('1'..'9'), ('A'..'Z')].map { |i| i.to_a }.flatten
       string = (0...5).map { o[rand(o.length)] }.join
@@ -115,14 +114,12 @@ class Admin::CaninesController < ApplicationController
     end
 
     def ancestors
-      parent_id ||= []
-      if Canine.exists?(params[:canine][:lft])
+      if Canine.exists?(params[:canine][:lft]) and !params[:canine][:lft]
         parent_id << params[:canine][:lft]
       end
-      if Canine.exists?(params[:canine][:rgt])
+      if Canine.exists?(params[:canine][:rgt]) and !params[:canine][:rgt]
         parent_id << params[:canine][:rgt]
       end
-      params[:canine][:parent_id] = parent_id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

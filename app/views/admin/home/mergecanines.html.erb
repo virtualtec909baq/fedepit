@@ -22,18 +22,28 @@
         <th>COI</th>
         <th>COR</th>
         <th>N.C</th>
+        <th>Numero Gem</th>
+
       </tr>
       <% get_ancestors(@canine).each do |canine|%>
         <% @canine = Canine.find(canine)%>
+        <% @root_canine = Canine.find(params[:id])%>
+        <% nivel(@root_canine, canine)%>
         <tr>
         <th><%= @canine.name.upcase%></th>
-          <th><%= canine%> </th>
-          <th></th>
-          <th></th>
+        <th><%= canine%> </th>
+        <th><%= $level%> </th>
+        <%- if $level.zero? %>
+          <th>100%</th>
+        <%else%>
+          <th><%= nivel_consa($level)%>%</th>
+        <%end%>
+        <th><%= $level%> </th>
         </tr>
       <%end%>
     </table> 
   </div>
+  
   <div class="col-md-6">
     <div class="row">
       <%= search_form_for @search, url: admin_mergecanines_path , :remote=>"true", :method => :get do |f|%>

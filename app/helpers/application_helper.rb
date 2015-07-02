@@ -43,7 +43,9 @@ module ApplicationHelper
 	
 	def get_id(canine)
 		if !canine.nil?
+
 			id = canine.id
+			puts "AQUiiiiiii #{id}"
 			return id
 		end
 	end
@@ -58,19 +60,29 @@ module ApplicationHelper
 		end
 	end
 
-	def get_ancestors(canine)
-		@tree ||= []
-		if !canine.nil?
-			@tree << get_id(canine)
-			get_ancestors(get_left(canine))
-			get_ancestors(get_rgt(canine))
-			return @tree
+	def nivel(canine, data)
+		get_nivel(canine,data, 0)
+	end
+
+	def get_nivel(canine,data, level)
+		if get_id(canine) == data
+			$level = level
+			return $level
+		else
+			if !canine.nil?
+				get_nivel(get_left(canine),data,level +1)
+				get_nivel(get_rgt(canine),data, level +1)
+			end
 		end
 	end
 
-	
-	def get_leves(canine, data)
-		get_level_canine(canine, data, 1)
+	def nivel_consa(level)
+		@count = 100
+		i = 1
+		for i in i..level
+			@count =  @count.to_f/2.to_f
+		end
+		return @count
 	end
 
 	def count_children(canine)

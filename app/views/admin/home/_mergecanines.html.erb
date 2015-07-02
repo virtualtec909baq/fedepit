@@ -8,11 +8,12 @@
   <% @canines.each do |canine| %>
     <% get_ancestors(canine).each do |can|%>
         <% @canine = Canine.find(can)%>
+        <% nivel(canine, can)%>
         <tr>
         <th><%= @canine.name.upcase%></th>
           <th><%= can%> </th>
-          <th></th>
-          <th></th>
+          <th><%= $level%></th>
+          <th><%= nivel_consa($level)%>%</th>
         </tr>
     <%end%>
   <% end %>
