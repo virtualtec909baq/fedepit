@@ -1,196 +1,130 @@
 <style type="text/css">
-    
-    .Padre.padrescanino {
-        position: relative;
-    }
-    .canineimage {
-        height: 79%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-    }
-    .caninename {
-        bottom: 0;
-        font-size: 11px;
-        left: 0;
-        padding: 10px;
-        position: absolute;
-        text-align: center;
-        width: 100%;
-    }
-    .caninename.bisabuelos {
-        padding: 0 !important;
-    }
-    .Padre.row, .Madre.row {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .me{
-        padding: 10px;
-        text-align: center;
-    }
+  .show-grid [class^="col-"] {
+    background-color: rgba(86, 61, 124, 0.15);
+    border: 1px solid rgba(86, 61, 124, 0.2);
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
 </style>
-<div class="Window container" >
-    <section data-bloque="linaje">
-        <div data-view="fila" data-conte="Padres">
-            <div class="Titulo">PADRES</div>
-            <div data-linea="padres">
-                <div class="Padre padrescanino">
-                    <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-mars"></i>
-                </div>
-                <div class="Madre Padre padrescanino">
-                    <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-venus"></i>
-                </div>
-            </div>
+<%@array_prom_features = []%>
+<% get_ancestors(@canine).each do |canine|%>
+    <% nivel(Canine.find(params[:id]), canine)%>
+    <%hash = ["id", canine, "level", $level]%>
+    <%hash_canine_level = Hash[*hash]%>
+    <%@array_prom_features << hash_canine_level%>
+    <%@array_prom_features%>
+<%end%>
+<%@array_prom_features = @array_prom_features.sort_by { |k| k["level"] }%>
+
+<div class="bs-docs-grid">
+    <div class="row show-grid" >
+      <h3 class="center"><%= @canine.name%></h3>
+      <div class="col-md-3" id="col-1">
+          <div class="col-md-12 col-11">
+            <%- if @array_prom_features[1].nil? %>
+              <img src="http://placehold.it/230x150">
+              <div class="center">No Tiene nombre</div>
+            <%else%>
+              <img src="http://placehold.it/230x150">
+              <%@array_prom_features[1].each do |params| %>
+                <%= params%>
+              <%end%>
+            <%end%>
+          </div>
+           <div class="col-md-12 col-11">
+            .col-md-12
+          </div>
+      </div>
+      <div class="col-md-3" id="col-2">
+          <div class="col-md-12 col-12">
+            .col-md-12
+          </div>
+           <div class="col-md-12 col-12">
+            .col-md-12
+          </div>
+          <div class="col-md-12 col-12">
+            .col-md-12
+          </div>
+           <div class="col-md-12 col-12">
+            .col-md-12
+          </div>
+      </div>
+      <div class="col-md-3" id="col-3">
+        <div class="col-md-12 col-13">
+          .col-md-12
         </div>
-        <div data-view="fila" data-conte="Abuelos" class="xCien_25">
-            <div class="Titulo">ABUELOS</div>
-            <div data-linea="abuelos">
-                <div class="Padre padrescanino">
-                    <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-mars"></i>
-                </div>
-                <div class="Madre Padre padrescanino">
-                    <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-venus"></i>
-                </div>
-
-                <div class="Padre padrescanino">
-                    <a href="http://placehold.it/350x150"> <img src="http://placehold.it/350x150" class="canineimage"> </a>
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-mars"></i>
-                </div>
-                <div class="Madre Padre padrescanino">
-                    <img src="http://placehold.it/350x150" class="canineimage">
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-venus"></i>
-                </div>
-            </div>                        
+        <div class="col-md-12 col-13">
+          .col-md-12
         </div>
-        <div data-view="fila" data-conte="Bisabuelos" class="xCien_12_5">
-            <div class="Titulo">BISABUELOS</div>
-            <div data-linea="bisabuelos">
-                <div class="Padre padrescanino">
-                    <img src="http://placehold.it/350x150" class="canineimage">
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-mars"></i>
-                </div>
-                <div class="Madre Padre padrescanino">
-                    <img src="http://placehold.it/350x150" class="canineimage">
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-venus"></i>
-                </div>
-
-                <div class="Padre padrescanino">
-                    <img src="http://placehold.it/350x150" class="canineimage">
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-mars"></i>
-                </div>
-
-                <div class="Madre Padre padrescanino">
-                    <img src="http://placehold.it/350x150" class="canineimage">
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-venus"></i>
-                </div>
-
-
-                <div class="Padre padrescanino">
-                    <img src="http://placehold.it/350x150" class="canineimage">
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-mars"></i>
-                </div>
-                <div class="Madre Padre padrescanino">
-                    <img src="http://placehold.it/350x150" class="canineimage">
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-venus"></i>
-                </div>
-                <div class="Padre padrescanino">
-                    <img src="http://placehold.it/350x150" class="canineimage">
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-mars"></i>
-                </div>
-                <div class="Madre Padre padrescanino">
-                    <img src="http://placehold.it/350x150" class="canineimage">
-                    <span class='caninename'>No Tiene</span>
-                    <i class="fa fa-venus"></i>
-                </div>
-            </div>
+        <div class="col-md-12 col-13">
+          .col-md-12
         </div>
-        <div class="xCien_6_25" data-conte="Tatarabuelos" data-view="fila">
-                    <div data-linaje="Bisabuelos" data-cmdlinaje="back"></div>
-                    <div class="Titulo">TATARABUELOS</div>
-                    <div data-linea="tatarabuelos">
-                        <div class="Padre">
-                            <i class="fa fa-mars"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Madre">
-                            <i class="fa fa-venus"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Padre">
-                            <i class="fa fa-mars"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Madre">
-                            <i class="fa fa-venus"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Padre">
-                            <i class="fa fa-mars"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Madre">
-                            <i class="fa fa-venus"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Padre">
-                            <i class="fa fa-mars"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Madre">
-                            <i class="fa fa-venus"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Padre">
-                            <i class="fa fa-mars"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Madre">
-                            <i class="fa fa-venus"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Padre">
-                            <i class="fa fa-mars"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Madre">
-                            <i class="fa fa-venus"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Padre">
-                            <i class="fa fa-mars"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Madre">
-                            <i class="fa fa-venus"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Padre">
-                            <i class="fa fa-mars"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                        <div class="Madre">
-                            <i class="fa fa-venus"></i>
-                            <span class='caninename'>No Tiene</span>
-                        </div>
-                </div>
-    </section>
-</div>
+        <div class="col-md-12 col-13">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-13">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-13">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-13">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-13">
+          .col-md-12
+        </div>
+      </div>
+      <div class="col-md-3" id="col-4">
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+        <div class="col-md-12 col-14">
+          .col-md-12
+        </div>
+      </div>
+      
+    </div>
+  </div>

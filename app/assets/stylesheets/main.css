@@ -6132,3 +6132,16 @@ ul.tree li+li:before
     font-size: 16px;
     text-decoration: none;
 }
+.col-md-12.col-11 {
+    height: 250px;
+}
+.col-md-12.col-12 {
+    height: 125px;
+}
+.col-md-12.col-14 {
+    height: 2.421em;
+}
+
+.col-md-12.col-13 {
+    height: 63px;
+}

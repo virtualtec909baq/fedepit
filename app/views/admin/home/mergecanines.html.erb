@@ -19,26 +19,20 @@
     <table class="table table-striped responstable">
       <tr>
         <th data-th="Driver details"><span>Nombre</span></th>
-        <th>COI</th>
-        <th>COR</th>
+        <th>N.C</th>
         <th>N.C</th>
         <th>Numero Gem</th>
-
       </tr>
       <% get_ancestors(@canine).each do |canine|%>
         <% @canine = Canine.find(canine)%>
-        <% @root_canine = Canine.find(params[:id])%>
-        <% nivel(@root_canine, canine)%>
+        <% nivel(Canine.find(params[:id]), canine)%>
         <tr>
-        <th><%= @canine.name.upcase%></th>
-        <th><%= canine%> </th>
-        <th><%= $level%> </th>
-        <%- if $level.zero? %>
-          <th>100%</th>
-        <%else%>
+          <%hash = [@canine.id, $level]%>
+          <%hash_canine_level = Hash[*hash]%>
+          <th><%= @canine.name.upcase%></th>
+          <th><%= hash_canine_level%></th>
           <th><%= nivel_consa($level)%>%</th>
-        <%end%>
-        <th><%= $level%> </th>
+          <th><%= $level%></th>
         </tr>
       <%end%>
     </table> 
