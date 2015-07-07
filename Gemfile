@@ -27,7 +27,7 @@ gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
 gem 'faker'
 gem 'rails-i18n'
 gem 'rails4-autocomplete'
-gem 'avl_tree'
+gem 'prawn'
 
 group :production do
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets' 

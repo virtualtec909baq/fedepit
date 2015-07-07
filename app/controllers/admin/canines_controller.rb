@@ -21,11 +21,21 @@ class Admin::CaninesController < ApplicationController
 
   # GET /canines/1
   # GET /canines/1.json
+ 
   def show
     @images = @canine.images
     @canine_awards = @canine.events
     @feature = @canine.feature
-  end
+   respond_to do |format|
+     format.html
+     format.pdf do
+        pdf = CaninePdf.new(@canine)
+        send_data pdf.render, filename: "generate_table.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+     end
+   end
+end
 
   # GET /canines/new
   def new

@@ -143,8 +143,7 @@ module ApplicationHelper
 					@features_count["#{key}_#{value}"] += 1
 				end
         	end
-
-			if !@array_prom_features.empty?
+        	if !@array_prom_features.empty?
 				@features_count = @features_count.sort_by {|key, value| key}
 				return @features_count
 			end

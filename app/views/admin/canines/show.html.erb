@@ -15,7 +15,9 @@
             <span></span>
           </div>
           <div class="col-md-4">
-            <span class="canine_name pull-right">0.0</span>
+           <div class="pdf_link">
+              <%= link_to "Certificado", admin_canine_path(@canine, :format => "pdf"), :class => "btn btn-lg btn-success btn-outlined btn-block" %>
+            </div>
           </div>
         </div>
         <hr>
@@ -57,7 +59,9 @@
             <span><%= @canine.race.name%> </span>
             <%end%>
           </div>
-
+          <br>
+          <br>
+          <br>
           <div class="col-md-3">
             <a role="button" href="<%= admin_pedigree_path(@canine)%>" class="btn btn-lg btn-success btn-outlined btn-block">Ver Pedigree</a>
           </div>

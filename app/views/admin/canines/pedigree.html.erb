@@ -9,122 +9,143 @@
 <%@array_prom_features = []%>
 <% get_ancestors(@canine).each do |canine|%>
     <% nivel(Canine.find(params[:id]), canine)%>
-    <%hash = ["id", canine, "level", $level]%>
+    <%hash = [canine, $level]%>
     <%hash_canine_level = Hash[*hash]%>
     <%@array_prom_features << hash_canine_level%>
-    <%@array_prom_features%>
 <%end%>
-<%@array_prom_features = @array_prom_features.sort_by { |k| k["level"] }%>
-
+<%@array_prom_features =  @array_prom_features.reduce Hash.new, :merge%>
+<% @array_prom_features = @array_prom_features.sort_by {|_key, value| value}.to_h %>
+<%@array_prom_features%>
 <div class="bs-docs-grid">
     <div class="row show-grid" >
-      <h3 class="center"><%= @canine.name%></h3>
+      <h3 class="center"><%=  @canine.name.upcase%></h3>
+      <hr>
+      <div id="col-11" class="col-md-3" style="height: 522px;">
+            <img src="http://placehold.it/230x150">
+            <div class="center"><strong><%= @canine.name.upcase%></strong></div>
+      </div>
       <div class="col-md-3" id="col-1">
           <div class="col-md-12 col-11">
-            <%- if @array_prom_features[1].nil? %>
+            <%- if @canine.lft%>
+              <% @father = Canine.find(@canine.lft)%>
               <img src="http://placehold.it/230x150">
-              <div class="center">No Tiene nombre</div>
+              <div class="center"><%= @father.id%></div>
             <%else%>
               <img src="http://placehold.it/230x150">
-              <%@array_prom_features[1].each do |params| %>
-                <%= params%>
-              <%end%>
+              <div class="center">No Tiene</div>
             <%end%>
           </div>
-           <div class="col-md-12 col-11">
-            .col-md-12
+          <div class="col-md-12 col-11">
+            <%- if @canine.rgt%>
+                <% @mother = Canine.find(@canine.rgt)%>
+                <img src="http://placehold.it/230x150">
+                <div class="center"><%= @mother.id%></div>
+              <%else%>
+                <img src="http://placehold.it/230x150">
+                <div class="center">No Tiene</div>
+              <%end%>
           </div>
       </div>
-      <div class="col-md-3" id="col-2">
-          <div class="col-md-12 col-12">
+      <%- if @array_prom_features.size <= 3%>
+        <div class="col-md-3" id="col-2">
+            <div class="col-md-12 col-12">
+              <img src="http://placehold.it/230x55">
+              <div class="center">No Tiene</div>  
+            </div>
+            <div class="col-md-12 col-12">
+              <img src="http://placehold.it/230x55">
+              <div class="center">No Tiene</div> 
+            </div>
+            <div class="col-md-12 col-12">
+              <img src="http://placehold.it/230x55">
+             <div class="center">No Tiene</div> 
+            </div>
+            <div class="col-md-12 col-12">
+              <img src="http://placehold.it/230x55">
+             <div class="center">No Tiene</div> 
+            </div>
+        </div>
+        <div class="col-md-3" id="col-3">
+          <div class="col-md-12 col-13">
+            <div class="center">No Tiene</div> 
+          </div>
+          <div class="col-md-12 col-13">
+            <div class="center">No Tiene</div> 
+          </div>
+          <div class="col-md-12 col-13">
+            <div class="center">No Tiene</div> 
+          </div>
+          <div class="col-md-12 col-13">
+            <div class="center">No Tiene</div> 
+          </div>
+          <div class="col-md-12 col-13">
+            <div class="center">No Tiene</div> 
+          </div>
+          <div class="col-md-12 col-13">
+            <div class="center">No Tiene</div> 
+          </div>
+          <div class="col-md-12 col-13">
+            <div class="center">No Tiene</div> 
+          </div>
+          <div class="col-md-12 col-13">
+            <div class="center">No Tiene</div> 
+          </div>
+        </div>
+      <%else%>
+        <div class="col-md-3" id="col-2">
+            <div class="col-md-12 col-12">
+              <%- if !@array_prom_features.to_a[5].nil? %>
+                <%- if @array_prom_features.to_a[5][1] == 2%>
+                  <img src="http://placehold.it/230x55">
+                  <div class="center"><%= @father_grandfather = Canine.find(@father.lft).id %></div>
+                <%else%>
+                  <img src="http://placehold.it/230x55">
+                  <div class="center">No Tiene</div>
+                <%end%>
+              <%else%>
+                  <img src="http://placehold.it/230x55">
+                  <div class="center">No Tiene</div>  
+              <%end%>
+            </div>
+            <div class="col-md-12 col-12">
+              <img src="http://placehold.it/230x55">
+              <div class="center">otros</div>
+            </div>
+            <div class="col-md-12 col-12">
+              <img src="http://placehold.it/230x55">
+              <div class="center">Nombre</div>
+            </div>
+            <div class="col-md-12 col-12">
+              <img src="http://placehold.it/230x55">
+              <div class="center">Nombre</div>
+            </div>
+        </div>
+        <div class="col-md-3" id="col-3">
+          <div class="col-md-12 col-13">
             .col-md-12
           </div>
-           <div class="col-md-12 col-12">
+          <div class="col-md-12 col-13">
             .col-md-12
           </div>
-          <div class="col-md-12 col-12">
+          <div class="col-md-12 col-13">
             .col-md-12
           </div>
-           <div class="col-md-12 col-12">
+          <div class="col-md-12 col-13">
             .col-md-12
           </div>
-      </div>
-      <div class="col-md-3" id="col-3">
-        <div class="col-md-12 col-13">
-          .col-md-12
+          <div class="col-md-12 col-13">
+            .col-md-12
+          </div>
+          <div class="col-md-12 col-13">
+            .col-md-12
+          </div>
+          <div class="col-md-12 col-13">
+            .col-md-12
+          </div>
+          <div class="col-md-12 col-13">
+            .col-md-12
+          </div>
         </div>
-        <div class="col-md-12 col-13">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-13">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-13">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-13">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-13">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-13">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-13">
-          .col-md-12
-        </div>
-      </div>
-      <div class="col-md-3" id="col-4">
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-        <div class="col-md-12 col-14">
-          .col-md-12
-        </div>
-      </div>
-      
+      <%end%>
     </div>
   </div>
