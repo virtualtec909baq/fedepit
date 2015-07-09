@@ -30,7 +30,7 @@ class CaninePdf< Prawn::Document
 	end
 	# Segunda Pagina pedigree
 	start_new_page(:size => "A4", :layout => :landscape)
-	stroke_axis
+	
 	line [10,380],[10,458]
 	stroke
 	line [10,458],[22,458]
@@ -68,6 +68,10 @@ class CaninePdf< Prawn::Document
 	end
 
 	line [475,475],[475,520]
+	stroke
+	line [475,520],[490,520]
+	stroke
+	line [475,475],[490,475]
 	stroke
 	
 	bounding_box([500,540],:width =>400,:height =>450) do
@@ -129,7 +133,7 @@ class CaninePdf< Prawn::Document
 	    	text "No. Hermanos : #{@canine.id}", :size => 10
 	    end
 	end
-	stroke_axis
+	
 	line [10,118],[10,210]
 	stroke
 	line [10,118],[22,118]
@@ -151,6 +155,13 @@ class CaninePdf< Prawn::Document
 		move_down 5
 		text "LOF : #{Canine.find(@canine.lft).lof}", :size => 10
 	end
+	line [280,90],[280,170]
+	stroke
+	line [280,170],[300,170]
+	stroke
+	line [280,90],[300,90]
+	stroke
+	
 	
 	bounding_box([310,190],:width =>400,:height =>450) do
 		transparent(0) { stroke_bounds } 
@@ -160,6 +171,8 @@ class CaninePdf< Prawn::Document
 		move_down 5
 		text "LOF : #{Canine.find(@canine.lft).lof}", :size => 10
 	end
+
+
 	bounding_box([500,280],:width =>400,:height =>450) do
 		transparent(0) { stroke_bounds } 
 		text "	NOMBRE : #{Canine.find(@canine.lft).name.upcase}", :size => 8
@@ -168,6 +181,14 @@ class CaninePdf< Prawn::Document
 		move_down 5
 		text "LOF : #{Canine.find(@canine.lft).lof}", :size => 8
 	end
+
+	line [475,211],[475,264]
+	stroke
+	line [475,264],[490,264]
+	stroke
+	line [475,211],[490,211]
+	stroke
+	
 	bounding_box([500,230],:width =>400,:height =>450) do
 		transparent(0) { stroke_bounds } 
 		text "	NOMBRE : #{Canine.find(@canine.lft).name.upcase}", :size => 8
@@ -176,6 +197,8 @@ class CaninePdf< Prawn::Document
 		move_down 5
 		text "LOF : #{Canine.find(@canine.lft).lof}", :size => 8
 	end
+	
+
 	bounding_box([500,150],:width =>400,:height =>450) do
 		transparent(0) { stroke_bounds } 
 		text "	NOMBRE : #{Canine.find(@canine.lft).name.upcase}", :size => 8
@@ -184,6 +207,14 @@ class CaninePdf< Prawn::Document
 		move_down 5
 		text "LOF : #{Canine.find(@canine.lft).lof}", :size => 8
 	end
+
+	line [475,80],[475,133]
+	stroke
+	line [475,133],[490,133]
+	stroke
+	line [475,80],[490,80]
+	stroke
+	
 	bounding_box([500,100],:width =>400,:height =>450) do
 		transparent(0) { stroke_bounds } 
 		text "	NOMBRE : #{Canine.find(@canine.lft).name.upcase}", :size => 8
