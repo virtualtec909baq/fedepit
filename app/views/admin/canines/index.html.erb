@@ -27,7 +27,6 @@
       <th class="center">Genero</th>
       <th class="center">Lof Padre</th>
       <th class="center">Lof Madre</th>
-      <th class="center">Calificacion</th>
       <th class="center"><%= sort_link @search, :color_id, "Color"%></th>
       <th class="center"><%= sort_link @search, :date, "Nacimiento"%></th>
       <th colspan="2"></th>
@@ -43,7 +42,6 @@
       <td class="center"><%= gender(canine.gender) %></td>
       <td class="center"><%= canine.father_lof %></td>
       <td class="center"><%= canine.mother_lof %></td>
-      <td class="center"><%= canine.rate %></td>
       <td class="center"><%= canine.color.name %></td>
       <td class="center"><%= canine.birth %></td>
       <td class="center"><%= link_to edit_admin_canine_path(canine) do %>

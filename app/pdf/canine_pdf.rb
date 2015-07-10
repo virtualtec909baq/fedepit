@@ -130,7 +130,7 @@ class CaninePdf< Prawn::Document
 	    	move_down 8
 	    	text "Nacimiento : #{@canine.birth}", :size => 10
 	    	move_down 8
-	    	text "No. Hermanos : #{@canine.id}", :size => 10
+	    	text "No. Hermanos : #{siblings(@canine.id).count}", :size => 10
 	    end
 	end
 	
