@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby File.read(".ruby-version").strip
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
