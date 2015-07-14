@@ -6,16 +6,15 @@
     padding-top: 10px;
 }
 </style>
-<%@array_prom_features = []%>
+<%@array_canine_level = []%>
 <% get_ancestors(@canine).each do |canine|%>
     <% nivel(Canine.find(params[:id]), canine)%>
     <%hash = [canine, $level]%>
     <%hash_canine_level = Hash[*hash]%>
-    <%@array_prom_features << hash_canine_level%>
+    <%@array_canine_level << hash_canine_level%>
 <%end%>
-<%@array_prom_features =  @array_prom_features.reduce Hash.new, :merge%>
-<% @array_prom_features = @array_prom_features.sort_by {|_key, value| value}.to_h %>
-<%@array_prom_features%>
+<%@array_canine_level =  @array_canine_level.reduce Hash.new, :merge%>
+<% @array_canine_level = @array_canine_level.sort_by {|_key, value| value}.to_h %>
 <div class="bs-docs-grid">
     <div class="row show-grid" >
       <h3 class="center"><%=  @canine.name.upcase%></h3>
@@ -46,7 +45,7 @@
               <%end%>
           </div>
       </div>
-      <%- if @array_prom_features.size <= 3%>
+      <%- if @array_canine_level.size > 3%>
         <div class="col-md-3" id="col-2">
             <div class="col-md-12 col-12">
               <img src="http://placehold.it/230x55">
@@ -94,8 +93,8 @@
       <%else%>
         <div class="col-md-3" id="col-2">
             <div class="col-md-12 col-12">
-              <%- if !@array_prom_features.to_a[5].nil? %>
-                <%- if @array_prom_features.to_a[5][1] == 2%>
+              <%- if !@array_canine_level.to_a[5].nil? %>
+                <%- if @array_canine_level.to_a[5][1] == 2%>
                   <img src="http://placehold.it/230x55">
                   <div class="center"><%= @father_grandfather = Canine.find(@father.lft).id %></div>
                 <%else%>

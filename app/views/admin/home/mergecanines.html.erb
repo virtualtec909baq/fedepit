@@ -1,43 +1,48 @@
 <div class="row">
   <h1 class="page-header">Cruces Caninos</h1>
   <div class="col-md-6">
-    <div class="row">
-      <div class="col-md-6">
-        <select class="form-control">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-      <div class="col-md-6">
-        <button class="btn btn-primary btn-block" type="submit">Refrescar</button>
-      </div>
-    </div>
-    <br>
     <table class="table table-striped responstable">
       <tr>
-        <th data-th="Driver details"><span>Nombre</span></th>
-        <th>N.C</th>
-        <th>N.C</th>
-        <th>Numero Gem</th>
+        <th class="center"><span>Nombre</span></th>
+        <th class="center">COR</th>
+        <th class="center">COUNT</th>
+        <th class="center">Generación</th>
+        <th class="center">% Sangre </th>
+        <th class="center">% Sangre rp</th>
       </tr>
-      <% get_ancestors(@canine).each do |canine|%>
-        <% @canine = Canine.find(canine)%>
-        <% nivel(Canine.find(params[:id]), canine)%>
+      <%@array_canine_level = []%>
+      <%@array_canine_temp = []%>
+      <%@array_level_blood = []%>
+      
+      <%get_ancestors(@canine).each do |id|%>
+        <% @canine = Canine.find(id)%>
+        <% nivel(Canine.find(params[:id]), id)%>
+        <%array_canine = [@canine, $level]%>
+        <%array_blood = [@canine.id, nivel_consa($level)]%>
+        <%@array_canine_level << array_canine%>
+        <%@array_canine_temp << @canine.id%>
+        <%@array_level_blood << array_blood%>
+      <%end%>
+      <% @array_canine_level = @array_canine_level.sort { |a, b| a[1] <=> b[1] }%>
+      <% @array_canine_level.each do |canine|%>
         <tr>
-          <%hash = [@canine.id, $level]%>
-          <%hash_canine_level = Hash[*hash]%>
-          <th><%= @canine.name.upcase%></th>
-          <th><%= hash_canine_level%></th>
-          <th><%= nivel_consa($level)%>%</th>
-          <th><%= $level%></th>
+            <th class="center"><%= canine[0].name.upcase%></th>
+            <th class="center"></th>
+            <th class="center"><%= count_of_element @array_canine_temp, canine[0].id%></th>
+            <th class="center"><%= canine[1]%></th>
+            <th class="center"><%= nivel_consa(canine[1])%> %</th>
+            <% count ||= 0%>
+            <% @array_level_blood.each do|subarray| %>
+              <% if subarray[0] ==  canine[0].id%> 
+                <% count+= subarray[1]%>
+              <%end%>
+            <%end%>
+            <th class="center"><%= count%> %</th>
         </tr>
       <%end%>
-    </table> 
+      
+    </table>
   </div>
-  
   <div class="col-md-6">
     <div class="row">
       <%= search_form_for @search, url: admin_mergecanines_path , :remote=>"true", :method => :get do |f|%>

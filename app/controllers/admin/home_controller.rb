@@ -6,13 +6,13 @@ class Admin::HomeController < ApplicationController
   
   def realizarcruce
      @search = Canine.ransack(params[:q])
-     @canines = @search.result(distinct: true).page(params[:page])
+     @canines = @search.result(distinct: true)
      @features = Feature.all
   end
 
   def mergecanines
     @canine = Canine.find(params[:id])
     @search = Canine.ransack(params[:q])
-    @canines = @search.result(distinct: true).page(params[:page])
+    @canines = @search.result(distinct: true)
   end
 end

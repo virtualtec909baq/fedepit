@@ -83,26 +83,12 @@ module ApplicationHelper
 		return @count
 	end
 
-	def nivel_consa_duplicate_elements(element)
-		@b = Hash.new(0)
-		@array_elements||=[]
-		@array_elements << element
-		@array_elements.each do |value|
-			@b[value] += 1
-		end
-		
-		return @b
+	def count_of_element array, element
+  		array.inject(0) { |count, e| count += 1 if e == element; count }
 	end
 
-	def nivel_consa_duplicate_elements(element)
-		@b = Hash.new(0)
-		@array_elements||=[]
-		@array_elements << element
-		@array_elements.each do |value|
-			@b[value] += 1
-		end
-		
-		return @b
+	def count_blood array, element
+		return array
 	end
 
 	def count_children(canine)
