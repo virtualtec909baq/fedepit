@@ -1,0 +1,46 @@
+class RemoveFieldToFeatures < ActiveRecord::Migration
+  def change
+  	remove_column :features, :insertion_ear, :boolean
+    remove_column :features, :bite_pin, :boolean
+    remove_column :features, :bite_prognato, :boolean
+    remove_column :features, :bite_enognato, :boolean
+    remove_column :features, :bite_fork_inverted, :boolean
+    remove_column :features, :bite_right, :boolean
+    remove_column :features, :dental_full, :boolean
+    remove_column :features, :dental_incisor, :boolean
+    remove_column :features, :dental_canine, :boolean
+    remove_column :features, :dental_molar, :boolean
+    remove_column :features, :dental_premolar, :boolean
+    remove_column :features, :recommendation, :boolean
+    remove_column :features, :title_work, :boolean
+    remove_column :features, :test_strength, :boolean
+    remove_column :features, :test_dog_safe, :boolean
+    remove_column :features, :championsihp, :boolean
+    remove_column :features, :defects_bite, :boolean
+    remove_column :features, :lack_dental, :boolean
+    remove_column :features, :postponement, :boolean
+    remove_column :features, :entropion, :boolean
+    remove_column :features, :ectropion, :boolean
+    remove_column :features, :displacia_elbow, :boolean
+    remove_column :features, :displacia_hip, :boolean
+    remove_column :features, :problem_conduct, :boolean
+    remove_column :features, :defect_tail, :boolean
+    remove_column :features, :skull_width, :float
+    remove_column :features, :skull_high, :float
+    remove_column :features, :skull_diameter, :float
+    remove_column :features, :head_length, :float
+    remove_column :features, :skull_length, :float
+    remove_column :features, :muzzle_high, :float
+    remove_column :features, :skull_percentage, :float
+    remove_column :features, :muzzle_percentage, :float
+    remove_column :features, :heah_high, :float
+    remove_column :features, :muzzle_high_skull, :float
+    remove_column :features, :muscular_general, :float
+    remove_column :features, :muscular_masetero, :float
+    remove_column :features, :muscle_parietale, :float
+    remove_column :features, :body_long, :float
+    remove_column :features, :body_raised, :float
+    remove_column :features, :diamter_thorax, :float
+    remove_column :features, :bite_crusade_inside, :float
+  end
+end

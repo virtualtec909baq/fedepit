@@ -1,0 +1,50 @@
+class AddFieldsToFeatures < ActiveRecord::Migration
+  def change
+    add_column :features, :teeth, :integer
+    add_column :features, :canines, :integer
+    add_column :features, :deciduous_tooth, :integer
+    add_column :features, :incisors_alignment, :integer
+    add_column :features, :molar_tooth, :integer
+    add_column :features, :premolar_tooth, :integer
+    add_column :features, :jowl, :integer
+    add_column :features, :moving_poise, :integer
+    add_column :features, :static_poise, :integer
+    add_column :features, :neck, :integer
+    add_column :features, :shoulder, :integer
+    add_column :features, :chest, :integer
+    add_column :features, :body, :integer
+    add_column :features, :upper_body, :integer
+    add_column :features, :body_alterations, :integer
+    add_column :features, :height, :float
+    add_column :features, :length, :float
+    add_column :features, :torax_length, :float
+    add_column :features, :depths_chest, :float
+    add_column :features, :after_moving, :integer
+    add_column :features, :subsequent_static, :integer
+    add_column :features, :shaped_tail, :integer
+    add_column :features, :tail_length, :integer
+    add_column :features, :tail_movement, :integer
+    add_column :features, :muscle_quality, :integer
+    add_column :features, :attitude, :integer
+    add_column :features, :general_appearance, :integer
+    add_column :features, :ears, :integer
+    add_column :features, :shape_ears, :integer
+    add_column :features, :shape_eyes, :integer
+    add_column :features, :eyes_placement, :integer
+    add_column :features, :color_eyes, :integer
+    add_column :features, :eyelid_abnormalities, :integer
+    add_column :features, :head_measures, :integer
+    add_column :features, :flat_head, :integer
+    add_column :features, :head_shape, :integer
+    add_column :features, :head_stop, :integer
+    add_column :features, :snout, :integer
+    add_column :features, :nouse, :integer
+    add_column :features, :nose_nostrils, :integer
+    add_column :features, :motion, :integer
+    add_column :features, :snout_2, :integer
+    add_column :features, :cigamatico_snout, :integer
+    add_column :features, :supracillares_snout, :integer
+    add_column :features, :cheeks_snout, :integer
+    add_column :features, :muzzle_bite, :integer
+  end
+end
