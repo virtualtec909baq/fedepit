@@ -1,253 +1,179 @@
 <div class="modal-body">
   <%= form_for @feature , url: admin_features_path(@feature) , method: :post do |f| %>
-  <% if @feature.errors.any? %>
-      <br>
+    <% if @feature.errors.any? %>
       <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>No se puede crear el metter:</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>No se puede crear el metter:</strong>
         <ul>
           <% @feature.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+          <li><%= message %></li>
           <% end %>
         </ul>
       </div>
-    <% end %>  
-
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= f.label :cabeza %><br></h3>
-        </div>
-        <div class="panel-body">
-          <div class="field col-xs-2">
-            <label>Ancho de cráneo</label><br>
-            <%= f.text_field :skull_width, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-2">
-            <label>Alto de cráneo</label><br>
-            <%= f.text_field :skull_high, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-2">
-             <label>Diametro de cráneo</label><br>
-            <%= f.text_field :skull_diameter, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-2">
-           <label>Longitud cráneo</label><br>
-            <%= f.text_field :skull_length, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-2">
-            <label>Porcentaje de cráneo</label><br>
-            <%= f.text_field :skull_percentage, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-2">
-            <label>Longitud cabeza</label><br>
-            <%= f.text_field :head_length, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-2">
-            <label>Alto de cabeza </label><br>
-            <%= f.text_field :heah_high, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-2">
-            <label>Alto Ocico</label><br>
-            <%= f.text_field :muzzle_high, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-2">
-            <label>Ocico Porcentaje</label><br>
-            <%= f.text_field :muzzle_percentage, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-2">
-            <label>Insercion oido</label><br>
-            <%= f.select :insertion_ear, [["Bajo", "0"],["Medio", "1"],["Alto", "2"]], {prompt: " "}, {class: "form-control"}%>
-            <%= f.hidden_field :canine_id, :value => "#{params[:canine_id]}" %>
-          </div>
-          <div class="field col-xs-4">
-            <label>Alto Ocico con respecto al craneo Craneo</label><br>
-            <%= f.text_field :muzzle_high_skull, class: 'form-control' %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= f.label :Mordida %><br></h3>
-        </div>
-        <div class="panel-body">
-          <div class="field col-xs-6">
-            <%= f.label :Pinza %><br>
-            <%= f.check_box :bite_pin %>
-          </div>
-          <div class="field col-xs-6">
-            <%= f.label :Cruzada_interior %><br>
-            <%= f.check_box :bite_crusade_inside %>
-          </div>
-          <div class="field col-xs-6">
-            <%= f.label :prognato %><br>
-            <%= f.check_box :bite_prognato %>
-          </div>
-          <div class="field col-xs-6">
-            <%= f.label :enognato %><br>
-            <%= f.check_box :bite_enognato %>
-          </div>
-          <div class="field col-xs-6">
-            <%= f.label :Tijera_invertida %><br>
-            <%= f.check_box :bite_fork_inverted %>
-          </div>
-          <div class="field col-xs-6">
-            <%= f.label :Correcta %><br>
-            <%= f.check_box :bite_right %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-8">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= f.label :Piezas_dentales %><br></h3>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="field col-xs-6">
-                <%= f.label :dental_full %><br>
-                <%= f.check_box :dental_full %>
-              </div>
-              <div class="field col-xs-6">
-                <%= f.label :dental_incisor %><br>
-                <%= f.check_box :dental_incisor %>
-              </div>
-              <div class="field col-xs-6">
-                <%= f.label :dental_canine %><br>
-                <%= f.check_box :dental_canine %>
-              </div>
-              <div class="field col-xs-6">
-                <%= f.label :dental_molar %><br>
-                <%= f.check_box :dental_molar %>
-              </div>
-              <div class="field col-xs-6">
-                <%= f.label :dental_premolar %><br>
-                <%= f.check_box :dental_premolar %>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <img src="/assets/fotoMetter.png" alt="" width="90%" height="90%" >
-            </div>
-          </div>    
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= f.label :calidad_muscular %><br></h3>
-        </div>
-        <div class="panel-body">
-
-          <div class="field col-xs-6">
-            <label>Musculatura Genera</label><br>
-            <%= f.text_field :muscular_general, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-6">
-            <label>Músculos parietales</label><br>
-            <%= f.text_field :muscle_parietale, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-6">
-            <label>Maseteros o Pronunciación de Mejillas</label><br>
-            <%= f.text_field :muscular_masetero, class: 'form-control' %>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= f.label :cuerpo %><br></h3>
-        </div>
-        <div class="panel-body">
-          <div class="field col-xs-4">
-            <label>Largo del cuerpo</label><br>
-            <%= f.text_field :body_long, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-4">
-            <label>Alzada</label><br>
-            <%= f.text_field :body_raised, class: 'form-control' %>
-          </div>
-          <div class="field col-xs-4">
-            <label>Diametro tórax</label><br>
-            <%= f.text_field :diamter_thorax, class: 'form-control' %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= f.label :datos_parentesco %><br></h3>
-        </div>
-        <div class="panel-body">
-          <div class="field  col-xs-4">
-            <label>Recomendado para la crianza</label>
-            <%= f.check_box :recommendation %>
-          </div>
-          <div class="field col-xs-4">
-            <label>Títulos de trabajo</label>
-            <%= f.check_box :title_work %>
-          </div>
-          <div class="field col-xs-4">
-             <label>Prueba de perro seguro y sociable</label>
-            <%= f.check_box :test_dog_safe %>
-          </div>
-          <div class="field col-xs-4">
-            <label>Campeón</label>
-            <%= f.check_box :championsihp %>
-          </div>
-          <div class="field col-xs-4">
-            <label>Defectos en la mordida</label>
-            <%= f.check_box :defects_bite %>
-          </div>
-          <div class="field col-xs-4">
-            <label>Falto de piezas dentales</label>
-            <%= f.check_box :lack_dental %>
-          </div>
-          <div class="field col-xs-4">
-            <%= f.label :postponement %>
-            <%= f.check_box :postponement %>
-          </div>
-          <div class="field col-xs-4">
-            <label>Ectropión</label>
-            <%= f.check_box :entropion %>
-          </div>
-          <div class="field col-xs-4">
-            <label>Displacía de codo</label>
-            <%= f.check_box :displacia_elbow %>
-          </div>
-          <div class="field col-xs-4">
-           <label>Displacía de cadera</label>
-            <%= f.check_box :displacia_hip %>
-          </div>
-          <div class="field col-xs-4">
-            <label>Problemas de comportamiento</label>
-            <%= f.check_box :problem_conduct %>
-          </div>
-          <div class="field col-xs-4">
-            <label>Defectos de cola</label>
-            <%= f.check_box :defect_tail %>
-          </div>
-          <div class="field col-xs-4">
-           <label>Prueba de perro seguro en el tráfico y de sociabilidad</label>
-            <%= f.check_box :test_strength %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-12">
-      <div class="actions">
-        <%= f.submit  :class =>"btn btn-primary btn-block" %>
-      </div>
-      </div>
     <% end %>
-  </div>
+    <div class = "container">
+      <div class="wrapper">
+          <h3 class="form-signin-heading">FEDEPIT REGISTRO</h3>
+          <hr class="colorgraph"><br>
+          <div class="row">
+            <div class="col-lg-4">
+              <%= f.hidden_field :canine_id, :value => params[:canine_id]%>
+              <%= f.label :aspecto_gral %><br>
+              <%= f.select :general_appearance, [["Excelente", "0"],["Bueno", "1"],["Insuficiente", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <% f.label :cabeza_Tipicidad %><br>
+              <%= f.select :attitude, [["Excelente", "0"],["Muy bueno", "1"],["Bueno", "2"],["Insuficiente", "3"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <h2>Orejas</h2><br>
+              <%= f.label :incersión %><br>
+              <%= f.select :ears, [["Alta", "0"],["Media", "1"],["Baja", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :forma %><br>
+              <%= f.select :shape_ears, [["Cirugia E.", "0"],["Triangular caida", "1"],["Semi-caida", "2"],["Semi-recta", "3"],["Rosa", "4"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <h2>Ojos</h2><br>
+              <%= f.label :forma %><br>
+              <%= f.select :shape_eyes, [["Redondos", "0"],["Almedrados", "1"],["Ovalados", "2"],["Triangulares", "3"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :colocación %><br>
+              <%= f.select :eyes_placement, [["Saltones", "0"],["Profundos", "1"],["A nivel", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :color %><br>
+              <%= f.select :color_eyes, [["Oscuros", "0"],["Claros", "1"],["Mixtos", "2"],["Rojos", "3"],["Nublados", "4"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :color %><br>
+              <%= f.select :color_eyes, [["Oscuros", "0"],["Claros", "1"],["Mixtos", "2"],["Rojos", "3"],["Nublados", "4"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :alteracion_parpado %><br>
+              <%= f.select :eyelid_abnormalities, [["Entropion", "0"],["Ectropion", "1"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <h2>Dentadura</h2><br>
+              <%= f.label :dentadura %><br>
+              <%= f.select :teeth, [["Completa", "0"],["Incompleta", "1"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :alineacion_incisivos %><br>
+              <%= f.select :deciduous_tooth, [["Recta", "0"],["En Arco", "1"],["Desalineados", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :caninos %><br>
+              <%= f.select :canines, [["Tamaño Normal", "0"],["Muy Pequeños", "1"],["Fracturados", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :molares %><br>
+              <%= f.select :molar_tooth, [["Tamaño Normal", "0"],["Muy Pequeños", "1"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <%= f.label :premolares %><br>
+              <%= f.select :premolar_tooth, [["Tamaño Normal", "0"],["Muy Pequeños", "1"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :papada %><br>
+              <%= f.select :jowl, [["Visible", "0"],["Exagerada", "1"],["Limpia", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <h2>Aplomos</h2><br>
+              <%= f.label :en_movimiento %><br>
+              <%= f.select :moving_poise, [["Codos salidos hacia afuera", "0"],["Cruzamiento de metacarpos", "1"],["Torsión de las manos", "2"],["Hacia Afuera", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :en_estaticos %><br>
+              <%= f.select :static_poise, [["Codos hacia afuera", "0"],["Codos hacia adentro", "1"],["Torsión de las manos hacia afuera", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+            </div>
+            <div class="col-lg-4">
+              <%= f.label :cabeza_medidas %><br>
+              <%= f.select :head_measures, [["Dimensiones de craneo", "0"],["Alto del craneo", "1"],["Ancho del craneo", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :planos_de_cabeza %><br>
+              <%= f.select :flat_head, [["Divergente", "0"],["Convergente", "1"],["Paralelo", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :forma_de_cabeza %><br>
+              <%= f.select :head_shape, [["Corta y redonda", "0"],["Acuñada", "1"],["Braquicefala", "2"],["Dolicocefala", "3"],["Mesocefala", "4"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :stop %><br>
+              <%= f.select :head_stop, [["Agudo Marcado", "0"],["Marcado con surco", "1"],["Leve Inclinado", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :hocico %><br>
+              <%= f.select :snout, [["Largo", "0"],["Corto", "1"],["Chato", "2"],["Chato e inclinado", "3"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <h2>Nariz</h2>
+              <%= f.label :nariz %><br>
+              <%= f.select :nouse, [["Despigmentada", "0"],["Respingada", "1"],["Aguileña", "2"],["Normal", "3"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :ollares %><br>
+              <%= f.select :nose_nostrils, [["Normales", "0"],["Visibles", "1"],["Estrechos", "2"],["Normal", "3"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <h2>Cuello</h2>
+              <%= f.label :longitud %><br>
+              <%= f.select :length_chest, [["corto", "0"],["medio", "1"],["Alto", "2"],["Tenazas", "3"],["Enognatismo", "4"],["Cruzadas Anterior", "5"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :apariencia %><br>
+              <%= f.select :appearance, [["Normal", "0"],["Curva fuerte y muscular", "1"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :hombros %><br>
+              <%= f.select :shoulder, [["Cargados", "0"],["Medios", "1"],["Alargado", "2"],["Planos", "3"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :pecho %><br>
+              <%= f.select :chest, [["Profundos", "0"],["Planos", "1"],["Amplios", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <h2>Cuerpo</h2>
+              <%= f.label :linea_superior %><br>
+              <%= f.select :upper_body, [["correcta", "0"],["descendente", "1"],["cruz undida", "2"], ["Dorso Cargados del hombro", "2"], ["Plano o a nivel", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :linea_superior %><br>
+              <%= f.select :body_alterations, [["Con lomo arqueado", "0"],["Dorso encarpado o cifosis", "1"],["Lorso o concavo", "2"], ["Dorso Cargados del hombro", "2"], ["Plano o a nivel", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <h2>Altura CMS</h2>
+              <%= f.label :largo_del_perro %><br>
+              <%= f.text_field :height, {class: "form-control"}%>
+              <br>
+              <%= f.label :largo_del_torax %><br>
+              <%= f.text_field :torax_length, {class: "form-control"}%>
+              <br>
+              <%= f.label :largo_del_lomo %><br>
+              <%= f.text_field :length, {class: "form-control"}%>
+              <br>
+              <%= f.label :profundidad_del_torax %><br>
+              <%= f.select :depths_chest, [["Profundo", "0"],["Profundidad medida", "1"],["Poco produndo", "2"], ["Circuferencia del torax", "2"], ["Altura del miembro", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+            </div>
+            <div class="col-lg-4">
+              <%= f.label :movimiento %><br>
+              <%= f.select :motion, [["Excelente", "0"],["Bueno", "1"],["Suficiente", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :labios %><br>
+              <%= f.select :lips, [["De Belfos Pendulosos", "0"],["De Belfos Apretados", "1"],["Normales", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <h2>hocico</h2>
+              <%= f.label :hocico %><br>
+              <%= f.select :snout_2, [[" Ato de Bozal", "0"],["Longitud del bozal", "1"],["En Punta", "2"],["En Punta", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :cigomaticos %><br>
+              <%= f.select :cigamatico_snout, [["Pronunciado", "0"],["Moderado", "1"],["Ausente", "2"],["En Punta", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :mordida %><br>
+              <%= f.select :cigamatico_snout, [["correcta tijera", "0"],["Tijera inversa", "1"],["Prognatismo Avanzado", "2"],["Tenazas", "3"],["Enognatismo", "4"],["Cruzadas Anterior", "5"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <h2>Posteriores</h2>
+              <%= f.label :en_movimiento %><br>
+              <%= f.select :after_moving, [["juntas de atras", "0"],["Corvenjon inmovil", "1"],["Roza corvejones", "2"],["Rectos", "3"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :en_estatico %><br>
+              <%= f.select :subsequent_static, [["corvejones de vacas", "0"],["Corecto", "1"],["corvejon inmovil", "2"],["Rectos", "3"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <h2>Cola</h2>
+              <%= f.label :forma %><br>
+              <%= f.select :shaped_tail, [["Correcta", "0"],["Partida", "1"],["En espiral", "2"],["Anudada", "3"],["De Bulidog", "4"],["Desviada", "5"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :longuitud %><br>
+              <%= f.select :tail_length, [["Correcta", "0"],["Larga", "1"],["Corta", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+              <%= f.label :longuitud %><br>
+              <%= f.select :tail_movement, [["horizontal", "0"],["Vertical", "1"],["Caida Normal", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br>
+
+              <%= f.label :calidas_muscular %><br>
+              <%= f.select :muscle_quality, [["5 estrellas", "0"],["4 estrellas", "1"],[" 3 estrellas", "2"],["Insuficiente", "2"],["Gordo", "2"],["Por debajo de su peso", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
+              <br> 
+            </div>
+
+            <div class="col-lg-12">
+              <%=f.submit :class => "btn btn btn-primary btn-block"%>
+            </div>
+          </div>
+      </div>
+    </div>
+  <% end %>  
 </div>
