@@ -1,248 +1,337 @@
+<style type="text/css">
+  .panel
+  {
+      position: relative;
+  }
+
+  .panel-default > .panel-leftheading
+  {
+      color: #333;
+      background-color: #f5f5f5;
+      border-color: #ddd;
+  }
+
+  .panel-primary > .panel-leftheading
+  {
+      color: #fff;
+      background-color: #428bca;
+      border-color: #428bca;
+  }
+
+  .panel-success > .panel-leftheading
+  {
+      color: #3c763d;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+  }
+
+  .panel-info > .panel-leftheading
+  {
+      color: #31708f;
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+  }
+
+  .panel-warning > .panel-leftheading
+  {
+      color: #8a6d3b;
+      background-color: #fcf8e3;
+      border-color: #faebcc;
+  }
+
+  .panel-danger > .panel-leftheading
+  {
+      color: #a94442;
+      background-color: #f2dede;
+      border-color: #ebccd1;
+  }
+
+  .panel-leftheading
+  {
+      width: 42px;
+      padding: 10px 15px;
+      border-right: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      border-top-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      float: left;
+      height: 100%;
+      position: absolute;
+  }
+
+  .panel-lefttitle
+  {
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 15px;
+      font-size: 16px;
+      color: inherit;
+      -webkit-transform: rotate(90deg);
+      -webkit-transform-origin: left top;
+      -moz-transform: rotate(90deg);
+      -moz-transform-origin: left top;
+      -ms-transform: rotate(90deg);
+      -ms-transform-origin: left top;
+      -o-transform: rotate(90deg);
+      -o-transform-origin: left top;
+      transform: rotate(90deg);
+      transform-origin: left top;
+      position: absolute;
+      white-space: nowrap;
+  }
+
+  .panel-rightbody
+  {
+      float: left;
+      margin-left: 45px;
+      padding: 15px;
+  }
+</style>
 <div class="row">
   <%- if @canine.feature%>
-    <div class="col-lg-12">
-      <div class="col-lg-12">
-        <br>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Cabeza<br></h3>
-          </div>
-          <div class="panel-body">
-            <div class="field col-xs-4">
-              Craneo ancho:
-              <%= @feature.skull_width%>
-            </div>
-            <div class="field col-xs-4">
-              Craneo alto:
-              <%= @feature.skull_high%>
-            </div>
-            <div class="field col-xs-4">
-              Diametro del Craneo: 
-              <%= @feature.skull_diameter%>
-            </div>
-            <div class="field col-xs-4">
-              Longitud de la cabeza: 
-              <%= @feature.head_length%>
-            </div>
-            <div class="field col-xs-4">
-              Longitud del craneo:
-              <%= @feature.skull_length%>
-            </div>
-            <div class="field col-xs-4">
-              Cabeza alto:
-              <%= @feature.heah_high%>
-            </div>
-            <div class="field col-xs-4">
-              Porcentaje Craneo:
-              <%= @feature.skull_percentage%>
-            </div>
-            <div class="field col-xs-4">
-              Alto Ocico con respecto al craneo Craneo:
-              <%= @feature.muzzle_high_skull%>
-            </div>
-            <div class="field col-xs-4">
-              Alto Ocico:
-              <%= @feature.muzzle_high%>
-            </div>
-            <div class="field col-xs-4">
-              Ocico Porcentaje:
-              <%= @feature.muzzle_percentage%>
-            </div>
-            <div class="field col-xs-4">
-              Ocico alto:
-              <%= @feature.muzzle_high%>
-            </div>
-            <div class="field col-xs-4">
-              Insercion oido:
-              <%= @feature.insertion_ear%>
-            </div>
-          </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Aspecto General</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Aspecto General:</strong>
+          <span><%= general_appearance(@canine.feature.general_appearance)%></span>
+          <br>
+          <strong>Cabeza tipicidad:</strong>
+          <span><%= attitude(@canine.feature.attitude)%></span>
+          <br>
+          <strong>Orejas incersión:</strong>
+          <span><%= ears(@canine.feature.ears)%></span>
+          <br>
+          <strong>Orejas forma:</strong>
+          <span><%= shape_ears(@canine.feature.shape_ears)%></span>
+          <br>
+          <strong>Ojos forma:</strong>
+          <span><%= shape_eyes(@canine.feature.shape_eyes)%></span>
+          <br>
+          <strong>Ojos colocación:</strong>
+          <span><%= eyes_placement(@canine.feature.eyes_placement)%></span>
+          <br>
+          <strong>Color de ojos:</strong>
+          <span><%= color_eyes(@canine.feature.color_eyes)%></span>
+          <br>
+          <strong>Alteraciones de parpados:</strong>
+          <span><%= eyelid_abnormalities(@canine.feature.eyelid_abnormalities)%></span>
+          <br>
+        </div>
+        <div class="clearfix">
         </div>
       </div>
-      <div class="col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Mordida<br></h3>
-          </div>
-          <div class="panel-body">
-            <div class="field col-xs-4">
-              Pinza:
-              <%= @feature.bite_pin%>
-            </div>
-            <div class="field col-xs-4">
-              Cruzada interior:
-              <%= @feature.bite_crusade_inside%>
-            </div>
-            <div class="field col-xs-4">
-              Prognato: 
-              <%= @feature.bite_prognato%>
-            </div>
-            <div class="field col-xs-4">
-              Enognato: 
-              <%= @feature.bite_enognato%>
-            </div>
-            <div class="field col-xs-4">
-              Tijera invertuda:
-              <%= @feature.bite_fork_inverted%>
-            </div>
-            <div class="field col-xs-4">
-              Correcta:
-              <%= @feature.bite_right%>
-            </div>
-          </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Cabeza</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Medidas de la cabeza:</strong>
+          <span><%= head_measures(@canine.feature.head_measures)%></span>
+          <br>
+          <strong>Planos de la cabeza:</strong>
+          <span><%= flat_head(@canine.feature.attitude)%></span>
+          <br>
+          <strong>Forma de la cabeza:</strong>
+          <span><%= head_shape(@canine.feature.head_shape)%></span>
+          <br>
+          <strong>Stop Cabeza:</strong>
+          <span><%= head_stop(@canine.feature.head_stop)%></span>
+          <br>
+          <strong>Hocico :</strong>
+          <span><%= snout(@canine.feature.snout)%></span>
+          <br>
+          <strong>Stop Cabeza:</strong>
+          <span><%= head_stop(@canine.feature.head_stop)%></span>
+          <br>
+          <strong>Hocico :</strong>
+          <span><%= snout(@canine.feature.snout)%></span>
+          <br>
+        </div>
+        <div class="clearfix">
         </div>
       </div>
-      <div class="col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Piezas dentales<br></h3>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="field col-xs-6">
-                  Completo:
-                  <%= @feature.dental_full%>
-                </div>
-                <div class="field col-xs-6">
-                  Ausencia de incisivo:
-                  <%= @feature.dental_incisor%>
-                </div>
-                <div class="field col-xs-6">
-                  Ausencia de canino: 
-                  <%= @feature.dental_canine%>
-                </div>
-                <div class="field col-xs-6">
-                  Ausencia de molar: 
-                  <%= @feature.dental_molar%>
-                </div>
-                <div class="field col-xs-6">
-                  Ausencia de premolar:
-                  <%= @feature.dental_premolar%>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <img src="/assets/fotoMetter.png" alt="" width="90%" height="90%" >
-              </div>
-            </div>    
-          </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Movimientos</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>En movimiento:</strong>
+          <span><%= after_moving(@canine.feature.after_moving)%></span>
+          <br>
+          <strong>Mov. Estatico:</strong>
+          <span><%= subsequent_static(@canine.feature.subsequent_static)%></span>
+          <br>
+          <strong>Forma de la cola:</strong>
+          <span><%= shaped_tail(@canine.feature.shaped_tail)%></span>
+          <br>
+          <strong>Largo de la cola:</strong>
+          <span><%= tail_length(@canine.feature.tail_length)%></span>
+          <br>
+          <strong>Movimiento de la cola:</strong>
+          <span><%= tail_movement(@canine.feature.tail_movement)%></span>
+          <br>
+          <strong>Calidas Muscular:</strong>
+          <span><%= muscle_quality(@canine.feature.muscle_quality)%></span>
+          <br>
+          <br>
+          <br>
+
+        </div>
+        <div class="clearfix">
         </div>
       </div>
-      <div class="col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-          <h3 class="panel-title">Calidad muscular<br></h3>
-          </div>
-          <div class="panel-body">
-            <div class="field col-xs-4">
-              Musculatura General:
-              <%= @feature.muscular_general%>
-            </div>
-            <div class="field col-xs-4">
-              Maseteros o Pronunciación de Mejillas:
-              <%= @feature.muscular_masetero%>
-            </div>
-            <div class="field col-xs-4">
-              Músculos parietales: 
-              <%= @feature.muscle_parietale%>
-            </div>
-          </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Dentadura</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Dentadura:</strong>
+          <span><%= teeth(@canine.feature.teeth)%></span>
+          <br>
+          <strong>Alineación Incisivos:</strong>
+          <span><%= deciduous_tooth(@canine.feature.deciduous_tooth)%></span>
+          <br>
+          <strong>Caninos:</strong>
+          <span><%= canines(@canine.feature.canines)%></span>
+          <br>
+          <strong>Malares:</strong>
+          <span><%= molar_tooth(@canine.feature.molar_tooth)%></span>
+          <br>
+          <strong>Premolares:</strong>
+          <span><%= premolar_tooth(@canine.feature.premolar_tooth)%></span>
+          <br>
+          <strong>Papada:</strong>
+          <span><%= jowl(@canine.feature.jowl)%></span>
+          <br>
+        </div>
+        <div class="clearfix">
         </div>
       </div>
-      <div class="col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Cuerpo<br></h3>
-          </div>
-          <div class="panel-body">
-            <div class="field col-xs-4">
-              Largo:
-              <%= @feature.body_long%>
-            </div>
-            <div class="field col-xs-4">
-              Alzada:
-              <%= @feature.body_raised%>
-            </div>
-            <div class="field col-xs-4">
-              Diametro tórax: 
-              <%= @feature.diamter_thorax%>
-            </div>
-          </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Cuello</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Cuello:</strong>
+          <span><%= teeth(@canine.feature.teeth)%></span>
+          <br>
+          <strong>Apariencia del cuello:</strong>
+          <span><%= deciduous_tooth(@canine.feature.deciduous_tooth)%></span>
+          <br>
+          <strong>Hombro:</strong>
+          <span><%= canines(@canine.feature.canines)%></span>
+          <br>
+          <strong>Pecho:</strong>
+          <span><%= molar_tooth(@canine.feature.molar_tooth)%></span>
+          <br>
+          <strong>Cuerpo linea superior:</strong>
+          <span><%= premolar_tooth(@canine.feature.premolar_tooth)%></span>
+          <br>
+          <strong>Cuerpo alteraciones:</strong>
+          <span><%= jowl(@canine.feature.jowl)%></span>
+          <br>
+        </div>
+        <div class="clearfix">
         </div>
       </div>
-      <div class="col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Datos parentezco<br></h3>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="field col-xs-4">
-                  Recomendados para la crianza:
-                  <%= @feature.recommendation%>
-                </div>
-                <div class="field col-xs-4">
-                  Títulos de trabajo:
-                  <%= @feature.title_work%>
-                </div>
-                <div class="field col-xs-4">
-                  Pruebas de resistencia superadas: 
-                  <%= @feature.test_strength%>
-                </div>
-                <div class="field col-xs-4">
-                  Prueba de perro seguro en el tráfico y de sociabilidad: 
-                  <%= @feature.test_dog_safe%>
-                </div>
-                <div class="field col-xs-4">
-                  Campeón:
-                  <%= @feature.championsihp%>
-                  <br>
-                  <br>
-                </div>
-                <div class="field col-xs-4">
-                  Defectos en la mordida:
-                  <%= @feature.defects_bite%>
-                  <br>
-                  <br>
-                </div>
-                <div class="field col-xs-4">
-                  Falto de piezas dentales:
-                  <%= @feature.lack_dental%>
-                </div>
-                <div class="field col-xs-4">
-                  Aplazamos desviados: 
-                  <%= @feature.postponement%>
-                </div>
-                <div class="field col-xs-4">
-                  Ectropión:
-                  <%= @feature.ectropion%>
-                </div>
-                <div class="field col-xs-4">
-                  Displacía de codo:
-                  <%= @feature.displacia_elbow%>
-                </div>
-                <div class="field col-xs-4">
-                  Displacía de cadera: 
-                  <%= @feature.displacia_hip%>
-                </div>
-                <div class="field col-xs-4">
-                  Problemas de comportamiento: 
-                  <%= @feature.problem_conduct%>
-                </div>
-                <div class="field col-xs-4">
-                  Defectos de cola:
-                  <%= @feature.defect_tail%>
-                </div>
-              </div>
-            </div>    
-          </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Hocico</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Hocico:</strong>
+          <span><%= teeth(@canine.feature.teeth)%></span>
+          <br>
+          <strong>Cigomaticos:</strong>
+          <span><%= deciduous_tooth(@canine.feature.deciduous_tooth)%></span>
+          <br>
+          <strong>Supracillares:</strong>
+          <span><%= canines(@canine.feature.canines)%></span>
+          <br>
+          <strong>Mejillas:</strong>
+          <span><%= molar_tooth(@canine.feature.molar_tooth)%></span>
+          <br>
+          <strong>Mordida:</strong>
+          <span><%= premolar_tooth(@canine.feature.premolar_tooth)%></span>
+          <br>
+          <strong>Cuerpo alteraciones:</strong>
+          <span><%= jowl(@canine.feature.jowl)%></span>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Aplomos</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>En movimiento :</strong>
+          <span><%= teeth(@canine.feature.teeth)%></span>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Actitud</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Actitud:</strong>
+          <span><%= teeth(@canine.feature.teeth)%></span>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Mediciones</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Largo del perro:</strong>
+          <span><%= @canine.feature.height%> cms</span>
+          <br>
+          <strong>Largo del torax:</strong>
+          <span><%= @canine.feature.torax_length%> cms</span>
+          <br>
+          <strong>Largo del lomo:</strong>
+          <span><%= @canine.feature.length%> cms</span>
+          <br>
+          <strong>Profundidad del torax:</strong>
+          <span><%= teeth(@canine.feature.depths_chest)%></span>
+        </div>
+        <div class="clearfix">
         </div>
       </div>
     </div>
   <%else%>
-    <div class="col-lg-12">
-      <h1 class="center">NO SE HA CREADO METTER</h1>
-    </div>
+    <div class="center"> NO SE HA CREADO METTER</div>
   <%end%>
 </div>
+

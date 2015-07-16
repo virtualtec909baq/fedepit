@@ -67,6 +67,5 @@ class FeaturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_params
-      params.require(:feature).permit(:skull_width, :skull_high, :skull_diameter, :head_length, :skull_length, :muzzle_high, :skull_percentage, :muzzle_percentage, :muzzle_high, :heah_high, :muzzle_high_skull, :insertion_ear, :bite_pin, :bite_crusade_inside, :bite_prognato, :bite_enognato, :bite_fork_inverted, :bite_right, :dental_full, :dental_incisor, :dental_canine, :dental_molar, :dental_premolar, :muscular_general, :muscular_masetero, :muscle_parietale, :body_long, :body_raised, :diamter_thorax, :recommendation, :title_work, :test_strength, :test_dog_safe, :championsihp, :defects_bite, :lack_dental, :postponement, :entropion, :ectropion, :displacia_elbow, :displacia_hip, :problem_conduct, :defect_tail, :canine_id)
-    end
+      params.require(:feature).permit!
 end

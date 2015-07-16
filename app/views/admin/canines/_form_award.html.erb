@@ -8,22 +8,22 @@
       </div>
       <div class="modal-body">
         <%= form_for :awards , url: admin_awards_path, method: :post do |f| %>
-      <div class="field">
-          <%= f.label :Seleccione_campeonato %><br>
-          <%= f.collection_select :event_id, Event.joins(:type_event).where(type_events: {championship: true}), :id, :name, {prompt: " "}, {class: "form-control"}%>
+          <div class="field">
+            <%= f.label :Seleccione_campeonato %><br>
+            <%= f.collection_select :event_id, Event.joins(:type_event).where(type_events: {championship: true}), :id, :name, {prompt: " "}, {class: "form-control"}%>
             <%= f.hidden_field :canine_id, :value => "#{params[:id]}" %>
-      </div>
-        <div class="field">
-          <%= f.label :puesto %><br>
-          <%= f.text_field :position, class: 'form-control' %>
-        </div>
-        <div class="field">
-          <%= f.label :premio %><br>
-          <%= f.text_area :reward, class: 'form-control' %>
-        </div>
-        <div class="actions">
-          <%= f.submit :class =>"btn btn-primary btn-block" %>
-        </div>
+          </div>
+          <div class="field">
+            <%= f.label :puesto %><br>
+            <%= f.text_field :position, class: 'form-control' %>
+          </div>
+          <div class="field">
+            <%= f.label :premio %><br>
+            <%= f.text_area :reward, class: 'form-control' %>
+          </div>
+          <div class="actions">
+            <%= f.submit :class =>"btn btn-primary btn-block" %>
+          </div>
         <% end %>
       </div>
     </div>

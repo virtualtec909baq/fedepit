@@ -9,24 +9,14 @@
         <%end%>
       </div>
       <div class="col-md-10">
-        <span>
-          Nombre:
-          <%= canine.name%>
-        </span>
+        <span>Nombre:</span>
+        <%= canine.name%>
         <br>
         <%- if canine.breeder%>
-          <span>
-            Criador:
-            <%= canine.breeder.name%>
-          </span>
+          <span>Criador:</span>
+          <%= canine.breeder.name%>
         <%end%>
         <br>
-        <%- if canine.breeder%>
-          <span>
-            Criador:
-            <%= canine.breeder.name%>
-          </span>
-        <%end%>
       </div>
     </div>
   <%end%>

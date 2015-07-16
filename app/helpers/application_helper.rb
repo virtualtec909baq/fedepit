@@ -88,7 +88,12 @@ module ApplicationHelper
 	end
 
 	def count_blood array, element
-		return array
+		c ||= 0
+		array.each do 
+			if e[0].to_i == element
+				return "#{element} #{ e[0]}o"
+			end
+		end
 	end
 
 	def count_children(canine)
@@ -101,11 +106,345 @@ module ApplicationHelper
 		end
 	end
 
+	def general_appearance(value)
+		if value == 0
+			return 'Excelente'
+		elsif value == 1
+			return 'Bueno'
+		elsif value == 2
+			return 'Insuficiente'
+		end
+	end
+
+	def attitude(value)
+		if value == 0
+			return 'Excelente'
+		elsif value == 1
+			return 'Muy bueno'
+		elsif value == 2
+			return 'Bueno'	
+		elsif value == 3
+			return 'Insuficiente'
+		end
+	end
+
+	def ears(value)
+		if value == 0
+			return 'Alta'
+		elsif value == 1
+			return 'Media'
+		elsif value == 2
+			return 'Baja'	
+		end
+	end
+
+	def shape_ears(value)
+		if value == 0
+			return 'Cirugia E.'
+		elsif value == 1
+			return 'Triangular caida'
+		elsif value == 2
+			return 'Semi-caida'	
+		elsif value == 3
+			return 'Semi-recta'
+		elsif value == 4
+			return 'Rosa'
+		end
+	end
+	def shape_eyes(value)
+		if value == 0
+			return 'Redondos'
+		elsif value == 1
+			return 'Almedrados'
+		elsif value == 2
+			return 'Ovalados'	
+		elsif value == 3
+			return 'Triangulares'	
+		end
+	end
+	def eyes_placement(value)
+		if value == 0
+			return 'Saltones'
+		elsif value == 1
+			return 'Profundos'
+		elsif value == 2
+			return 'A nivel'	
+		end
+	end
+	def color_eyes(value)
+		if value == 0
+			return 'Oscuros'
+		elsif value == 1
+			return 'Claros'
+		elsif value == 2
+			return 'Mixtos'	
+		elsif value == 3
+			return 'Rojos'
+		elsif value == 4
+			return 'Rojos'	
+		end
+	end
+	def eyelid_abnormalities(value)
+		if value == 0
+			return 'Entropion'
+		elsif value == 1
+			return 'Ectropion'
+		end
+	end
+
+	def head_measures(value)
+		if value == 0
+			return 'Dimensiones de craneo'
+		elsif value == 1
+			return 'Alto del craneo'
+		elsif value == 2
+			return 'Ancho del craneo'
+		end
+	end
+
+	def flat_head(value)
+		if value == 0
+			return 'Divergente'
+		elsif value == 1
+			return 'Convergente'
+		elsif value == 2
+			return 'Paralelo'
+		end
+	end
+
+	def head_shape(value)
+		if value == 0
+			return 'Corta y redonda'
+		elsif value == 1
+			return 'Acuñada'
+		elsif value == 2
+			return 'Braquicefala'
+		elsif value == 3
+			return 'Dolicocefala'
+		elsif value == 4
+			return 'Mesocefala'
+		end
+	end
+
+	def head_stop(value)
+		if value == 0
+			return 'Agudo Marcado'
+		elsif value == 1
+			return 'Marcado con surco'
+		elsif value == 2
+			return 'Leve Inclinado'
+		end
+	end
+
+	def snout(value)
+		if value == 0
+			return 'Largo'
+		elsif value == 1
+			return 'Corto'
+		elsif value == 2
+			return 'Chato'
+		elsif value == 3
+			return 'Chato e inclinado'
+		end
+	end
+
+	def motion(value)
+		if value == 0
+			return 'Excelente'
+		elsif value == 1
+			return 'Excelente'
+		elsif value == 2
+			return 'Suficiente'
+		end
+	end
+
+	def lips(value)
+		if value == 0
+			return 'De Belfos Pendulosos'
+		elsif value == 1
+			return 'De Belfos Apretados'
+		elsif value == 2
+			return 'Normales'
+		end
+	end
+
+	def snout_2(value)
+		if value == 0
+			return 'Ato de Bozal'
+		elsif value == 1
+			return 'Longitud del bozal'
+		elsif value == 2
+			return 'En Punta'
+		elsif value == 3
+			return 'Terminado recto'
+		elsif value == 4
+			return 'Con arrugas visibles'
+		end
+	end
+	
+	def cigamatico_snout(value)
+		if value == 0
+			return 'Pronunciado'
+		elsif value == 1
+			return 'Moderado'
+		elsif value == 2
+			return 'Ausente'
+		elsif value == 3
+			return 'En Punta'
+		end
+	end
+
+	def supracillares_snout(value)
+		if value == 0
+			return 'correcta tijera'
+		elsif value == 1
+			return 'Tijera inversa'
+		elsif value == 2
+			return 'Prognatismo Avanzado'
+		elsif value == 3
+			return 'Tenazas'
+		elsif value == 4
+			return 'Enognatismo'
+		elsif value == 5
+			return 'Cruzadas Anterior'
+		end
+	end
+	
+	def after_moving(value)
+		if value == 0
+			return 'Juntas de atras'
+		elsif value == 1
+			return 'Corvenjon inmovil'
+		elsif value == 2
+			return 'Roza corvejones'
+		elsif value == 3
+			return 'Rectos'
+		end
+	end
+
+	def subsequent_static(value)
+		if value == 0
+			return 'Corvejones de vacas'
+		elsif value == 1
+			return 'Corecto'
+		elsif value == 2
+			return 'Corvejon inmovil'
+		elsif value == 3
+			return 'Rectos'
+		end
+	end
+
+	def shaped_tail(value)
+		if value == 0
+			return 'Correcta'
+		elsif value == 1
+			return 'Partida'
+		elsif value == 2
+			return 'En espiral'
+		elsif value == 3
+			return 'Anudada'
+		elsif value == 4
+			return 'De Bulidog'
+		elsif value == 5
+			return 'Desviada'
+		end
+	end
+
+	def tail_length(value)
+		if value == 0
+			return 'Correcta'
+		elsif value == 1
+			return 'Larga'
+		elsif value == 2
+			return 'Corta'
+		end
+	end
+
+	def tail_movement(value)
+		if value == 0
+			return 'horizontal'
+		elsif value == 1
+			return 'Vertical'
+		elsif value == 2
+			return 'Caida Normal'
+		end
+	end
+	
+	def muscle_quality(value)
+		if value == 0
+			return '5 estrellas'
+		elsif value == 1
+			return '4 estrellas'
+		elsif value == 2
+			return '3 estrellas'
+		elsif value == 3
+			return 'Insuficiente'
+		elsif value == 4
+			return 'Gordo'
+		elsif value == 5
+			return 'Por debajo de su peso'
+		end
+	end
+
+	def teeth(value)
+		if value == 0
+			return 'Completa'
+		elsif value == 1
+			return 'Incompleta'
+		end
+	end
+	
+	def deciduous_tooth(value)
+		if value == 0
+			return 'Recta'
+		elsif value == 1
+			return 'En Arco'
+		elsif value == 2
+			return 'Desalineados'
+		end
+	end
+
+	def canines(value)
+		if value == 0
+			return 'Tamaño Normal'
+		elsif value == 1
+			return 'Muy Pequeños'
+		elsif value == 2
+			return 'Fracturados'
+		end
+	end
+
+	def molar_tooth(value)
+		if value == 0
+			return 'Tamaño Normal'
+		elsif value == 1
+			return 'Muy Pequeños'
+		end
+	end
+
+	def premolar_tooth(value)
+		if value == 0
+			return 'Tamaño Normal'
+		elsif value == 1
+			return 'Muy Pequeños'
+		end
+	end
+       
+    def jowl(value)
+		if value == 0
+			return 'Visible'
+		elsif value == 1
+			return 'Exagerada'
+		elsif value == 2
+			return 'Limpia'
+		end
+	end   
+
 	def enviar_cruce(canine)
 		@canine = canine
 		if has_children(@canine)
 			@array_child_features = []
-			@array_prom_features = []
+			@array_prom_features = []	
 			@children = children(@canine)
 			@array_count_features = []
 			@features_count = Hash.new(0)
