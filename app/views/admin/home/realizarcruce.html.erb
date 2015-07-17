@@ -1,21 +1,105 @@
 <%= javascript_include_tag "welcome"%>
-<div id="page-wrapper">
-  <div class="row">
-    <div id="skull"class="col-lg-12" data-skullgt="<%= @features.sort_by {|obj| obj.skull_width}.first.skull_width.to_i%>" data-skulllt="<%= @features.sort_by {|obj| obj.skull_width}.last.skull_width.to_i%>">
-      <h1 class="page-header">Filtros de Busqueda  Cruce</h1>
-    </div>
-    <div class="modal-body">
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Filtros</button>
-      <div class="top-buffer"></div>
-      <div class="collapse" id="collapseExample">
-        <div class="well">
-          <%= search_form_for @search, url: admin_realizarcruce_path(:merge => true), :remote=>"true", :method => :get do |f|%>
-              <div class="row">
-                
+<div class="row">
+  <div id="skull"class="col-lg-12">
+    <h1 class="page-header">Filtros de Busqueda  Cruce</h1>
+  </div>
+  <div class="modal-body">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Filtros</button>
+    <div class="top-buffer"></div>
+    <div class="collapse" id="collapseExample">
+      <div class="well">
+        <%= search_form_for @search, url: admin_realizarcruce_path(:merge => true), :remote=>"true", :method => :get do |f|%>
+            <div class="row">
+              <div class="col-md-4">
+                <%= f.select :feature_general_appearance_eq, [["Excelente", "0"],["Bueno", "1"],["Insuficiente", "2"]], {prompt: "Apariencia General"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_attitude_eq , [["Excelente", "0"],["Muy bueno", "1"],["Bueno", "2"],["Insuficiente", "3"]], {prompt: "Atitudes"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_ears_eq, [["Alta", "0"],["Media", "1"],["Baja", "2"]], {prompt: "Incersión"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_shape_ears_eq , [["Cirugia E.", "0"],["Triangular caida", "1"],["Semi-caida", "2"],["Semi-recta", "3"],["Rosa", "4"]], {prompt: "Forma de orejas"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_shape_eyes_eq, [["Redondos", "0"],["Almedrados", "1"],["Ovalados", "2"],["Triangulares", "3"]], {prompt: "Forma de los ojos"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_eyes_placement_eq, [["Saltones", "0"],["Profundos", "1"],["A nivel", "2"]], {prompt: "Colocación"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_color_eyes_eq, [["Oscuros", "0"],["Claros", "1"],["Mixtos", "2"],["Rojos", "3"],["Nublados", "4"]], {prompt: "Color de ojos"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_eyelid_abnormalities_eq, [["Entropion", "0"],["Ectropion", "1"]], {prompt: "Alteracion de parpado"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_teeth_eq , [["Completa", "0"],["Incompleta", "1"]], {prompt: "Dentadura"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_deciduous_tooth_eq , [["Recta", "0"],["En Arco", "1"],["Desalineados", "2"]], {prompt: "Alineacion Incisivos"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_canines_eq , [["Tamaño Normal", "0"],["Muy Pequeños", "1"],["Fracturados", "2"]], {prompt: "Caninos"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_molar_tooth_eq , [["Tamaño Normal", "0"],["Muy Pequeños", "1"]], {prompt: "Molares"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_premolar_tooth_eq, [["Tamaño Normal", "0"],["Muy Pequeños", "1"]], {prompt: "premolares"}, {class: "form-control"}%>
+                  <br>
+                <%= f.select :feature_jowl_eq, [["Visible", "0"],["Exagerada", "1"],["Limpia", "2"]], {prompt: "papada"}, {class: "form-control"}%>
               </div>
-          <%end%>
-        </div>
+              <div class="col-md-4">
+                <%= f.select :feature_moving_poise_eq, [["Codos salidos hacia afuera", "0"],["Cruzamiento de metacarpos", "1"],["Torsión de las manos", "2"],["Hacia Afuera", "2"]], {prompt: "aplomos en movimiento"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_static_poise_eq , [["Codos hacia afuera", "0"],["Codos hacia adentro", "1"],["Torsión de las manos hacia afuera", "2"]], {prompt: "Aplomos estaticos"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_head_measures_eq , [["Dimensiones de craneo", "0"],["Alto del craneo", "1"],["Ancho del craneo", "2"]], {prompt: "medidas de la cabeza"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_flat_head_eq, [["Divergente", "0"],["Convergente", "1"],["Paralelo", "2"]], {prompt: "planos de cabeza"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_head_shape_eq , [["Corta y redonda", "0"],["Acuñada", "1"],["Braquicefala", "2"],["Dolicocefala", "3"],["Mesocefala", "4"]], {prompt: "forma de cabeza"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_head_shape_eq, [["Agudo Marcado", "0"],["Marcado con surco", "1"],["Leve Inclinado", "2"]], {prompt: "stop"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_snout_eq , [["Largo", "0"],["Corto", "1"],["Chato", "2"],["Chato e inclinado", "3"]], {prompt: "hocico"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_nouse_eq, [["Despigmentada", "0"],["Respingada", "1"],["Aguileña", "2"],["Normal", "3"]], {prompt: "nariz"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_nose_nostrils_eq, [["Normales", "0"],["Visibles", "1"],["Estrechos", "2"],["Normal", "3"]], {prompt: "ollares"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_length_chest_eq , [["corto", "0"],["medio", "1"],["Alto", "2"],["Tenazas", "3"],["Enognatismo", "4"],["Cruzadas Anterior", "5"]], {prompt: "longitud"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_appearance_eq, [["Normal", "0"],["Curva fuerte y muscular", "1"]], {prompt: "apariencia"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_shoulder_eq, [["Cargados", "0"],["Medios", "1"],["Alargado", "2"],["Planos", "3"]], {prompt: "hombros"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_chest_eq , [["Profundos", "0"],["Planos", "1"],["Amplios", "2"]], {prompt: "pecho"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_motion_eq, [["Excelente", "0"],["Bueno", "1"],["Suficiente", "2"]], {prompt: "movimiento"}, {class: "form-control"}%>
+              </div>
+              <div class="col-md-4">
+                <%= f.select :feature_lips_eq, [["De Belfos Pendulosos", "0"],["De Belfos Apretados", "1"],["Normales", "2"]], {prompt: "labios"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_snout_2_eq, [[" Ato de Bozal", "0"],["Longitud del bozal", "1"],["En Punta", "2"],["Terminado recto", "3"], ["Con arrugas visibles",4]], {prompt: "hocico"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_cigamatico_snout_eq, [["Pronunciado", "0"],["Moderado", "1"],["Ausente", "2"],["En Punta", "3"]], {prompt: "cigomaticos"}, {class: "form-control"}%>
+                <br>
+              
+                <%= f.select :feature_supracillares_snout_eq , [["correcta tijera", "0"],["Tijera inversa", "1"],["Prognatismo Avanzado", "2"],["Tenazas", "3"],["Enognatismo", "4"],["Cruzadas Anterior", "5"]], {prompt: "mordida"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_after_moving_eq , [["juntas de atras", "0"],["Corvenjon inmovil", "1"],["Roza corvejones", "2"],["Rectos", "3"]], {prompt: "Posteriores en movimiento"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_subsequent_static_eq , [["corvejones de vacas", "0"],["Corecto", "1"],["corvejon inmovil", "2"],["Rectos", "3"]], {prompt: "Posteriores en estatico"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_shaped_tail_eq , [["Correcta", "0"],["Partida", "1"],["En espiral", "2"],["Anudada", "3"],["De Bulidog", "4"],["Desviada", "5"]], {prompt: "forma de Cola"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_tail_length_eq , [["Correcta", "0"],["Larga", "1"],["Corta", "2"]], {prompt: "largo de la cola"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_tail_movement_eq , [["horizontal", "0"],["Vertical", "1"],["Caida Normal", "2"]], {prompt: "longuitud de cola"}, {class: "form-control"}%>
+                <br>
+
+                <%= f.select :feature_muscle_quality_eq , [["5 estrellas", "0"],["4 estrellas", "1"],[" 3 estrellas", "2"],["Insuficiente", "2"],["Gordo", "2"],["Por debajo de su peso", "2"]], {prompt: "calidas muscular"}, {class: "form-control"}%>
+                <br>
+              </div>
+              <div class="col-md-12">
+                <br>
+                <%= f.submit :class =>"btn btn btn-primary btn-block"%>
+              </div>
+            </div>
+        <%end%>
       </div>
     </div>
   </div>
-  <div id="merge"><%= render partial: '/admin/home/index' %></div>
+</div>
+<div id="merge"><%= render partial: '/admin/home/index' %></div>

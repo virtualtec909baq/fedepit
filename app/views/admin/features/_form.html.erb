@@ -40,9 +40,6 @@
               <%= f.label :color %><br>
               <%= f.select :color_eyes, [["Oscuros", "0"],["Claros", "1"],["Mixtos", "2"],["Rojos", "3"],["Nublados", "4"]], {prompt: "Escoger"}, {class: "form-control"}%>
               <br>
-              <%= f.label :color %><br>
-              <%= f.select :color_eyes, [["Oscuros", "0"],["Claros", "1"],["Mixtos", "2"],["Rojos", "3"],["Nublados", "4"]], {prompt: "Escoger"}, {class: "form-control"}%>
-              <br>
               <%= f.label :alteracion_parpado %><br>
               <%= f.select :eyelid_abnormalities, [["Entropion", "0"],["Ectropion", "1"]], {prompt: "Escoger"}, {class: "form-control"}%>
               <br>
@@ -68,7 +65,7 @@
               <%= f.label :en_movimiento %><br>
               <%= f.select :moving_poise, [["Codos salidos hacia afuera", "0"],["Cruzamiento de metacarpos", "1"],["Torsión de las manos", "2"],["Hacia Afuera", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
               <br>
-              <%= f.label :en_estaticos %><br>
+              <%= f.label :estaticos %><br>
               <%= f.select :static_poise, [["Codos hacia afuera", "0"],["Codos hacia adentro", "1"],["Torsión de las manos hacia afuera", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
               <br>
             </div>
