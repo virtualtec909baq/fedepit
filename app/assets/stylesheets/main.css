@@ -51,7 +51,7 @@ h4 {
 	font-weight: 400;
 }
 .btn {
-	border-radius:1px;
+	border-radius:3px;
 }
 .wrapper {
 	position: relative;
@@ -6141,4 +6141,13 @@ ul.tree li+li:before
     border-width: 1px 1px 1px 5px;
     margin: 20px 0;
     padding: 20px;
+}
+.actions {
+    margin-top: 10px;
+}
+.btn.btn-primary {
+    margin-top: 30px;
+}
+.btn.btn-danger.btn_white.btn-block {
+    margin-top: 30px;
 }
