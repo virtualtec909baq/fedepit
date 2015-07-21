@@ -11,6 +11,35 @@
         <%= search_form_for @search, url: admin_realizarcruce_path(:merge => true), :remote=>"true", :method => :get do |f|%>
             <div class="row">
               <div class="col-md-4">
+                <%= f.select :feature_moving_poise_eq, [["Codos salidos hacia afuera", "0"],["Cruzamiento de metacarpos", "1"],["Torsión de las manos", "2"],["Hacia Afuera", "2"]], {prompt: "aplomos en movimiento"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_static_poise_eq , [["Codos hacia afuera", "0"],["Codos hacia adentro", "1"],["Torsión de las manos hacia afuera", "2"]], {prompt: "Aplomos estaticos"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_head_measures_eq , [["Dimensiones de craneo", "0"],["Alto del craneo", "1"],["Ancho del craneo", "2"]], {prompt: "medidas de la cabeza"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_flat_head_eq, [["Divergente", "0"],["Convergente", "1"],["Paralelo", "2"]], {prompt: "planos de cabeza"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_head_shape_eq , [["Corta y redonda", "0"],["Acuñada", "1"],["Braquicefala", "2"],["Dolicocefala", "3"],["Mesocefala", "4"]], {prompt: "forma de cabeza"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_head_shape_eq, [["Agudo Marcado", "0"],["Marcado con surco", "1"],["Leve Inclinado", "2"]], {prompt: "stop"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_snout_eq , [["Largo", "0"],["Corto", "1"],["Chato", "2"],["Chato e inclinado", "3"]], {prompt: "hocico"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_nouse_eq, [["Despigmentada", "0"],["Respingada", "1"],["Aguileña", "2"],["Normal", "3"]], {prompt: "nariz"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_nose_nostrils_eq, [["Normales", "0"],["Visibles", "1"],["Estrechos", "2"],["Normal", "3"]], {prompt: "ollares"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_length_chest_eq , [["corto", "0"],["medio", "1"],["Alto", "2"],["Tenazas", "3"],["Enognatismo", "4"],["Cruzadas Anterior", "5"]], {prompt: "longitud"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_appearance_eq, [["Normal", "0"],["Curva fuerte y muscular", "1"]], {prompt: "apariencia"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_shoulder_eq, [["Cargados", "0"],["Medios", "1"],["Alargado", "2"],["Planos", "3"]], {prompt: "hombros"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_chest_eq , [["Profundos", "0"],["Planos", "1"],["Amplios", "2"]], {prompt: "pecho"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_motion_eq, [["Excelente", "0"],["Bueno", "1"],["Suficiente", "2"]], {prompt: "movimiento"}, {class: "form-control"}%>
+              </div>
+              <div class="col-md-4">
                 <%= f.select :feature_lips_eq, [["De Belfos Pendulosos", "0"],["De Belfos Apretados", "1"],["Normales", "2"]], {prompt: "labios"}, {class: "form-control"}%>
                 <br>
                 <%= f.select :feature_snout_2_eq, [[" Ato de Bozal", "0"],["Longitud del bozal", "1"],["En Punta", "2"],["Terminado recto", "3"], ["Con arrugas visibles",4]], {prompt: "hocico"}, {class: "form-control"}%>
