@@ -1,1 +1,0 @@
-(function(){$(document).off("page:load").on("ready page:load",function(){return new BoxesFx(document.getElementById("boxgallery"))})}).call(this);
