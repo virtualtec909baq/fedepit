@@ -11,6 +11,33 @@
         <%= search_form_for @search, url: admin_realizarcruce_path(:merge => true), :remote=>"true", :method => :get do |f|%>
             <div class="row">
               <div class="col-md-4">
+                <%= f.select :feature_attitude_eq , [["Excelente", "0"],["Muy bueno", "1"],["Bueno", "2"],["Insuficiente", "3"]], {prompt: "Atitudes"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_ears_eq, [["Alta", "0"],["Media", "1"],["Baja", "2"]], {prompt: "Incersión"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_shape_ears_eq , [["Cirugia E.", "0"],["Triangular caida", "1"],["Semi-caida", "2"],["Semi-recta", "3"],["Rosa", "4"]], {prompt: "Forma de orejas"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_shape_eyes_eq, [["Redondos", "0"],["Almedrados", "1"],["Ovalados", "2"],["Triangulares", "3"]], {prompt: "Forma de los ojos"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_eyes_placement_eq, [["Saltones", "0"],["Profundos", "1"],["A nivel", "2"]], {prompt: "Colocación"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_color_eyes_eq, [["Oscuros", "0"],["Claros", "1"],["Mixtos", "2"],["Rojos", "3"],["Nublados", "4"]], {prompt: "Color de ojos"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_eyelid_abnormalities_eq, [["Entropion", "0"],["Ectropion", "1"]], {prompt: "Alteracion de parpado"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_teeth_eq , [["Completa", "0"],["Incompleta", "1"]], {prompt: "Dentadura"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_deciduous_tooth_eq , [["Recta", "0"],["En Arco", "1"],["Desalineados", "2"]], {prompt: "Alineacion Incisivos"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_canines_eq , [["Tamaño Normal", "0"],["Muy Pequeños", "1"],["Fracturados", "2"]], {prompt: "Caninos"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_molar_tooth_eq , [["Tamaño Normal", "0"],["Muy Pequeños", "1"]], {prompt: "Molares"}, {class: "form-control"}%>
+                <br>
+                <%= f.select :feature_premolar_tooth_eq, [["Tamaño Normal", "0"],["Muy Pequeños", "1"]], {prompt: "premolares"}, {class: "form-control"}%>
+                  <br>
+                <%= f.select :feature_jowl_eq, [["Visible", "0"],["Exagerada", "1"],["Limpia", "2"]], {prompt: "papada"}, {class: "form-control"}%>
+              </div>
+              <div class="col-md-4">
                 <%= f.select :feature_moving_poise_eq, [["Codos salidos hacia afuera", "0"],["Cruzamiento de metacarpos", "1"],["Torsión de las manos", "2"],["Hacia Afuera", "2"]], {prompt: "aplomos en movimiento"}, {class: "form-control"}%>
                 <br>
                 <%= f.select :feature_static_poise_eq , [["Codos hacia afuera", "0"],["Codos hacia adentro", "1"],["Torsión de las manos hacia afuera", "2"]], {prompt: "Aplomos estaticos"}, {class: "form-control"}%>
