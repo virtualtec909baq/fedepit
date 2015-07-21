@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
 
   namespace :admin do
+    
     get "home/index", to:"home#index"
+    get "breeders/send_email", to:"breeders#send_email"
   	resources :articles
     resources :breeders
     resources :canines do
@@ -31,13 +33,15 @@ Rails.application.routes.draw do
     resources :type_events
     resources :videos
     resources :features
+    
+    match 'breeders/send_mail_attachments', to: 'breeders#send_mail_attachments', via: 'post'
     get "home/:id/mergecanines", to:"home#mergecanines", as: "mergecanines"
     get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
+    get "home/realizarcruce", to:"home#realizarcruce", as: "realizarcruce"
     put "comments/:id/change_status", to: "comments#change_status", as: "change_status_comments"
     put "sponsors/:id/change_status", to: "sponsors#change_status", as: "change_status"
     put "publicities/:id/change_status", to: "publicities#change_status", as: "change_status_publicities"
     post "canines/awards", to: "canines#awards", as: "awards"
-    get "home/realizarcruce", to:"home#realizarcruce", as: "realizarcruce"
     post "home/enviar_cruce", to: "home#enviar_cruce", as: "enviar_cruce"
   end
 

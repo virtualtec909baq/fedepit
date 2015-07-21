@@ -70,6 +70,16 @@ class Admin::BreedersController < ApplicationController
     end
   end
 
+  def send_email
+  end
+
+  def send_mail_attachments
+    @name = params[:name]
+    @email = params[:email]
+    NotificationMailer.send_email(@name, @email).deliver
+    redirect_to admin_breeders_send_email_path, notice: 'Formulario enviado'
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
