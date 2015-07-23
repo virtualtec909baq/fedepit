@@ -6,14 +6,14 @@
         <th class="center"><span>Nombre</span></th>
         <th class="center">COR</th>
         <th class="center">COUNT</th>
-        <th class="center">Generación</th>
+        <th class="center">Gen</th>
         <th class="center">% Sangre </th>
         <th class="center">% Sangre rp</th>
       </tr>
       <%@array_canine_level = []%>
       <%@array_canine_temp = []%>
       <%@array_level_blood = []%>
-      
+
       <%get_ancestors(@canine).each do |id|%>
         <% @canine = Canine.find(id)%>
         <% nivel(Canine.find(params[:id]), id)%>
@@ -27,7 +27,16 @@
       <% @array_canine_level.each do |canine|%>
         <tr>
             <th class="center"><%= canine[0].name.upcase%></th>
-            <th class="center"></th>
+            <% @array_canines_id = get_ancestors_2(Canine.find(canine[0].id))%>
+            <% cor(@array_canines_id.uniq)%>
+            <%count_2 ||= 0%>
+            <%@graph.searchPath(canine[0].id.to_s,canine[0].rgt.to_s, []) { |path|%>
+              <%if path.size != 2%>
+                <% count_2 +=(1/2.to_f) ** (path.size - 1)%>
+              <%end%>
+            <%}%>
+            <th class="center"><%=count_2 * 100%> %</th>
+            <%@tree.clear %>
             <th class="center"><%= count_of_element @array_canine_temp, canine[0].id%></th>
             <th class="center"><%= canine[1]%></th>
             <th class="center"><%= nivel_consa(canine[1])%> %</th>

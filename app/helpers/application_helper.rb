@@ -58,6 +58,16 @@ module ApplicationHelper
 		end
 	end
 
+	def get_ancestors_2(canine)
+		@tree ||= []
+		if !canine.nil?
+			@tree << get_id(canine)
+			get_ancestors_2(get_left(canine))
+			get_ancestors_2(get_rgt(canine))
+			return @tree
+		end
+	end
+
 	def nivel(canine, data)
 		get_nivel(canine,data, 0)
 	end
@@ -87,13 +97,20 @@ module ApplicationHelper
   		array.inject(0) { |count, e| count += 1 if e == element; count }
 	end
 
-	def count_blood array, element
-		c ||= 0
-		array.each do 
-			if e[0].to_i == element
-				return "#{element} #{ e[0]}o"
+	def cor(array)
+		@graph = Graph.new
+		array.each do |a|
+			canine = Canine.find(a)
+			if canine.lft and canine.rgt
+				@graph.addEdge(a.to_s,canine.lft.to_s)
+				@graph.addEdge(a.to_s,canine.rgt.to_s)
+			elsif canine.lft
+				@graph.addEdge(a.to_s,canine.lft.to_s)
+			elsif canine.rgt
+				@graph.addEdge(a.to_s,canine.rgt.to_s)
 			end
 		end
+		return @graph.inspect
 	end
 
 	def count_children(canine)
