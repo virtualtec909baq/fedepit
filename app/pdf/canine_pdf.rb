@@ -181,15 +181,6 @@ class CaninePdf< Prawn::Document
 								move_down 5
 								text "LOF : #{Canine.find(@father_lft_lft.lft).lof}", :size => 8
 							end
-						else
-							bounding_box([500,540],:width =>400,:height =>450) do
-								transparent(0) { stroke_bounds } 
-								text "	NOMBRE : NO TIENE TATARABUELO PATERNO", :size => 8
-								move_down 5
-								text "COLOR : NO TIENE TATARABUELO PATERNO", :size => 8
-								move_down 5
-								text "LOF :NO TIENE TATARABUELO PATERNO", :size => 8
-							end
 						end
 						if @father_lft_lft.rgt
 							bounding_box([500,490],:width =>400,:height =>450) do
@@ -200,83 +191,8 @@ class CaninePdf< Prawn::Document
 								move_down 5
 								text "LOF : #{Canine.find(@father_lft_lft.rgt).lof}", :size => 8
 							end	
-						else
-							bounding_box([500,490],:width =>400,:height =>450) do
-								transparent(0) { stroke_bounds } 
-								text "	NOMBRE : NO TIENE TATARABUELA PATERNO", :size => 8
-								move_down 5
-								text "COLOR : NO TIENE TATARABUELA PATERNO", :size => 8
-								move_down 5
-								text "LOF :NO TIENE TATARABUELA PATERNO", :size => 8
-							end	
-						end
-					else
-						bounding_box([500,540],:width =>400,:height =>450) do
-							transparent(0) { stroke_bounds } 
-							text "	NOMBRE : NO TIENE TATARABUELO PATERNO", :size => 8
-							move_down 5
-							text "COLOR : NO TIENE TATARABUELO PATERNO", :size => 8
-							move_down 5
-							text "LOF :NO TIENE TATARABUELO PATERNO", :size => 8
-						end
-						bounding_box([500,490],:width =>400,:height =>450) do
-							transparent(0) { stroke_bounds } 
-							text "	NOMBRE : NO TIENE TATARABUELA PATERNO", :size => 8
-							move_down 5
-							text "COLOR : NO TIENE TATARABUELA PATERNO", :size => 8
-							move_down 5
-							text "LOF :NO TIENE TATARABUELA PATERNO", :size => 8
 						end
 						
-					end
-				else
-					bounding_box([310,520],:width =>400,:height =>450) do
-						transparent(0) { stroke_bounds } 
-						text "	NOMBRE : NO TIENE ABUELO PATERNO", :size => 10
-						move_down 5
-						text "COLOR : NO TIENE ABUELO PATERNO", :size => 10
-						move_down 5
-						text "LOF : NO TIENE ABUELO PATERNO", :size => 10
-					end
-					bounding_box([310,440],:width =>400,:height =>450) do
-						transparent(0) { stroke_bounds } 
-						text "	NOMBRE : NO TIENE ABUELA PATERNO", :size => 10
-						move_down 5
-						text "COLOR : NO TIENE ABUELA PATERNO", :size => 10
-						move_down 5
-						text "LOF : NO TIENE ABUELA PATERNO", :size => 10
-					end
-					bounding_box([500,540],:width =>400,:height =>450) do
-						transparent(0) { stroke_bounds } 
-						text "	NOMBRE : NO TIENE BISABUELO PATERNO", :size => 8
-						move_down 5
-						text "COLOR : NO TIENE BISABUELO PATERNO", :size => 8
-						move_down 5
-						text "LOF :NO TIENE BISABUELO PATERNO", :size => 8
-					end
-					bounding_box([500,490],:width =>400,:height =>450) do
-						transparent(0) { stroke_bounds } 
-						text "	NOMBRE : NO TIENE BISABUELA PATERNO", :size => 8
-						move_down 5
-						text "COLOR : NO TIENE BISABUELA PATERNO", :size => 8
-						move_down 5
-						text "LOF :NO TIENE BISABUELA PATERNO", :size => 8
-					end
-					bounding_box([500,425],:width =>400,:height =>450) do
-						transparent(0) { stroke_bounds } 
-						text "	NOMBRE : NO TIENE BISABUELO PATERNO", :size => 8
-						move_down 5
-						text "COLOR : NO TIENE BISABUELO PATERNO", :size => 8
-						move_down 5
-						text "LOF :NO TIENE BISABUELO PATERNO", :size => 8
-					end
-					bounding_box([500,370],:width =>400,:height =>450) do
-						transparent(0) { stroke_bounds } 
-						text "	NOMBRE : NO TIENE BISABUELA PATERNO", :size => 8
-						move_down 5
-						text "COLOR : NO TIENE BISABUELA PATERNO", :size => 8
-						move_down 5
-						text "LOF :NO TIENE BISABUELA PATERNO", :size => 8
 					end
 				end
 				if @father.rgt
@@ -298,15 +214,6 @@ class CaninePdf< Prawn::Document
 							move_down 5
 							text "LOF : #{Canine.find(@father_rgt.lft).lof}", :size => 8
 						end
-					else
-						bounding_box([500,425],:width =>400,:height =>450) do
-							transparent(0) { stroke_bounds } 
-							text "	NOMBRE : NO TIENE TATARABUELO PATERNO", :size => 8
-							move_down 5
-							text "COLOR : NO TIENE TATARABUELO PATERNO", :size => 8
-							move_down 5
-							text "LOF : NO TIENE TATARABUELO PATERNO", :size => 8
-						end
 					end
 					if @father_rgt.rgt
 						bounding_box([500,380],:width =>400,:height =>450) do
@@ -317,43 +224,6 @@ class CaninePdf< Prawn::Document
 							move_down 5
 							text "LOF : #{Canine.find(@father_rgt.rgt).lof}", :size => 8
 						end
-					else
-						bounding_box([500,380],:width =>400,:height =>450) do
-							transparent(0) { stroke_bounds } 
-							text "	NOMBRE : NO TIENE TATARABUELA PATERNO", :size => 8
-							move_down 5
-							text "COLOR : NO TIENE TATARABUELA PATERNO", :size => 8
-							move_down 5
-							text "LOF : NO TIENE TATARABUELA PATERNO", :size => 8
-						end
-
-					end
-
-
-				else
-					bounding_box([310,440],:width =>400,:height =>450) do
-						transparent(0) { stroke_bounds } 
-						text "	NOMBRE : NO TIENE ABUELA", :size => 10
-						move_down 5
-						text "COLOR : NO TIENE ABUELA", :size => 10
-						move_down 5
-						text "LOF : NO TIENE ABUELA", :size => 10
-					end
-					bounding_box([500,425],:width =>400,:height =>450) do
-						transparent(0) { stroke_bounds } 
-						text "	NOMBRE : NO TIENE TATARABUELA", :size => 8
-						move_down 5
-						text "COLOR : NO TIENE TATARABUELA", :size => 8
-						move_down 5
-						text "LOF : NO TIENE TATARABUELA", :size => 8
-					end
-					bounding_box([500,380],:width =>400,:height =>450) do
-						transparent(0) { stroke_bounds } 
-						text "	NOMBRE : NO TIENE TATARABUELO", :size => 8
-						move_down 5
-						text "COLOR : NO TIENE TATARABUELO", :size => 8
-						move_down 5
-						text "LOF : NO TIENE TATARABUELO", :size => 8
 					end
 				end
 			else
@@ -407,14 +277,73 @@ class CaninePdf< Prawn::Document
 				end
 			end
 
-			# if @canine.rgt
-			# 	@mother = Canine.find(@canine.rgt)
-			# end
-		
-			
-		end
+			if @canine.rgt
+				@mother = Canine.find(@canine.rgt)
+				if @mother.rgt
+					@mother_rgt = Canine.find(@mother.rgt)
+					bounding_box([310,100],:width =>400,:height =>370) do
+						transparent(0) { stroke_bounds } 
+						text "	NOMBRE : #{Canine.find(@mother.rgt).name.upcase}", :size => 10
+						move_down 5
+						text "COLOR : #{Canine.find(@mother.rgt).color.name}", :size => 10
+						move_down 5
+						text "LOF : #{Canine.find(@mother.rgt).lof}", :size => 10
+					end
+					if @mother_rgt.rgt
+						bounding_box([510,95],:width =>400,:height =>370) do
+							transparent(0) { stroke_bounds } 
+							text "	NOMBRE : #{Canine.find(@mother_rgt.rgt).name.upcase}", :size => 10
+							move_down 5
+							text "COLOR : #{Canine.find(@mother_rgt.rgt).color.name}", :size => 10
+							move_down 5
+							text "LOF : #{Canine.find(@mother_rgt.rgt).lof}", :size => 10
+						end
+					end
 
+					if @mother_rgt.lft
+						bounding_box([510,155],:width =>400,:height =>370) do
+							transparent(0) { stroke_bounds } 
+							text "	NOMBRE : #{Canine.find(@mother_rgt.lft).name.upcase}", :size => 10
+							move_down 5
+							text "COLOR : #{Canine.find(@mother_rgt.lft).color.name}", :size => 10
+							move_down 5
+							text "LOF : #{Canine.find(@mother_rgt.lft).lof}", :size => 10
+						end
+					end
+
+				end
+				if @mother.lft
+					@mother_lft = Canine.find(@mother.lft)
+					bounding_box([310,190],:width =>400,:height =>370) do
+						transparent(0) { stroke_bounds } 
+						text "	NOMBRE : #{Canine.find(@mother.lft).name.upcase}", :size => 10
+						move_down 5
+						text "COLOR : #{Canine.find(@mother.lft).color.name}", :size => 10
+						move_down 5
+						text "LOF : #{Canine.find(@mother.lft).lof}", :size => 10
+					end
+					if @mother_lft.lft
+						bounding_box([500,290],:width =>400,:height =>370) do
+							text "	NOMBRE : #{Canine.find(@mother_lft.lft).name.upcase}", :size => 8
+							move_down 5
+							text "COLOR : #{Canine.find(@mother_lft.lft).color.name}", :size => 8
+							move_down 5
+							text "LOF : #{Canine.find(@mother_lft.lft).lof}", :size => 8
+						end
+					end
+					if @mother_lft.rgt
+						bounding_box([500,230],:width =>400,:height =>370) do
+							text "	NOMBRE : #{Canine.find(@mother_lft.rgt).name.upcase}", :size => 8
+							move_down 5
+							text "COLOR : #{Canine.find(@mother_lft.rgt).color.name}", :size => 8
+							move_down 5
+							text "LOF : #{Canine.find(@mother_lft.rgt).lof}", :size => 8
+						end
+					end
 		
+				end
+			end
+		end
 	end
 
 
