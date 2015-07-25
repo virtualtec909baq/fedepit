@@ -7,30 +7,23 @@
     </div>
   </div> 
 </div>
-<div class="breadcrumb-color">
-
-</div>
+<div class="breadcrumb-color"></div>
 <div class="container">
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-4">
-       <%if @canine.images.last.blank? %>
-         <img alt="" class="img-responsive" src="http://placehold.it/350x350">
+        <%if @canine.images.last.blank? %>
+          <img alt="" class="img-responsive" src="http://placehold.it/350x350">
         <%else%>
           <img alt="" class="img-responsive" src="<%= @canine.images.last.file%>">
         <%end%>
       </div>
       <div class="col-md-8">
         <div class="row">
-          <div class="col-md-8">
-            <span class="canine_name"><%= @canine.name%></span>
-            <span></span>
-          </div>
-          <div class="col-md-4">
-            <span class="canine_name pull-right">0.0</span>
+          <div class="col-md-12">
+            <h2><%= @canine.name%></h2>
           </div>
         </div>
-        <hr>
         <div class="row">
           <div class="col-md-12">
             <span>Sexo:</span>
@@ -69,64 +62,37 @@
               <span><%= @canine.race.name%> </span>
             <%end%>
           </div>
-          
-          <div class="col-md-3">
-          </div>
-          <div class="col-md-3">
-
-          </div>
-          <div class="col-md-3">
-          </div>
-          <div class="col-md-3">
-
-          </div>
         </div>
       </div>
     </div>
-
   </div>
   <hr>
-  <div class="row marketing">
+   <div class="row marketing">
     <div class="col-lg-12">
-      <div data-example-id="togglable-tabs" role="tabpanel" class="bs-example bs-example-tabs">
-        <ul role="tablist" class="nav nav-tabs" id="myTab">
-          
-          <li class="active" role="presentation"><a aria-expanded="true" aria-controls="home" data-toggle="tab" role="tab" id="home-tab" href="#home">Hijo</a></li>
-          
-          <li role="presentation"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#profile">Hermanos</a></li>
-          
-          <li role="presentation"><a aria-controls="profile2" data-toggle="tab" id="profile2-tab" role="tab" href="#profile2">Premios</a></li>
-          
-          <li role="presentation"><a aria-controls="profile3" data-toggle="tab" id="profile3-tab" role="tab" href="#profile3">Meteer</a></li>
-          
-          <li role="presentation"><a aria-controls="profile4" data-toggle="tab" id="profile4-tab" role="tab" href="#profile4">Galeria de Imagenes</a></li>
-        </ul>
         <!-- tabs -->
-        <div class="tab-content" id="myTabContent">
-          <div aria-labelledby="home-tab" id="home" class="tab-pane fade in active" role="tabpanel">
-            <div class="row text">
-              <%= render partial: "/canines/children"%>
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#one" data-toggle="tab">Hijos</a></li>
+            <li><a href="#two" data-toggle="tab">Hermanos</a></li>
+            <li><a href="#twee" data-toggle="tab">Premios</a></li>
+            <li><a href="#four" data-toggle="tab">Metter</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="one" style="padding: 10px;">
+                <%= render partial: "/canines/children"%>
             </div>
-          </div>
-
-          <div aria-labelledby="profile-tab" id="profile" class="tab-pane fade" role="tabpanel">
-            <%= render partial: "/canines/siblings"%>
-          </div>
-
-          <div aria-labelledby="profile2-tab" id="profile2" class="tab-pane fade" role="tabpanel">
-            <%= render partial: "/canines/awards"%>
-          </div>
-
-          <div aria-labelledby="profile3-tab" id="profile3" class="tab-pane fade" role="tabpanel">
-            <%= render partial: "/canines/metter"%>
-          </div>
-
-          <div aria-labelledby="profile4-tab" id="profile4" class="tab-pane fade" role="tabpanel">
-            <%= render partial: "/canines/images"%>
-          </div>
-
+            <div class="tab-pane" id="two" style="padding: 10px;">
+              <%= render partial: "/canines/siblings"%>
+            </div>
+            <div class="tab-pane" id="twee"  style="padding: 10px;">
+              <%= render partial: "/canines/awards"%>
+            </div>
+            <div class="tab-pane" id="four"  style="padding: 10px;">
+              <%= render partial: "/canines/metter"%>
+            </div>
+           </div>
         </div>
-      </div>
+        <!-- /tabs -->
     </div>
   </div>
 </div>

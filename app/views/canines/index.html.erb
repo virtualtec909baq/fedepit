@@ -54,15 +54,10 @@
         <%end%>      </div>
       <div class="col-md-8">
         <div class="row">
-          <div class="col-md-8">
-            <span class="canine_name"><%= canine.name%></span>
-            <span></span>
-          </div>
-          <div class="col-md-4">
-            <span class="canine_name pull-right">0.0</span>
+          <div class="col-md-12">
+            <h2><%= canine.name%></h2>
           </div>
         </div>
-        <hr>
         <div class="row">
           <div class="col-md-12">
             <span>Sexo:</span>
@@ -98,11 +93,11 @@
           <div class="col-md-12">
             <span>Raza:</span>
             <%-if !canine.race_id.blank?%>
-            <span><%= canine.race.name%> </span>
+              <span><%= canine.race.name%> </span>
             <%end%>
-          </div>
-          <div class="col-md-3">
-            <%= link_to "Ver mas...", canine_path(canine), :class => "btn  btn-lg btn-info btn-outlined btn-block"  %>
+            <br>
+            <br>
+            <%= link_to "Ver mas...", canine_path(canine), :class => "btn btn-default"  %>
           </div>
         </div>
       </div>
