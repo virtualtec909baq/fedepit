@@ -19,7 +19,6 @@
           <hr class="colorgraph"><br>
           <div class="row">
             <div class="col-lg-4">
-              <%= f.hidden_field :canine_id, :value => params[:canine_id]%>
               <%= f.label :aspecto_gral %><br>
               <%= f.select :general_appearance, [["Excelente", "0"],["Bueno", "1"],["Insuficiente", "2"]], {prompt: "Escoger"}, {class: "form-control"}%>
               <br>
