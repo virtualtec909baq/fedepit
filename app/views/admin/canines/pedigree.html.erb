@@ -1,10 +1,10 @@
 <style type="text/css">
   .show-grid [class^="col-"] {
-    background-color: rgba(86, 61, 124, 0.15);
-    border: 1px solid rgba(86, 61, 124, 0.2);
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
+      background-color: rgba(86, 61, 124, 0.15);
+      border: 1px solid rgba(86, 61, 124, 0.2);
+      padding-bottom: 10px;
+      padding-top: 10px;
+  }
 </style>
 <%@array_canine_level = []%>
 <% get_ancestors(@canine).each do |canine|%>
@@ -13,137 +13,142 @@
     <%hash_canine_level = Hash[*hash]%>
     <%@array_canine_level << hash_canine_level%>
 <%end%>
-<%@array_canine_level =  @array_canine_level.reduce Hash.new, :merge%>
+<% @array_canine_level =  @array_canine_level.reduce Hash.new, :merge%>
 <% @array_canine_level = @array_canine_level.sort_by {|_key, value| value}.to_h %>
 <div class="bs-docs-grid">
     <div class="row show-grid" >
-      <h3 class="center"><%=  @canine.name.upcase%></h3>
+      <h3 class="center"><%=  link_to @canine.name.upcase, canine_path(@canine.id)%></h3>
       <hr>
       <div id="col-11" class="col-md-3" style="height: 522px;">
-            <img src="http://placehold.it/230x150">
-            <div class="center"><strong><%= @canine.name.upcase%></strong></div>
+            <%if !@canine.images.last.blank? %>
+              <img alt="" class="img-responsive" src="<%= @canine.images.first.file%>">
+            <%end%>
+            <div class="center name"><%= link_to @canine.name.upcase, admin_pedigree_path(@canine.id)%></div>
       </div>
       <div class="col-md-3" id="col-1">
           <div class="col-md-12 col-11">
-            <%- if @canine.lft%>
-              <% @father = Canine.find(@canine.lft)%>
-              <img src="http://placehold.it/230x150">
-              <div class="center"><%= @father.id%></div>
-            <%else%>
-              <img src="http://placehold.it/230x150">
-              <div class="center">No Tiene</div>
+            <%- if @father%>
+              <%if !@father.images.last.blank? %>
+                <img alt="" class="img-responsive" src="<%= @father.images.first.file%>">
+              <%end%>
+              <div class="center">
+                <%= link_to @father.name.upcase, admin_pedigree_path(@father.id)%>
+              </div>
             <%end%>
           </div>
           <div class="col-md-12 col-11">
-            <%- if @canine.rgt%>
-                <% @mother = Canine.find(@canine.rgt)%>
-                <img src="http://placehold.it/230x150">
-                <div class="center"><%= @mother.id%></div>
-              <%else%>
-                <img src="http://placehold.it/230x150">
-                <div class="center">No Tiene</div>
+            <%- if @mother%>
+              <%if !@mother.images.last.blank? %>
+                <img alt="" class="img-responsive" src="<%= @mother.images.first.file%>">
               <%end%>
+              <div class="center">
+                <%= link_to @mother.name.upcase, admin_pedigree_path(@mother.id)%>
+              </div>
+            <%end%>
           </div>
       </div>
       <%- if @array_canine_level.size > 3%>
         <div class="col-md-3" id="col-2">
-            <div class="col-md-12 col-12">
-              <img src="http://placehold.it/230x55">
-              <div class="center">No Tiene</div>  
-            </div>
-            <div class="col-md-12 col-12">
-              <img src="http://placehold.it/230x55">
-              <div class="center">No Tiene</div> 
-            </div>
-            <div class="col-md-12 col-12">
-              <img src="http://placehold.it/230x55">
-             <div class="center">No Tiene</div> 
-            </div>
-            <div class="col-md-12 col-12">
-              <img src="http://placehold.it/230x55">
-             <div class="center">No Tiene</div> 
-            </div>
-        </div>
-        <div class="col-md-3" id="col-3">
-          <div class="col-md-12 col-13">
-            <div class="center">No Tiene</div> 
-          </div>
-          <div class="col-md-12 col-13">
-            <div class="center">No Tiene</div> 
-          </div>
-          <div class="col-md-12 col-13">
-            <div class="center">No Tiene</div> 
-          </div>
-          <div class="col-md-12 col-13">
-            <div class="center">No Tiene</div> 
-          </div>
-          <div class="col-md-12 col-13">
-            <div class="center">No Tiene</div> 
-          </div>
-          <div class="col-md-12 col-13">
-            <div class="center">No Tiene</div> 
-          </div>
-          <div class="col-md-12 col-13">
-            <div class="center">No Tiene</div> 
-          </div>
-          <div class="col-md-12 col-13">
-            <div class="center">No Tiene</div> 
-          </div>
-        </div>
-      <%else%>
-        <div class="col-md-3" id="col-2">
-            <div class="col-md-12 col-12">
-              <%- if !@array_canine_level.to_a[5].nil? %>
-                <%- if @array_canine_level.to_a[5][1] == 2%>
-                  <img src="http://placehold.it/230x55">
-                  <div class="center"><%= @father_grandfather = Canine.find(@father.lft).id %></div>
-                <%else%>
-                  <img src="http://placehold.it/230x55">
-                  <div class="center">No Tiene</div>
+          <%- if @father_lft%>
+              <div class="col-md-12 col-12">
+                <%if !@father_lft.images.last.blank? %>
+                  <img alt="" class="img-responsive" src="<%= @father_lft.images.first.file%>">
                 <%end%>
-              <%else%>
-                  <img src="http://placehold.it/230x55">
-                  <div class="center">No Tiene</div>  
-              <%end%>
-            </div>
-            <div class="col-md-12 col-12">
-              <img src="http://placehold.it/230x55">
-              <div class="center">otros</div>
-            </div>
-            <div class="col-md-12 col-12">
-              <img src="http://placehold.it/230x55">
-              <div class="center">Nombre</div>
-            </div>
-            <div class="col-md-12 col-12">
-              <img src="http://placehold.it/230x55">
-              <div class="center">Nombre</div>
-            </div>
+                <div class="center">
+                  <%= link_to @father_lft.name.upcase, admin_pedigree_path(@father_lft.id)%>
+                </div> 
+              </div>
+          <%end%>
+          <%- if @father_rgt%>
+              <div class="col-md-12 col-12">
+                <%if !@father_rgt.images.last.blank? %>
+                  <img alt="" class="img-responsive" src="<%= @father_rgt.images.first.file%>">
+                <%end%>
+                <div class="center">
+                  <%= link_to @father_rgt.name.upcase, admin_pedigree_path(@father_rgt.id)%>
+                </div>  
+              </div>
+          <%end%>
+          <%- if @mother_lft%>
+              <div class="col-md-12 col-12">
+                <%if !@mother_lft.images.last.blank? %>
+                  <img alt="" class="img-responsive" src="<%= @mother_lft.images.first.file%>">
+                <%end%>
+                <div class="center">
+                  <%= link_to @mother_lft.name.upcase, admin_pedigree_path(@mother_lft.id)%>
+                </div> 
+              </div>
+          <%end%>
+          <%- if @mother_rgt%>
+              <div class="col-md-12 col-12">
+                <%if !@mother_rgt.images.last.blank? %>
+                  <img alt="" class="img-responsive" src="<%= @mother_rgt.images.first.file%>">
+                <%end%>
+                <div class="center">
+                  <%= link_to @mother_rgt.name.upcase, admin_pedigree_path(@mother_rgt.id)%>
+                </div>  
+              </div>
+          <%end%>
+          
         </div>
         <div class="col-md-3" id="col-3">
-          <div class="col-md-12 col-13">
-            
-          </div>
-          <div class="col-md-12 col-13">
-          
-          </div>
-          <div class="col-md-12 col-13">
-          
-          </div>
-          <div class="col-md-12 col-13">
-          
-          </div>
-          <div class="col-md-12 col-13">
-      
-          </div>
-          <div class="col-md-12 col-13">
-          
-          </div>
-          <div class="col-md-12 col-13">
-          
-          </div>
-          <div class="col-md-12 col-13">
-          
-          </div>
+          <%- if @father_lft_lft%>
+            <div class="col-md-12 col-13">
+              <div class="center">
+                  <%= link_to @father_lft_lft.name.upcase, admin_pedigree_path(@father_lft_lft.id)%>
+                </div>
+            </div>
+          <%end%>
+          <%- if @father_lft_rgt%>
+            <div class="col-md-12 col-13">
+                <div class="center">
+                  <%= link_to @father_lft_rgt.name.upcase, admin_pedigree_path(@father_lft_rgt.id)%>
+                </div>
+            </div>
+          <%end%>
+          <%- if @father_rgt_lft%>
+            <div class="col-md-12 col-13">
+              <div class="center">
+                  <%= link_to @father_rgt_lft.name.upcase, admin_pedigree_path(@father_rgt_lft.id)%>
+                </div>
+            </div>
+          <%end%>
+          <%- if @father_rgt_rgt%>
+            <div class="col-md-12 col-13">
+                <div class="center">
+                  <%= link_to @father_rgt_rgt.name.upcase, admin_pedigree_path(@father_rgt_rgt.id)%>
+                </div>
+            </div>
+          <%end%>
+          <%- if @mother_lft_lft%>
+            <div class="col-md-12 col-13">
+              <div class="center">
+                  <%= link_to @mother_lft_lft.name.upcase, admin_pedigree_path(@mother_lft_lft.id)%>
+                </div>
+            </div>
+          <%end%>
+          <%- if @mother_lft_rgt%>
+            <div class="col-md-12 col-13">
+                <div class="center">
+                  <%= link_to @mother_lft_rgt.name.upcase, admin_pedigree_path(@mother_lft_rgt.id)%>
+                </div>
+            </div>
+          <%end%>
+          <%- if @mother_rgt_lft%>
+            <div class="col-md-12 col-13">
+              <div class="center">
+                  <%= link_to @mother_rgt_lft.name.upcase, admin_pedigree_path(@mother_rgt_lft.id)%>
+                </div>
+            </div>
+          <%end%>
+          <%- if @mother_rgt_rgt%>
+            <div class="col-md-12 col-13">
+                <div class="center">
+                  <%= link_to @mother_rgt_rgt.name.upcase, admin_pedigree_path(@mother_rgt_rgt.id)%>
+                </div>
+            </div>
+          <%end%>
+
         </div>
       <%end%>
     </div>

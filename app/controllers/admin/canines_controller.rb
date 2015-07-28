@@ -36,6 +36,53 @@ class Admin::CaninesController < ApplicationController
      end
    end
 end
+  
+  def pedigree
+    if @canine.lft
+      @father = Canine.find(@canine.lft)
+      if @father.lft 
+        @father_lft = Canine.find(@father.lft) 
+        if @father_lft.lft
+          @father_lft_lft = Canine.find(@father_lft.lft)
+        end
+        if @father_lft.rgt
+          @father_lft_rgt = Canine.find(@father_lft.rgt)
+        end
+      end
+      if @father.rgt 
+        @father_rgt = Canine.find(@father.rgt) 
+        if @father_rgt.lft
+          @father_rgt_lft = Canine.find(@father_rgt.lft)
+        end
+        if @father_rgt.rgt
+          @father_rgt_rgt = Canine.find(@father_rgt.rgt)
+        end
+      end
+    end
+
+    if @canine.rgt
+      @mother = Canine.find(@canine.rgt)
+      if @mother.lft 
+        @mother_lft = Canine.find(@mother.lft) 
+        if @mother_lft.lft
+          @mother_lft_lft = Canine.find(@mother_lft.lft)
+        end
+        if @mother_lft.rgt
+          @mother_lft_rgt = Canine.find(@mother_lft.rgt)
+        end
+      end
+      if @mother.rgt 
+        @mother_rgt = Canine.find(@mother.rgt) 
+        if @mother_rgt.lft
+          @mother_rgt_lft = Canine.find(@mother_rgt.lft)
+        end
+        if @mother_rgt.rgt
+          @mother_rgt_rgt = Canine.find(@mother_rgt.rgt)
+        end
+      end
+    end
+
+  end
 
   # GET /canines/new
   def new

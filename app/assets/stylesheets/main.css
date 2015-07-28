@@ -6151,3 +6151,17 @@ ul.tree li+li:before
 .btn.btn-danger.btn_white.btn-block {
     margin-top: 30px;
 }
+.center.name {
+    font-size: 20px;
+    font-weight: bold;
+}
+.col-md-12.col-11 > .center { 
+    margin-top: 185px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.col-md-12.col-12 > .center {
+	margin-top: 67px;
+    font-size: 12px;
+    font-weight: bold;
+}

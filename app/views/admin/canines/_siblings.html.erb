@@ -1,21 +1,22 @@
-  <% siblings(@canine.id).each do |canine|%>
+<% siblings(@canine.id).each do |canine|%>
+  <a href="<%= admin_canine_path(canine.id)%>">
     <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
       <div class="col-md-2">
         <%- if canine.images.last%>
-          <img src="<%=canine.images.last%>" class="img-thumbnail">
+        <img src="<%=canine.images.last%>" class="img-thumbnail">
         <%else%>
-          <img src="http://placehold.it/50x50" class="img-thumbnail">
+        <img src="http://placehold.it/100x100" class="img-thumbnail">
         <%end%>
       </div>
       <div class="col-md-10">
-        <span>Nombre:</span>
-        <%= canine.name%>
+        <strong>Nombre: </strong><span><%= canine.name%></span>
         <br>
-        <%- if canine.breeder%>
-          <span>Criador:</span>
-          <%= canine.breeder.name%>
-        <%end%>
+        <strong>LOF: </strong><span><%= canine.lof%></span>
         <br>
+        <strong>Genero: </strong><span><%= gender(@canine.gender)%></span>
+        <br>
+        <strong>Nacimiento: </strong><span><%= @canine.birth%></span>
       </div>
     </div>
-  <%end%>
+  </a>
+<%end%>

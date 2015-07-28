@@ -1,9 +1,4 @@
 class CaninesController < ApplicationController
-
-  # GET /canines
-  # GET /canines.json
-  # GET /canines
-  # GET /canines.json
   def index
     @canines = Canine.all
     @search = Canine.ransack(params[:q])
@@ -21,5 +16,4 @@ class CaninesController < ApplicationController
     @canine_awards = @canine.events
     @feature = @canine.feature
   end
-  
 end
