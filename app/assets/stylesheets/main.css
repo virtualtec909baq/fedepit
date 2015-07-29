@@ -6165,3 +6165,7 @@ ul.tree li+li:before
     font-size: 12px;
     font-weight: bold;
 }
+legend {
+	font-size: 19px;
+	margin-bottom: 9px;
+}

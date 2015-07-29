@@ -13,7 +13,7 @@ module FedepitApp
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.default_locale = :es
-    config.i18n.available_locales = [:es]
+    config.i18n.available_locales = [:es, :en]
 
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.

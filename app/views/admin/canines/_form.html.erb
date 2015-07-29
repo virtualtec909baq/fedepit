@@ -134,7 +134,7 @@
     <div class="col-md-6">
       <%= f.fields_for :images, Image.new do |p| %>
          <div class="field">
-           <%= p.label :file %><br>
+           <h3>Seleccionar Foto</h3><br>
            <%= p.file_field :file, :multiple => true, name: "images[file][]" %>
          </div>
       <% end %>

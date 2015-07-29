@@ -5,8 +5,7 @@ class Admin::CaninesController < ApplicationController
   before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree]
   before_action :init, only: [:create]
   before_action :ancestors, only: [:create, :update]
-  before_action :find_or_build_photo, only: [:create, :update]
-
+  
   # GET /canines
   # GET /canines.json
   def index
