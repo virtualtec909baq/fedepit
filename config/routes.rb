@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   resources :videos, only: [:index]
   match 'home/send_mail', to: 'home#send_mail', via: 'post'
   get "home/contactus", to:"home#contactus"
+  get "home/sumula" => "home#sumula"
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
 
   namespace :admin do
-    
     get "home/index", to:"home#index"
     get "breeders/send_email", to:"breeders#send_email"
   	resources :articles
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :canines do
       get :autocomplete_canine_name, :on => :collection
       get :autocomplete_canine_lof, :on => :collection
+      resources :images, :only => [:create, :destroy, :update]
     end
     resources :championships
     resources :colors
