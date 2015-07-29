@@ -5,6 +5,7 @@ class Admin::CaninesController < ApplicationController
   before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree]
   before_action :init, only: [:create]
   before_action :ancestors, only: [:create, :update]
+  before_action :find_or_build_photo, only: [:create, :update]
 
   # GET /canines
   # GET /canines.json
@@ -135,7 +136,7 @@ end
   def update
     respond_to do |format|
       if @canine.update(canine_params)
-        format.html { redirect_to admin_canines_path, notice: 'canine was successfully updated.' }
+        format.html { redirect_to admin_canine_path, notice: 'canine was successfully updated.' }
         format.json { render :show, status: :ok, location: @canine }
       else
         format.html { render :edit }
@@ -163,6 +164,10 @@ end
       @canine = Canine.find(params[:id])
     end
 
+    def find_or_build_photo
+      @image = params[:id] ? @canine.images.build(image_params) : @canine.images.find(params[:id])
+    end
+
     def init
       o = [('a'..'z'), ('1'..'9'), ('A'..'Z')].map { |i| i.to_a }.flatten
       string = (0...5).map { o[rand(o.length)] }.join
@@ -182,5 +187,9 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def canine_params
       params.require(:canine).permit(:parent_id,:kind, :lft, :rgt ,:race_id, :breeder_id, :lof, :chip, :name, :gender, :color_id, :father_lof, :mother_lof, :rate, :birth, :death,images_attributes: [:id, :canine_id, :file])
+    end
+
+    def image_params
+      params.require(:image).permit(:canine_id,:file, :id)
     end
 end

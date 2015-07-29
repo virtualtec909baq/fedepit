@@ -2,10 +2,10 @@
   <a href="<%= admin_canine_path(canine.id)%>">
     <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
       <div class="col-md-2">
-        <%- if canine.images.last%>
-        <img src="<%=canine.images.last%>" class="img-thumbnail">
+        <%if canine.images.last.blank? %>
+          <img alt="" class="img-responsive" src="http://placehold.it/100x100">
         <%else%>
-        <img src="http://placehold.it/100x100" class="img-thumbnail">
+          <%= image_tag canine.images.last.file, :class => "thumbnail", :size => '100x100'%>
         <%end%>
       </div>
       <div class="col-md-10">

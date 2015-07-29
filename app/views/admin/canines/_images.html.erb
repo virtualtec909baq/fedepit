@@ -1,10 +1,9 @@
 <div class="container">
 	<div class="row col-lg-12">
 		<% @images.each do |image| %>
-			<div class="col-lg-4">
+			<div class="col-md-2">
 				<br>
-				<a href="<%=image.file.url%>"> <img alt="" class="img-responsive" src="<%=image.file%>" style="height: 310px; width: 320px;"> </a>
-				<br>
+				<%= image_tag image.file_url, :class => "thumbnail", :size => '126x162'%>
 			</div>
 		<% end %>
 	</div>

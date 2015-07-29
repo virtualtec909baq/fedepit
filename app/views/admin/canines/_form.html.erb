@@ -132,7 +132,7 @@
       <%= f.date_select :death , class: 'form-control' %>
     </div>
     <div class="col-md-6">
-      <%= f.fields_for :images do |p| %>
+      <%= f.fields_for :images, Image.new do |p| %>
          <div class="field">
            <%= p.label :file %><br>
            <%= p.file_field :file, :multiple => true, name: "images[file][]" %>

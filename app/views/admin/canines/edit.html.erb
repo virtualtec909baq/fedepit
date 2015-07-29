@@ -3,7 +3,7 @@
     <h3>Nuevo Canino</h3>
     <hr>
   </div>
-  <%= form_for @canine , url: admin_canine_path(@canine), :id => @canine.id , method: :put do |f| %>
+  <%= form_for @canine, :html => { :multipart => true } , url: admin_canine_path(@canine), :id => @canine.id , method: :put do |f| %>
     <% if @canine.errors.any? %>
       <br>
       <div class="alert alert-danger alert-dismissible" role="alert">
@@ -61,12 +61,21 @@
       <%= f.date_select :death , class: 'form-control' %>
     </div>
     <div class="col-md-6">
-      <%= f.fields_for :images do |p| %>
+      <%- if !@canine.images.empty?%>
+        <%= render :partial => 'admin/canines/photo', :locals => { :canine => @canine.id }%>
+        <%=fields_for Image.new do |f|%>
+           <div class="field">
+            <%= f.file_field :file, :rel => admin_canine_images_path(@canine)%>
+           </div>
+        <% end %>
+      <%else%>
+        <%=fields_for Image.new do |f|%>
          <div class="field">
-           <%= p.label :file %><br>
-           <%= p.file_field :file, :multiple => true, name: "images[file][]" %>
+          <br>
+          <%= f.file_field :file, :rel => admin_canine_images_path(@canine)%>
          </div>
-      <% end %>
+        <% end %>
+      <%end%>
     </div>
     <div class="col-md-12">
       <%= f.submit :class =>"btn btn-primary btn-block" %>
