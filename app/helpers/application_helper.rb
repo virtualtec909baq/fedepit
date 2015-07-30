@@ -552,7 +552,206 @@ def names(key)
 		end
 	elsif ksplit[0] == "torax_length"
 		return "Longitud Del Torax"
-	end	
+	elsif ksplit[0] == "typical_head"
+		if ksplit[1] == "0"
+			return "Tipicidad Cabeza Ecxelente"
+		end
+		if ksplit[1] == "1"
+			return "Tipicidad Cabeza Buena"
+		end
+		if ksplit[1] == "2"
+			return "Tipicidad Cabeza Insuficiente"
+		end
+	elsif ksplit[0] == "ears"
+		if ksplit[1] == "0"
+			return "Inserción Oreja Alta"
+		end
+		if ksplit[1] == "1"
+			return "Inserción Oreja Media"
+		end
+		if ksplit[1] == "2"
+			return "Inserción Oreja Baja"
+		end
+	elsif ksplit[0] == "shape_ears"
+		if ksplit[1] == "0"
+			return "Forma De Oreja Cirugia E."
+		end
+		if ksplit[1] == "1"
+			return "Forma De Oreja Triangular Caída"
+		end
+		if ksplit[1] == "2"
+			return "Forma De Oreja Semi-Caída"
+		end
+		if ksplit[1] == "3"
+			return "Forma De Oreja Semi-Erecta"
+		end
+		if ksplit[1] == "4"
+			return "Forma De Oreja Rosa"
+		end
+	elsif ksplit[0] == "shape_eyes"
+		if ksplit[1] == "0"
+			return "Forma De Ojos Redondos"
+		end
+		if ksplit[1] == "1"
+			return "Forma De Ojos Almendrados"
+		end
+		if ksplit[1] == "2"
+			return "Forma De Ojos Ovalados"
+		end
+		if ksplit[1] == "3"
+			return "Forma De Ojos Triangulares"
+		end
+	elsif ksplit[0] == "eyes_placement"
+		if ksplit[1] == "0"
+			return "Colocación De Ojos Saltones"
+		end
+		if ksplit[1] == "1"
+			return "Colocación De Ojos Profundos"
+		end
+		if ksplit[1] == "2"
+			return "Colocación De Ojos A Nivel"
+		end
+	elsif ksplit[0] == "color_eyes"
+		if ksplit[1] == "0"
+			return "Color De Ojos Oscuros"
+		end
+		if ksplit[1] == "1"
+			return "Color De Ojos Claros"
+		end
+		if ksplit[1] == "2"
+			return "Color De Ojos Mixtos"
+		end
+		if ksplit[1] == "3"
+			return "Color De Ojos Rojos"
+		end
+		if ksplit[1] == "4"
+			return "Color De Ojos Nublados"
+		end
+	elsif ksplit[0] == "eyelid_abnormalities"
+		if ksplit[1] == "0"
+			return "Anomalías Del Parpado Entropión"
+		end
+		if ksplit[1] == "1"
+			return "Anomalías Del Parpado Ectropión"
+		end
+		if ksplit[1] == "2"
+			return "Anomalías Del Parpado Alteración"
+		end
+	elsif ksplit[0] == "neck"
+		if ksplit[1] == "0"
+			return "Longitud Del Cuello Corto"
+		end
+		if ksplit[1] == "1"
+			return "Longitud Del Cuello Medio"
+		end
+		if ksplit[1] == "2"
+			return "Longitud Del Cuello Alto"
+		end
+	elsif ksplit[0] == "teeth"
+		if ksplit[1] == "0"
+			return "Dentadura Completa"
+		end
+		if ksplit[1] == "1"
+			return "Dentadura Incompleta"
+		end	
+	elsif ksplit[0] == "deciduous_tooth"
+		if ksplit[1] == "0"
+			return "Alineación Incisivos Recto"
+		end
+		if ksplit[1] == "1"
+			return "Alineación Incisivos En Arco"
+		end
+		if ksplit[1] == "2"
+			return "Alineación Incisivos Desalineados"
+		end
+	elsif ksplit[0] == "canines"
+		if ksplit[1] == "0"
+			return "Caninos Tamaño Normal"
+		end
+		if ksplit[1] == "1"
+			return "Caninos Muy Pequeños"
+		end
+		if ksplit[1] == "2"
+			return "Caninos Fracturados"
+		end
+	elsif ksplit[0] == "molar_tooth"
+		if ksplit[1] == "0"
+			return "Molares Tamaño Normal"
+		end
+		if ksplit[1] == "1"
+			return "Molares Muy Pequeños"
+		end
+	elsif ksplit[0] == "premolar_tooth"
+		if ksplit[1] == "0"
+			return "Premolares Tamaño Normal"
+		end
+		if ksplit[1] == "1"
+			return "Premolares Muy Pequeños"
+		end
+	elsif ksplit[0] == "deciduous"
+		if ksplit[1] == "0"
+			return "Temporales Pronunciados"
+		end
+		if ksplit[1] == "1"
+			return "Temporales Moderados"
+		end	
+		if ksplit[1] == "2"
+			return "Temporales Leves"
+		end	
+	elsif ksplit[0] == "jowl"
+		if ksplit[1] == "0"
+			return "Papada Visible"
+		end
+		if ksplit[1] == "1"
+			return "Papada Exagerada"
+		end	
+		if ksplit[1] == "2"
+			return "Papada Limpia"
+		end	
+	elsif ksplit[0] == "moving_poise"
+		if ksplit[1] == "0"
+			return "Aplomos En Movimiento Codos Salidos Hacia Afuera"
+		end
+		if ksplit[1] == "1"
+			return "Aplomos En Movimiento Cruzamiento De Metacarpos"
+		end	
+		if ksplit[1] == "2"
+			return "Aplomos En Movimiento Torsión De Las Manos"
+		end	
+		if ksplit[1] == "3"
+			return "Aplomos En Movimiento Hacia Afuera"
+		end	
+	elsif ksplit[0] == "static_poise"
+		if ksplit[1] == "0"
+			return "Aplomos Estaticos Codos Hacia Afuera"
+		end
+		if ksplit[1] == "1"
+			return "Aplomos Estaticos Codos Hacia Adentro"
+		end	
+		if ksplit[1] == "2"
+			return "Aplomos Estaticos Torsión De Las Manos Hacia Afuera"
+		end
+	elsif ksplit[0] == "chest"
+		if ksplit[1] == "0"
+			return "Pecho Profundo"
+		end
+		if ksplit[1] == "1"
+			return "Pecho Plano"
+		end	
+		if ksplit[1] == "2"
+			return "Pecho Amplio"
+		end	
+	elsif ksplit[0] == "motion"
+		if ksplit[1] == "0"
+			return "Movimiento Excelente"
+		end
+		if ksplit[1] == "1"
+			return "Movimiento Bueno"
+		end	
+		if ksplit[1] == "2"
+			return "Movimiento Suficiente"
+		end	
+	end
 end
 
 
