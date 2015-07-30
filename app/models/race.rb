@@ -1,5 +1,5 @@
 class Race < ActiveRecord::Base
-	has_many :canines
+	has_many :canines, :dependent => :nullify
 	# default for will_paginate
   	self.per_page = 15
   	# validates
