@@ -16,9 +16,14 @@
           <br>
           <div class="row">
             <div class="col-md-3">
+                <%= f.hidden_field :canine_id, :value => params[:canine_id]%>
                 <legend>Aspecto General</legend>
                 <label>Aspecto General</label>
                 <%= f.select :general_appearance , [["Excelente", "0"],["Muy Buena", "1"],["Buena", "2"],["Insuficiente", "3"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+                <br>
+                <legend>Color</legend>
+                <br>
+                <%= f.collection_select :color, Color.all, :name, :name, {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
                 <br>
                 <legend>Cabeza</legend>
                 <label>Cabeza</label>

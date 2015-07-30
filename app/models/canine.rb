@@ -21,6 +21,5 @@ class Canine < ActiveRecord::Base
 	validates :name, presence: true 
 	validates :kind, presence: true 
 	validates :gender, presence: true 
-	validates :color_id, presence: true 
 	validates :birth, presence: true 
 end

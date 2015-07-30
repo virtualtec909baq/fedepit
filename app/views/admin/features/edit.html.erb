@@ -1,180 +1,202 @@
 <div class="modal-body">
   <%= form_for @feature , url: admin_feature_path, :id => @feature.id , method: :put do |f| %>
-    <% if @feature.errors.any? %>
-      <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>No se puede crear el metter:</strong>
-        <ul>
-          <% @feature.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %> 
+  <% if @feature.errors.any? %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>No se puede crear el metter:</strong>
+    <ul>
+      <% @feature.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %> 
   <div class="row">
-    <div class="col-lg-12">
-      <div class = "container">
-      <div class="wrapper">
-          <h3 class="form-signin-heading">Formulario Metter</h3>
-          <hr class="colorgraph"><br>
-          <div class="row">
-            <div class="col-lg-4">
-              <%= f.label :aspecto_gral %><br>
-              <%= f.select :general_appearance, [["Excelente", "0"],["Bueno", "1"],["Insuficiente", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <% f.label :cabeza_Tipicidad %><br>
-              <%= f.select :attitude, [["Excelente", "0"],["Muy bueno", "1"],["Bueno", "2"],["Insuficiente", "3"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <h2>Orejas</h2><br>
-              <%= f.label :incersión %><br>
-              <%= f.select :ears, [["Alta", "0"],["Media", "1"],["Baja", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :forma %><br>
-              <%= f.select :shape_ears, [["Cirugia E.", "0"],["Triangular caida", "1"],["Semi-caida", "2"],["Semi-recta", "3"],["Rosa", "4"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <h2>Ojos</h2><br>
-              <%= f.label :forma %><br>
-              <%= f.select :shape_eyes, [["Redondos", "0"],["Almedrados", "1"],["Ovalados", "2"],["Triangulares", "3"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :colocación %><br>
-              <%= f.select :eyes_placement, [["Saltones", "0"],["Profundos", "1"],["A nivel", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :color %><br>
-              <%= f.select :color_eyes, [["Oscuros", "0"],["Claros", "1"],["Mixtos", "2"],["Rojos", "3"],["Nublados", "4"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :alteracion_parpado %><br>
-              <%= f.select :eyelid_abnormalities, [["Entropion", "0"],["Ectropion", "1"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <h2>Dentadura</h2><br>
-              <%= f.label :dentadura %><br>
-              <%= f.select :teeth, [["Completa", "0"],["Incompleta", "1"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :alineacion_incisivos %><br>
-              <%= f.select :deciduous_tooth, [["Recta", "0"],["En Arco", "1"],["Desalineados", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :caninos %><br>
-              <%= f.select :canines, [["Tamaño Normal", "0"],["Muy Pequeños", "1"],["Fracturados", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :molares %><br>
-              <%= f.select :molar_tooth, [["Tamaño Normal", "0"],["Muy Pequeños", "1"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <%= f.label :premolares %><br>
-              <%= f.select :premolar_tooth, [["Tamaño Normal", "0"],["Muy Pequeños", "1"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :papada %><br>
-              <%= f.select :jowl, [["Visible", "0"],["Exagerada", "1"],["Limpia", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <h2>Aplomos</h2><br>
-              <%= f.label :en_movimiento %><br>
-              <%= f.select :moving_poise, [["Codos salidos hacia afuera", "0"],["Cruzamiento de metacarpos", "1"],["Torsión de las manos", "2"],["Hacia Afuera", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :estaticos %><br>
-              <%= f.select :static_poise, [["Codos hacia afuera", "0"],["Codos hacia adentro", "1"],["Torsión de las manos hacia afuera", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
+    <h2 class="form-signin-heading">Formulario Metter</h2>
+          <br>
+          <div class="col-md-3">
+            <legend>Aspecto General</legend>
+            <label>Aspecto General</label>
+            <%= f.select :general_appearance , [["Excelente", "0"],["Muy Buena", "1"],["Buena", "2"],["Insuficiente", "3"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Color</legend>
+            <br>
+            <%= f.collection_select :color, Color.all, :name, :name, {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Cabeza</legend>
+            <label>Cabeza</label>
+            <%= f.select :typical_head , [["Excelente", "0"],["Buena", "1"],["Insuficiente", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Orejas</legend>
+            <label>Incersión</label>
+            <%= f.select :ears, [["Alta", "0"],["Media", "1"],["Baja", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Forma</label>
+            <%= f.select :shape_ears , [["Cirugia E.", "0"],["Triangular Caída", "1"],["Semi-Caída", "2"],["Semi-Erecta", "3"],["Rosa", "4"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Ojos</legend>
+            <label>Forma</label>
+            <%= f.select :shape_eyes, [["Redondos", "0"],["Almendrados", "1"],["Ovalados", "2"],["Triangulares", "3"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Colocación</label>
+            <%= f.select :eyes_placement, [["Saltones", "0"],["Profundos", "1"],["A Nivel", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Color</label>
+            <%= f.select :color_eyes, [["Oscuros", "0"],["Claros", "1"],["Mixtos", "2"],["Rojos", "3"],["Nublados", "4"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Alteración De Parpado</label>
+            <%= f.select :eyelid_abnormalities, [["Entropión", "0"],["Ectropión", "1"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Cuello</legend>
+            <br>
+            <label>Longitud</label>
+            <%= f.select :neck , [["Corto", "0"],["Medio", "1"],["Alto", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Apariencia</label>
+            <%= f.select :appearance, [["Normal", "0"],["Curva Fuerte y Muscular", "1"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Hombros</legend>
+            <br>
+            <label>Hombros</label>
+            <%= f.select :shoulder, [["Cargados", "0"],["Medios", "1"],["Alargados", "2"],["Planos", "3"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+          </div>
+          <div class="col-md-3">
+            <legend>Cabeza</legend>
+            <label>Medidas</label>
+            <%= f.select :head_measures , [["Dimensión De Craneo", "0"],["Alto Del Craneo", "1"],["Ancho Del Craneo", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Planos De Cabeza</label>
+            <%= f.select :flat_head, [["Divergente", "0"],["Convergente", "1"],["Paralelo", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Forma</label>
+            <%= f.select :head_shape , [["Corta y Redonda", "0"],["Acuñada", "1"],["Braquicefala", "2"],["Dolicocefala", "3"],["Mesocefala", "4"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Stop</label>
+            <%= f.select :head_shape, [["Agudo Marcado", "0"],["Marcado Con Surco", "1"],["Leve Inclinado", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Nariz</legend>
+            <label>Nariz</label>
+            <%= f.select :nouse, [["Despigmentada", "0"],["Respingada", "1"],["Aguileña", "2"],["Normal", "3"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Ollares</label>
+            <%= f.select :nose_nostrils, [["Normales", "0"],["Visibles", "1"],["Estrechos", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <br>
+            <legend>Hocico</legend>
+            <label>Hocico</label>
+            <%= f.select :snout , [["Largo", "0"],["Corto", "1"],["Chato", "2"],["Chato e Inclinado", "3"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Cuerpo</legend>
+            <label>Linea Superior</label>
+            <%= f.select :upper_body, [["Correcta", "0"],["Descendente", "1"],["Cruz Undida", "2"],["Dorso Cargado de Hombro", "3"],["", "4"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Linea Superior</label>
+            <%= f.select :depths_chest , [["Profundo", "0"],["Profundida Media", "1"],["Poco profundo", "2"],["Circunferencia Del Torax", "3"],["Altura Del Miembro", "4"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Alteraciones</label>
+            <%= f.select :body_alterations , [["Con Lomo Arqueado", "0"],["Dorso Encarpado o Cifosis", "1"],["Lordosis o cóncavo", "2"],["Dorso Cargado de Hombro", "3"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Altura cms</legend>
+            <label for="feature_largo_del_perro">Largo del perro</label>
+            <br>
+            <%= f.text_field :height,:class => "form-control"  %>
+            <br>
+            <label for="feature_largo_del_torax">Largo del torax</label>
+            <br>
+            <%= f.text_field :torax_length,:class => "form-control"  %>
+            <label for="feature_largo_del_lomo">Largo del lomo</label>
+            <br>
+            <%= f.text_field :length,:class => "form-control"  %>
+          </div>
+          <div class="col-md-3">
+            <legend>Labios</legend>
+            <label>Labios</label>
+            <%= f.select :lips, [["De Belfos Pendulosos", "0"],["De Belfos Apretados", "1"],["Normales", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Hocico</legend>
+            <label>Hocico</label>
+            <%= f.select :snout_2, [["Alto De Bozal", "0"],["Longitud Del Bozal", "1"],["En Punta", "2"],["Terminado Recto", "3"], ["Con Arrugas Visibles",4]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Cigomaticos</label>
+            <%= f.select :cigamatico_snout, [["Pronunciado", "0"],["Moderado", "1"],["Ausente", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Supracillares</label>
+            <%= f.select :supracillares_snout , [["Pronunciado", "0"],["Moderado", "1"],["Level", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Mejillas</label>
+            <%= f.select :cheek , [["Pronunciado", "0"],["Moderado", "1"],["Ausente", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Mordida</label>
+            <%= f.select :bite , [["Correcta Tijera", "0"],["Tijera Inversa", "1"],["Prognatismo Avanzado", "2"],["Tenazas", "3"],["Enognatismo", "4"],["Cruzadas Anterior", "5"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Posteriores</legend>
+            <label>En Movimiento</label>
+            <%= f.select :after_moving , [["Juntas De Atras", "0"],["Corvenjón Inmovil", "1"],["Roza Corvejones", "2"],["Correcto", "3"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>En Estatico</label>
+            <%= f.select :subsequent_static , [["Corvejones De Vacas", "0"],["Corecto", "1"],["Corvejon Inmovil", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Cola</legend>
+            <br>
+            <label>Forma</label>
+            <%= f.select :shaped_tail , [["Correcta", "0"],["Partida", "1"],["En Espiral", "2"],["Anudada", "3"],["De Bulldog", "4"],["Desviada", "5"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Longitud</label>
+            <%= f.select :tail_length , [["Correcta", "0"],["Larga", "1"],["Corta", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Movimiento</label>
+            <%= f.select :tail_movement , [["Horizontal", "0"],["Vertical", "1"],["En Caída Normal", "2"]],{prompt: "Ninguna de las Anteriores"} , {class: "form-control"}%>
+            <br>
+            <legend>Calidad Muscular</legend>
+            <br>
+            <label>Calidad Muscular</label>
+            <%= f.select :muscle_quality , [["5 estrellas", "0"],["4 estrellas", "1"],[" 3 estrellas", "2"],["Insuficiente", "2"],["Gordo", "2"],["Por debajo de su peso", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+          </div>
+          <div class="col-md-3">
+            <legend>Dentadura</legend>
+            <label>Dentadura</label>
+            <%= f.select :teeth , [["Completa", "0"],["Incompleta", "1"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Alineación Incisivos</label>
+            <%= f.select :deciduous_tooth , [["Recta", "0"],["En Arco", "1"],["Desalineados", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Caninos</label>
+            <%= f.select :canines , [["Tamaño Normal", "0"],["Muy Pequeños", "1"],["Fracturados", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Molares</label>
+            <%= f.select :molar_tooth , [["Tamaño Normal", "0"],["Muy Pequeños", "1"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Premolares</label>
+            <%= f.select :premolar_tooth, [["Tamaño Normal", "0"],["Muy Pequeños", "1"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Temporales</label>
+            <%= f.select :deciduous, [["Pronunciados", "0"],["Moderados", "1"],["Leves", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Papada</label>
+            <%= f.select :jowl, [["Visible", "0"],["Exagerada", "1"],["Limpia", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Aplomos</legend>
+            <br>
+            <label>En Movimiento</label>
+            <%= f.select :moving_poise, [["Codos Salidos Hacia Afuera", "0"],["Cruzamiento De Metacarpos", "1"],["Torsión De Las Manos", "2"],["Hacia Afuera", "2"]],{prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <label>Estatico</label>
+            <%= f.select :static_poise , [["Codos hacia afuera", "0"],["Codos Hacia Adentro", "1"],["Torsión De Las Manos Hacia Afuera", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Pecho</legend>
+            <br>
+            <label>Pecho</label>
+            <%= f.select :chest , [["Profundo", "0"],["Plano", "1"],["Amplio", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
+            <legend>Movimiento</legend>
+            <label>Movimiento</label>
+            <%= f.select :motion, [["Excelente", "0"],["Bueno", "1"],["Suficiente", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <br>
             </div>
-            <div class="col-lg-4">
-              <%= f.label :cabeza_medidas %><br>
-              <%= f.select :head_measures, [["Dimensiones de craneo", "0"],["Alto del craneo", "1"],["Ancho del craneo", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :planos_de_cabeza %><br>
-              <%= f.select :flat_head, [["Divergente", "0"],["Convergente", "1"],["Paralelo", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :forma_de_cabeza %><br>
-              <%= f.select :head_shape, [["Corta y redonda", "0"],["Acuñada", "1"],["Braquicefala", "2"],["Dolicocefala", "3"],["Mesocefala", "4"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :stop %><br>
-              <%= f.select :head_stop, [["Agudo Marcado", "0"],["Marcado con surco", "1"],["Leve Inclinado", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :hocico %><br>
-              <%= f.select :snout, [["Largo", "0"],["Corto", "1"],["Chato", "2"],["Chato e inclinado", "3"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <h2>Nariz</h2>
-              <%= f.label :nariz %><br>
-              <%= f.select :nouse, [["Despigmentada", "0"],["Respingada", "1"],["Aguileña", "2"],["Normal", "3"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :ollares %><br>
-              <%= f.select :nose_nostrils, [["Normales", "0"],["Visibles", "1"],["Estrechos", "2"],["Normal", "3"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <h2>Cuello</h2>
-              <%= f.label :longitud %><br>
-              <%= f.select :length_chest, [["corto", "0"],["medio", "1"],["Alto", "2"],["Tenazas", "3"],["Enognatismo", "4"],["Cruzadas Anterior", "5"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :apariencia %><br>
-              <%= f.select :appearance, [["Normal", "0"],["Curva fuerte y muscular", "1"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :hombros %><br>
-              <%= f.select :shoulder, [["Cargados", "0"],["Medios", "1"],["Alargado", "2"],["Planos", "3"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :pecho %><br>
-              <%= f.select :chest, [["Profundos", "0"],["Planos", "1"],["Amplios", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <h2>Cuerpo</h2>
-              <%= f.label :linea_superior %><br>
-              <%= f.select :upper_body, [["correcta", "0"],["descendente", "1"],["cruz undida", "2"], ["Dorso Cargados del hombro", "2"], ["Plano o a nivel", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :linea_superior %><br>
-              <%= f.select :body_alterations, [["Con lomo arqueado", "0"],["Dorso encarpado o cifosis", "1"],["Lorso o concavo", "2"], ["Dorso Cargados del hombro", "2"], ["Plano o a nivel", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <h2>Altura CMS</h2>
-              <%= f.label :largo_del_perro %><br>
-              <%= f.text_field :height, {class: "form-control"}%>
-              <br>
-              <%= f.label :largo_del_torax %><br>
-              <%= f.text_field :torax_length, {class: "form-control"}%>
-              <br>
-              <%= f.label :largo_del_lomo %><br>
-              <%= f.text_field :length, {class: "form-control"}%>
-              <br>
-              <%= f.label :profundidad_del_torax %><br>
-              <%= f.select :depths_chest, [["Profundo", "0"],["Profundidad medida", "1"],["Poco produndo", "2"], ["Circuferencia del torax", "2"], ["Altura del miembro", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
+            <div class="col-lg-12">
+              <%= f.submit  :class =>"btn btn-primary btn-block" %>
             </div>
-            <div class="col-lg-4">
-              <%= f.label :movimiento %><br>
-              <%= f.select :motion, [["Excelente", "0"],["Bueno", "1"],["Suficiente", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :labios %><br>
-              <%= f.select :lips, [["De Belfos Pendulosos", "0"],["De Belfos Apretados", "1"],["Normales", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <h2>hocico</h2>
-              <%= f.label :hocico %><br>
-              <%= f.select :snout_2, [[" Ato de Bozal", "0"],["Longitud del bozal", "1"],["En Punta", "2"],["Terminado recto", "3"], ["Con arrugas visibles",4]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :cigomaticos %><br>
-              <%= f.select :cigamatico_snout, [["Pronunciado", "0"],["Moderado", "1"],["Ausente", "2"],["En Punta", "3"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :mordida %><br>
-              <%= f.select :supracillares_snout, [["correcta tijera", "0"],["Tijera inversa", "1"],["Prognatismo Avanzado", "2"],["Tenazas", "3"],["Enognatismo", "4"],["Cruzadas Anterior", "5"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <h2>Posteriores</h2>
-              <%= f.label :en_movimiento %><br>
-              <%= f.select :after_moving, [["juntas de atras", "0"],["Corvenjon inmovil", "1"],["Roza corvejones", "2"],["Rectos", "3"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :en_estatico %><br>
-              <%= f.select :subsequent_static, [["corvejones de vacas", "0"],["Corecto", "1"],["corvejon inmovil", "2"],["Rectos", "3"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <h2>Cola</h2>
-              <%= f.label :forma %><br>
-              <%= f.select :shaped_tail, [["Correcta", "0"],["Partida", "1"],["En espiral", "2"],["Anudada", "3"],["De Bulidog", "4"],["Desviada", "5"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :longuitud %><br>
-              <%= f.select :tail_length, [["Correcta", "0"],["Larga", "1"],["Corta", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-              <%= f.label :longuitud %><br>
-              <%= f.select :tail_movement, [["horizontal", "0"],["Vertical", "1"],["Caida Normal", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br>
-
-              <%= f.label :calidas_muscular %><br>
-              <%= f.select :muscle_quality, [["5 estrellas", "0"],["4 estrellas", "1"],[" 3 estrellas", "2"],["Insuficiente", "2"],["Gordo", "2"],["Por debajo de su peso", "2"]], {prompt: "Ninguna De Las Anteriores"}, {class: "form-control"}%>
-              <br> 
-            </div>
-      </div>
-    </div>
-    </div>
-    <div class="col-lg-12">
-      <div class="actions">
-        <%= f.submit  :class =>"btn btn-primary btn-block" %>
-      </div>
-      </div>
+        </div>
     <% end %>
   </div>
 </div>

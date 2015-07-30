@@ -67,6 +67,11 @@
                 <legend>Calidad Muscular</legend>
                 <br>
                 <%= f.select :feature_muscle_quality_eq , [["5 estrellas", "0"],["4 estrellas", "1"],[" 3 estrellas", "2"],["Insuficiente", "2"],["Gordo", "2"],["Por debajo de su peso", "2"]], {prompt: "calidas muscular"}, {class: "form-control"}%>
+                <br>
+                <legend>Color</legend>
+                <br>
+
+                <%= f.collection_select :feature_color_cont, Color.all, :name, :name, {prompt: "Color"}, {class: "form-control"}%>
                 
             </div>
             <div class="col-md-3">
