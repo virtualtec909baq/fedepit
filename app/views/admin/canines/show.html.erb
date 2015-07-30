@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="jumbotron">
     <div class="row">
@@ -41,13 +42,6 @@
             <span>Propietario:</span>
             <%-if !@canine.breeder_id.blank?%>
             <span><%= @canine.breeder.name%> </span>
-            <%end%>
-          </div>
-          <br>
-          <div class="col-md-12">
-            <span>Color:</span>
-            <%-if !@canine.color_id.blank?%>
-            <span><%= @canine.color.name%> </span>
             <%end%>
           </div>
           <br>

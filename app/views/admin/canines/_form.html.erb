@@ -95,19 +95,15 @@
       <%= autocomplete_field_tag('canine_name', '', autocomplete_canine_name_admin_canines_path, :id => "canine_name", :class => "form-control", :name =>"canine[name]")%>
       <br>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <%= f.label :razas %><br>
       <%= f.collection_select :race_id, Race.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <%= f.label :propietario %><br>
       <%= f.collection_select :breeder_id, Breeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
     </div>
-    <div class="col-md-3">
-      <%= f.label :color %><br>
-      <%= f.collection_select :color_id, Color.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
-    </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <%= f.label :genero %><br>
       <%= f.select :gender, [["Macho", "1"],["Hembra", "0"]], {prompt: ""}, {class: "form-control"}%>
     <br>
