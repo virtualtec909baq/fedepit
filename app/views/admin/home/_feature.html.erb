@@ -4,15 +4,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%= canine.name%></h4>
+        <h4 class="modal-title" id="myModalLabel">CARACTERÍSTICAS HEREDADAS DEL <%= canine.name.upcase%></h4>
       </div>
       <div class="modal-body">
         <ul>
           <% enviar_cruce(canine).each do |feature| %>
           <li>
-            <span><%= feature[0]%>: </span>
             <% average =  (feature[1].to_f/$total_children) * 100 %>
-            <span> <%= number_to_percentage(average, precision: 0) %></span>
+            <span> No. de hijos con <%= names(feature[0])%>: <%= feature[1]%></span>
+            <br>
+            <span>su porcentaje es de :</span>
+            <span class="color-txt"> 
+              <%= number_to_percentage(average, precision: 0) %>
+            </span>
           </li>
           <%end%>
         </ul> 

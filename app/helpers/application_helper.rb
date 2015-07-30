@@ -469,8 +469,15 @@ module ApplicationHelper
 			
 			@children.each do |child|
 				if child.feature
-					@array_child_features << child.feature.as_json(except: [:id, :created_at, :updated_at, :insertion_ear, :title_work, :championsihp_true, :test_dog_safe,:recommendation, :ectropion, :defect_tail, :problem_conduct, :displacia_hip, :displacia_elbow, :ectropion, :postponement,:lack_dental,:defects_bite, :test_dog_safe, :test_strength])
-					$total_children = @array_child_features.count
+					feature_json = child.feature.as_json(except: [:id, :created_at, :updated_at, :canine_id])
+					feature_json.each do |key , value|
+						if !value.nil?
+							create_json = [key, value]	
+							@hash_to_json = Hash[*create_json]
+							@array_child_features << @hash_to_json
+						end
+					end
+					$total_children = @children.count
 				end
 			end
 			@array_child_features.each do |array_feature|
@@ -482,7 +489,7 @@ module ApplicationHelper
 			end
 			@array_prom_features.each do |key|
 				key.each do |key, value|
-					@features_count["#{key}_#{value}"] += 1
+					@features_count["#{key}-#{value}"] += 1
 				end
         	end
         	if !@array_prom_features.empty?
@@ -493,6 +500,60 @@ module ApplicationHelper
 	end
 end
 
+
+def names(key)
+	ksplit = key.split('-')
+	if ksplit[0] == "appearance"
+		if ksplit[1] == "0" 
+			return "Apariencia Normal"
+		end
+		if ksplit[1] == "1" 
+			return "Curva Fuerte y Muscular"
+		end
+	elsif ksplit[0] == "flat_head"
+		if ksplit[1] == "0" 
+			return "Planos De Cabeza Divergente"
+		end
+		if ksplit[1] == "1" 
+			return "Planos De Cabeza Convergente"
+		end
+		if ksplit[1] == "2" 
+			return "Planos De Cabeza Paralelo"
+		end
+	elsif ksplit[0] == "general_appearance"
+		if ksplit[1] == "0" 
+			return "Apariencia General Excelente"
+		end
+		if ksplit[1] == "1" 
+			return "Apariencia General Muy Buena"
+		end
+		if ksplit[1] == "2" 
+			return "Apariencia General Buena"
+		end
+		if ksplit[1] == "3" 
+			return "Apariencia General Insuficiente"
+		end
+	elsif ksplit[0] == "height"
+		return "Largo de #{ksplit[1]} cms"
+	elsif ksplit[0] == "length"
+		return "Longitud de #{ksplit[1]} cms"
+	elsif ksplit[0] == "shoulder"
+		if ksplit[1] == "0" 
+			return "Hombros Cargados"
+		end
+		if ksplit[1] == "1" 
+			return "Hombros Medios"
+		end
+		if ksplit[1] == "2" 
+			return "Hombros Alargados"
+		end
+		if ksplit[1] == "3" 
+			return "Hombros Planos"
+		end
+	elsif ksplit[0] == "torax_length"
+		return "Longitud Del Torax"
+	end	
+end
 
 
 
