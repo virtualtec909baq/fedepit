@@ -148,6 +148,7 @@ end
   # DELETE /canines/1.json
 
   def destroy
+    canine_nullify(@canine.id)
     @canine.destroy
     respond_to do |format|
       flash[:notice] = 'Ejemplar eliminado'
@@ -161,6 +162,17 @@ end
     # Use callbacks to share common setup or constraints between actions.
     def set_canine
       @canine = Canine.find(params[:id])
+    end
+
+    def canine_nullify(id)
+      @children_lft = Canine.where("(lft = ?)", id)
+      @children_lft.each do |child|
+        child.update(lft: nil)
+      end
+      @children_lft = Canine.where("(rgt = ?)", id)
+      @children_lft.each do |child|
+        child.update(rgt: nil)
+      end
     end
 
     def find_or_build_photo

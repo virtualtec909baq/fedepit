@@ -28,14 +28,14 @@ module ApplicationHelper
 
 	
 	def get_left(canine)
-		if Canine.exists?( id: canine.lft)
+		if canine.lft
 			canine_lft = Canine.find(canine.lft)
 			return canine_lft
 		end
 	end
 	
 	def get_rgt(canine)
-		if Canine.exists?( id: canine.rgt)
+		if canine.rgt
 			canine_rgt = Canine.find(canine.rgt)
 			return canine_rgt
 		end
