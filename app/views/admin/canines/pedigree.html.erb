@@ -17,7 +17,7 @@
 <% @array_canine_level = @array_canine_level.sort_by {|_key, value| value}.to_h %>
 <div class="bs-docs-grid">
     <div class="row show-grid" >
-      <h3 class="center"><%=  link_to @canine.name.upcase, canine_path(@canine.id)%></h3>
+      <h3 class="center"><%=  link_to @canine.name.upcase, admin_canine_path(@canine.id)%></h3>
       <hr>
       <div id="col-11" class="col-md-3" style="height: 522px;">
             <%if !@canine.images.last.blank? %>

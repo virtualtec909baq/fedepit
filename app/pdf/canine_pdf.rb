@@ -32,8 +32,6 @@ class CaninePdf< Prawn::Document
 	    	move_down 15
 	    	text "NACIMIENTO : #{@canine.birth}"
 	    	move_down 15
-	    	text "COLOR : #{@canine.color.name}"
-	    	move_down 15
 	    	text "LOF : #{@canine.lof}"
 	    	move_down 15
 	    	text "PROPIETARIO : #{@canine.breeder.name.upcase}"
