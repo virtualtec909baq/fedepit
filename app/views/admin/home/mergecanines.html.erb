@@ -1,6 +1,20 @@
 <div class="row">
-  <h1 class="page-header">Cruces Caninos</h1>
-  <div class="col-md-6">
+  <div class="col-md-7">
+    <h1 class="page-header">Cruces Caninos</h1>
+  </div>
+  <div class="col-md-5">
+      <div>
+        <%= search_form_for @search, url: admin_mergecanines_path , :remote=>"true", :method => :get do |f|%>
+      <div class="col-md-6">
+        <%= f.collection_select(:id_eq, Canine.all, :id, :name, {:prompt=>true}, {:class=>'form-control'})%>
+      </div>
+      <div class="col-md-5">
+        <%= f.submit "Refrescar"%>
+      </div>
+      <%end%>
+      </div>
+  </div>
+  <div class="col-md-7">
     <table class="table table-striped responstable">
       <tr>
         <th class="center"><span>Nombre</span></th>
@@ -52,18 +66,7 @@
       
     </table>
   </div>
-  <div class="col-md-6">
-    <div class="row">
-      <%= search_form_for @search, url: admin_mergecanines_path , :remote=>"true", :method => :get do |f|%>
-        <div class="col-md-6">
-          <%= f.collection_select :id_eq, Canine.all, :id, :name, include_blank: true %>
-        </div>
-        <div class="col-md-6">
-          <%= f.submit "Refrescar" , :class =>"btn btn-primary btn-block"%>
-        </div>
-      <%end%>
-    </div>
-    <br>
+  <div class="col-md-5">
     <div id="table_canine"><%= render partial: '/admin/home/mergecanines' %></div>
   </div>
 </div>
