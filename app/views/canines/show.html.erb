@@ -50,13 +50,6 @@
           </div>
           <br>
           <div class="col-md-12">
-            <span>Color:</span>
-             <%-if !@canine.color_id.blank?%>
-              <span><%= @canine.color.name%> </span>
-            <%end%>
-          </div>
-          <br>
-          <div class="col-md-12">
             <span>Raza:</span>
             <%-if !@canine.race_id.blank?%>
               <span><%= @canine.race.name%> </span>

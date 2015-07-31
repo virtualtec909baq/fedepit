@@ -9,6 +9,6 @@ class Sponsor < ActiveRecord::Base
 	# img_uploader
   	mount_uploader :image, SponsorUploader
   def init
-  	self.status  ||= false
+  	self.status  ||= true
   end
 end

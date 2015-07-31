@@ -106,7 +106,7 @@
                 <legend>Dentadura</legend>
                 <%= f.select :feature_teeth_eq , [["Completa", "0"],["Incompleta", "1"]], {prompt: "Dentadura"}, {class: "form-control"}%>
                 <br>
-                <%= f.select :feature_deciduous_tooth_eq , [["Recta", "0"],["En Arco", "1"],["Desalineados", "2"]], {prompt: "Alineación Incisivos"}, {class: "form-control"}%>
+                <%= f.select :feature_deciduous_tooth_eq , [["Recto", "0"],["En Arco", "1"],["Desalineados", "2"]], {prompt: "Alineación Incisivos"}, {class: "form-control"}%>
                 <br>
                 <%= f.select :feature_canines_eq , [["Tamaño Normal", "0"],["Muy Pequeños", "1"],["Fracturados", "2"]], {prompt: "Caninos"}, {class: "form-control"}%>
                 <br>
@@ -120,13 +120,13 @@
                 <br>
                 <legend>Aplomos</legend>
                 <br>
-                <%= f.select :feature_moving_poise_eq, [["Codos Salidos Hacia Afuera", "0"],["Cruzamiento De Metacarpos", "1"],["Torsión De Las Manos", "2"],["Hacia Afuera", "2"]], {prompt: "En Movimiento"}, {class: "form-control"}%>
+                <%= f.select :feature_moving_poise_eq, [["Codos Salidos Hacia Afuera", "0"],["Cruzamiento De Metacarpos", "1"],["Torsión De Las Manos", "2"],["Hacia Afuera", "3"]], {prompt: "En Movimiento"}, {class: "form-control"}%>
                 <br>
                 <%= f.select :feature_static_poise_eq , [["Codos hacia afuera", "0"],["Codos Hacia Adentro", "1"],["Torsión De Las Manos Hacia Afuera", "2"]], {prompt: "Estaticos"}, {class: "form-control"}%>
                 <br>
                 <legend>Pecho</legend>
                 <br>
-                <%= f.select :feature_chest_eq , [["Profundo", "0"],["Plano", "1"],["Amplio", "2"]], {prompt: "pecho"}, {class: "form-control"}%>
+                <%= f.select :feature_chest_eq , [["Profundo", "0"],["Plano", "1"],["Amplio", "2"]], {prompt: "Pecho"}, {class: "form-control"}%>
                 <br>
                 <legend>Movimiento</legend>
                 <%= f.select :feature_motion_eq, [["Excelente", "0"],["Bueno", "1"],["Suficiente", "2"]], {prompt: "Movimiento"}, {class: "form-control"}%>

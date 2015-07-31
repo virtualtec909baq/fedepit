@@ -123,6 +123,16 @@ module ApplicationHelper
 		end
 	end
 
+	def typical_head(value)
+		if value == 0
+			return "Excelente"
+		elsif value == 1
+			return "Buena"
+		elsif value == 2
+			return "Insuficiente"
+		end
+	end
+
 	def general_appearance(value)
 		if value == 0
 			return 'Excelente'
@@ -154,6 +164,25 @@ module ApplicationHelper
 			return 'Baja'	
 		end
 	end
+
+	def neck(value)
+		if value == 0
+			return 'Corto'
+		elsif value == 1
+			return 'Media'
+		elsif value == 2
+			return 'Alto'	
+		end
+	end
+
+	def appearance(value)
+		if value == 0
+			return 'Normal'
+		elsif value == 1
+			return 'Curva Fuerte y Muscular'
+		end
+	end
+	
 
 	def shape_ears(value)
 		if value == 0
@@ -457,6 +486,81 @@ module ApplicationHelper
 		end
 	end   
 
+	def shoulder(value)
+		if value == 0 
+			return "Cargados"
+		end
+		if value == 1 
+			return "Medios"
+		end
+		if value == 2 
+			return "Alargados"
+		end
+		if value == 3
+			return "Planos"
+		end
+	end
+
+	def nouse(value)
+		if value == 0
+			return "Despigmentada"
+		end
+		if value == 1 
+			return "Respingada"
+		end
+		if value == 2 
+			return "Aguileña"
+		end
+		if value == 3
+			return "Normal"
+		end
+	end
+	
+	def nose_nostrils(value)
+		if value == 0
+			return "Normales"
+		end
+		if value == 1
+			return "Visibles"
+		end
+		if value == 2
+			return "Estrechos"
+		end
+	end
+
+	def upper_body(value)
+		if value == 0
+			return "Correcta"
+		end
+		if value == 1 
+			return "Descendente"
+		end
+		if value == 2 
+			return "Cruz Undida"
+		end
+		if value == 3 
+			return "Dorso Cargado de Hombro"
+		end
+		if value == 4 
+			return "Planos o a Nivel"
+		end
+	end
+
+	def body_alterations(value)
+		if value == 0
+			return "Con Lomo Arqueado"
+		end
+		if value == 1
+			return "Encarpado o Cifosis"
+		end
+		if value == 2
+			return rn "cóncavo"
+		end
+		if value == 3 
+			return "Cargado de Hombro"
+		end
+	end
+
 	def enviar_cruce(canine)
 		@canine = canine
 		if has_children(@canine)
@@ -510,6 +614,9 @@ def names(key)
 		if ksplit[1] == "1" 
 			return "Curva Fuerte y Muscular"
 		end
+	elsif ksplit[0] == "color"
+		return "Color #{ksplit[1]}"
+		
 	elsif ksplit[0] == "flat_head"
 		if ksplit[1] == "0" 
 			return "Planos De Cabeza Divergente"
@@ -551,8 +658,275 @@ def names(key)
 			return "Hombros Planos"
 		end
 	elsif ksplit[0] == "torax_length"
-		return "Longitud Del Torax"
+		return "Longitud Del Torax #{ksplit[1]} cms"
+
+	elsif ksplit[0] == "head_measures"
+		if ksplit[1] == "0"
+			return "Medidas Dimensión De Craneo "
+		end
+		if ksplit[1] == "2" 
+			return "Medidas Alto Del Craneo"
+		end
+		if ksplit[1] == "3" 
+			return "Medidas Ancho Del Craneo"
+		end
+	elsif ksplit[0] == "head_shape"
+		if ksplit[1] == "0"
+			return "Forma de Cabeza Corta y Redonda"
+		end
+		if ksplit[1] == "1" 
+			return "Forma de Cabeza Acuñada"
+		end
+		if ksplit[1] == "2" 
+			return "Forma de Cabeza Braquicefala"
+		end
+		if ksplit[1] == "3" 
+			return "Forma de Cabeza Dolicocefala"
+		end
+		if ksplit[1] == "4" 
+			return "Forma de Cabeza Mesocefala"
+		end
+	elsif ksplit[0] == "head_stop"
+		if ksplit[1] == "0"
+			return "Stop Agudo Marcado"
+		end
+		if ksplit[1] == "1" 
+			return "Stop Marcado Con Surco"
+		end
+		if ksplit[1] == "2" 
+			return "Stop Leve Inclinado"
+		end
+	elsif ksplit[0] == "nouse"
+		if ksplit[1] == "0"
+			return "Nariz Despigmentada"
+		end
+		if ksplit[1] == "1" 
+			return "Nariz Respingada"
+		end
+		if ksplit[1] == "2" 
+			return "Nariz Aguileña"
+		end
+		if ksplit[1] == "3" 
+			return "Nariz Normal"
+		end
+	elsif ksplit[0] == "nose_nostrils"
+		if ksplit[1] == "0"
+			return "Ollares Normales"
+		end
+		if ksplit[1] == "1" 
+			return "Ollares Visibles"
+		end
+		if ksplit[1] == "2" 
+			return "Ollares Estrechos"
+		end
+	elsif ksplit[0] == "snout"
+		if ksplit[1] == "0"
+			return "Hocico Largo"
+		end
+		if ksplit[1] == "1" 
+			return "Hocico Corto"
+		end
+		if ksplit[1] == "2" 
+			return "Hocico Chato"
+		end
+		if ksplit[1] == "3" 
+			return "Hocico Chato e Inclinado"
+		end
+	elsif ksplit[0] == "upper_body"
+		if ksplit[1] == "0"
+			return "Linea Superior del cuerpo Correcta"
+		end
+		if ksplit[1] == "1" 
+			return "Linea Superior del cuerpo Descendente"
+		end
+		if ksplit[1] == "2" 
+			return "Linea Superior del cuerpo Cruz Undida"
+		end
+		if ksplit[1] == "3" 
+			return "Linea Superior del cuerpo Dorso Cargado de Hombro"
+		end
+		if ksplit[1] == "4" 
+			return "Linea Superior del cuerpo Planos o a nivel"
+		end
+	elsif ksplit[0] == "depths_chest"
+		if ksplit[1] == "0"
+			return "Profundidad del torax Profunda"
+		end
+		if ksplit[1] == "1" 
+			return "Profundida Media del torax"
+		end
+		if ksplit[1] == "2" 
+			return "Profundidad del torax Poco profundo"
+		end
+		if ksplit[1] == "3" 
+			return "Profundidad del torax Circunferencia Del Torax"
+		end
+		if ksplit[1] == "4" 
+			return "Profundidad del torax Altura Del Miembro"
+		end
+	elsif ksplit[0] == "body_alterations"
+		if ksplit[1] == "0"
+			return "Alteraciones Con Lomo Arqueado"
+		end
+		if ksplit[1] == "1" 
+			return "Alteraciones Dorso Encarpado o Cifosis"
+		end
+		if ksplit[1] == "2" 
+			return "Alteraciones Lordosis o cóncavo"
+		end
+		if ksplit[1] == "3" 
+			return "Alteraciones Dorso Cargado de Hombro"
+		end
+	elsif ksplit[0] == "lips"
+		if ksplit[1] == "0"
+			return "Labios De Belfos Pendulosos"
+		end
+		if ksplit[1] == "1" 
+			return "Labios De Belfos Apretados"
+		end
+		if ksplit[1] == "2" 
+			return "Labios Normales"
+		end
+	elsif ksplit[0] == "snout_2"
+		if ksplit[1] == "0"
+			return "Hocico Alto De Bozal"
+		end
+		if ksplit[1] == "1" 
+			return "Hocico Longitud Del Bozal"
+		end
+		if ksplit[1] == "2" 
+			return "Hocico En Punta"
+		end
+		if ksplit[1] == "3" 
+			return "Hocico Terminado Recto"
+		end
+		if ksplit[1] == "4" 
+			return "Hocico Con Arrugas Visibles"
+		end
+	elsif ksplit[0] == "cigamatico_snout"
+		if ksplit[1] == "0"
+			return "Cigomaticos Pronunciado"
+		end
+		if ksplit[1] == "1" 
+			return "Cigomaticos Moderado"
+		end
+		if ksplit[1] == "2" 
+			return "Cigomaticos Ausente"
+		end
+	elsif ksplit[0] == "supracillares_snout"
+		if ksplit[1] == "0"
+			return "Supracillares Pronunciado"
+		end
+		if ksplit[1] == "1" 
+			return "Supracillares Moderado"
+		end
+		if ksplit[1] == "2" 
+			return "Supracillares Leves"
+		end
+	elsif ksplit[0] == "cheek"
+		if ksplit[1] == "0"
+			return "Mejillas Pronunciado"
+		end
+		if ksplit[1] == "1" 
+			return "Mejillas Moderado"
+		end
+		if ksplit[1] == "2" 
+			return "Mejillas Ausente"
+		end
+	elsif ksplit[0] == "bite"
+		if ksplit[1] == "0"
+			return "Mordida Correcta Tijera"
+		end
+		if ksplit[1] == "1" 
+			return "Mordida Tijera Inversa"
+		end
+		if ksplit[1] == "2" 
+			return "Mordida Prognatismo Avanzado"
+		end
+		if ksplit[1] == "3" 
+			return "Mordida Tenazas"
+		end
+		if ksplit[1] == "4" 
+			return "Mordida Enognatismo"
+		end
+		if ksplit[1] == "5" 
+			return "Mordida Cruzadas Anterior"
+		end
+
+	elsif ksplit[0] == "after_moving"
+		if ksplit[1] == "0"
+			return "Posteriores En Mov. Juntas De Atras"
+		end
+		if ksplit[1] == "1" 
+			return "Posteriores En Mov. Corvenjón Inmovil"
+		end
+		if ksplit[1] == "2" 
+			return "Posteriores En Mov. Roza Corvejones"
+		end
+		if ksplit[1] == "3" 
+			return "Posteriores En Mov. Correcto"
+		end
+	elsif ksplit[0] == "after_moving"
+		if ksplit[1] == "0"
+			return "Posteriores En Estatico. Corvejones De Vacas"
+		end
+		if ksplit[1] == "1" 
+			return "Posteriores En Estatico. Corecto"
+		end
+		if ksplit[1] == "2" 
+			return "Posteriores En Estatico. Corvejon Inmovil"
+		end
+	elsif ksplit[0] == "shaped_tail"
+		if ksplit[1] == "0"
+			return "Forma De la Cola Correcta"
+		end
+		if ksplit[1] == "1" 
+			return "Forma De la Cola Larga"
+		end
+		if ksplit[1] == "2" 
+			return "Forma De la Cola Corta"
+		end
+	elsif ksplit[0] == "tail_length"
+		if ksplit[1] == "0"
+			return "Longitud De la Cola Correcta"
+		end
+		if ksplit[1] == "1" 
+			return "Longitud De la Cola Larga"
+		end
+		if ksplit[1] == "2" 
+			return "Longitud De la Cola Corta"
+		end
+	elsif ksplit[0] == "tail_movement"
+		if ksplit[1] == "0"
+			return "Movimiento De la Cola Horizontal"
+		end
+		if ksplit[1] == "1" 
+			return "Movimiento De la Cola Vertical"
+		end
+		if ksplit[1] == "2" 
+			return "Movimiento De la Cola En Caída Normal"
+		end
+	elsif ksplit[0] == "tail_movement"
+		if ksplit[1] == "0"
+			return "Calidad Muscular 5 Estrellas"
+		end
+		if ksplit[1] == "1" 
+			return "Calidad Muscular 4 Estrellas"
+		end
+		if ksplit[1] == "2" 
+			return "Calidad Muscular 3 Estrellas"
+		end
+		if ksplit[1] == "3" 
+			return "Calidad Muscular Insuficiente"
+		end
+		if ksplit[1] == "4" 
+			return "Calidad Muscular Gordo"
+		end
+		if ksplit[1] == "5" 
+			return "Calidad Muscular Por debajo de su peso"
+		end
 	end	
+	
 end
 
 

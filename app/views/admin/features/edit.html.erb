@@ -72,7 +72,7 @@
             <%= f.select :head_shape , [["Corta y Redonda", "0"],["Acuñada", "1"],["Braquicefala", "2"],["Dolicocefala", "3"],["Mesocefala", "4"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
             <br>
             <label>Stop</label>
-            <%= f.select :head_shape, [["Agudo Marcado", "0"],["Marcado Con Surco", "1"],["Leve Inclinado", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <%= f.select :head_stop, [["Agudo Marcado", "0"],["Marcado Con Surco", "1"],["Leve Inclinado", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
             <br>
             <legend>Nariz</legend>
             <label>Nariz</label>
@@ -89,9 +89,6 @@
             <legend>Cuerpo</legend>
             <label>Linea Superior</label>
             <%= f.select :upper_body, [["Correcta", "0"],["Descendente", "1"],["Cruz Undida", "2"],["Dorso Cargado de Hombro", "3"],["", "4"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
-            <br>
-            <label>Linea Superior</label>
-            <%= f.select :depths_chest , [["Profundo", "0"],["Profundida Media", "1"],["Poco profundo", "2"],["Circunferencia Del Torax", "3"],["Altura Del Miembro", "4"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
             <br>
             <label>Alteraciones</label>
             <%= f.select :body_alterations , [["Con Lomo Arqueado", "0"],["Dorso Encarpado o Cifosis", "1"],["Lordosis o cóncavo", "2"],["Dorso Cargado de Hombro", "3"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
@@ -158,7 +155,7 @@
             <%= f.select :teeth , [["Completa", "0"],["Incompleta", "1"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
             <br>
             <label>Alineación Incisivos</label>
-            <%= f.select :deciduous_tooth , [["Recta", "0"],["En Arco", "1"],["Desalineados", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <%= f.select :deciduous_tooth , [["Recto", "0"],["En Arco", "1"],["Desalineados", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
             <br>
             <label>Caninos</label>
             <%= f.select :canines , [["Tamaño Normal", "0"],["Muy Pequeños", "1"],["Fracturados", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
@@ -178,7 +175,7 @@
             <legend>Aplomos</legend>
             <br>
             <label>En Movimiento</label>
-            <%= f.select :moving_poise, [["Codos Salidos Hacia Afuera", "0"],["Cruzamiento De Metacarpos", "1"],["Torsión De Las Manos", "2"],["Hacia Afuera", "2"]],{prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
+            <%= f.select :moving_poise, [["Codos Salidos Hacia Afuera", "0"],["Cruzamiento De Metacarpos", "1"],["Torsión De Las Manos", "2"],["Hacia Afuera", "3"]],{prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>
             <br>
             <label>Estatico</label>
             <%= f.select :static_poise , [["Codos hacia afuera", "0"],["Codos Hacia Adentro", "1"],["Torsión De Las Manos Hacia Afuera", "2"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>

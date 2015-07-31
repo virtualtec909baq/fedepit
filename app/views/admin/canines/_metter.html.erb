@@ -90,24 +90,77 @@
 </style>
 <div class="row">
   <%- if @canine.feature%>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-leftheading">
-          <h3 class="panel-lefttitle">Aspecto General</h3>
+          <h3 class="panel-lefttitle">Aspecto</h3>
         </div>
         <div class="panel-rightbody">
           <strong>Aspecto General:</strong>
           <span><%= general_appearance(@canine.feature.general_appearance)%></span>
           <br>
-          <strong>Cabeza tipicidad:</strong>
-          <span><%= attitude(@canine.feature.attitude)%></span>
           <br>
-          <strong>Orejas incersión:</strong>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Color</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Color:</strong>
+          <span><%= @canine.feature.color%></span>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Cabeza</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Cabeza:</strong>
+          <span><%= typical_head(@canine.feature.typical_head)%></span>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Orejas</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Incersión:</strong>
           <span><%= ears(@canine.feature.ears)%></span>
           <br>
-          <strong>Orejas forma:</strong>
+          <strong>Forma:</strong>
           <span><%= shape_ears(@canine.feature.shape_ears)%></span>
-          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Ojos</h3>
+        </div>
+        <div class="panel-rightbody">
           <strong>Ojos forma:</strong>
           <span><%= shape_eyes(@canine.feature.shape_eyes)%></span>
           <br>
@@ -119,13 +172,77 @@
           <br>
           <strong>Alteraciones de parpados:</strong>
           <span><%= eyelid_abnormalities(@canine.feature.eyelid_abnormalities)%></span>
+        </div>
+        <div class="clearfix">
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Cuello</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Cuello:</strong>
+          <span><%= neck(@canine.feature.neck)%></span>
+          <br>
+          <strong>Apariencia del cuello:</strong>
+          <span><%= appearance(@canine.feature.appearance)%></span>
+          <br>
+          <br>
+          <br>
+          <br>
+
+        </div>
+        <div class="clearfix">
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Hombros</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Hombros:</strong>
+          <span><%= shoulder(@canine.feature.shoulder)%></span>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
           <br>
         </div>
         <div class="clearfix">
         </div>
+        <br>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Nariz</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Nariz:</strong>
+          <span><%= nouse(@canine.feature.nouse)%></span>
+          <br>
+          <strong>Ollares:</strong>
+          <span><%= nose_nostrils(@canine.feature.nose_nostrils)%></span>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-leftheading">
           <h3 class="panel-lefttitle">Cabeza</h3>
@@ -135,7 +252,7 @@
           <span><%= head_measures(@canine.feature.head_measures)%></span>
           <br>
           <strong>Planos de la cabeza:</strong>
-          <span><%= flat_head(@canine.feature.attitude)%></span>
+          <span><%= flat_head(@canine.feature.flat_head)%></span>
           <br>
           <strong>Forma de la cabeza:</strong>
           <span><%= head_shape(@canine.feature.head_shape)%></span>
@@ -143,148 +260,6 @@
           <strong>Stop Cabeza:</strong>
           <span><%= head_stop(@canine.feature.head_stop)%></span>
           <br>
-          <strong>Hocico :</strong>
-          <span><%= snout(@canine.feature.snout)%></span>
-          <br>
-          <strong>Stop Cabeza:</strong>
-          <span><%= head_stop(@canine.feature.head_stop)%></span>
-          <br>
-          <strong>Hocico :</strong>
-          <span><%= snout(@canine.feature.snout)%></span>
-          <br>
-        </div>
-        <div class="clearfix">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-leftheading">
-          <h3 class="panel-lefttitle">Movimientos</h3>
-        </div>
-        <div class="panel-rightbody">
-          <strong>En movimiento:</strong>
-          <span><%= after_moving(@canine.feature.after_moving)%></span>
-          <br>
-          <strong>Mov. Estatico:</strong>
-          <span><%= subsequent_static(@canine.feature.subsequent_static)%></span>
-          <br>
-          <strong>Forma de la cola:</strong>
-          <span><%= shaped_tail(@canine.feature.shaped_tail)%></span>
-          <br>
-          <strong>Largo de la cola:</strong>
-          <span><%= tail_length(@canine.feature.tail_length)%></span>
-          <br>
-          <strong>Movimiento de la cola:</strong>
-          <span><%= tail_movement(@canine.feature.tail_movement)%></span>
-          <br>
-          <strong>Calidas Muscular:</strong>
-          <span><%= muscle_quality(@canine.feature.muscle_quality)%></span>
-          <br>
-          <br>
-          <br>
-
-        </div>
-        <div class="clearfix">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-leftheading">
-          <h3 class="panel-lefttitle">Dentadura</h3>
-        </div>
-        <div class="panel-rightbody">
-          <strong>Dentadura:</strong>
-          <span><%= teeth(@canine.feature.teeth)%></span>
-          <br>
-          <strong>Alineación Incisivos:</strong>
-          <span><%= deciduous_tooth(@canine.feature.deciduous_tooth)%></span>
-          <br>
-          <strong>Caninos:</strong>
-          <span><%= canines(@canine.feature.canines)%></span>
-          <br>
-          <strong>Malares:</strong>
-          <span><%= molar_tooth(@canine.feature.molar_tooth)%></span>
-          <br>
-          <strong>Premolares:</strong>
-          <span><%= premolar_tooth(@canine.feature.premolar_tooth)%></span>
-          <br>
-          <strong>Papada:</strong>
-          <span><%= jowl(@canine.feature.jowl)%></span>
-          <br>
-        </div>
-        <div class="clearfix">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-leftheading">
-          <h3 class="panel-lefttitle">Cuello</h3>
-        </div>
-        <div class="panel-rightbody">
-          <strong>Cuello:</strong>
-          <span><%= teeth(@canine.feature.teeth)%></span>
-          <br>
-          <strong>Apariencia del cuello:</strong>
-          <span><%= deciduous_tooth(@canine.feature.deciduous_tooth)%></span>
-          <br>
-          <strong>Hombro:</strong>
-          <span><%= canines(@canine.feature.canines)%></span>
-          <br>
-          <strong>Pecho:</strong>
-          <span><%= molar_tooth(@canine.feature.molar_tooth)%></span>
-          <br>
-          <strong>Cuerpo linea superior:</strong>
-          <span><%= premolar_tooth(@canine.feature.premolar_tooth)%></span>
-          <br>
-          <strong>Cuerpo alteraciones:</strong>
-          <span><%= jowl(@canine.feature.jowl)%></span>
-          <br>
-        </div>
-        <div class="clearfix">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-leftheading">
-          <h3 class="panel-lefttitle">Hocico</h3>
-        </div>
-        <div class="panel-rightbody">
-          <strong>Hocico:</strong>
-          <span><%= teeth(@canine.feature.teeth)%></span>
-          <br>
-          <strong>Cigomaticos:</strong>
-          <span><%= deciduous_tooth(@canine.feature.deciduous_tooth)%></span>
-          <br>
-          <strong>Supracillares:</strong>
-          <span><%= canines(@canine.feature.canines)%></span>
-          <br>
-          <strong>Mejillas:</strong>
-          <span><%= molar_tooth(@canine.feature.molar_tooth)%></span>
-          <br>
-          <strong>Mordida:</strong>
-          <span><%= premolar_tooth(@canine.feature.premolar_tooth)%></span>
-          <br>
-          <strong>Cuerpo alteraciones:</strong>
-          <span><%= jowl(@canine.feature.jowl)%></span>
-          <br>
-        </div>
-        <div class="clearfix">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-leftheading">
-          <h3 class="panel-lefttitle">Aplomos</h3>
-        </div>
-        <div class="panel-rightbody">
-          <strong>En movimiento :</strong>
-          <span><%= teeth(@canine.feature.teeth)%></span>
-          <br>
           <br>
           <br>
         </div>
@@ -292,28 +267,18 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-leftheading">
-          <h3 class="panel-lefttitle">Actitud</h3>
+          <h3 class="panel-lefttitle">Cuerpo</h3>
         </div>
         <div class="panel-rightbody">
-          <strong>Actitud:</strong>
-          <span><%= teeth(@canine.feature.teeth)%></span>
+          <strong>Linea Superior:</strong>
+          <span><%= upper_body(@canine.feature.upper_body)%></span>
           <br>
+          <strong>Alteraciones:</strong>
+          <span><%= body_alterations(@canine.feature.body_alterations)%></span>
           <br>
-          <br>
-        </div>
-        <div class="clearfix">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-leftheading">
-          <h3 class="panel-lefttitle">Mediciones</h3>
-        </div>
-        <div class="panel-rightbody">
           <strong>Largo del perro:</strong>
           <span><%= @canine.feature.height%> cms</span>
           <br>
@@ -323,8 +288,38 @@
           <strong>Largo del lomo:</strong>
           <span><%= @canine.feature.length%> cms</span>
           <br>
-          <strong>Profundidad del torax:</strong>
-          <span><%= teeth(@canine.feature.depths_chest)%></span>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Cuerpo</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Linea Superior:</strong>
+          <span><%= upper_body(@canine.feature.upper_body)%></span>
+          <br>
+          <strong>Alteraciones:</strong>
+          <span><%= body_alterations(@canine.feature.body_alterations)%></span>
+          <br>
+          <strong>Largo del perro:</strong>
+          <span><%= @canine.feature.height%> cms</span>
+          <br>
+          <strong>Largo del torax:</strong>
+          <span><%= @canine.feature.torax_length%> cms</span>
+          <br>
+          <strong>Largo del lomo:</strong>
+          <span><%= @canine.feature.length%> cms</span>
+          <br>
+          <br>
+          <br>
+          <br>
         </div>
         <div class="clearfix">
         </div>
