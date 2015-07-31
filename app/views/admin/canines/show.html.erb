@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-4">
         <%if @canine.images.last.blank? %>
-          <img alt="" class="img-responsive" src="http://placehold.it/350x350">
+          <%= image_tag "placeholder.png", :class => "thumbnail", :size => '310x310'%>
         <%else%>
           <%= image_tag @canine.images.last.file, :class => "thumbnail", :size => '310x310'%>
         <%end%>

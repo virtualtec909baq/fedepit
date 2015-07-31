@@ -6156,15 +6156,18 @@ ul.tree li+li:before
     font-weight: bold;
 }
 .col-md-12.col-11 > .center { 
-    margin-top: 185px;
+    margin-top: 70px;
     font-size: 15px;
     font-weight: bold;
 }
 .col-md-12.col-12 > .center {
-	margin-top: 67px;
+	
     font-size: 12px;
     font-weight: bold;
 }
+.img-col-2 {
+    margin: 0 auto 0 25%;
+    }
 legend {
 	font-size: 19px;
 	margin-bottom: 9px;

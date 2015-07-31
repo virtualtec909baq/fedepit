@@ -3,7 +3,7 @@
     <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
       <div class="col-md-2">
         <%if canine.images.last.blank? %>
-          <img alt="" class="img-responsive" src="http://placehold.it/100x100">
+          <%= image_tag "placeholder.png", :class => "thumbnail", :size => '100x100'%>
         <%else%>
           <%= image_tag canine.images.last.file, :class => "thumbnail", :size => '100x100'%>
         <%end%>
