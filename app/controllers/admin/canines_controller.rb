@@ -120,7 +120,7 @@ end
             @image = @canine.images.create!(:file => a, :canine_id => @canine.id)
          end
       end
-        format.html { redirect_to admin_canines_path, notice: 'Canine was successfully created.' }
+        format.html { redirect_to admin_canines_path, notice: 'Su Canino se ha creado exitosamente' }
         format.json { render :show, status: :created, location: @canine }
       else
         format.html { render :new }
@@ -135,7 +135,7 @@ end
   def update
     respond_to do |format|
       if @canine.update(canine_params)
-        format.html { redirect_to admin_canine_path, notice: 'canine was successfully updated.' }
+        format.html { redirect_to admin_canine_path, notice: 'El Canino se ha modificado correctamente' }
         format.json { render :show, status: :ok, location: @canine }
       else
         format.html { render :edit }
