@@ -36,14 +36,13 @@ class Admin::FeaturesController < ApplicationController
   # POST /features.json
   def create
     @feature = Feature.new(feature_params)
-
      respond_to do |format|
       if @feature.save
-        format.html { redirect_to admin_canines_path, notice: 'feature was successfully created.' }
-        format.json { render :show, status: :created, location: @canine }
+        format.html { redirect_to admin_features_path, notice: 'feature was successfully created.' }
+        format.json { render :show, status: :created, location: @feature }
       else
         format.html { render :new }
-        format.json { render json: @canine.errors, status: :unprocessable_entity }
+        format.json { render json: @feature.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,8 +54,7 @@ class Admin::FeaturesController < ApplicationController
     respond_to do |format|
       if @feature.update(feature_params)
         flash[:notice] = 'metter modificado'
-        @canine = Canine.find(@feature.canine_id)
-        format.html { redirect_to admin_canine_path(@canine) }
+        format.html { redirect_to admin_features_path }
         format.json { render :show, status: :ok, location: @feature }
       else
         format.html { render :edit }

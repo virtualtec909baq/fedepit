@@ -1,3 +1,9 @@
+<style type="text/css">
+  .navbar-right {
+    float: none !important;
+    margin-right: 0;
+  }
+</style>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header"> 
@@ -7,21 +13,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="<%= root_path%>">
-          <img alt="logo" src="/assets/logo_2.png" style="position: relative; left: 71%; bottom: 33%; width: 40%;">
-        </a>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse dropdown-prod-cart-scroll scroll-menu">
       <ul class="nav navbar-nav navbar-right">
         <li><a id="home" href="#">Ir al inicio</a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Ejemplares <b class="caret"></b></a>
+        <li><a href="<%= admin_canines_path%>">Ejemplares</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Metter <b class="caret"></b></a>
           <ul class="dropdown-menu vertical-li">
-            <li><a href="<%= admin_races_path%>">Ver Razas</a></li>
-            <li><a href="<%= admin_canines_path%>">Ver Ejemplares</a></li>
+            <li><a href="<%= admin_features_path%>">Metter</a></li>
+            <!-- <li><a href="<%= new_admin_feature_path%>">Metter</a></li> -->
             <li><a href="<%= admin_realizarcruce_path%>">Realizar cruces</a></li>
-            <li><a href="<%= admin_colors_path%>">Administrar Color</a></li>
           </ul>
         </li>
+        <li><a href="<%= admin_races_path%>">Razas</a></li>
+        <li><a href="<%= admin_colors_path%>">Color</a></li>
         <li><a href="<%= admin_articles_path%>">Articulos</a></li>
         <li><a href="<%= admin_videos_path%>">Videos</a></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Usuarios<b class="caret"></b></a>

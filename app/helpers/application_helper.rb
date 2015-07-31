@@ -573,7 +573,7 @@ module ApplicationHelper
 			
 			@children.each do |child|
 				if child.feature
-					feature_json = child.feature.as_json(except: [:id, :created_at, :updated_at, :canine_id])
+					feature_json = child.feature.as_json(except: [:id, :created_at, :updated_at, :canine_id, :canine_name])
 					feature_json.each do |key , value|
 						if !value.nil?
 							create_json = [key, value]	

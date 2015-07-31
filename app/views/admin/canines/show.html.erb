@@ -54,23 +54,15 @@
           <br>
           <br>
           <br>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <a role="button" href="<%= admin_pedigree_path(@canine)%>" class="btn btn-lg btn-success btn-outlined btn-block">Ver Pedigree</a>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <%= link_to "Eliminar",admin_canine_path(@canine), method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-lg btn-danger btn-outlined btn-block" %>
 
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <%= link_to "Modificar", edit_admin_canine_path(@canine), :class =>"btn  btn-lg btn-info btn-outlined btn-block" %>
-          </div>
-          <div class="col-md-3">
-            <%- if @canine.feature.nil?%>
-              <%= link_to "Metter", new_admin_feature_path(canine_id: @canine.id), :class =>"btn  btn-lg btn-warning btn-outlined btn-block" %>
-            <%else%>
-            <%= link_to "Metter", edit_admin_feature_path(@canine.feature.id), :class =>"btn  btn-lg btn-warning btn-outlined btn-block" %>
-            <% end %>
-            
           </div>
         </div>
       </div>
