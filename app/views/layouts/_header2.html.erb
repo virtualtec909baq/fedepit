@@ -50,7 +50,6 @@
 </nav>
 <script type="text/javascript">
   $('#home').click(function() {
-      window.location.replace("<%= root_path%>");
-    // location.reload();
+      window.open('<%= root_path%>','_blank');
   });
 </script>
