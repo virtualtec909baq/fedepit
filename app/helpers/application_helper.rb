@@ -926,8 +926,6 @@ def names(key)
 		if ksplit[1] == "5" 
 			return "Calidad Muscular Por debajo de su peso"
 		end
-	end	
-		return "Longitud Del Torax"
 	elsif ksplit[0] == "typical_head"
 		if ksplit[1] == "0"
 			return "Tipicidad Cabeza Ecxelente"
