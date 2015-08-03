@@ -68,7 +68,7 @@ class Admin::FeaturesController < ApplicationController
   def destroy
     @feature.destroy
     respond_to do |format|
-      format.html { redirect_to features_url, notice: 'Feature was successfully destroyed.' }
+      format.html { redirect_to admin_features_path, notice: 'Feature was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
