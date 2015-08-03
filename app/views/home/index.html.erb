@@ -43,11 +43,7 @@
                      
                    <div class="mask"></div>
                     <div class="content">
-                        <p><%= canine.race %> <br> <%= canine.breeder %> <br> <%= canine.breeder %></p>
-                        <ul class="list-unstyled list-inline list-social-icons">
-                          <%= link_to t('.more'), :class => "btn btn-primary"  %>
-
-                        </ul>
+                        <p><%= canine.name.upcase %> <br> <%= canine.try(:race).try(:name) %> <br> <%= canine.try(:breeder).try(:name) %></p>
                     </div>
                   </div>
                   <p><%= canine.name %></p>
