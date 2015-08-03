@@ -15,11 +15,44 @@
           <h2 class="form-signin-heading">Formulario Metter</h2>
           <br>
           <div class="row">
+            <%- if params[:sumula]%>
+                <div class="col-md-6">
+                    <label for="feature_largo_del_perro">Nombre</label>
+                    <br>
+                    <%= f.text_field :breeder_name,:class => "form-control"  %>
+                    <br>
+                    <label for="feature_largo_del_perro">Telefono</label>
+                    <br>
+                    <%= f.text_field :breeder_phone,:class => "form-control"  %>
+                    <br>
+                    <label for="feature_largo_del_perro">Email</label>
+                    <br>
+                    <%= f.text_field :breeder_email,:class => "form-control"  %>
+                    <br>
+                    <label for="feature_largo_del_perro">Nombre del Ejemplar</label>
+                    <br>
+                    <%= f.text_field :canine_name,:class => "form-control"  %>
+                </div>
+                <div class="col-md-6">
+                    <label for="feature_largo_del_perro">Raza del Ejemplar</label>
+                    <br>
+                    <%= f.text_field :canine_race,:class => "form-control"  %>
+                    <br>
+                    <label for="feature_largo_del_perro">LOF del Ejemplar</label>
+                    <br>
+                    <%= f.text_field :canine_lof,:class => "form-control"  %>
+                    <br>
+                    <label for="feature_largo_del_perro">Sexo del Ejemplar</label>
+                    <br>
+                    <%= f.select :canine_gender, [["Macho", "Macho"],["Hembra", "Hembra"]], {prompt: ""}, {class: "form-control"}%>
+                    <br>
+                    <label for="feature_largo_del_perro">Color del Ejemplar</label>
+                    <br>
+                    <%= f.text_field :canine_color,:class => "form-control"  %>
+                    <br>
+                </div>
+            <%end%>
             <div class="col-md-3">
-                <label for="feature_largo_del_perro">Nombre del Perro</label>
-                <br>
-                <%= f.text_field :canine_name,:class => "form-control"  %>
-                <br>
                 <legend>Aspecto General</legend>
                 <label>Aspecto General</label>
                 <%= f.select :general_appearance , [["Excelente", "0"],["Muy Buena", "1"],["Buena", "2"],["Insuficiente", "3"]], {prompt: "Ninguna de las Anteriores"}, {class: "form-control"}%>

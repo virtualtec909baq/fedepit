@@ -16,4 +16,8 @@ class CaninesController < ApplicationController
     @canine_awards = @canine.events
     @feature = @canine.feature
   end
+
+  def realizarcruce
+    @feature = Feature.new
+  end
 end

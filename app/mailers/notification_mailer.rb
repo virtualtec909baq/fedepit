@@ -11,7 +11,7 @@ class NotificationMailer < ActionMailer::Base
 
     def send_email(name, email)
     	@name = name
-        @email = email
+      @email = email
     	attachments["metter.pdf"] = File.read("#{Rails.root}/public/metter.pdf")
     	mail(:to => @email, :subject => "Formulario Metter")
   	end

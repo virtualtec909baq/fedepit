@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   match 'home/send_mail', to: 'home#send_mail', via: 'post'
   get "home/contactus", to:"home#contactus"
   get "home/sumula" => "home#sumula"
+  get :realizarcruce, to: 'canines#realizarcruce', as: :realizarcruce
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
 
   namespace :admin do
