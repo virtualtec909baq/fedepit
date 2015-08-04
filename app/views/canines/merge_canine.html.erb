@@ -24,7 +24,7 @@
 <div class="container ">
   <div class="box-purchase">
     <div class="row">
-      <%= search_form_for @search, url: canines_path(:merge => true), :remote=>"true", :method => :get do |f|%>
+      <%= search_form_for @search, url: index2_path(:merge => true), :method => :get do |f|%>
         <div class="row">
             <div class="col-md-3">
                 <legend>Aspecto General</legend>
@@ -161,4 +161,3 @@
     </div>  
   </div>
 </div>
-<div id="merge"><%= render partial: 'index2' %></div>
