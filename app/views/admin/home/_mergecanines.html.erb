@@ -4,8 +4,10 @@
     <th class="center">COI</th>
     <th class="center">COUNT</th>
     <th class="center">MIN GEM </th>
+    <th class="center">MAX GEM </th>
     <th class="center">% OF  BLOOD</th>
     <th class="center">COR</th>
+    <th class="center">LINE BREADING</th>
   </tr>
   <%@array_canine_level = []%>
   <%@array_canine_temp = []%>
@@ -37,6 +39,7 @@
             <%@tree.clear %>
             <th class="center"><%= count_of_element @array_canine_temp, canine[0].id%></th>
             <th class="center"><%= canine[1]%></th>
+            <th class="center"><%= canine[1]%></th>
             <th class="center"><%= nivel_consa(canine[1])%> %</th>
             <% count ||= 0%>
             <% @array_level_blood.each do|subarray| %>
@@ -45,6 +48,13 @@
               <%end%>
             <%end%>
             <th class="center"><%= count%> %</th>
+            <th class="center"> 
+             <%- if canine[0].lft%>
+             <%= canine[1]%>  - 
+             <%else%>
+             - <%= canine[1]%>
+             <%end%>
+            </th>
         </tr>
     <%end%>
 

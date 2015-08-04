@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "home/contactus", to:"home#contactus"
   get "home/sumula" => "home#sumula"
   get :realizarcruce, to: 'canines#realizarcruce', as: :realizarcruce
+  get :merge_canine, to: 'canines#merge_canine', as: :merge_canine
+  
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
 
   namespace :admin do
