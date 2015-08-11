@@ -15,12 +15,15 @@
           <h2 class="form-signin-heading">Formulario Metter</h2>
           <br>
           <div class="row">
+            
+            <div class="col-md-12">
+            <label for="feature_largo_del_perro">Nombre del Ejemplar</label>
+            <br>
+            <%= f.text_field :canine_name ,:class => "form-control"  %>
+            <br>
+            </div>
             <%- if params[:sumula]%>
                 <div class="col-md-6">
-                    <label for="feature_largo_del_perro">Nombre</label>
-                    <br>
-                    <%= f.text_field :breeder_name,:class => "form-control"  %>
-                    <br>
                     <label for="feature_largo_del_perro">Telefono</label>
                     <br>
                     <%= f.text_field :breeder_phone,:class => "form-control"  %>
@@ -29,9 +32,9 @@
                     <br>
                     <%= f.text_field :breeder_email,:class => "form-control"  %>
                     <br>
-                    <label for="feature_largo_del_perro">Nombre del Ejemplar</label>
+                    <label for="feature_largo_del_perro">Nombre </label>
                     <br>
-                    <%= f.text_field :canine_name,:class => "form-control"  %>
+                    <%= f.text_field :breeder_name,:class => "form-control"  %>
                 </div>
                 <div class="col-md-6">
                     <label for="feature_largo_del_perro">Raza del Ejemplar</label>

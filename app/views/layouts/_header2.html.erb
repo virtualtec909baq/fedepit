@@ -20,9 +20,11 @@
         <li><a href="<%= admin_canines_path%>">Ejemplares</a></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Metter <b class="caret"></b></a>
           <ul class="dropdown-menu vertical-li">
-            <li><a href="<%= admin_features_path%>">Metter</a></li>
-            <!-- <li><a href="<%= new_admin_feature_path%>">Metter</a></li> -->
+            <li><a href="<%= admin_features_path(:metter => true)%>">Ejemplares con metter</a></li>
+            <li><a href="<%= new_admin_feature_path%>"> Crear metter</a></li> 
             <li><a href="<%= admin_realizarcruce_path%>">Realizar cruces</a></li>
+            <li><a href="<%= admin_features_path%>">Adicionar Metter</a></li>
+            <li><a href="<%= admin_breeders_send_email_path%>">Enviar correo de metter</a></li>
           </ul>
         </li>
         <li><a href="<%= admin_races_path%>">Razas</a></li>
@@ -33,7 +35,6 @@
           <ul class="dropdown-menu vertical-li">
             <li><a href="<%= admin_sponsors_path%>">Patrocinadores</a></li>
             <li><a href="<%= admin_breeders_path%>">Criadores</a></li>
-            <li><a href="<%= admin_breeders_send_email_path%>">Enviar correo de metter</a></li>
           </ul>
         </li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Evento <b class="caret"></b></a>

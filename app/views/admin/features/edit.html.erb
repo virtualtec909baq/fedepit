@@ -199,7 +199,7 @@
             <div class="col-lg-12">
                 <legend>Adicionar Ejemplares</legend>
                 <br>
-                <%= f.collection_select :canine_id, Canine.all, :id, :name, {prompt: "Ninguno de los Anteriores"}, {class: "form-control"}%>
+                <%= f.collection_select :canine_id,  Canine.includes(:feature).where(features: { canine_id: nil }), :id, :name, {prompt: "Ninguno de los Anteriores"}, {class: "form-control"}%>
                 <br>
             </div>
         <%end%>

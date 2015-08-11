@@ -2,9 +2,6 @@
   <div class="col-lg-12">
     <div class="page-header">
       <h1>Metter</h1>
-    </div>
-    <%= link_to "Crear Metter", new_admin_feature_path , :class => "btn btn-primary"%>
-    <br>
     <br>
   </div>
 </div>
@@ -30,9 +27,11 @@
             <i class="fa fa-trash-o"></i>
           <%end%>
         </td>
-        <td class="center">
-          <%= link_to "Adicionar Metter", edit_admin_feature_path(feature, :edit => "true")%>
-        </td>
+        <%if !params[:metter] %>
+          <td class="center">
+            <%= link_to "Adicionar Metter", edit_admin_feature_path(feature, :edit => "true")%>
+          </td>
+        <%end%>
       </tr>
     <% end %> 
   </tbody>

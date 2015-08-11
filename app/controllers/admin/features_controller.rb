@@ -5,8 +5,12 @@ class Admin::FeaturesController < ApplicationController
   # GET /features
   # GET /features.json
   def index
-    @search = Feature.ransack(params[:q])
-    @features = @search.result.order(created_at: :desc).page(params[:page])
+    if params[:metter]
+      @features = Feature.where.not(canine_id: nil)
+    else
+      @features = Feature.where(canine_id: nil)
+    end
+    @features.page(params[:page])
     respond_to do |format|
       format.html
       format.js
@@ -20,12 +24,7 @@ class Admin::FeaturesController < ApplicationController
 
   # GET /features/new
   def new
-    @result_exist = Feature.exists?(canine_id: params[:canine_id])
-    if @result_exist
-     @feature = Feature.find_by_canine_id(params[:canine_id])
-    else
-      @feature = Feature.new
-    end
+    @feature = Feature.new
   end
 
   # GET /features/1/edit
@@ -38,7 +37,7 @@ class Admin::FeaturesController < ApplicationController
     @feature = Feature.new(feature_params)
      respond_to do |format|
       if @feature.save
-        format.html { redirect_to admin_features_path, notice: 'feature was successfully created.' }
+        format.html { redirect_to admin_features_path, notice: 'Metter fue creado' }
         format.json { render :show, status: :created, location: @feature }
       else
         format.html { render :new }
@@ -53,8 +52,10 @@ class Admin::FeaturesController < ApplicationController
     
     respond_to do |format|
       if @feature.update(feature_params)
-        flash[:notice] = 'metter modificado'
-        format.html { redirect_to admin_features_path }
+        @canine_name = Canine.find(@feature.canine_id).name
+        @feature.update(:canine_name => @canine_name)
+        flash[:notice] = 'Metter Modificado'
+        format.html { redirect_to admin_features_path(:metter => true) }
         format.json { render :show, status: :ok, location: @feature }
       else
         format.html { render :edit }
@@ -68,7 +69,7 @@ class Admin::FeaturesController < ApplicationController
   def destroy
     @feature.destroy
     respond_to do |format|
-      format.html { redirect_to admin_features_path, notice: 'Feature was successfully destroyed.' }
+      format.html { redirect_to admin_features_path, notice: 'Metter Eliminado' }
       format.json { head :no_content }
     end
   end
