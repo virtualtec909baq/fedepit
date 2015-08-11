@@ -1,13 +1,11 @@
 <div class="col-md-12">
 	<div class="row">
-		<div class="col-md-3">
-			<h5>Total Ejemplares: <%= Canine.count%></h5>
-		</div>
-		<div class="col-md-4">
-			<h5>Ultimos ejemplares ingresados en 7 dia: <%= Canine.where(:created_at => (Time.now - 7.days)..(Time.now)).count%></h5>
-		</div>
-		<div class="col-md-4">
-			<h5>Total ejemplares ingresados al dia: <%= Canine.where(:created_at => (Time.now.beginning_of_day)..(Time.now.end_of_day)).count%></h5>
-		</div>
+		<div class="col-md-3">Total Ejemplares: <%= @total_canines%></div>
+		<div class="col-md-3">Ejemplares en la semana: <%= @total_canines%></div>
+		<div class="col-md-3">Ejemplares al dia: <%= @canines_day%></div>
+		<div class="col-md-3">Ejemplares Informativos: <%= @canines_kind_1%></div>
+		<br>
+		<br>
+		<div class="col-md-3">Ejemplares Registrados: <%= @canines_kind_0%></div>
 	</div>
 </div>
