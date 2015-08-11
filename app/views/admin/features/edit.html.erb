@@ -1,5 +1,5 @@
 <div class="modal-body">
-    <%= form_for @feature , url: admin_feature_path, :id => @feature.id , method: :put do |f| %>
+    <%= form_for @feature , url: admin_feature_path , method: :put do |f| %>
     <% if @feature.errors.any? %>
         <div class="alert alert-danger alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

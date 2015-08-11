@@ -11,7 +11,12 @@ class Admin::CaninesController < ApplicationController
   def index
     @canines = Canine.all
     @search = Canine.ransack(params[:q])
-    @canines = @search.result.order(created_at: :desc).page(params[:page])
+    @canines = @search.result.order(name: :asc).page(params[:page])
+    @total_canines = Canine.count
+    @canines_week = Canine.where(:created_at => (Time.now - 7.days)..(Time.now)).count
+    @canines_day = Canine.where(:created_at => (Time.now.beginning_of_day)..(Time.now.end_of_day)).count
+    @canines_kind_1 = Canine.where(:kind => "1" , :created_at => (Time.now.beginning_of_day)..(Time.now.end_of_day)).count
+    @canines_kind_0 = Canine.where(:kind => "0" , :created_at => (Time.now.beginning_of_day)..(Time.now.end_of_day)).count
     @canine = Canine.new
     respond_to do |format|
       format.html
