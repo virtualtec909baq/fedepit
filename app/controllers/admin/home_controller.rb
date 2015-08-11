@@ -6,7 +6,7 @@ class Admin::HomeController < ApplicationController
   
   def realizarcruce
      @search = Canine.ransack(params[:q])
-     @canines = @search.result(distinct: true)
+     @canines = @search.result.order(name: :asc).page(params[:page])
      @features = Feature.all
   end
 
