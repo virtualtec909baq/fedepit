@@ -1,3 +1,337 @@
-<p id="notice"><%= notice %></p>
+<style type="text/css">
+  .panel
+  {
+      position: relative;
+  }
 
+  .panel-default > .panel-leftheading
+  {
+      color: #333;
+      background-color: #f5f5f5;
+      border-color: #ddd;
+  }
+
+  .panel-primary > .panel-leftheading
+  {
+      color: #fff;
+      background-color: #428bca;
+      border-color: #428bca;
+  }
+
+  .panel-success > .panel-leftheading
+  {
+      color: #3c763d;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+  }
+
+  .panel-info > .panel-leftheading
+  {
+      color: #31708f;
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+  }
+
+  .panel-warning > .panel-leftheading
+  {
+      color: #8a6d3b;
+      background-color: #fcf8e3;
+      border-color: #faebcc;
+  }
+
+  .panel-danger > .panel-leftheading
+  {
+      color: #a94442;
+      background-color: #f2dede;
+      border-color: #ebccd1;
+  }
+
+  .panel-leftheading
+  {
+      width: 42px;
+      padding: 10px 15px;
+      border-right: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      border-top-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      float: left;
+      height: 100%;
+      position: absolute;
+  }
+
+  .panel-lefttitle
+  {
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 15px;
+      font-size: 16px;
+      color: inherit;
+      -webkit-transform: rotate(90deg);
+      -webkit-transform-origin: left top;
+      -moz-transform: rotate(90deg);
+      -moz-transform-origin: left top;
+      -ms-transform: rotate(90deg);
+      -ms-transform-origin: left top;
+      -o-transform: rotate(90deg);
+      -o-transform-origin: left top;
+      transform: rotate(90deg);
+      transform-origin: left top;
+      position: absolute;
+      white-space: nowrap;
+  }
+
+  .panel-rightbody
+  {
+      float: left;
+      margin-left: 45px;
+      padding: 15px;
+  }
+</style>
+<div class="row">
+ <div class="col-lg-12">
+    <div class="page-header">
+      <h1>Metter</h1>
+    <br>
+  </div>
+  <%- if @feature%>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Aspecto</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Aspecto General:</strong>
+          <span><%= general_appearance(@feature.general_appearance)%></span>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Color</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Color:</strong>
+          <span><%= @feature.color%></span>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Cabeza</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Cabeza:</strong>
+          <span><%= typical_head(@feature.typical_head)%></span>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Orejas</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Incersión:</strong>
+          <span><%= ears(@feature.ears)%></span>
+          <br>
+          <strong>Forma:</strong>
+          <span><%= shape_ears(@feature.shape_ears)%></span>
+        </div>
+        <div class="clearfix">
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Ojos</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Ojos forma:</strong>
+          <span><%= shape_eyes(@feature.shape_eyes)%></span>
+          <br>
+          <strong>Ojos colocación:</strong>
+          <span><%= eyes_placement(@feature.eyes_placement)%></span>
+          <br>
+          <strong>Color de ojos:</strong>
+          <span><%= color_eyes(@feature.color_eyes)%></span>
+          <br>
+          <strong>Alteraciones de parpados:</strong>
+          <span><%= eyelid_abnormalities(@feature.eyelid_abnormalities)%></span>
+        </div>
+        <div class="clearfix">
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Cuello</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Cuello:</strong>
+          <span><%= neck(@feature.neck)%></span>
+          <br>
+          <strong>Apariencia del cuello:</strong>
+          <span><%= appearance(@feature.appearance)%></span>
+          <br>
+          <br>
+          <br>
+          <br>
+
+        </div>
+        <div class="clearfix">
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Hombros</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Hombros:</strong>
+          <span><%= shoulder(@feature.shoulder)%></span>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Nariz</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Nariz:</strong>
+          <span><%= nouse(@feature.nouse)%></span>
+          <br>
+          <strong>Ollares:</strong>
+          <span><%= nose_nostrils(@feature.nose_nostrils)%></span>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Cabeza</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Medidas de la cabeza:</strong>
+          <span><%= head_measures(@feature.head_measures)%></span>
+          <br>
+          <strong>Planos de la cabeza:</strong>
+          <span><%= flat_head(@feature.flat_head)%></span>
+          <br>
+          <strong>Forma de la cabeza:</strong>
+          <span><%= head_shape(@feature.head_shape)%></span>
+          <br>
+          <strong>Stop Cabeza:</strong>
+          <span><%= head_stop(@feature.head_stop)%></span>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Cuerpo</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Linea Superior:</strong>
+          <span><%= upper_body(@feature.upper_body)%></span>
+          <br>
+          <strong>Alteraciones:</strong>
+          <span><%= body_alterations(@feature.body_alterations)%></span>
+          <br>
+          <strong>Largo del perro:</strong>
+          <span><%= @feature.height%> cms</span>
+          <br>
+          <strong>Largo del torax:</strong>
+          <span><%= @feature.torax_length%> cms</span>
+          <br>
+          <strong>Largo del lomo:</strong>
+          <span><%= @feature.length%> cms</span>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-leftheading">
+          <h3 class="panel-lefttitle">Cuerpo</h3>
+        </div>
+        <div class="panel-rightbody">
+          <strong>Linea Superior:</strong>
+          <span><%= upper_body(@feature.upper_body)%></span>
+          <br>
+          <strong>Alteraciones:</strong>
+          <span><%= body_alterations(@feature.body_alterations)%></span>
+          <br>
+          <strong>Largo del perro:</strong>
+          <span><%= @feature.height%> cms</span>
+          <br>
+          <strong>Largo del torax:</strong>
+          <span><%= @feature.torax_length%> cms</span>
+          <br>
+          <strong>Largo del lomo:</strong>
+          <span><%= @feature.length%> cms</span>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+  <%else%>
+    <div class="center"> NO SE HA CREADO METTER</div>
+  <%end%>
+</div>
 
