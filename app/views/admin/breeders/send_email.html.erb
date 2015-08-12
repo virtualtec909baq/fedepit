@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row last-inf-dt">
         <div class="col-lg-12">
-            <%= form_tag(admin_breeders_send_mail_attachments_path) do %>
+            <%= form_tag(admin_breeders_send_mail_attachments_path, :name => "myForm") do %>
                 <div class="row">
                     <div class="form-group col-lg-12">
                         <h2>ENVIAR METTER</h2>
@@ -15,9 +15,29 @@
                         <%= email_field_tag 'email', nil, class: 'form-control', placeholder: "Email"%>
                     </div>
                     <div class="form-group col-lg-12">
-                        <%= submit_tag "Enviar", class: 'btn btn-default btn-about ' %>
+                        <%= submit_tag "Enviar", class: 'btn btn-default btn-about '  , :onclick => "return validateForm();"%>
                  </div>
             <%end%>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function validateForm() {
+        var name = document.getElementById("name").value;
+        if (name == null || name == "") {
+            alert("Debe Llenar el nombre");
+            return false;
+        }
+        var email = document.getElementById("email");
+        
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+        if (!filter.test(email.value) || email == null || email == "" ) {
+        alert('Correo invalido');
+        return false;
+            
+        }
+    }
+
+</script>
