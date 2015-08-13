@@ -116,8 +116,6 @@ class CaninePdf< Prawn::Document
 				move_down 8
 				text "Sexo : #{gender(@canine.gender)}", :size => 11
 				move_down 8
-				text "COLOR : #{@canine.color.name}", :size => 11
-				move_down 8
 				text "Nacimiento : #{@canine.birth}", :size => 11
 				move_down 8
 				text "No. Hermanos : #{siblings(@canine.id).count}", :size => 11
