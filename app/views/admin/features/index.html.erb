@@ -22,7 +22,11 @@
           <%= link_to "Detalle Metter", admin_feature_path(feature)%>
         </td>
         <td class="center">
-          <%= link_to "Detalle Canino", admin_canine_path(feature.canine)%>
+          <%- if feature.canine%>
+            <%= link_to "Detalle Canino", admin_canine_path(feature.canine)%>
+          <%else%>
+            <span> Metter sin cacninos asociados</span>
+          <%end%>
         </td>
         <td class="center"><%= link_to edit_admin_feature_path(feature) do %>
           <i class="fa fa-edit"></i>
