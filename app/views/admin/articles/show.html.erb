@@ -19,7 +19,7 @@
             <p><%= paragraph.description%></p>
           </div>
           <div class="col-md-3">
-            <img class="center-img" src="http://placehold.it/190x190">
+            <img class="center-img" src="<%= paragraph.img %>" style="height: 250px; width: 190px;">
           </div>
           <div class="col-md-1">
             <%= link_to edit_admin_paragraph_path(paragraph) do %>
@@ -37,7 +37,7 @@
             <%= link_to edit_admin_paragraph_path(paragraph) do %>
               <i class="fa fa-pencil-square-o"></i>
             <%end%>
-            <%= link_to admin_paragraph_path(paragraph, params[:aricle_id]), method: :delete, data: { confirm: 'Desea eliminar este parrafo?' } do %>
+            <%= link_to admin_paragraph_path(paragraph.id, params[:aricle_id]), method: :delete, data: { confirm: 'Desea eliminar este parrafo?' } do %>
               <i class="fa fa-trash-o"></i>
             <%end%>
           </div>
