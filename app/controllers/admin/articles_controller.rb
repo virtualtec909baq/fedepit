@@ -13,9 +13,9 @@ class Admin::ArticlesController < ApplicationController
     end
   end
 
-def new
-  @article = Article.new()
-end
+  def new
+    @article = Article.new()
+  end
 
   # GET /articles/1
   # GET /articles/1.json

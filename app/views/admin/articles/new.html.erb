@@ -2,15 +2,11 @@
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
             <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-            <p>Paso 1</p>
+            <p class="p-center">Paso 1</p>
         </div>
         <div class="stepwizard-step">
             <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-            <p>Paso 2</p>
-        </div>
-        <div class="stepwizard-step">
-            <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-            <p>Paso 3</p>
+            <p class="p-center">Paso 2</p>
         </div>
     </div>
 </div>
@@ -20,13 +16,12 @@
     <%= form_for @article ,  remote: true, url: admin_articles_path(@article) , method: :post do |f| %>
         <div class="col-xs-12">
             <div class="col-md-12">
-                <h3 class="center"> TITULO Y UNA BREVE DESCRIPCION </h3>
-                <div class="form-group">
-                    <div class="fileUpload btn btn-primary pull-right">
-                        <span>Imagen de Portada</span>
-                        <%= f.file_field :img , :class => "upload "%>
-                    </div>
+                <h3 class="center"> TITULO Y UNA BREVE DESCRIPCION</h3>
+                <div class="fileUpload btn btn-primary pull-right">
+                    <span>Imagen de Portada</span>
+                    <%= f.file_field :img , :class => "upload"%>
                 </div>
+                <br>
                 <div class="form-group">
                     <label class="control-label">Titulo Articulo</label>
                     <%= f.text_field :title, class: 'form-control' , :maxlength =>"100" ,:required => false, :placeholder => "Ingrese el nombre del articulo"%>

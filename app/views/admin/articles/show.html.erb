@@ -10,20 +10,45 @@
         <%end%>
     </div>
     <br>
+    <a class="add_field_button pull-right fa fa-plus-circle" href="<%= new_admin_paragraph_path(article_id: @article.id)%>"></a>
+    <hr>
     <%- @article.paragraphs.each do |paragraph|%>
       <div class="row">
-        <div class="col-md-8">
-          <p><%= paragraph.description%></p>
-        </div>
-        <div class="col-md-4">
-          <img class="center-img" src="http://placehold.it/230x190">
-        </div>
+        <%- if !paragraph.img.blank? %>
+          <div class="col-md-8">
+            <p><%= paragraph.description%></p>
+          </div>
+          <div class="col-md-3">
+            <img class="center-img" src="http://placehold.it/190x190">
+          </div>
+          <div class="col-md-1">
+            <%= link_to edit_admin_paragraph_path(paragraph) do %>
+              <i class="fa fa-pencil-square-o"></i>
+            <%end%>
+            <%= link_to admin_paragraph_path(paragraph, params[:aricle_id]), method: :delete, data: { confirm: 'Desea eliminar este parrafo?' } do %>
+              <i class="fa fa-trash-o"></i>
+            <%end%>
+          </div>
+        <%else%>
+          <div class="col-md-11">
+            <p><%= paragraph.description%></p>
+          </div>
+          <div class="col-md-1">
+            <%= link_to edit_admin_paragraph_path(paragraph) do %>
+              <i class="fa fa-pencil-square-o"></i>
+            <%end%>
+            <%= link_to admin_paragraph_path(paragraph, params[:aricle_id]), method: :delete, data: { confirm: 'Desea eliminar este parrafo?' } do %>
+              <i class="fa fa-trash-o"></i>
+            <%end%>
+          </div>
+        <%end%>
       </div>
     <%end%>
+    <br>
     <div id="comments"><%= render partial: '/admin/articles/comments' %></div>
   </div>
   <div class="col-md-4">
-    <div class="well">
+    <!-- <div class="well">
       <div class="input-group">
         <input type="text" class="form-control">
         <span class="input-group-btn">
@@ -32,17 +57,13 @@
           </button>
         </span>
       </div>
-      <!-- /input-group -->
-    </div>
+    </div> -->
     <div class="well">
-      <h4><i class="fa fa-fire"></i> Popular Posts:</h4>
+      <h4><i class="fa fa-fire"></i>Ultimos Post:</h4>
       <ul>
-        <li><a href="">WPF vs. Windows Forms-Which is better?</a></li>
-        <li><a href="">How to create responsive website with Bootstrap?</a></li>
-        <li><a href="">The best Joomla! templates 2014</a></li>
-        <li><a href="">ASP .NET cms list</a></li>
-        <li><a href="">C# Hello, World! program</a></li>
-        <li><a href="">Java random generator</a></li>
+        <%- @articles.each do |article|%>
+          <li><a href="<%= admin_article_path(article.id)%>"><%= article.title%></a></li>
+        <%end%>
       </ul>
     </div>
   </div>

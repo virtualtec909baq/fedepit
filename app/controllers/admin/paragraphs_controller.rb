@@ -35,7 +35,7 @@ class Admin::ParagraphsController < ApplicationController
   def update
     respond_to do |format|
       if @paragraph.update(type_category_params)
-        format.html { redirect_to admin_type_categories_path, notice: 'Type event was successfully updated.' }
+        format.html { redirect_to admin_article_path(params[:article_id]), notice: 'Type event was successfully updated.' }
         format.json { render :show, status: :ok, location: @paragraph }
       else
         format.html { render :edit }
@@ -49,7 +49,7 @@ class Admin::ParagraphsController < ApplicationController
   def destroy
     @paragraph.destroy
     respond_to do |format|
-      format.html { redirect_to admin_type_categories_path, notice: 'Type event was successfully destroyed.' }
+      format.html { redirect_to admin_article_path(params[:article_id]), notice: 'Type event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

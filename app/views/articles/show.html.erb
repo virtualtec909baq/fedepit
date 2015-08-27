@@ -26,7 +26,7 @@
         <ul class='post-lateral'>
          <% @articles.each do |article| %>
           <li>
-            <img src='images/product/img1.jpg' alt='' />
+            
             <div>
               <p><%= article.title %></p><p class='post-data'> <%= @article.created_at.strftime('%b  %d  %Y') %></p>
               <%= link_to t('.seguir'), article_path(article)%>

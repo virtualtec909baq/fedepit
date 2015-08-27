@@ -2439,9 +2439,7 @@ PAGE CONTACT
 	font-style: italic;
 	line-height: 24px;
 }
-.form-group {
-	margin-bottom: 30px;
-}
+
 .form-control {
 	border-radius: 1px;
 }
@@ -6212,8 +6210,8 @@ legend {
 .fileUpload {
     position: relative;
     overflow: hidden;
-    margin: 10px;
 }
+
 .fileUpload input.upload {
     position: absolute;
     top: 0;
@@ -6233,4 +6231,11 @@ legend {
 }
 .panel-body {
     padding: 0;
+}
+
+.p-center {
+    text-align: center;
+}
+.add_field_button.pull-right.fa.fa-plus-circle {
+    font-size: 28px;
 }
