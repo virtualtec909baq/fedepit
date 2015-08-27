@@ -3,7 +3,7 @@ class Canine < ActiveRecord::Base
 	belongs_to :breeder
 	belongs_to :race
 	has_many   :images,  
-	has_one :feature
+	has_one :feature,
 
 	has_many :events, :through => :canine_events
   	has_many :canine_events
