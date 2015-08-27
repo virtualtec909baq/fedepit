@@ -1,20 +1,22 @@
 Rails.application.routes.draw do
+  
   root 'home#index'
   devise_for :users
+  
   resources :articles, only: [:index, :show]
   resources :breeders, only: [:index, :show]
   resources :canines, only: [:index, :show]
   resources :championships, only: [:index]
   resources :events, only: [:index]
-  resources :videos, only: [:index]
+  resources :videos, only: [:index, :show]
+  
   match 'home/send_mail', to: 'home#send_mail', via: 'post'
-  get "home/contactus", to:"home#contactus"
-  get "home/sumula" => "home#sumula"
   get :index2, to: 'canines#index2', as: :index2
   get :realizarcruce, to: 'canines#realizarcruce', as: :realizarcruce
   get :merge_canine, to: 'canines#merge_canine', as: :merge_canine
+  get "home/contactus", to:"home#contactus"
+  get "home/sumula" => "home#sumula"
   get "canines/:id/mergecanines", to:"canines#mergecanines", as: "mergecanines"
-  
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
 
   namespace :admin do
@@ -28,6 +30,8 @@ Rails.application.routes.draw do
       resources :images, :only => [:create, :destroy, :update]
     end
     resources :championships
+    resources :paragraphs
+    resources :type_categories
     resources :colors
     resources :comments
     resources :events

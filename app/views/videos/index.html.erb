@@ -23,23 +23,29 @@
 </div>
 
 <div class="container">
-  <% @videos.each do |video| %>
-  <div class="row blog-row-prod">
-    <div class="col-md-9">
-      <div class="blog-info-prod">
-        <a href="#">
-          <iframe width="810" height="415" src="https://www.youtube.com/embed/<%= video.url%>" frameborder="0" allowfullscreen></iframe>
-        </a>
-        <p class="blog-author">by <a href="#"><%= video.id%></a> / <a href="#">3 Comments</a></p>
-        <p class="blog-desc-prod">This is a very basic starter template for a blog homepage. It makes use of Font Awesome icons that are
-          built into the 'Modern Business' template, and it makes use of the Bootstrap 3 pager at the bottom of
-          the page.</p>
-        </div>
-      </div>
+    <div class="box-purchase" style="margin-bottom: 20px;">
+      <%= render :partial => "/videos/filters"%>
     </div>
-    <hr>
-    <% end %>
-      <%= will_paginate @videos, :locals => { :videos => @videos }, renderer: BootstrapPagination::Rails%>
 
-  </div>
+    <%- if params[:q]%>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th class="center">ID</th>
+            <th class="center"><%= sort_link @search, :description, "Descripcion"%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @videos.each do |video| %>
+          <tr >
+            <td class="center"><%= video.id %></td>
+            <td class="center"><%= link_to video.title, video_path(video.id), :class => "link_to"  %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <%= will_paginate @videos, :locals => { :videos => @videos }, renderer: BootstrapPagination::Rails%>
+  <%end%>
+</div>
+
 

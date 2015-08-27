@@ -1,71 +1,49 @@
 <div class="row">
-  <div class='col-md-9'>
-    <%= link_to "Editar Articulo", edit_admin_article_path(@article), :class => "btn btn-primary"%>
-    <div class="blog-info-prod">
-      <div class="pull-right">
-        <h5><i class="fa fa-clock-o"></i> <%= @article.created_at.strftime('%b  %d  %Y')%></h5>
-      </div>
-      <div class="page-header">
-        <h1><%= @article.title%></h1>
-      </div>
-      <a href="#">
-        <%if @article.img.blank?%>
-          <img src="http://placehold.it/1000x500" class="img-responsive" alt=""/>
-        <%else%>
+  <div class="col-md-8">
+    <h1 class="center"><span><%= link_to @article.title, article_path(@article.id)%></span></h1>
+    <h4 class="center"><%= @article.description%></h4>
+    <span class="label label-info pull-right"><%= @article.created_at.strftime("%F")%></span>
+    <br>
+    <div class="center">
+      <%unless @article.img.blank?%>
           <img alt="" class="img-responsive" src="<%= @article.img%>">
         <%end%>
-      </a>
-      <br>
-      <p class="blog-author"><%= @article.comments.count %> Comentarios</a></p>
-
-      <p class="blog-desc-prod"><%= @article.description%></p>
-      <div class="comments">
-        <div data-example-id="simple-table" class="bs-example">
-          <table class="table table-striped table-hover table-bordered">
-            <thead>
-              <tr>
-                <th class="center">Nombre</th>
-                <th class="center">Comentario</th>
-                <th class="center">Correo</th>
-                <th class="center">N. Denuncias</th>
-                <th colspan="1" class="center">Aprovado</th>
-              </tr>
-            </thead>
-            <tbody>
-            <% @comments.each do |comment| %>
-              <%- if comment.status %>
-                <tr class="danger">
-              <else>
-                <tr>
-              <%end%>
-                <td class="center"><%= comment.name_user%></td>
-                <td class="center"><%= comment.message%></td>
-                <td class="center"><%= comment.email_user%></td>
-                <td class="center"><%= comment.report%></td>
-                <td class="center"><%= link_to admin_change_status_comments_path(comment), method: :put, data: { confirm: 'Are you sure?' } do %>
-                  <i class="fa fa-check"></i>
-                <%end%></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
+    </div>
+    <br>
+    <%- @article.paragraphs.each do |paragraph|%>
+      <div class="row">
+        <div class="col-md-8">
+          <p><%= paragraph.description%></p>
+        </div>
+        <div class="col-md-4">
+          <img class="center-img" src="http://placehold.it/230x190">
         </div>
       </div>
+    <%end%>
+    <div id="comments"><%= render partial: '/admin/articles/comments' %></div>
+  </div>
+  <div class="col-md-4">
+    <div class="well">
+      <div class="input-group">
+        <input type="text" class="form-control">
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+      <!-- /input-group -->
+    </div>
+    <div class="well">
+      <h4><i class="fa fa-fire"></i> Popular Posts:</h4>
+      <ul>
+        <li><a href="">WPF vs. Windows Forms-Which is better?</a></li>
+        <li><a href="">How to create responsive website with Bootstrap?</a></li>
+        <li><a href="">The best Joomla! templates 2014</a></li>
+        <li><a href="">ASP .NET cms list</a></li>
+        <li><a href="">C# Hello, World! program</a></li>
+        <li><a href="">Java random generator</a></li>
+      </ul>
     </div>
   </div>
-  <div class='col-md-3'>
-    <div class="blog-info-prod">
-      <h2 class="t-title-office"><span><%= t('.reciente')%></span></h2>
-      <ul class='post-lateral'>
-       <% @articles.each do |article| %>
-        <li>
-          <div>
-            <p><%= article.title %></p><p class='post-data'> <%= @article.created_at.strftime('%b  %d  %Y') %></p>
-            <%= link_to t('.seguir leyendo'), admin_article_path(article)%>
-          </div>
-        </li>
-       <% end %>
-      </ul>
-    </div>    
-  </div> 
 </div>

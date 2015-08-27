@@ -1,0 +1,23 @@
+<div class="col-md-12">
+	<div class="row">
+	<%= search_form_for @search, url: videos_path do |f|%>		
+		<div class="col-md-6">
+			<label>Categoria Video</label>
+			<%= f.collection_select :type_category_id_eq, TypeCategory.all, :id, :description, {prompt: "Categorias"}, {class: "form-control"}%>
+		</div>
+		<div class="col-md-2">
+			<%= f.submit :class =>"btn btn btn-primary btn-block"%>
+		</div>
+		<div class="col-md-2">
+			<%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
+		</div>
+		<div class="col-md-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalVideos">
+				Agregar Video
+			</button>
+		</div>
+	<%end%>
+	
+	</div>
+</div>	
+

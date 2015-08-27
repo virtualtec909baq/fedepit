@@ -11,17 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715185202) do
+ActiveRecord::Schema.define(version: 20150827145331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "ancestries", force: :cascade do |t|
-    t.integer  "canine_id"
-    t.string   "array_generation"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -29,12 +22,7 @@ ActiveRecord::Schema.define(version: 20150715185202) do
     t.string   "img"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "brands", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "author"
   end
 
   create_table "breeders", force: :cascade do |t|
@@ -55,15 +43,6 @@ ActiveRecord::Schema.define(version: 20150715185202) do
     t.string   "adrress"
   end
 
-  create_table "canine_events", force: :cascade do |t|
-    t.integer  "canine_id"
-    t.integer  "event_id"
-    t.string   "position"
-    t.string   "reward"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "canines", force: :cascade do |t|
     t.integer  "race_id"
     t.integer  "breeder_id"
@@ -79,21 +58,10 @@ ActiveRecord::Schema.define(version: 20150715185202) do
     t.date     "death"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "ancestry"
     t.integer  "lft"
     t.integer  "rgt"
     t.string   "parent_id"
     t.string   "kind"
-  end
-
-  add_index "canines", ["ancestry"], name: "index_canines_on_ancestry", using: :btree
-
-  create_table "championships", force: :cascade do |t|
-    t.integer  "type_championship_id"
-    t.date     "date"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.string   "name"
   end
 
   create_table "colors", force: :cascade do |t|
@@ -177,6 +145,20 @@ ActiveRecord::Schema.define(version: 20150715185202) do
     t.integer  "lips"
     t.integer  "appearance"
     t.integer  "length_chest"
+    t.integer  "typical_head"
+    t.integer  "cheek"
+    t.integer  "bite"
+    t.integer  "deciduous"
+    t.string   "color"
+    t.string   "canine_name"
+    t.string   "breeder_name"
+    t.string   "breeder_phone"
+    t.string   "breeder_email"
+    t.string   "canine_race"
+    t.string   "canine_lof"
+    t.string   "canine_birth"
+    t.string   "canine_gender"
+    t.string   "canine_color"
   end
 
   create_table "images", force: :cascade do |t|
@@ -184,6 +166,14 @@ ActiveRecord::Schema.define(version: 20150715185202) do
     t.string   "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "paragraphs", force: :cascade do |t|
+    t.text     "description"
+    t.string   "img"
+    t.integer  "article_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "publicities", force: :cascade do |t|
@@ -218,10 +208,10 @@ ActiveRecord::Schema.define(version: 20150715185202) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "type_championships", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "type_categories", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "type_events", force: :cascade do |t|
@@ -253,9 +243,10 @@ ActiveRecord::Schema.define(version: 20150715185202) do
     t.string   "title"
     t.integer  "number_seen"
     t.string   "url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.text     "description"
+    t.integer  "type_category_id"
   end
 
 end

@@ -1,0 +1,45 @@
+<div class="panel panel-default widget">
+           <div class="panel-heading" style="height: 39px;">
+              <div class="col-md-4"><i class="fa fa-comments pull-right"></i></div>
+              <div class="col-md-4 "><h3 class="panel-title ">Recent Comments</h3></div>
+              <div class="col-md-4">  <span class="label label-info pull-right"><%=@comments.all.count%></span></div>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                   <% @comments.each do |comment| %>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <div class="mic-info">
+                                      Por: <a href="#"><%= comment.name_user%></a> <%= comment.created_at.strftime("%F")%>
+                                    </div>
+                                    <p><%= comment.email_user%></p>
+                                </div>
+                                <div class="comment-text">
+                                    <%= comment.message%>
+                                </div>
+                                <%- if !comment.status %>
+                                  <div class="action">
+                                    <%= link_to admin_change_status_comments_path(comment), :class =>"btn btn-success btn-xs",method: :put, data: { confirm: 'Are you sure?' } do %>
+                                        <i class="fa fa-thumbs-up"></i>
+                                    <%end%>
+                                  </div>
+                                <%else%>
+                                   <div class="action">
+                                    <%= link_to admin_change_status_comments_path(comment), :class =>"btn btn-danger btn-xs",method: :put, data: { confirm: 'Are you sure?' } do %>
+                                        <i class="fa fa-thumbs-o-down"></i>
+
+                                    <%end%>
+                                  </div>
+                                <%end%>
+                            </div>
+                        </div>
+                    </li>
+                  <%end%>
+                </ul>
+                <div class="center">
+                  <%= js_will_paginate @comments%>
+                </div>
+            </div>
+    </div>

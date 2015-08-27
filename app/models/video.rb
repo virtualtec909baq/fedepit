@@ -6,4 +6,6 @@ class Video < ActiveRecord::Base
   	validates :description, presence: true 
   	validates :url, presence: true 
 
+  	belongs_to :type_category
+
 end

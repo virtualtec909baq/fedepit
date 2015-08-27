@@ -29,7 +29,6 @@ class Admin::CaninesController < ApplicationController
  
   def show
     @images = @canine.images
-    @canine_awards = @canine.events
     @feature = @canine.feature
    respond_to do |format|
      format.html

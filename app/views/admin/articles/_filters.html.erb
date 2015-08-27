@@ -12,12 +12,13 @@
 				<%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
 			</div>
 			<div class="col-md-2">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+				<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 					Agregar Articulo
-				</button>
+				</button> -->
+				<%= link_to "Agregar Articulo", new_admin_article_path %>
 			</div>
 		<%end%>
 	</div>
 </div>	
-<%= render :partial => "form"%>
+
 

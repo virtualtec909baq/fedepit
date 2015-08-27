@@ -23,10 +23,10 @@
       <th class="center"><%= sort_link @search, :name, "Nombre"%></th>
       <th class="center"><%= sort_link @search, :race_id, "Raza"%></th>
       <th class="center"><%= sort_link @search, :breeder_id, "Criador"%></th>
-      <th class="center">Lof</th>
-      <th class="center">Genero</th>
-      <th class="center">Lof Padre</th>
-      <th class="center">Lof Madre</th>
+      <th class="center"><%= sort_link @search, :lof, "LOF"%></th>
+      <th class="center"><%= sort_link @search, :gender, "Genero"%></th>
+      <th class="center"><%= sort_link @search, :father_lof, "Padre"%></th>
+      <th class="center"><%= sort_link @search, :mother_lof, "Madre"%></th>
       <th class="center"><%= sort_link @search, :date, "Nacimiento"%></th>
       <th colspan="2"></th>
     </tr>

@@ -13,11 +13,14 @@ class Admin::ArticlesController < ApplicationController
     end
   end
 
+def new
+  @article = Article.new()
+end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @comments = @article.comments
+    @comments = @article.comments.order(created_at: :desc).page(params[:page])
     @articles = Article.last(4).reverse 
   end
 
@@ -36,11 +39,12 @@ class Admin::ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         flash[:notice] = 'Articulo creado'
-        format.html { redirect_to admin_articles_path }
-        format.js {}
+        format.html { redirect_to new_admin_paragraph_path(article_id: @article.id) }
+        format.js { js_redirect_to(new_admin_paragraph_path(article_id: @article.id))}
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
+        format.js {}
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end

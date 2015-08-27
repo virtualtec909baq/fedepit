@@ -5,7 +5,9 @@ class Admin::TypeBreedersController < ApplicationController
   # GET /type_breeders
   # GET /type_breeders.json
   def index
-    @type_breeders = TypeBreeder.all
+    @type_breeders = TypeBreeder.all.order(created_at: :desc).page(params[:page])
+    @type_breeder = TypeBreeder.new()
+
   end
 
   # GET /type_breeders/1
@@ -29,7 +31,7 @@ class Admin::TypeBreedersController < ApplicationController
 
     respond_to do |format|
       if @type_breeder.save
-        format.html { redirect_to @type_breeder, notice: 'Type breeder was successfully created.' }
+        format.html { redirect_to admin_type_breeders_url, notice: 'Type breeder was successfully created.' }
         format.json { render :show, status: :created, location: @type_breeder }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class Admin::TypeBreedersController < ApplicationController
   def update
     respond_to do |format|
       if @type_breeder.update(type_breeder_params)
-        format.html { redirect_to @type_breeder, notice: 'Type breeder was successfully updated.' }
+        format.html { redirect_to admin_type_breeders_url, notice: 'Type breeder was successfully updated.' }
         format.json { render :show, status: :ok, location: @type_breeder }
       else
         format.html { render :edit }
@@ -57,7 +59,7 @@ class Admin::TypeBreedersController < ApplicationController
   def destroy
     @type_breeder.destroy
     respond_to do |format|
-      format.html { redirect_to type_breeders_url, notice: 'Type breeder was successfully destroyed.' }
+      format.html { redirect_to admin_type_breeders_url, notice: 'Type breeder was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

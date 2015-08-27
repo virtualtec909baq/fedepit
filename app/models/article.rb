@@ -5,6 +5,7 @@ class Article < ActiveRecord::Base
 	validates :title, presence: true 
   	validates :description, presence: true 
   	has_many :comments
+  	has_many :paragraphs
 	# img_uploader
   	mount_uploader :img, ArticleUploader
 end

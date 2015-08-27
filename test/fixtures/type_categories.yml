@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  canine_id: 1
-  array_generation: MyString
+  description: MyString
 
 two:
-  canine_id: 1
-  array_generation: MyString
+  description: MyString

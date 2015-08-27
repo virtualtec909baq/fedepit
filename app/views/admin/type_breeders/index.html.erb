@@ -1,27 +1,36 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Type Breeders</h1>
-
-<table>
+<div class="row">
+  <div class="col-md-4 pull-right">
+  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModaltype_event"> Agregar Tipo Criador
+  </button>
+</div>
+  <div class="col-lg-12">
+    <div class="page-header">
+      <h1>Tipos de Criadores</h1>
+    </div>
+  </div>
+</div>
+<table class="table table-striped table-hover table-bordered">
   <thead>
     <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
+      <th class="center">Nombre</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @type_breeders.each do |type_breeder| %>
-      <tr>
-        <td><%= type_breeder.name %></td>
-        <td><%= link_to 'Show', type_breeder %></td>
-        <td><%= link_to 'Edit', edit_type_breeder_path(type_breeder) %></td>
-        <td><%= link_to 'Destroy', type_breeder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr >
+      <td class="center"><%= type_breeder.name %></td>
+      <td class="center"><%= link_to edit_admin_type_breeder_path(type_breeder) do %>
+        <i class="fa fa-edit"></i>
+        <%end%>
+      </td>
+      <td class="center"><%= link_to admin_type_breeder_path(type_breeder), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <i class="fa fa-trash-o"></i>
+        <%end%>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Type breeder', new_type_breeder_path %>
+<%= will_paginate @type_breeders, :locals => { :type_breeders => @type_breeders }, renderer: BootstrapPagination::Rails%>
+<%= render :partial => "form"%>
