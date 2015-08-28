@@ -17,6 +17,22 @@
         </a>
         <br>
         <p class="blog-desc-prod"><%= @article.description%></p>
+        <%- @article.paragraphs.each do |paragraph|%>
+          <div class="row">
+            <%- if !paragraph.img.blank? %>
+              <div class="col-md-8">
+                <p><%= paragraph.description%></p>
+              </div>
+              <div class="col-md-3">
+                <img class="center-img" src="<%= paragraph.img %>" style="height: 250px; width: 190px;">
+              </div>
+            <%else%>
+              <div class="col-md-12">
+                <p><%= paragraph.description%></p>
+              </div>
+            <%end%>
+          </div>
+        <%end%>
       </div>
     </div>
     <br>

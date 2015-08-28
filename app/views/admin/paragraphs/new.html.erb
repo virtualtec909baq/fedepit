@@ -9,13 +9,11 @@
             e.preventDefault();
             if(x < max_fields){ //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                $($(wrapper).first().clone()).appendTo("#step-2");
+                //add input box
             }
         });
        
-        $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-            e.preventDefault(); $(this).parent('div').remove(); x--;
-        })
     });
 </script>
 
@@ -31,17 +29,15 @@
         </div>
     </div>
 </div>
-
+<button class="add_field_button pull-right fa fa-plus-circle"></button>
 <div class="setup-content" id="step-2">
     <%= form_for @paragraph , url: admin_paragraphs_path(@paragraph) , method: :post do |f| %>
         <h3 class="center"> CREA PARRAFOS </h3>
         <div class="input_fields_wrap">
             <div class="form-group">
-
-                <button class="add_field_button pull-right fa fa-plus-circle"></button>
                 <br>
                 <label class="control-label">Descripción</label>
-                <%= f.text_area :description, class: 'form-control', :placeholder =>"Breve descripcion del articulo" , rows: 15%>
+                <%= f.text_area :description, class: 'form-control', :placeholder =>"Breve descripcion del articulo" , rows: 5%>
             </div>
             <div class="form-group">
                 <%= f.hidden_field :article_id , :value  => params[:article_id]%>
@@ -50,7 +46,7 @@
                     <%= f.file_field :img , :class => "upload "%>
                 </div>
             </div>
+            <%= f.submit :class =>"btn btn-primary nextBtn pull-right" %>
         </div>
-        <%= f.submit :class =>"btn btn-primary nextBtn pull-right" %>
     <%end%>
 </div>
