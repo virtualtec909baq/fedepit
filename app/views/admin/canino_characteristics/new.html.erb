@@ -1,0 +1,42 @@
+<%= form_for :canino_characteristic, :html => {:id => 'canino_characteristic_form'} do |f| %>
+	<%- if params[:canine_id] == "0"%>
+		<%= f.label :temporal_canine_name%>
+		<%= f.text_field :value, :class => "form-control"%>
+	<%end%>
+	<%- @characteristics.each do |characteristic|%>
+		<%= characteristic.name%>
+		<%= f.hidden_field :characteristic_id, :value => characteristic.id %>
+		<%- if characteristic.measure_id.blank? %>
+			<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: " "}, {class: "form-control find_selected"}%>
+		<%else%>
+			<%= f.text_field :value, :class => "form-control find_selected text_field"%>
+		<%end%>
+	<%end%>
+	<br>
+<% end %>
+<button id="button_canino_characteristic">Crea Metter</button>  	
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var characteristics = {};
+		$("#button_canino_characteristic").click(function(){
+			var canine;
+			if ($('#canino_characteristic_value').val()) {
+				canine = $('#canino_characteristic_value').val();
+			} else{
+				canine = <%= params[:canine_id]%>;
+			};		
+			$('#canino_characteristic_form').find('.find_selected').each(function(){
+				if($("option:selected", this).attr("value") != "" ){
+					characteristics[$(this).prev().val()] = $(this).val();
+				}
+			})
+			console.log(canine);
+			$.ajax({
+				type: "POST",
+				url: "/admin/canino_characteristics",
+				data: {  characteristics, canine },
+			})
+		});
+	});
+</script>

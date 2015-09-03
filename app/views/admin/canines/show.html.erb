@@ -16,7 +16,7 @@
           </div>
           <div class="col-md-4">
            <div class="pdf_link">
-              <%= link_to "Certificado", admin_canine_path(@canine, :format => "pdf"), :class => "btn btn-lg btn-success btn-outlined btn-block" %>
+              <%= link_to "Certificado", admin_canine_path(@canine, :format => "pdf"), :class => "btn btn-lg btn-warning btn-outlined btn-block" %>
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@
               <%= render partial: "/admin/canines/siblings"%>
             </div>
             <div class="tab-pane" id="four"  style="padding: 10px;">
-              <%= render partial: "/admin/canines/metter"%>
+              <%= render partial: "/admin/canino_characteristics/index"%>
             </div>
             <div class="tab-pane" id="five"  style="padding: 10px;">
               <%= render partial: "/admin/canines/images"%>

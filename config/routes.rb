@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   root 'home#index'
   devise_for :users
   
@@ -42,7 +41,8 @@ Rails.application.routes.draw do
     resources :type_championships
     resources :type_events
     resources :videos
-    resources :features
+    resources :characteristics
+    resources :canino_characteristics
     
     match 'breeders/send_mail_attachments', to: 'breeders#send_mail_attachments', via: 'post'
     get "home/:id/mergecanines", to:"home#mergecanines", as: "mergecanines"

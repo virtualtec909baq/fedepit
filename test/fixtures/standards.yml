@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  race_id: 1
+  characteristic_id: 1
+  gender_id: 1
+  standar_type_id: 1
+
+two:
+  race_id: 1
+  characteristic_id: 1
+  gender_id: 1
+  standar_type_id: 1

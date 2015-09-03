@@ -28,8 +28,8 @@ class Admin::CaninesController < ApplicationController
   # GET /canines/1.json
  
   def show
-    @images = @canine.images
-    @feature = @canine.feature
+   @images = @canine.images
+   @canino_characteristics = CaninoCharacteristic.where(canine_id: params[:id]).order(created_at: :asc)
    respond_to do |format|
      format.html
      format.pdf do

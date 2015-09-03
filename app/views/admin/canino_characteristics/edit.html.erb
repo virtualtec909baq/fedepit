@@ -1,0 +1,29 @@
+<%= form_for :canino_characteristic, :html => {:id => 'canino_characteristic_form'} do |f| %>
+	<%= @characteristic.name%>
+	<%- if @characteristic.measure_id.blank? %>
+		<%= f.collection_select :value, @characteristic.characteristic_details, :id, :description, {prompt: " "}, {class: "form-control find_selected"}%>
+	<%else%>
+		<%= f.text_field :value, :class => "form-control find_selected text_field"%>
+	<%end%>
+	<br>
+<% end %>
+<button id="button_canino_characteristic">Modificar Metter</button>  	
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var valor;
+		var characteristic_id = <%= params[:id]%>
+		$("#button_canino_characteristic").click(function(){
+			$('#canino_characteristic_form').find('.find_selected').each(function(){
+				if($("option:selected", this).attr("value") != "" ){
+					valor = $(this).val();
+				}
+			})
+			$.ajax({
+				type: "PUT",
+				url: "/admin/canino_characteristics/" + characteristic_id,
+				data: { canino_characteristic: { value: valor} }
+			})
+		});
+	});
+</script>

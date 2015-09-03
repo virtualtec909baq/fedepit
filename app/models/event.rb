@@ -8,9 +8,6 @@ class Event < ActiveRecord::Base
   validates :place, presence: true 
   validates :type_event, presence: true 
 
-    has_many :canines, :through => :canine_events
-    has_many :canine_events
-
   # relation
   belongs_to :type_event
   

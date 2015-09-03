@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  canino_id: 1
+  characteristic_id: 1
+
+two:
+  canino_id: 1
+  characteristic_id: 1

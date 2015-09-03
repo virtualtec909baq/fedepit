@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827203803) do
+ActiveRecord::Schema.define(version: 20150902222840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20150827203803) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "author"
+  end
+
+  create_table "association_characteristics", force: :cascade do |t|
+    t.integer  "characteristic_id"
+    t.integer  "characteristic_detail_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "breeders", force: :cascade do |t|
@@ -64,6 +71,29 @@ ActiveRecord::Schema.define(version: 20150827203803) do
     t.string   "kind"
   end
 
+  create_table "canino_characteristics", force: :cascade do |t|
+    t.integer  "characteristic_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "value"
+    t.integer  "canine_id"
+    t.integer  "temporal_id",          limit: 8
+    t.string   "temporal_canine_name"
+  end
+
+  create_table "characteristic_details", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "characteristics", force: :cascade do |t|
+    t.integer  "measure_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "colors", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -92,73 +122,10 @@ ActiveRecord::Schema.define(version: 20150827203803) do
     t.string   "img"
   end
 
-  create_table "features", force: :cascade do |t|
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.integer  "canine_id"
-    t.integer  "teeth"
-    t.integer  "canines"
-    t.integer  "deciduous_tooth"
-    t.integer  "incisors_alignment"
-    t.integer  "molar_tooth"
-    t.integer  "premolar_tooth"
-    t.integer  "jowl"
-    t.integer  "moving_poise"
-    t.integer  "static_poise"
-    t.integer  "neck"
-    t.integer  "shoulder"
-    t.integer  "chest"
-    t.integer  "body"
-    t.integer  "upper_body"
-    t.integer  "body_alterations"
-    t.float    "height"
-    t.float    "length"
-    t.float    "torax_length"
-    t.float    "depths_chest"
-    t.integer  "after_moving"
-    t.integer  "subsequent_static"
-    t.integer  "shaped_tail"
-    t.integer  "tail_length"
-    t.integer  "tail_movement"
-    t.integer  "muscle_quality"
-    t.integer  "attitude"
-    t.integer  "general_appearance"
-    t.integer  "ears"
-    t.integer  "shape_ears"
-    t.integer  "shape_eyes"
-    t.integer  "eyes_placement"
-    t.integer  "color_eyes"
-    t.integer  "eyelid_abnormalities"
-    t.integer  "head_measures"
-    t.integer  "flat_head"
-    t.integer  "head_shape"
-    t.integer  "head_stop"
-    t.integer  "snout"
-    t.integer  "nouse"
-    t.integer  "nose_nostrils"
-    t.integer  "motion"
-    t.integer  "snout_2"
-    t.integer  "cigamatico_snout"
-    t.integer  "supracillares_snout"
-    t.integer  "cheeks_snout"
-    t.integer  "muzzle_bite"
-    t.integer  "lips"
-    t.integer  "appearance"
-    t.integer  "length_chest"
-    t.integer  "typical_head"
-    t.integer  "cheek"
-    t.integer  "bite"
-    t.integer  "deciduous"
-    t.string   "color"
-    t.string   "canine_name"
-    t.string   "breeder_name"
-    t.string   "breeder_phone"
-    t.string   "breeder_email"
-    t.string   "canine_race"
-    t.string   "canine_lof"
-    t.string   "canine_birth"
-    t.string   "canine_gender"
-    t.string   "canine_color"
+  create_table "genders", force: :cascade do |t|
+    t.string   "taxonomic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade do |t|
@@ -174,6 +141,12 @@ ActiveRecord::Schema.define(version: 20150827203803) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "measures", force: :cascade do |t|
+    t.string   "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "paragraphs", force: :cascade do |t|
@@ -200,6 +173,14 @@ ActiveRecord::Schema.define(version: 20150827203803) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "ranks", force: :cascade do |t|
+    t.string   "description"
+    t.float    "ri"
+    t.float    "rs"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "sponsors", force: :cascade do |t|
     t.string   "image"
     t.boolean  "status"
@@ -208,6 +189,21 @@ ActiveRecord::Schema.define(version: 20150827203803) do
     t.string   "name"
     t.string   "url"
     t.string   "email"
+  end
+
+  create_table "standar_types", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "standards", force: :cascade do |t|
+    t.integer  "race_id"
+    t.integer  "characteristic_id"
+    t.integer  "gender_id"
+    t.integer  "standar_type_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "type_breeders", force: :cascade do |t|

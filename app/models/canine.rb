@@ -6,6 +6,9 @@ class Canine < ActiveRecord::Base
 	has_many   :feature
 	has_many :events, :through => :canine_events
   	has_many :canine_events
+
+  	has_many :characteristics, :through => :canino_characteristics
+  	has_many :canino_characteristics  
 	self.per_page = 15
 
 	has_many :images
