@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     get "home/:id/mergecanines", to:"home#mergecanines", as: "mergecanines"
     get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
     get "home/realizarcruce", to:"home#realizarcruce", as: "realizarcruce"
+    put "canino_characteristics/:id/update_metter", to: "canino_characteristics#update_metter", as: "update_metter"
     put "comments/:id/change_status", to: "comments#change_status", as: "change_status_comments"
     put "sponsors/:id/change_status", to: "sponsors#change_status", as: "change_status"
     put "publicities/:id/change_status", to: "publicities#change_status", as: "change_status_publicities"

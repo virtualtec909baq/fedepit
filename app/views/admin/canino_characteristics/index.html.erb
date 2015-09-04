@@ -11,7 +11,7 @@
         <tr >
           <td class="center"><%= canine.name %></td>
           <td class="center"><%= link_to "Crear Nuevo Metter", new_admin_canino_characteristic_path(canine_id: canine.id), :class => "link_to"  %></td>
-          <td class="center"><%= link_to "Adicionar Metter", new_admin_canino_characteristic_path(canine_id: canine.id), :class => "link_to"  %></td>
+          <td class="center"><%= link_to "Adicionar Metter", new_admin_canino_characteristic_path(canine_id: canine.id, edit: true), :class => "link_to"  %></td>
         </tr>
       <% end %>
     </tbody>

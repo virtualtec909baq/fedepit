@@ -28,7 +28,14 @@ gem 'faker'
 gem 'rails-i18n'
 gem 'rails4-autocomplete'
 gem 'prawn'
-gem 'capistrano', '~> 3.4.0'
+gem 'capistrano', '~> 3.1.0'
+
+# rails specific capistrano funcitons
+gem 'capistrano-rails', '~> 1.1.0'
+# integrate bundler with capistrano
+gem 'capistrano-bundler'
+# if you are using RBENV
+gem 'capistrano-rbenv', "~> 2.0" 
 
 group :production do
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets' 

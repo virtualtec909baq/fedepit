@@ -1,6 +1,6 @@
 class Admin::CaninoCharacteristicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_feature, only: [:show, :edit, :update, :destroy]
+  before_action :set_feature, only: [:show, :edit, :update, :destroy, :update_metter]
 
 
   def index
@@ -14,6 +14,10 @@ class Admin::CaninoCharacteristicsController < ApplicationController
   end
 
   def new
+    if params[:edit]
+      @canine_characteristic = CaninoCharacteristic.where.not(:temporal_id => nil).select("DISTINCT ON (temporal_id) *")
+    end
+    
     if params[:canine_id] == "0"
       @characteristics = Characteristic.all
     else
@@ -27,18 +31,24 @@ class Admin::CaninoCharacteristicsController < ApplicationController
   # POST /characteristics.json
   def create
     if params[:canine_id] == "0"
-      temporal_id
+      canine_characteristic = CaninoCharacteristic.all.order(temporal_id: :desc).first
+      temporal_id = canine_characteristic.temporal_id
+      temporal_id+=1
       params[:characteristics].each do |key , value|
-        CaninoCharacteristic.create( characteristic_id: key, value: value, temporal_canine_name: params[:canine])
+        CaninoCharacteristic.create( characteristic_id: key, value: value, temporal_canine_name: params[:canine], temporal_id: temporal_id)
+      end
+      respond_to do |format|
+          flash[:notice] = 'Metter Creado Puede Crear uno nuevo'
+          format.js { js_redirect_to(new_admin_canino_characteristic_path(canine_id: "0"))}
       end
     else
       params[:characteristics].each do |key , value|
-        CaninoCharacteristic.create( canine_id: params[:canine, characteristic_id: key, value: value)
+          CaninoCharacteristic.create(canine_id: params[:canine_id], characteristic_id: key, value: value)
       end
-    end
-    respond_to do |format|
-      flash[:notice] = 'Metter Creado'
-      format.js { js_redirect_to(admin_canine_path(params[:canine_id]))}
+      respond_to do |format|
+          flash[:notice] = 'Metter Creado'
+          format.js { js_redirect_to(admin_canine_path(params[:canine_id]))}
+      end
     end
   end
 
@@ -46,6 +56,15 @@ class Admin::CaninoCharacteristicsController < ApplicationController
   # GET /characteristics/1/edit
   def edit
     @characteristic = Characteristic.find(@canino_characteristic.characteristic_id)
+  end
+
+  def update_metter
+    @characteristics = CaninoCharacteristic.where(temporal_id: @canino_characteristic.temporal_id)
+    @characteristics.update_all(temporal_id: nil, temporal_canine_name: nil, canine_id: params[:canine_id])
+    respond_to do |format|
+        flash[:notice] = 'Metter Asociado'
+        format.js { js_redirect_to(admin_canine_path(params[:canine_id]))}
+    end
   end
 
   # PATCH/PUT /features/1
