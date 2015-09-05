@@ -2,7 +2,7 @@
 require 'capistrano/setup'
 # Include default deployment tasks
 require 'capistrano/deploy'
-# require 'capistrano/bundler'
+require 'capistrano/bundler'
 require 'capistrano/rbenv'
 require 'capistrano/rails/migrations'
 require 'capistrano/rails/assets'
