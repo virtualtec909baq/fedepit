@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :category_championships
+  resources :varieties
+  resources :scores
+  resources :shows
+  resources :entities
   root 'home#index'
   devise_for :users
   
