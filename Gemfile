@@ -28,6 +28,7 @@ gem 'faker'
 gem 'rails-i18n'
 gem 'rails4-autocomplete'
 gem 'prawn'
+gem 'nested_form_fields'
 
 group :development do
   gem 'capistrano', '~> 3.1.0'

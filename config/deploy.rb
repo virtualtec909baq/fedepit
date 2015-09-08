@@ -8,7 +8,7 @@ set :repo_url, 'https://github.com/virtualtec909baq/fedepit.git'
 # setup rvm.
 set :rbenv_type, :system
 set :rbenv_custom_path, '/root/.rbenv/'
-set :rbenv_ruby, '2.2.2'
+set :rbenv_ruby, '2.2.1'
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :bundle_path,     nil
 set :bundle_binstubs, nil
