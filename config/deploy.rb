@@ -1,5 +1,5 @@
 set :application, 'fedepit'
-set :deploy_user, 'root'
+set :deploy_user, 'fedepit'
 
 # setup repo details
 set :scm, :git
