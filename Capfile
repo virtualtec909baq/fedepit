@@ -4,6 +4,8 @@ require 'capistrano/setup'
 require 'capistrano/deploy'
 require 'capistrano/bundler'
 require 'capistrano/rvm'
+# require for goddady server
+require 'capistrano/safe_deploy_to'
 # require 'capistrano/rbenv'
 require 'capistrano/rails/migrations'
 require 'capistrano/rails/assets'
