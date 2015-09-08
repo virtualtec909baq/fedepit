@@ -6,9 +6,9 @@ set :branch, "master"
 # at filepaths
 set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 
-server '166.62.85.175', user: 'root', roles: %w{web app db}, primary: true
+server '166.62.85.175', user: 'fedepit', roles: %w{web app db}, primary: true
 
-set :deploy_to, "/var/www/html/fedepit"
+set :deploy_to, "/var/www/fedepit"
 
 # dont try and infer something as important as environment from
 # stage name.
@@ -21,3 +21,4 @@ set :unicorn_worker_count, 5
 # whether we're using ssl or not, used for building nginx
 # config file
 set :enable_ssl, false
+
