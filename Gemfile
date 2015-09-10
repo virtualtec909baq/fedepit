@@ -35,7 +35,7 @@ group :development do
   gem 'capistrano-safe-deploy-to', '~> 1.1.1'
   # cap tasks to manage puma application server
   gem 'capistrano-puma', require: false
-  gem 'capistrano-rails',   '~> 1.1', require: false
+  gem 'capistrano-rails'
   gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'capistrano-rvm',   '~> 0.1', require: false
 end
