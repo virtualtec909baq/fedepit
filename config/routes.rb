@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :category_championships
   resources :varieties
   resources :scores
   resources :shows
