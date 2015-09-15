@@ -1,4 +1,6 @@
 class Publicity < ActiveRecord::Base
+	include PublicActivity::Model
+	tracked owner: ->(controller, model) { controller && controller.current_user }
 	after_initialize :init
 	# default for will_paginate
 	self.per_page = 15
