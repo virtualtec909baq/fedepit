@@ -1,6 +1,4 @@
 class Canine < ActiveRecord::Base
-	include PublicActivity::Model
-	tracked owner: ->(controller, model) { controller && controller.current_user }
 	
 	belongs_to :breeder
 	belongs_to :race
