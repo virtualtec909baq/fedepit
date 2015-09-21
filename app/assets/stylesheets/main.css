@@ -263,18 +263,13 @@ p.personal-phrase i.fa-quote-left{
 	border-radius: 0px;
 }
 
-.navbar-brand {
-	font-weight: 700;
-	padding: 1px 15px;
-}
+
 
 .navbar-inverse {
 	background-image:none;
 	background-color: #fff;
-	height: 70px;
 	border-bottom: 3px solid #1898AB;
 	box-shadow: 0 1px 15px rgba(0,0,0,.2);
-	float: left;
 	z-index: 8888;
 }
 .navbarcart-content {
@@ -283,20 +278,12 @@ p.personal-phrase i.fa-quote-left{
 .navbar-inverse .navbar-nav>li>a {
 	color: #212121;
 	text-shadow:0 0 0 #333;
-	text-transform: uppercase;
-	letter-spacing: 1px;
 	font-weight: 300;
 }
 .navbar-inverse .navbar-nav>li>a:hover,.navbar-inverse .navbar-nav>li>a:focus {
 	color: #1898AB;
 }
-.navbar-header {
-	margin-top: 9px;
-}
-.navbar-collapse {
-	position: relative;
-	margin-top: 10px;
-}
+
 
 ul.menu-items li.menu-item {
 	display: inline-block;
@@ -6238,4 +6225,7 @@ legend {
 }
 .add_field_button.pull-right.fa.fa-plus-circle {
     font-size: 28px;
+}
+.get-oc-tb, .get-annabel.get-darkred.get-org-chart > a{
+	display: none;
 }

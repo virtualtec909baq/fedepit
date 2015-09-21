@@ -23,18 +23,22 @@ class CaninePdf< Prawn::Document
 	    bounding_box([470,430],:width =>400,:height =>450) do 
 	    	transparent(0) { stroke_bounds }
 	    	text "#{}"
-	    	move_down 60
+	    	move_down 40
 	    	text "	NOMBRE : #{@canine.name.upcase}"
 	    	move_down 15
 	    	text "RAZA : #{@canine.race.name.upcase}"
 	    	move_down 15
 	    	text "SEXO : #{gender(@canine.gender)}"
 	    	move_down 15
+	    	text "COLOR : #{@canine.color}"
+	    	move_down 15
 	    	text "NACIMIENTO : #{@canine.birth}"
 	    	move_down 15
 	    	text "LOF : #{@canine.lof}"
 	    	move_down 15
 	    	text "PROPIETARIO : #{@canine.breeder.name.upcase}"
+	    	move_down 15
+	    	text "MICROCHIP : #{@canine.chip}"
 	    	move_down 15
 	    	text "FECHA DE REGISTRO : #{@canine.created_at.strftime("%m-%d-%Y")}"
 	    end
@@ -131,13 +135,6 @@ class CaninePdf< Prawn::Document
 				move_down 5
 				text "LOF : #{@father.lof}", :size => 12
 			end
-		else
-			bounding_box([30,480],:width =>400,:height =>450) do
-				transparent(0) { stroke_bounds } 
-				text "	NOMBRE : NO TIENE PAPA", :size => 12
-				move_down 5
-				text "LOF : NO TIENE PAPA", :size => 12
-			end
 		end
 		
 		# Mother pedigree
@@ -148,13 +145,6 @@ class CaninePdf< Prawn::Document
 				text "	NOMBRE : #{Canine.find(@canine.rgt).name.upcase}"
 				move_down 5
 				text "LOF : #{Canine.find(@canine.rgt).lof}"
-			end
-		else
-			bounding_box([30,140],:width =>400,:height =>370) do
-				transparent(0) { stroke_bounds } 
-				text "	NOMBRE : NO TIENE MAMA"
-				move_down 5
-				text "LOF : NO TIENE MAMA"
 			end
 		end
 		
@@ -216,43 +206,6 @@ class CaninePdf< Prawn::Document
 							text "LOF : #{Canine.find(@father_rgt.rgt).lof}", :size => 8
 						end
 					end
-				end
-			else
-				bounding_box([310,520],:width =>400,:height =>450) do
-					transparent(0) { stroke_bounds } 
-					text "	NOMBRE : NO TIENE ABUELO PATERNO", :size => 10
-					move_down 5
-					text "LOF : NO TIENE ABUELO PATERNO", :size => 10
-				end
-				bounding_box([310,440],:width =>400,:height =>450) do
-					transparent(0) { stroke_bounds } 
-					text "	NOMBRE : NO TIENE ABUELA PATERNO", :size => 10
-					move_down 5
-					text "LOF : NO TIENE ABUELA PATERNO", :size => 10
-				end
-				bounding_box([500,540],:width =>400,:height =>450) do
-					transparent(0) { stroke_bounds } 
-					text "	NOMBRE : NO TIENE BISABUELO PATERNO", :size => 8
-					move_down 5
-					text "LOF :NO TIENE BISABUELO PATERNO", :size => 8
-				end
-				bounding_box([500,490],:width =>400,:height =>450) do
-					transparent(0) { stroke_bounds } 
-					text "	NOMBRE : NO TIENE BISABUELA PATERNO", :size => 8
-					move_down 5
-					text "LOF :NO TIENE BISABUELA PATERNO", :size => 8
-				end
-				bounding_box([500,425],:width =>400,:height =>450) do
-					transparent(0) { stroke_bounds } 
-					text "	NOMBRE : NO TIENE BISABUELO PATERNO", :size => 8
-					move_down 5
-					text "LOF :NO TIENE BISABUELO PATERNO", :size => 8
-				end
-				bounding_box([500,370],:width =>400,:height =>450) do
-					transparent(0) { stroke_bounds } 
-					text "	NOMBRE : NO TIENE BISABUELA PATERNO", :size => 8
-					move_down 5
-					text "LOF :NO TIENE BISABUELA PATERNO", :size => 8
 				end
 			end
 

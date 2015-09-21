@@ -1,0 +1,191 @@
+<script src="/assets/go.js"></script>
+<script type="text/javascript">
+    var dataArray;
+    $( document ).ready(function() {
+       init();
+    });
+    function loadElements(){
+     dataArray = $('#data_init').data("array");
+    }
+
+    function init() {
+      loadElements();
+      var $ = go.GraphObject.make;  // for conciseness in defining templates
+      myDiagram =
+      $(go.Diagram, "myDiagram",
+          { // automatically scale the diagram to fit the viewport's size
+          initialAutoScale: go.Diagram.Uniform,
+            // start everything in the middle of the viewport
+            initialContentAlignment: go.Spot.TopCenter,
+            // disable user copying of parts
+            allowCopy: false,
+            // position all of the nodes and route all of the links
+            layout:
+            $(go.LayeredDigraphLayout,
+              { direction: -180,
+                layerSpacing: 50,
+                columnSpacing: 40,
+                setsPortSpots: true })
+          });
+
+      // define the node template
+      myDiagram.nodeTemplate =
+      $(go.Node, "Auto",
+        new go.Binding("location", "loc"),
+        {   locationSpot: go.Spot.Center,
+          toEndSegmentLength: 30, fromEndSegmentLength: 30
+        },
+        $(go.Shape, "Square",
+        {
+          name: "OBJSHAPE",
+          fill: "white",
+          desiredSize: new go.Size(150, 150)
+        }),
+        $(go.TextBlock,
+          { margin: 4 },
+          new go.Binding("text", "key")),
+        {
+            toolTip:  //  define a tooltip for each node that displays its information
+            $(go.Adornment, "Auto",
+              $(go.Shape, { fill: "#EFEFCC" }),
+              $(go.TextBlock, { margin: 4 },
+                new go.Binding("text"))
+              )
+          }
+          );
+
+      // define the link template
+      myDiagram.linkTemplate =
+      $(go.Link,
+      {
+        selectionAdornmentTemplate:
+        $(go.Adornment,
+          $(go.Shape,
+            { isPanelMain: true, stroke: "red", strokeWidth: 1.5 }),
+          $(go.Shape,
+            { toArrow: "Standard", fill: "red", stroke: null, scale: 1 })
+          ),
+        routing: go.Link.Normal,
+        curve: go.Link.Bezier,
+        toShortLength: 2
+      },
+          $(go.Shape,  //  the link shape
+            { name: "OBJSHAPE" }),
+          $(go.Shape,  //  the arrowhead
+            { name: "ARWSHAPE", toArrow: "Standard" }),
+          {
+            toolTip:  //  define a tooltip for each link that displays its information
+            $(go.Adornment, "Auto",
+              $(go.Shape, { fill: "#EFEFCC" }),
+              $(go.TextBlock, { margin: 4 },
+                new go.Binding("text",  "" ))
+              )
+          }
+          );
+      var linkDataArray = [];
+      var arraylength = dataArray.length;
+      
+      for(var i = 0; i<arraylength; i++){  
+        var hash = { from: dataArray[i][0], to: dataArray[i][1]};
+        linkDataArray.push(hash);
+      }
+       console.log(dataArray);
+       console.log(linkDataArray);
+      
+      
+      myDiagram.model =
+      $(go.GraphLinksModel,
+        { // automatically create node data objects for each "from" or "to" reference
+          // (set this property before setting the linkDataArray)
+          archetypeNodeData: {},
+          // process all of the link relationship data
+          linkDataArray: linkDataArray
+        });
+      ;
+      // whenever selection changes, run updateHighlights
+      myDiagram.addDiagramListener("ChangedSelection",
+       function() { updateHighlights(getRadioButton()); } );
+
+      myDiagram.select(myDiagram.findNodeForKey('ATOMOS'));
+    }
+
+    function updateHighlights(e) {
+      // Set highlight to 0 for everything before updating
+      myDiagram.nodes.each(function(node) { node.highlight = 0; });
+      myDiagram.links.each(function(link) { link.highlight = 0; });
+
+      // Get the selected GraphObject and run the appropriate method
+      var sel = myDiagram.selection.first();
+      if (sel !== null) {
+        switch (e.id) {
+
+          case "Links all": linksAll(sel, 1); break;
+          case "Nodes connect": nodesConnect(sel, 1); break;
+          case "Group": containing(sel, 1); break;
+          case "Groups all": containingAll(sel, 1); break;
+          case "Nodes member": childNodes(sel, 1); break;
+          case "Nodes members all": allMemberNodes(sel, 1); break;
+          case "Links member": childLinks(sel, 1); break;
+          case "Links members all": allMemberLinks(sel, 1); break;
+        }
+      }
+
+      // Give everything the appropriate highlighting ( color and width of stroke )
+      // nodes, including groups
+      myDiagram.nodes.each(function(node) {
+        var shp = node.findObject("OBJSHAPE");
+        var grp = node.findObject("GROUPTEXT");
+        var hl = node.highlight;
+        highlight(shp, grp, hl);
+      });
+      // links
+      myDiagram.links.each(function(link) {
+        var hl = link.highlight;
+        var shp = link.findObject("OBJSHAPE");
+        var arw = link.findObject("ARWSHAPE");
+        highlight(shp, arw, hl);
+      });
+    }
+
+    function nodesConnect(x, i) {
+      if (x instanceof go.Node) {
+        x.linksConnected.each(function(link) { link.highlight = i; });
+      }
+      if (x instanceof go.Link) {
+        x.toNode.highlight = i;
+        x.fromNode.highlight = i;
+      } else {
+        x.findNodesConnected().each(function(node) { node.highlight = i; });
+      }
+    }
+
+    function highlight(shp, obj2, hl) {
+      var color;
+      var width = 2;
+      if (hl === 0) { color = "black"; width = 1; }
+      else if (hl === 1) { color = "#1898AB"; }
+      else if (hl === 2) { color = "green"; }
+      else if (hl === 3) { color = "orange"; }
+      else if (hl === 4) { color = "red"; }
+      else { color = "purple"; }
+      shp.stroke = color;
+      shp.strokeWidth = width;
+      if (obj2 !== null) {
+        obj2.stroke = color;
+        obj2.fill = color;
+      }
+    }
+
+    function getRadioButton() {
+      var radio = document.getElementsByName("highlight");
+      for (var i = 0; i < radio.length; i++)
+        if (radio[i].checked) return radio[i];
+    }
+</script>
+<div id="data_init" data-array="<%=@array_ancestor%>">
+  <div id="displays" >
+    <div id="myDiagram" style="height: 1800px;"></div>
+    <label>
+    <input type="radio" name="highlight" checked="checked" onclick="updateHighlights(this)" id="Nodes connect" style="display: none;"></label><br>
+  </div>
+</div>

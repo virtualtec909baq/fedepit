@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915165323) do
+ActiveRecord::Schema.define(version: 20150921163335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20150915165323) do
     t.integer  "rgt"
     t.string   "parent_id"
     t.string   "kind"
+    t.string   "color"
   end
 
   create_table "canino_characteristics", force: :cascade do |t|
