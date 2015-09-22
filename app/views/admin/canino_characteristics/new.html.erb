@@ -59,11 +59,11 @@
 						characteristics[$(this).prev().val()] = $(this).val();
 					}
 				})
-				// $.ajax({
-				// 	type: "POST",
-				// 	url: "/admin/canino_characteristics",
-				// 	data: {  characteristics, canine, canine_id},
-				// })
+				$.ajax({
+					type: "POST",
+					url: "/admin/canino_characteristics",
+					data: {  characteristics, canine, canine_id},
+				})
 			});
 		});
 	</script>

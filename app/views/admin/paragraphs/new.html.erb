@@ -1,38 +1,6 @@
-<script type="text/javascript">
-    $(document).ready(function() {
-        var max_fields      = 10; //maximum input boxes allowed
-        var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-        var add_button      = $(".add_field_button"); //Add button ID
-       
-        var x = 1; //initlal text box count
-        $(add_button).click(function(e){ //on add input button click
-            e.preventDefault();
-            if(x < max_fields){ //max input box allowed
-                x++; //text box increment
-                $($(wrapper).first().clone()).appendTo("#step-2");
-                //add input box
-            }
-        });
-       
-    });
-</script>
-
-<div class="stepwizard" style="margin-top: ;">
-    <div class="stepwizard-row setup-panel">
-        <div class="stepwizard-step">
-            <a class="btn btn-default btn-circle" type="button" href="<%=edit_admin_article_path(params[:article_id])%>" style="background-color: white;">1</a>
-            <p class="p-center">Paso 1</p>
-        </div>
-        <div class="stepwizard-step">
-           <a class="btn btn-default btn-circle" type="button" href="#step-2" style="background-color: #16a7a7;">2</a>
-            <p class="p-center">Paso 2</p>
-        </div>
-    </div>
-</div>
-<button class="add_field_button pull-right fa fa-plus-circle"></button>
 <div class="setup-content" id="step-2">
     <%= form_for @paragraph , url: admin_paragraphs_path(@paragraph) , method: :post do |f| %>
-        <h3 class="center"> CREA PARRAFOS </h3>
+        <h3 class="center"> CREA PARRAFO</h3>
         <div class="input_fields_wrap">
             <div class="form-group">
                 <br>

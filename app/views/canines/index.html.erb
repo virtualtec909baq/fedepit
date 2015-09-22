@@ -1,39 +1,18 @@
-<div class="blog-top-img">
-  <div class="effect-over"></div>
-  <div class="container">
-    <div class="col-lg-12">
-      <h1 class="about4-top-title">Texto descriptivo<span class="color-txt"> Texto descriptivo</span></h1>
-      <h1 class="about4-top-title about4-top-second"><span class="color-txt">Texto descriptivo</span> </h1>
-    </div>
-  </div> 
-</div>
-<div class="breadcrumb-color">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <ol class="breadcrumb">
-          <li>
-            <a href="<%= root_path%>"><%=t ('.home')%></a>
-          </li>
-          <li class="active"><%=t ('.pedigree')%></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="container ">
   <div class="box-purchase">
     <div class="col-md-12">
       <div class="row">
         <%= search_form_for @search, url: canines_path do |f|%>   
-        <div class="col-md-4">
+        <div class="col-md-2">
           <label>Nombre o LOF</label>
-          <%= f.search_field(:name_or_lof_cont, class: 'form-control')%>
         </div>
         <div class="col-md-4">
+          <%= f.search_field(:name_or_lof_cont, class: 'form-control', :placeholder => "Buscar Ejemplar")%>
+        </div>
+        <div class="col-md-3">
           <%=  f.submit :class =>"btn btn btn-primary btn-block"%>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
         </div>
         <%end%>
@@ -42,67 +21,68 @@
   </div>
   <p class="white-space"></p>
   <%- if params[:q]%>
-  <% @canines.each do |canine| %>
-  <hr>
-  <div class="jumbotron">
-    <div class="row">
-      <div class="col-md-4">
-      <%if canine.images.last.blank? %>
-         <%= image_tag "placeholder.png", :class => "thumbnail", :size => '310x310'%>
-        <%else%>
-          <img alt="" class="img-responsive" src="<%= canine.images.last.file%>">
-        <%end%>      </div>
-      <div class="col-md-8">
+      <% @canines.each do |canine| %>
+      <div class="jumbotron">
+        <h2><%= canine.name%></h2>
         <div class="row">
-          <div class="col-md-12">
-            <h2><%= canine.name%></h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <span>Sexo:</span>
-            <span><%= gender(@canine.gender)%></span>
-          </div>
-          <br>
-          <div class="col-md-12">
-            <span>Criadero:</span>
-            <%-if !@canine.breeder_id.blank?%>
-            <span><%= canine.breeder.name_breed%> </span>
-            <%end%> 
-          </div>
-          <br>
-          <div class="col-md-12">
-            <span>Fecha Nacimiento:</span>
-            <span><%= canine.birth%></span>
-          </div>
-          <br>
-          <div class="col-md-12">
-            <span>Propietario:</span>
-            <%-if !@canine.breeder_id.blank?%>
-            <span><%= canine.breeder.name%> </span>
+          <div class="col-md-4">
+            <%if canine.images.last.blank? %>
+             <%= image_tag "placeholder.png", :class => "thumbnail", :size => '150x150'%>
+            <%else%>
+              <img alt="" class="img-responsive" src="<%= canine.images.last.file%>">
             <%end%>
           </div>
-          <br>
-          <div class="col-md-12">
-            <span>Color:</span>
-            <%-if !@canine.color_id.blank?%>
-            <span><%= canine.color.name%> </span>
-            <%end%>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-6">
+                <span>Sexo:</span>
+                <span><%= gender(canine.gender)%></span>
+              </div>
+              <br>
+              <div class="col-md-6">
+                <span>Raza:</span>
+                <%-if !canine.race_id.blank?%>
+                <span><%= canine.race.name%> </span>
+                <%end%>
+              </div>
+              <br>
+              <div class="col-md-6">
+                <span>Color:</span>
+                <span><%= canine.color%> </span>
+              </div>
+              <br>
+              <div class="col-md-6">
+                <span>Nacimiento:</span>
+                <span><%= canine.birth%></span>
+              </div>
+              <br>
+              <div class="col-md-6">
+                <span>LOF:</span>
+                <span><%= canine.lof%></span>
+              </div>
+              <br>
+              <div class="col-md-6">
+                <span>Propietario:</span>
+                <%-if !canine.breeder_id.blank?%>
+                <span><%= canine.breeder.name%> </span>
+                <%end%>
+              </div>
+              <br>
+              <div class="col-md-6">
+                <span>Microchip:</span>
+                <span><%= canine.chip%> </span>
+              </div>
+              <br>
+              <div class="col-md-6">
+                <span>Fecha de registor:</span>
+                <span><%= canine.created_at.strftime("%m-%d-%Y")%> </span>
+              </div>
+            </div>
           </div>
-          <br>
-          <div class="col-md-12">
-            <span>Raza:</span>
-            <%-if !canine.race_id.blank?%>
-              <span><%= canine.race.name%> </span>
-            <%end%>
-            <br>
-            <br>
-            <%= link_to "Ver mas...", canine_path(canine), :class => "btn btn-default"  %>
-          </div>
+          <%= link_to "Ver mas...", canine_path(canine) %>
         </div>
       </div>
-    </div>
-  </div>
-  <%end%>
+      <%end%>
+      <%= will_paginate @canines, :locals => { :canines => @canines }, renderer: BootstrapPagination::Rails%>
   <%end%>
 </div>

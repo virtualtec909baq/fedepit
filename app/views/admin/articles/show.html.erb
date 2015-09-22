@@ -13,13 +13,14 @@
     <a class="add_field_button pull-right fa fa-plus-circle" href="<%= new_admin_paragraph_path(article_id: @article.id)%>"></a>
     <hr>
     <%- @article.paragraphs.each do |paragraph|%>
-      <div class="row">
+      <div class="row" style="margin-top: 8px;">
         <%- if !paragraph.img.blank? %>
+          <div class="col-md-3">
+            <img class="center-img" src="<%= paragraph.img %>" style="height: 150px; width: 150px;">
+            <br>
+          </div>
           <div class="col-md-8">
             <p><%= paragraph.description%></p>
-          </div>
-          <div class="col-md-3">
-            <img class="center-img" src="<%= paragraph.img %>" style="height: 250px; width: 190px;">
           </div>
           <div class="col-md-1">
             <%= link_to edit_admin_paragraph_path(paragraph) do %>
@@ -48,16 +49,6 @@
     <div id="comments"><%= render partial: '/admin/articles/comments' %></div>
   </div>
   <div class="col-md-4">
-    <!-- <div class="well">
-      <div class="input-group">
-        <input type="text" class="form-control">
-        <span class="input-group-btn">
-          <button type="button" class="btn btn-default">
-            <i class="fa fa-search"></i>
-          </button>
-        </span>
-      </div>
-    </div> -->
     <div class="well">
       <h4><i class="fa fa-fire"></i>Ultimos Post:</h4>
       <ul>

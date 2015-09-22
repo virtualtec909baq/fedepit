@@ -25,15 +25,25 @@
           </div>
           <br>
           <div class="col-md-12">
-            <span>Criadero:</span>
-            <%-if !@canine.breeder_id.blank?%>
-            <span><%= @canine.breeder.name_breed%> </span>
-            <%end%> 
+            <span>Raza:</span>
+            <%-if !@canine.race_id.blank?%>
+            <span><%= @canine.race.name%> </span>
+            <%end%>
           </div>
           <br>
           <div class="col-md-12">
-            <span>Fecha Nacimiento:</span>
+            <span>Color:</span>
+            <span><%= @canine.color%> </span>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>Nacimiento:</span>
             <span><%= @canine.birth%></span>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <span>LOF:</span>
+            <span><%= @canine.lof%></span>
           </div>
           <br>
           <div class="col-md-12">
@@ -44,15 +54,18 @@
           </div>
           <br>
           <div class="col-md-12">
-            <span>Raza:</span>
-            <%-if !@canine.race_id.blank?%>
-            <span><%= @canine.race.name%> </span>
-            <%end%>
+            <span>Microchip:</span>
+            <span><%= @canine.chip%> </span>
           </div>
+          <br>
+          <div class="col-md-12">
+            <span>Fecha de registor:</span>
+            <span><%= @canine.created_at.strftime("%m-%d-%Y")%> </span>
+          </div>
+          <br>
           <br>
           <div class="col-md-3">
             <%= link_to "Eliminar",admin_canine_path(@canine), method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-danger btn-outlined btn-block" %>
-
           </div>
           <div class="col-md-3">
             <%= link_to "Modificar", edit_admin_canine_path(@canine), :class =>"btn btn-info btn-outlined btn-block" %>

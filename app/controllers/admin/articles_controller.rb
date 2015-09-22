@@ -39,8 +39,7 @@ class Admin::ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         flash[:notice] = 'Articulo creado'
-        format.html { redirect_to new_admin_paragraph_path(article_id: @article.id) }
-        format.js { js_redirect_to(new_admin_paragraph_path(article_id: @article.id))}
+        format.html { redirect_to admin_article_path(article_id: @article.id) }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -84,6 +83,6 @@ class Admin::ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :description, :img)
+      params.require(:article).permit(:title, :description, :img, paragraphs_attributes: [:id, :article_id, :description, :img])
     end
 end

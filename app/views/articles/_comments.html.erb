@@ -1,23 +1,15 @@
-<div class="panel panel-default">
-  <div id="headingTwo" class="panel-heading" role="tab" style="height: 45px;">
-    <h4 class="panel-title">
-    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-    <i class="pull-right fa fa-plus"></i> <%= t('.comment')%>
-    </a>
-    </h4>
+<% @comments.each do |comment| %>
+<br>
+  <%= link_to denounce_path(comment_id: comment.id), method: :put ,data: { confirm: 'Desea Denunciar esta publicacion?' } do %>
+          <i class="fa fa-exclamation-circle pull-right"></i>
+      <%end%>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%=comment.name_user%>
+        <small><%=comment.email_user%></small>
+      </h4>
+      <p><%=comment.message%></p>
+    </div>
   </div>
-  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-    <% @comments.each do |comment| %>
-      <div class="panel-body row comments">
-        <div class="col-lg-4">
-          <%= link_to denounce_path(comment_id: comment.id), method: :put ,data: { confirm: 'Desea Denunciar esta publicacion?' } do %>
-            <i class="fa fa-exclamation-circle"></i>
-          <%end%>
-          <%=comment.name_user%>
-        </div>
-        <div class="col-lg-8"> <%=comment.message%> </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
+<% end %>

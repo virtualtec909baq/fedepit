@@ -1,71 +1,54 @@
 <div class="container">
   <div class="row">
-    <div class='col-md-9'>
-      <div class="blog-info-prod">
-        <div class="pull-right">
-          <h5><i class="fa fa-clock-o"></i> <%= @article.created_at.strftime('%b  %d  %Y')%></h5>
-        </div>
-        <div class="page-header">
-          <h1><%= @article.title%></h1>
-        </div>
-        <a href="#">
-          <%if @article.img.blank?%>
-            <img src="http://placehold.it/1000x500" class="img-responsive" alt=""/>
-          <%else%>
-            <img alt="" class="img-responsive" src="<%= @article.img%>">
-          <%end%>
-        </a>
-        <br>
-        <p class="blog-desc-prod"><%= @article.description%></p>
-        <%- @article.paragraphs.each do |paragraph|%>
-          <div class="row">
+    <div class="col-md-8">
+      <h1><%= @article.title%></h1>
+      <hr>
+      <p><i class="fa fa-calendar"></i></span> <%= @article.created_at.strftime('%b  %d  %Y')%></p>
+      <hr>
+      <!-- Preview Image -->
+      <%if @article.img.blank?%>
+         <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+        <%else%>
+        <img alt="" class="img-responsive" src="<%= @article.img%>">
+      <%end%>
+      <hr>
+      <p class="lead"><%= @article.description%></p>
+      <%- @article.paragraphs.each do |paragraph|%>
+        <div class="row">
             <%- if !paragraph.img.blank? %>
               <div class="col-md-8">
                 <p><%= paragraph.description%></p>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <img class="center-img" src="<%= paragraph.img %>" style="height: 250px; width: 190px;">
               </div>
             <%else%>
               <div class="col-md-12">
+                <br>
                 <p><%= paragraph.description%></p>
               </div>
             <%end%>
           </div>
-        <%end%>
+      <%end%>
+      <hr>
+      <%= render partial: "articles/form"%>
+      <%= render partial: "articles/comments"%>
+      <hr>
+      
+    </div>
+    <div class="col-md-4">
+      <div class="well">
+        <h4>Ultimos Articulos</h4>
+        <div class="row">
+          <div class="col-lg-6">
+            <ul class="list-unstyled">
+            <% @articles.each do |article| %>
+              <li><a href="<%= article_path(article.id)%>"><%= article.title%></a>
+            <%end%> 
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-    <br>
-    <div class='col-md-3'>
-      <div class="blog-info-prod">
-        <h2 class="t-title-office"><span><%= t('.reciente')%></span></h2>
-        <ul class='post-lateral'>
-         <% @articles.each do |article| %>
-          <li>
-            
-            <div>
-              <p><%= article.title %></p><p class='post-data'> <%= @article.created_at.strftime('%b  %d  %Y') %></p>
-              <%= link_to t('.seguir'), article_path(article)%>
-            </div>
-          </li>
-         <% end %>
-        </ul>
-      </div>    
-    </div>
   </div>
-  <div class="col-md-12">
-    <p class="blog-author"><%= @article.comments.where(status: true).count %> <%=  t('.comment')%></p>
-  </div>
-  <div class="col-md-12">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalComment" >
-      Nuevo Comentario
-    </button>
-    <br>
-    <br>
-  </div>
-  <div class="col-md-12">
-    <%= render partial: "articles/comments"%>
-  </div>
-  <%= render :partial => "form"%>
 </div>
-
