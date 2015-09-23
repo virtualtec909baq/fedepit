@@ -85,6 +85,15 @@ es:
       search: "Buscar"
       clear: "Limpiar"
   activerecord:
+    models:
+      race: "Raza"
+      article: "Artículo"
+      breeder: "Criador"
+      canine: "Ejemplar"
+      comment: "Comentario"
+      event: "Evento"
+      video: "Video"
+      type_breeder: "Tipo Criador"
     attributes:
       canine:
         race_id: "Raza"
