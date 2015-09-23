@@ -36,7 +36,7 @@
 					<span class="bold"> <%= characteristic.name%> </span>
 					<%= f.hidden_field :characteristic_id, :value => characteristic.id %>
 					<%- if characteristic.measure_id.blank? %>
-						<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: " "}, {class: "form-control find_selected"}%>
+						<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
 					<%else%>
 						<%= f.text_field :value, :class => "form-control text_fieldn find_selected"%>
 					<%end%>
