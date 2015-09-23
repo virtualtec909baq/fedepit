@@ -111,7 +111,7 @@
       <%= f.collection_select :race_id, Race.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
     </div>
     <div class="col-md-3">
-      <%= f.label :propietario %><br>
+      <%= f.label :propietario %>  <%= link_to "agregar propietario", new_admin_breeder_path()%>
       <%= f.collection_select :breeder_id, Breeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
     </div>
     <div class="col-md-3">
