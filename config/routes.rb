@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get "canines/:id/mergecanines", to:"canines#mergecanines", as: "mergecanines"
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
   
-  namespace :api, defaults: { format: :xml } do
+  namespace :api, defaults: { format: :json } do
     resources :canines, only: [:index, :show]
   end
   
