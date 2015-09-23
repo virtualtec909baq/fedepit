@@ -1,4 +1,5 @@
 class Sponsor < ActiveRecord::Base
+  
 	after_initialize :init
 	# default for will_paginate
   self.per_page = 10

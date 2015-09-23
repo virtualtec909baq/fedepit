@@ -11,10 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902222840) do
+ActiveRecord::Schema.define(version: 20150921163335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "trackable_id"
+    t.string   "trackable_type"
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.string   "key"
+    t.text     "parameters"
+    t.integer  "recipient_id"
+    t.string   "recipient_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
+  add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
+  add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+
+  create_table "ancestries", force: :cascade do |t|
+    t.integer  "canine_id"
+    t.string   "array_generation"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -69,6 +93,7 @@ ActiveRecord::Schema.define(version: 20150902222840) do
     t.integer  "rgt"
     t.string   "parent_id"
     t.string   "kind"
+    t.string   "color"
   end
 
   create_table "canino_characteristics", force: :cascade do |t|
@@ -79,6 +104,24 @@ ActiveRecord::Schema.define(version: 20150902222840) do
     t.integer  "canine_id"
     t.integer  "temporal_id",          limit: 8
     t.string   "temporal_canine_name"
+  end
+
+  create_table "category_championships", force: :cascade do |t|
+    t.integer  "race_id"
+    t.integer  "age_min"
+    t.integer  "age_max"
+    t.string   "period"
+    t.integer  "variety_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "category_scores", force: :cascade do |t|
+    t.integer  "category_championship_id"
+    t.integer  "score"
+    t.boolean  "status"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "characteristic_details", force: :cascade do |t|
@@ -107,6 +150,12 @@ ActiveRecord::Schema.define(version: 20150902222840) do
     t.string   "message"
     t.integer  "report"
     t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "entities", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -181,6 +230,21 @@ ActiveRecord::Schema.define(version: 20150902222840) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "scores", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.integer  "entity_id"
+    t.string   "place"
+    t.string   "name"
+    t.date     "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sponsors", force: :cascade do |t|
     t.string   "image"
     t.boolean  "status"
@@ -242,6 +306,12 @@ ActiveRecord::Schema.define(version: 20150902222840) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "varieties", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "videos", force: :cascade do |t|
     t.string   "title"

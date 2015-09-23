@@ -30,7 +30,6 @@ class CaninesController < ApplicationController
   def show
     @canine = Canine.find(params[:id])
     @images = @canine.images
-    @feature = @canine.feature
   end
 
   def realizarcruce

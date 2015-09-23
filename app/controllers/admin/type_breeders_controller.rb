@@ -5,9 +5,13 @@ class Admin::TypeBreedersController < ApplicationController
   # GET /type_breeders
   # GET /type_breeders.json
   def index
+    @search = TypeBreeder.ransack(params[:q])
     @type_breeders = TypeBreeder.all.order(created_at: :desc).page(params[:page])
-    @type_breeder = TypeBreeder.new()
-
+     @type_breeder = TypeBreeder.new()
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /type_breeders/1

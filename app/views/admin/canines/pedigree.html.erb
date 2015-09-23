@@ -1,169 +1,29 @@
-<style type="text/css">
-  .show-grid [class^="col-"] {
-      background-color: rgba(86, 61, 124, 0.15);
-      border: 1px solid rgba(86, 61, 124, 0.2);
-      padding-bottom: 10px;
-      padding-top: 10px;
-  }
-</style>
-<%@array_canine_level = []%>
-<% get_ancestors(@canine).each do |canine|%>
-    <% nivel(Canine.find(params[:id]), canine)%>
-    <%hash = [canine, $level]%>
-    <%hash_canine_level = Hash[*hash]%>
-    <%@array_canine_level << hash_canine_level%>
-<%end%>
-<% @array_canine_level =  @array_canine_level.reduce Hash.new, :merge%>
-<% @array_canine_level = @array_canine_level.sort_by {|_key, value| value}.to_h %>
-<div class="bs-docs-grid">
-    <div class="row show-grid" >
-      <h3 class="center"><%=  link_to @canine.name.upcase, admin_canine_path(@canine.id)%></h3>
-      <hr>
-      <div id="col-11" class="col-md-3" style="height: 522px;">
-            <%if !@canine.images.last.blank? %>
-              <img alt="" class="img-responsive" src="<%= @canine.images.first.file%>">
-            <%else%>
-              <%= image_tag "placeholder.png", :class => "thumbnail", :size => '260x240'%>
-            <%end%>
-            <div class="center name"><%= link_to @canine.name.upcase, admin_pedigree_path(@canine.id)%></div>
-      </div>
-      <div class="col-md-3" id="col-1">
-          <div class="col-md-12 col-11">
-            <%- if @father%>
-              <%if !@father.images.last.blank? %>
-                <img alt="" class="img-responsive" src="<%= @father.images.first.file%>">
-              <%else%>
-                <%= image_tag "placeholder.png", :class => "thumbnail", :size => '230x100'%>
-              <%end%>
-              <div class="center">
-                <%= link_to @father.name.upcase, admin_pedigree_path(@father.id)%>
-              </div>
-            <%end%>
-          </div>
-          <div class="col-md-12 col-11">
-            <%- if @mother%>
-              <%if !@mother.images.last.blank? %>
-                <img alt="" class="img-responsive" src="<%= @mother.images.first.file%>">
-              <%else%>
-                <%= image_tag "placeholder.png", :class => "thumbnail", :size => '230x100'%>
-              <%end%>
-              <div class="center">
-                <%= link_to @mother.name.upcase, admin_pedigree_path(@mother.id)%>
-              </div>
-            <%end%>
-          </div>
-      </div>
-      <%- if @array_canine_level.size > 3%>
-        <div class="col-md-3" id="col-2">
-          <%- if @father_lft%>
-              <div class="col-md-12 col-12">
-                <%if !@father_lft.images.last.blank? %>
-                  <img alt="" class="img-responsive center" src="<%= @father_lft.images.first.file%>">
-                <%else%>
-                  <%= image_tag "placeholder.png", :class => "img-col-2", :size => '115x50'%>
-                <%end%>
-                <div class="center">
-                  <%= link_to @father_lft.name.upcase, admin_pedigree_path(@father_lft.id)%>
-                </div> 
-              </div>
-          <%end%>
-          <%- if @father_rgt%>
-              <div class="col-md-12 col-12">
-                <%if !@father_rgt.images.last.blank? %>
-                  <img alt="" class="img-responsive" src="<%= @father_rgt.images.first.file%>">
-                  <%else%>
-                    <%= image_tag "placeholder.png", :class => "img-col-2", :size => '115x50'%>
-                <%end%>
-                <div class="center">
-                  <%= link_to @father_rgt.name.upcase, admin_pedigree_path(@father_rgt.id)%>
-                </div>  
-              </div>
-          <%end%>
-          <%- if @mother_lft%>
-              <div class="col-md-12 col-12">
-                <%if !@mother_lft.images.last.blank? %>
-                  <img alt="" class="img-responsive" src="<%= @mother_lft.images.first.file%>">
-                <%else%>
-                    <%= image_tag "placeholder.png", :class => "img-col-2", :size => '115x50'%>
-                <%end%>
-                <div class="center">
-                  <%= link_to @mother_lft.name.upcase, admin_pedigree_path(@mother_lft.id)%>
-                </div> 
-              </div>
-          <%end%>
-          <%- if @mother_rgt%>
-              <div class="col-md-12 col-12">
-                <%if !@mother_rgt.images.last.blank? %>
-                  <img alt="" class="img-responsive" src="<%= @mother_rgt.images.first.file%>">
-                <%else%>
-                    <%= image_tag "placeholder.png", :class => "img-col-2", :size => '115x50'%>
-                <%end%>
-                <div class="center">
-                  <%= link_to @mother_rgt.name.upcase, admin_pedigree_path(@mother_rgt.id)%>
-                </div>  
-              </div>
-          <%end%>
-          
-        </div>
-        <div class="col-md-3" id="col-3">
-          <%- if @father_lft_lft%>
-            <div class="col-md-12 col-13">
-              <div class="center">
-                  <%= link_to @father_lft_lft.name.upcase, admin_pedigree_path(@father_lft_lft.id)%>
-                </div>
-            </div>
-          <%end%>
-          <%- if @father_lft_rgt%>
-            <div class="col-md-12 col-13">
-                <div class="center">
-                  <%= link_to @father_lft_rgt.name.upcase, admin_pedigree_path(@father_lft_rgt.id)%>
-                </div>
-            </div>
-          <%end%>
-          <%- if @father_rgt_lft%>
-            <div class="col-md-12 col-13">
-              <div class="center">
-                  <%= link_to @father_rgt_lft.name.upcase, admin_pedigree_path(@father_rgt_lft.id)%>
-                </div>
-            </div>
-          <%end%>
-          <%- if @father_rgt_rgt%>
-            <div class="col-md-12 col-13">
-                <div class="center">
-                  <%= link_to @father_rgt_rgt.name.upcase, admin_pedigree_path(@father_rgt_rgt.id)%>
-                </div>
-            </div>
-          <%end%>
-          <%- if @mother_lft_lft%>
-            <div class="col-md-12 col-13">
-              <div class="center">
-                  <%= link_to @mother_lft_lft.name.upcase, admin_pedigree_path(@mother_lft_lft.id)%>
-                </div>
-            </div>
-          <%end%>
-          <%- if @mother_lft_rgt%>
-            <div class="col-md-12 col-13">
-                <div class="center">
-                  <%= link_to @mother_lft_rgt.name.upcase, admin_pedigree_path(@mother_lft_rgt.id)%>
-                </div>
-            </div>
-          <%end%>
-          <%- if @mother_rgt_lft%>
-            <div class="col-md-12 col-13">
-              <div class="center">
-                  <%= link_to @mother_rgt_lft.name.upcase, admin_pedigree_path(@mother_rgt_lft.id)%>
-                </div>
-            </div>
-          <%end%>
-          <%- if @mother_rgt_rgt%>
-            <div class="col-md-12 col-13">
-                <div class="center">
-                  <%= link_to @mother_rgt_rgt.name.upcase, admin_pedigree_path(@mother_rgt_rgt.id)%>
-                </div>
-            </div>
-          <%end%>
-
-        </div>
-      <%end%>
-    </div>
-  </div>
+<script src="/assets/getorgchart.js"></script>
+<h3 id="data_init" data-array="<%= @array_ancestor%>"class="center"><%=  link_to @canine.name.upcase, admin_canine_path(@canine.id)%></h3>
+<div id="canine"></div>
+<script type="text/javascript">
+   dataArray = $('#data_init').data("array");
+   var array = [{ id: "<%= @canine.id%>", parentId: null, Name: "<%= @canine.name%>", Lof: "<%= @canine.lof%>", Genero: "<%= gender(@canine.gender)%>",pic: "<%= pic_canine(@canine)%>"}];
+   var arraylength = dataArray.length;
+    for(var i = 0; i<arraylength; i++){  
+        var hash = { id: dataArray[i][0], parentId: dataArray[i][1], Name: dataArray[i][2],Lof:dataArray[i][3],Genero: dataArray[i][4], pic: dataArray[i][5]};
+        array.push(hash);
+    }
+  $("#canine").getOrgChart({  
+        editable: false,
+        searchable: false,
+        movable: false, 
+        zoomable: true,
+        orientation: getOrgChart.RO_LEFT, 
+        clickEvent: function(sender, args){
+          window.location.href = "http://166.62.89.40/admin/canines/" + args.id+ "/pedigree";
+          return false;
+        },
+        levelSeparation: 15,
+        siblingSeparation: 1,
+        subtreeSeparation: 2,
+        primaryColumns: ["Name", "Lof", "Genero"],
+        imageColumn: "pic",
+        dataSource: array
+  });
+</script>

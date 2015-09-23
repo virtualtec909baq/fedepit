@@ -1,8 +1,9 @@
 class Admin::CaninesController < ApplicationController
+  include ApplicationHelper
   autocomplete :canine, :name, :extra_data => [:id], :full => true
   autocomplete :canine, :lof, :full => true
   before_action :authenticate_user!
-  before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree]
+  before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree, :endogamia]
   before_action :init, only: [:create]
   before_action :ancestors, only: [:create, :update]
   
@@ -29,6 +30,7 @@ class Admin::CaninesController < ApplicationController
  
   def show
    @images = @canine.images
+   @array_ancestor = get_ancestor_with_hash(@canine).count
    @canino_characteristics = CaninoCharacteristic.where(canine_id: params[:id]).order(created_at: :asc)
    respond_to do |format|
      format.html
@@ -42,50 +44,7 @@ class Admin::CaninesController < ApplicationController
 end
   
   def pedigree
-    if @canine.lft
-      @father = Canine.find(@canine.lft)
-      if @father.lft 
-        @father_lft = Canine.find(@father.lft) 
-        if @father_lft.lft
-          @father_lft_lft = Canine.find(@father_lft.lft)
-        end
-        if @father_lft.rgt
-          @father_lft_rgt = Canine.find(@father_lft.rgt)
-        end
-      end
-      if @father.rgt 
-        @father_rgt = Canine.find(@father.rgt) 
-        if @father_rgt.lft
-          @father_rgt_lft = Canine.find(@father_rgt.lft)
-        end
-        if @father_rgt.rgt
-          @father_rgt_rgt = Canine.find(@father_rgt.rgt)
-        end
-      end
-    end
-
-    if @canine.rgt
-      @mother = Canine.find(@canine.rgt)
-      if @mother.lft 
-        @mother_lft = Canine.find(@mother.lft) 
-        if @mother_lft.lft
-          @mother_lft_lft = Canine.find(@mother_lft.lft)
-        end
-        if @mother_lft.rgt
-          @mother_lft_rgt = Canine.find(@mother_lft.rgt)
-        end
-      end
-      if @mother.rgt 
-        @mother_rgt = Canine.find(@mother.rgt) 
-        if @mother_rgt.lft
-          @mother_rgt_lft = Canine.find(@mother_rgt.lft)
-        end
-        if @mother_rgt.rgt
-          @mother_rgt_rgt = Canine.find(@mother_rgt.rgt)
-        end
-      end
-    end
-
+    @array_ancestor = get_pedigree_canine(@canine)
   end
 
   # GET /canines/new
@@ -96,6 +55,10 @@ end
 
   # GET /canines/1/edit
   def edit
+  end
+
+  def endogamia
+    @array_ancestor = get_ancestor_with_hash(@canine)
   end
 
   # POST /canines
@@ -201,7 +164,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def canine_params
-      params.require(:canine).permit(:parent_id,:kind, :lft, :rgt ,:race_id, :breeder_id, :lof, :chip, :name, :gender, :color_id, :father_lof, :mother_lof, :rate, :birth, :death,images_attributes: [:id, :canine_id, :file])
+      params.require(:canine).permit(:parent_id,:kind, :lft, :rgt ,:race_id, :breeder_id, :lof, :chip, :name, :gender, :color, :father_lof, :mother_lof, :rate, :birth, :death,images_attributes: [:id, :canine_id, :file])
     end
 
     def image_params

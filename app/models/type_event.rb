@@ -1,4 +1,5 @@
 class TypeEvent < ActiveRecord::Base
+	
 	after_initialize :init
 
 	# default for will_paginate

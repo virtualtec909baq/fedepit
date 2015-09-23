@@ -43,7 +43,7 @@
       <% @array_canine_level.each do |canine|%>
         <tr>
             <th class="center"><%= canine[0].name.upcase%></th>
-            <% @array_canines_id = get_ancestors_2(Canine.find(canine[0].id))%>
+            <% @array_canines_id = get_ancestors(Canine.find(canine[0].id))%>
             <% cor(@array_canines_id.uniq)%>
             <%count_2 ||= 0%>
             <%@graph.searchPath(canine[0].id.to_s,canine[0].rgt.to_s, []) { |path|%>

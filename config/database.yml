@@ -8,9 +8,6 @@ development:
   encoding: unicode
   database: fedepit_developer
   host: localhost
-  pool: 5
-  username: alphauser
-  password: alphapassword
 
 test:
   <<: *default

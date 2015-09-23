@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-
-ruby File.read(".ruby-version").strip
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -30,6 +28,7 @@ gem 'rails4-autocomplete'
 gem 'prawn'
 gem 'nested_form_fields'
 gem 'sshkit', '~> 1.4.0'
+gem 'public_activity'
 
 group :development do
   gem 'capistrano', '~> 3.1.0'

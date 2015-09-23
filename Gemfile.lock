@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/activerecord-hackery/ransack.git
-  revision: d6208db6efaefba984a6dda60223d47a1913ca2b
+  revision: 1c5cb64e25983cc1724a01c03db8704c40c1172d
   specs:
     ransack (1.7.0)
       actionpack (>= 3.0)
@@ -174,6 +174,11 @@ GEM
     prawn (2.0.2)
       pdf-core (~> 0.6.0)
       ttfunk (~> 1.4.0)
+    public_activity (1.4.2)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -285,6 +290,7 @@ DEPENDENCIES
   pg
   polyamorous!
   prawn
+  public_activity
   rails (= 4.2.1)
   rails-i18n
   rails3_serve_static_assets!

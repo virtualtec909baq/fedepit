@@ -1,4 +1,25 @@
 module ApplicationHelper
+
+	def ihash(h)
+		h.each_pair do |k,v|
+			if v.is_a?(Hash)
+				puts "key: #{k} recursing..."
+				ihash(v)
+			else
+	      	# MODIFY HERE! Look for what you want to find in the hash here
+	      	puts "key: #{k} value: #{v}"
+	  		end
+		end
+	end
+
+	def pic_canine(canine)
+		if canine.images.first.blank?
+          	photo =  ActionController::Base.helpers.asset_path("placeholder.png")
+        else
+          	photo = canine.images.first.file.url
+        end
+        return photo
+	end
 	
 	def gender(gender)
 		if gender == 1
@@ -75,12 +96,154 @@ module ApplicationHelper
 		end
 	end
 
-	def get_ancestors_2(canine)
+	def get_left_hash(canine)
+		if canine.lft
+			array = []
+			array <<  "#{canine.name}-#{canine.id}"
+			array <<  "#{Canine.find(canine.lft).name}-#{Canine.find(canine.lft).id}" 
+			return array
+		end
+	end
+	
+	def get_rgt_hash(canine)
+		if canine.rgt
+			array = []
+			array <<  "#{canine.name}-#{canine.id}"
+			array <<  "#{Canine.find(canine.rgt).name}-#{Canine.find(canine.rgt).id}" 
+			return array
+		end
+	end
+
+	def get_ancestor_with_hash(canine)
 		@tree ||= []
 		if !canine.nil?
-			@tree << get_id(canine)
-			get_ancestors_2(get_left(canine))
-			get_ancestors_2(get_rgt(canine))
+			if canine.rgt
+				@tree << get_rgt_hash(canine)
+			end
+			if canine.lft
+				@tree << get_left_hash(canine)
+			end
+			get_ancestor_with_hash(get_left(canine))
+			get_ancestor_with_hash(get_rgt(canine))
+			return @tree
+		end
+	end
+
+	def get_left_canine(canine)
+		if canine.lft
+			array = []
+			array <<  canine
+			array <<  Canine.find(canine.lft)
+			return array
+		end
+	end
+	
+	def get_rgt_canine(canine)
+		if canine.rgt
+			array = []
+			array <<  canine
+			array <<  Canine.find(canine.rgt)
+			return array
+		end
+	end
+
+	def get_ancestor_canine(canine)
+		@tree ||= []
+		if !canine.nil?
+			if canine.rgt
+				@tree << get_rgt_canine(canine)
+			end
+			if canine.lft
+				@tree << get_left_canine(canine)
+			end
+			get_ancestor_canine(get_left(canine))
+			get_ancestor_canine(get_rgt(canine))
+			return @tree
+		end
+	end
+
+
+	def get_pedigree_left_canine(canine)
+		if canine.lft
+			canine_left = Canine.find(canine.lft)
+			array = []
+			array << canine_left.id
+			array << canine.id
+			array << canine_left.name
+			array << canine_left.lof
+			array << gender(canine_left.gender)
+			if canine_left.images.first.blank?
+          		array << ActionController::Base.helpers.asset_path("placeholder.png")
+        	else
+          		array << canine_left.images.first.file.url
+        	end
+        	return array
+		end
+	end
+	
+	def get_pedigree_rgt_canine(canine)
+		if canine.rgt
+			canine_rgt = Canine.find(canine.rgt)
+			array = []
+			array << canine_rgt.id
+			array << canine.id
+			array << canine_rgt.name
+			array << canine_rgt.lof
+			array << gender(canine_rgt.gender)
+			if canine_rgt.images.first.blank?
+          		array << ActionController::Base.helpers.asset_path("placeholder.png")
+        	else
+          		array << canine_rgt.images.first.file.url
+        	end
+			return array
+		end
+	end
+
+	def get_pedigree_canine(canine)
+		@tree ||= []
+		if !canine.nil?
+			if canine.rgt
+				@tree << get_pedigree_rgt_canine(canine)
+			end
+			if canine.lft
+				@tree << get_pedigree_left_canine(canine)
+			end
+			get_pedigree_canine(get_left(canine))
+			get_pedigree_canine(get_rgt(canine))
+			return @tree
+		end
+	end
+
+	def get_api_pedigree_rgt_canine(canine)
+		if canine.rgt
+			canine_rgt = Canine.find(canine.rgt)
+			array = ["from", "#{canine.id}" ,"to", "#{canine_rgt.id}", "nombre", "#{canine_rgt.name}", "lof", "#{canine_rgt.lof}", "gen", "#{canine_rgt.gender}"]
+      		canine_hash = Hash[*array]
+			return canine_hash
+		end
+	end
+
+	def get_api_pedigree_lft_canine(canine)
+		if canine.lft
+			canine_lft = Canine.find(canine.lft)
+			array = ["from", "#{canine.id}" ,"to", "#{canine_lft.id}", "nombre", "#{canine_lft.name}", "lof", "#{canine_lft.lof}", "gen", "#{canine_lft.gender}"]
+      		canine_hash = Hash[*array]
+			return canine_hash
+		end
+	end
+
+
+	def get_api_pedigree_canine(canine)
+		@tree ||= []
+		if !canine.nil?
+			if canine.rgt
+				@tree << get_api_pedigree_rgt_canine(canine)
+			end
+			if canine.lft
+				@tree << get_api_pedigree_lft_canine(canine)
+			end
+			get_api_pedigree_canine(get_left(canine))
+			get_api_pedigree_canine(get_rgt(canine))
 			return @tree
 		end
 	end

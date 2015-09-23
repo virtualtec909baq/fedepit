@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  devise_for :users
   resources :category_championships
   resources :varieties
   resources :scores
   resources :shows
   resources :entities
-  root 'home#index'
-  devise_for :users
-  
   resources :articles, only: [:index, :show]
   resources :breeders, only: [:index, :show]
   resources :canines, only: [:index, :show]
@@ -22,7 +21,11 @@ Rails.application.routes.draw do
   get "home/sumula" => "home#sumula"
   get "canines/:id/mergecanines", to:"canines#mergecanines", as: "mergecanines"
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
-
+  
+  namespace :api, defaults: { format: :json } do
+    resources :canines, only: [:index, :show]
+  end
+  
   namespace :admin do
     get "home/index", to:"home#index"
     get "breeders/send_email", to:"breeders#send_email"
@@ -52,12 +55,12 @@ Rails.application.routes.draw do
     match 'breeders/send_mail_attachments', to: 'breeders#send_mail_attachments', via: 'post'
     get "home/:id/mergecanines", to:"home#mergecanines", as: "mergecanines"
     get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
+    get "canines/:id/endogamia", to:"canines#endogamia", as: "endogamia"
     get "home/realizarcruce", to:"home#realizarcruce", as: "realizarcruce"
     put "canino_characteristics/:id/update_metter", to: "canino_characteristics#update_metter", as: "update_metter"
     put "comments/:id/change_status", to: "comments#change_status", as: "change_status_comments"
     put "sponsors/:id/change_status", to: "sponsors#change_status", as: "change_status"
     put "publicities/:id/change_status", to: "publicities#change_status", as: "change_status_publicities"
-    post "canines/awards", to: "canines#awards", as: "awards"
     post "home/enviar_cruce", to: "home#enviar_cruce", as: "enviar_cruce"
   end
 

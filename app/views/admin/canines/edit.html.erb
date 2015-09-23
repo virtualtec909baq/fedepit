@@ -89,32 +89,44 @@
       <%= f.label :tipo_de_ejemplar %><br>
       <%= f.select :kind, [["Registrar Ejemplar", "0"],["Registro Informativo", "1"]], {prompt: "Escoger Tipo"}, {class: "form-control"}%>
     </div>
+    
+    <div class="col-md-6">
     <br>
-    <div class="col-md-12">
       <%= f.label :Nombre %><br>
       <%= f.autocomplete_field(:name, autocomplete_canine_name_admin_canines_path, :class => "form-control")%>
       <br>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
+    <br>
+      <%= f.label :Microchip %><br>
+      <%= f.text_field :chip, :class => "form-control"%>
+      <br>
+    </div>
+
+    <div class="col-md-3">
       <%= f.label :razas %><br>
       <%= f.collection_select :race_id, Race.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
+      <%= f.label :color %><br>
+      <%= f.collection_select :color, Color.all, :name, :name, {prompt: " "}, {class: "form-control"}%>
+    </div> 
+    <div class="col-md-3">
       <%= f.label :propietario %><br>
       <%= f.collection_select :breeder_id, Breeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
     </div>
-    <div class="col-md-4">
-      <%= f.label :genero %><br>
+    <div class="col-md-3">
+      <%= f.label :Sexo %><br>
       <%= f.select :gender, [["Macho", "1"],["Hembra", "0"]], {prompt: ""}, {class: "form-control"}%>
     <br>
     </div>
     <div class="col-md-6">
-      <%= f.label :father_lof %><br>
+      <%= f.label :father_lof, "Nombre Padre - LOF" %><br>
       <%= f.text_field :father_lof, class: 'form-control' %>
       <%= f.hidden_field :lft%>
     </div>
     <div class="col-md-6">
-      <%= f.label :mother_lof %><br>
+      <%= f.label :mother_lof, "Nombre Madre - LOF" %><br>
       <%= f.text_field :mother_lof, class: 'form-control' %>
       <%= f.hidden_field :rgt%>
       <br>
@@ -136,11 +148,14 @@
            </div>
         <% end %>
       <%else%>
+      <br>
         <%=f.fields_for :images, Image.new do |ff| %>
           <div class="field">
+          <label>Subir Imagenes</label>
           <%= ff.file_field :file, :rel => admin_canine_images_path(@canine)%>
           </div>
         <% end %>
+       <br>
       <%end%>
     </div>
     <div class="col-md-12">
