@@ -93,6 +93,7 @@ es:
       comment: "Comentario"
       event: "Evento"
       video: "Video"
+      paragraph: "Párrafo"
       type_breeder: "Tipo Criador"
     attributes:
       canine:
