@@ -132,11 +132,11 @@
     </div>
     <div class="col-md-6">
       <%= f.label :nacimiento %><br>
-      <%= f.date_select :birth , class: 'form-control' %>
+      <%= f.date_select :birth , class: 'form-control', start_year: 1990, end_year: 2030 %>
     </div>
     <div class="col-md-6">
       <%= f.label :muerte %><br>
-      <%= f.date_select :death , class: 'form-control' %>
+      <%= f.date_select :death , class: 'form-control', start_year: 1990, end_year: 2030%>
     </div>
     <div class="col-md-12">
       <br>
