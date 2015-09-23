@@ -12,12 +12,10 @@
 			<%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
 		</div>
 		<div class="col-md-2">
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalRace">
-				Agregar Raza
-			</button>
+			<%= link_to "Agregar Raza", new_admin_race_path%>
 		</div>
 	<%end%>
 	
 	</div>
 </div>	
-<%= render :partial => "form"%>
+

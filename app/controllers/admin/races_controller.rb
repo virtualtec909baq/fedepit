@@ -22,19 +22,25 @@ class Admin::RacesController < ApplicationController
   # GET /races/new
   def new
     @race = Race.new
+    @race.img_races.build
   end
 
   # GET /races/1/edit
   def edit
+    @race.img_races.build
   end
 
   # POST /races
   # POST /races.json
   def create
+    puts params[:img_races].inspect
     @race = Race.new(race_params)
-
+    
     respond_to do |format|
       if @race.save
+        # if !params[:imges].blank?
+          
+        # end
         format.html { redirect_to admin_races_path, notice: 'Race was successfully created.' }
         format.json { render :show, status: :created, location: @race }
       else
@@ -79,6 +85,6 @@ class Admin::RacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def race_params
-      params.require(:race).permit(:name, :description, :pdf)
+      params.require(:race).permit(:name, :description, :pdf, img_races_attributes: [:id, :race_id, :img, :_destroy,:description])
     end
 end

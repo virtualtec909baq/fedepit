@@ -1,4 +1,36 @@
-<h1>New Race</h1>
-
-<%= render 'form' %>
-
+<h1>Agregar Raza</h1>
+<hr>
+<%= form_for @race, url: admin_races_path(@race),html: {multipart: true} do |f| %>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :pdf %><br>
+    <%= f.file_field :pdf %>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <%= f.add_nested_fields_link :img_races, 'Agregar Detalle', class: 'btn btn-info', role: 'button'%>
+    </div>
+    <div class="panel-body">
+      <%= f.nested_fields_for :img_races do |ff| %>
+        <div class="field_images row">
+          <div class="col-md-6">
+            <%= ff.label :description, "Descripcion"%>
+            <%= ff.text_field :description, class: 'form-control'%>
+          </div>
+          <div class="col-md-6">
+            <%= ff.label :Img, "Image"%>
+            <%= ff.file_field :img%>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+  <%= f.submit :class =>"btn btn-primary btn-block" %>
+<% end %>
