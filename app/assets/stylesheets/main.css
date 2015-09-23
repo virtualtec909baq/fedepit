@@ -6229,3 +6229,6 @@ legend {
 .get-oc-tb, .get-annabel.get-darkred.get-org-chart > a{
 	display: none;
 }
+.bold {
+    font-weight: bold;
+}

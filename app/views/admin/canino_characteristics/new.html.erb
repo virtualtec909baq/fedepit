@@ -1,3 +1,4 @@
+<h2>Formulario Metter</h2>
 <%- if params[:edit]%>
 	<%= form_for :canino_characteristic, :html => {:id => 'canino_characteristic_form'} do |f| %>
 	<%= f.collection_select :value, @canine_characteristic, :id, :temporal_canine_name, {prompt: "Selecciona Canino"}, {class: "form-control find_selected"}%>
@@ -21,26 +22,31 @@
 			});
 		});
 	</script>	
-
 <%else%>
 	<%= form_for :canino_characteristic, :html => {:id => 'canino_characteristic_form'} do |f| %>
-		<%- if params[:canine_id] == "0"%>
-			<%= f.label :temporal_canine_name%>
-			<%= f.text_field :value, :class => "form-control"%>
-		<%end%>
-		<%- @characteristics.each do |characteristic|%>
-			<%= characteristic.name%>
-			<%= f.hidden_field :characteristic_id, :value => characteristic.id %>
-			<%- if characteristic.measure_id.blank? %>
-				<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: " "}, {class: "form-control find_selected"}%>
-			<%else%>
-				<%= f.text_field :value, :class => "form-control text_fieldn find_selected"%>
+		<div class="row">
+			<%- if params[:canine_id] == "0"%>
+				<div class="col-md-12">
+					<%= f.label :temporal_canine_name, "Nombre Ejemplar"%>
+					<%= f.text_field :value, :class => "form-control"%>
+				</div>
 			<%end%>
-		<%end%>
-		<br>
+			<%- @characteristics.each do |characteristic|%>
+				<div class="col-md-6">
+					<span class="bold"> <%= characteristic.name%> </span>
+					<%= f.hidden_field :characteristic_id, :value => characteristic.id %>
+					<%- if characteristic.measure_id.blank? %>
+						<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: " "}, {class: "form-control find_selected"}%>
+					<%else%>
+						<%= f.text_field :value, :class => "form-control text_fieldn find_selected"%>
+					<%end%>
+				</div>
+			<%end%>
+			<br>
+		</div>
 	<% end %>
-	<button id="button_canino_characteristic">Crea Metter</button>  	
-
+	<br>
+	<button id="button_canino_characteristic" class="btn btn-primary btn-block">Crea Metter</button>  	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var characteristics = {};
