@@ -1,16 +1,20 @@
-<div class="jumbotron">
-	<div class="row">
-		<div class="col-md-12"><h2><%= @race.name%></h2></div>
-		<div class="col-md-12">
-			<p class="lead"><%= @race.description%></p>
-			<%= link_to "PDF", @race.pdf.url, :target => "_blank", :class => "btn btn-danger btn_white btn-block" %>
-		</div>
+<div class="row">
+	<div class="col-md-12"><h2><%= @race.name%></h2></div>
+	<div class="col-md-12">
+		<p class="lead"><%= @race.description%></p>
+		<%= link_to "PDF", @race.pdf.url, :target => "_blank", :class => "btn btn-danger btn_white btn-block" %>
 	</div>
 </div>
-<div class="row marketing">
-	<div class="col-lg-6">
-		<%@race.img_races do |race|%>
-			<%= race.description%>
+<br>
+<div class="jumbotron">
+	<div class="row marketing">
+		<% @race.img_races.each do |race|%>
+			<div class="col-md-4">
+				<%= image_tag race.img.url, :class => "thumbnail", :size => '250x250'%>
+			</div>
+			<div class="col-md-8">
+				<%= race.description%>
+			</div>
 		<%end%>	
 	</div>
 </div>
