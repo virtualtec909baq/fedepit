@@ -1,38 +1,16 @@
-
 <div class="jumbotron">
-	<h2><%= @race.name%></h2>
-	<p class="lead"><%= @race.description%></p>
-	<p><a role="button" href="#" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i> VER PDF</a></p>
+	<div class="row">
+		<div class="col-md-12"><h2><%= @race.name%></h2></div>
+		<div class="col-md-12">
+			<p class="lead"><%= @race.description%></p>
+			<%= link_to "PDF", @race.pdf.url, :target => "_blank", :class => "btn btn-danger btn_white btn-block" %>
+		</div>
+	</div>
 </div>
-
 <div class="row marketing">
 	<div class="col-lg-6">
-		<h4>Subheading</h4>
-		<p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-		<h4>Subheading</h4>
-		<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-		<h4>Subheading</h4>
-		<p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-	</div>
-
-	<div class="col-lg-6">
-		<h4>Subheading</h4>
-		<p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-		<h4>Subheading</h4>
-		<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-		<h4>Subheading</h4>
-		<p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+		<%@race.img_races do |race|%>
+			<%= race.description%>
+		<%end%>	
 	</div>
 </div>
-<br>
-<table>
-	<%@race.img_races.each do |image|%>
-		<tr>
-			<td><%= image_tag image.img_url, :class => "thumbnail", :size => '108x81'%></td>
-		</tr>
-    <%end%>
-</table>
