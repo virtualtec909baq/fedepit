@@ -14,7 +14,7 @@ module ApplicationHelper
 
 	def pic_canine(canine)
 		if canine.images.first.blank?
-          	photo =  ActionController::Base.helpers.asset_path("placeholder.png")
+          	photo =  ActionController::Base.helpers.asset_path("placeholder2.png")
         else
           	photo = canine.images.first.file.url
         end
@@ -173,7 +173,7 @@ module ApplicationHelper
 			array << canine_left.lof
 			array << gender(canine_left.gender)
 			if canine_left.images.first.blank?
-          		array << ActionController::Base.helpers.asset_path("placeholder.png")
+          		array << ActionController::Base.helpers.asset_path("placeholder2.png")
         	else
           		array << canine_left.images.first.file.url
         	end
@@ -191,7 +191,7 @@ module ApplicationHelper
 			array << canine_rgt.lof
 			array << gender(canine_rgt.gender)
 			if canine_rgt.images.first.blank?
-          		array << ActionController::Base.helpers.asset_path("placeholder.png")
+          		array << ActionController::Base.helpers.asset_path("placeholder2.png")
         	else
           		array << canine_rgt.images.first.file.url
         	end
