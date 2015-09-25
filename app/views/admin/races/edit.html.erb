@@ -24,6 +24,28 @@
       <%= f.label :pdf %><br>
       <%= f.file_field :pdf %>
     </div>
+      <br>
+    <%= f.add_nested_fields_link :img_races, 'Agregar Descripción de la Raza', class: 'btn btn-info', role: 'button'%>
+  <br>
+     <div class="panel-body">
+    <%= f.nested_fields_for :img_races do |ff| %>
+      <div class="field_images row">
+        <div class="col-md-5">
+          <%= ff.label :description, "Descripción"%>
+          <%= ff.text_field :description, class: 'form-control'%>
+        </div>
+        <div class="col-md-6">
+          <%= ff.label :Img, "Image"%>
+          <%= ff.file_field :img%>
+        </div>
+        <div class="col-md-1">
+          <%= ff.remove_nested_fields_link do%>
+            <i class="fa fa-trash-o"></i>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+  </div>
     <div class="actions">
       <%= f.submit :class =>"btn btn-primary btn-block" %>
     </div>

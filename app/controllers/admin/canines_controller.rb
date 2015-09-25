@@ -147,10 +147,12 @@ end
     end
 
     def init
-      o = [('a'..'z'), ('1'..'9'), ('A'..'Z')].map { |i| i.to_a }.flatten
-      string = (0...5).map { o[rand(o.length)] }.join
-      val = string+Time.now.strftime('%H%S%L')
-      params[:canine][:lof] = val
+      if params[:canine][:kind] == '0'
+        o = [('a'..'z'), ('1'..'9'), ('A'..'Z')].map { |i| i.to_a }.flatten
+        string = (0...5).map { o[rand(o.length)] }.join
+        val = string+Time.now.strftime('%H%S%L')
+        params[:canine][:lof] = val
+      end
     end
 
     def ancestors
@@ -164,7 +166,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def canine_params
-      params.require(:canine).permit(:parent_id,:kind, :lft, :rgt ,:race_id, :breeder_id, :lof, :chip, :name, :gender, :color, :father_lof, :mother_lof, :rate, :birth, :death,images_attributes: [:id, :canine_id, :file])
+      params.require(:canine).permit(:parent_id,:kind, :lft, :rgt ,:race_id, :breeder_id, :lof, :chip, :name, :gender, :color, :father_lof, :mother_lof, :rate, :birth, :propietary, :death,images_attributes: [:id, :canine_id, :file])
     end
 
     def image_params

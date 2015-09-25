@@ -1,113 +1,114 @@
-
-<div class="container">
-  <div class="jumbotron">
-    <div class="row">
-      <div class="col-md-4">
-        <%if @canine.images.last.blank? %>
-          <%= image_tag "placeholder.png", :class => "thumbnail", :size => '250x250'%>
-        <%else%>
-          <%= image_tag @canine.images.last.file, :class => "thumbnail", :size => '250x250'%>
-        <%end%>
-      </div>
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-12">
-             <h2><%= @canine.name%></h2>
-          </div>
-          <div class="pull-right">
-            <%= link_to "Diagrama De Flechas", admin_endogamia_path(@canine), :class =>"btn btn-info btn-outlined", :disabled => @array_ancestor.zero? %>
-          </div>
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-4">
+      <%if @canine.images.last.blank? %>
+        <%= image_tag "placeholder.png", :class => "thumbnail img-responsive"%>
+      <%else%>
+        <%= image_tag @canine.images.last.file, :class => "thumbnail img-responsive"%>
+      <%end%>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="pull-right">
+          <%= link_to "Diagrama De Flechas", admin_endogamia_path(@canine), :class =>"btn btn-info btn-outlined", :disabled => @array_ancestor.zero? %>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <span>Sexo:</span>
-            <span><%= gender(@canine.gender)%></span>
-          </div>
-          <br>
-          <div class="col-md-12">
-            <span>Raza:</span>
-            <%-if !@canine.race_id.blank?%>
-            <span><%= @canine.race.name%> </span>
-            <%end%>
-          </div>
-          <br>
-          <div class="col-md-12">
-            <span>Color:</span>
-            <span><%= @canine.color%> </span>
-          </div>
-          <br>
-          <div class="col-md-12">
-            <span>Nacimiento:</span>
-            <span><%= @canine.birth%></span>
-          </div>
-          <br>
-          <div class="col-md-12">
-            <span>LOF:</span>
-            <span><%= @canine.lof%></span>
-          </div>
-          <br>
-          <div class="col-md-12">
-            <span>Propietario:</span>
-            <%-if !@canine.breeder_id.blank?%>
-            <span><%= @canine.breeder.name%> </span>
-            <%end%>
-          </div>
-          <br>
-          <div class="col-md-12">
-            <span>Microchip:</span>
-            <span><%= @canine.chip%> </span>
-          </div>
-          <br>
-          <div class="col-md-12">
-            <span>Fecha de registor:</span>
-            <span><%= @canine.created_at.strftime("%m-%d-%Y")%> </span>
-          </div>
-          <br>
-          <br>
-          <div class="col-md-3">
-            <%= link_to "Eliminar",admin_canine_path(@canine), method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-danger btn-outlined btn-block" %>
-          </div>
-          <div class="col-md-3">
-            <%= link_to "Modificar", edit_admin_canine_path(@canine), :class =>"btn btn-info btn-outlined btn-block" %>
-          </div>
-          <div class="col-md-3">
-            <a role="button" href="<%= admin_pedigree_path(@canine)%>" class="btn btn-success btn-outlined btn-block">Pedigree</a>
-          </div>
-          
-          <div class="col-md-3">
-            <%= link_to "Certificado", admin_canine_path(@canine, :format => "pdf"), :class => "btn btn-warning btn-outlined btn-block" %>
-          </div>
+        <div class="col-md-12">
+          <span>Nombre:</span>
+          <span><%= @canine.name%> </span>
+        </div>
+        <br>
+        <div class="col-md-12">
+          <span>Raza:</span>
+          <%-if !@canine.race_id.blank?%>
+          <span><%= @canine.race.name%> </span>
+          <%end%>
+        </div>
+        <br>
+        <div class="col-md-12">
+          <span>Sexo:</span>
+          <span><%= gender(@canine.gender)%></span>
+        </div>
+        <br>
+        <div class="col-md-12">
+          <span>Color:</span>
+          <span><%= @canine.color%> </span>
+        </div>
+        <br>
+        <div class="col-md-12">
+          <span>Nacimiento:</span>
+          <span><%= @canine.birth%></span>
+        </div>
+        <br>
+        <div class="col-md-12">
+          <span>LOF:</span>
+          <span><%= @canine.lof%></span>
+        </div>
+        <br>
+        <div class="col-md-12">
+          <span>Propietario:</span>
+          <span><%= @canine.propietary%> </span>
+        </div>
+        <br>
+        <div class="col-md-12">
+          <span>Criador:</span>
+          <%-if !@canine.breeder_id.blank?%>
+          <span><%= @canine.breeder.name%> </span>
+          <%end%>
+        </div>
+        <br>
+        <div class="col-md-12">
+          <span>Microchip:</span>
+          <span><%= @canine.chip%> </span>
+        </div>
+        <br>
+        <div class="col-md-12">
+          <span>Fecha de registor:</span>
+          <span><%= @canine.created_at.strftime("%m-%d-%Y")%> </span>
+        </div>
+        <br>
+        <br>
+        <div class="col-md-3">
+          <%= link_to "Eliminar",admin_canine_path(@canine), method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-danger btn-outlined btn-block" %>
+        </div>
+        <div class="col-md-3">
+          <%= link_to "Modificar", edit_admin_canine_path(@canine), :class =>"btn btn-info btn-outlined btn-block" %>
+        </div>
+        <div class="col-md-3">
+          <a role="button" href="<%= admin_pedigree_path(@canine)%>" class="btn btn-success btn-outlined btn-block">Pedigree</a>
+        </div>
+        
+        <div class="col-md-3">
+          <%= link_to "Certificado", admin_canine_path(@canine, :format => "pdf"), :class => "btn btn-warning btn-outlined btn-block" %>
         </div>
       </div>
     </div>
   </div>
-  <hr>
-  <div class="row marketing">
-    <div class="col-lg-12">
-        <!-- tabs -->
-        <div class="tabbable">
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#one" data-toggle="tab">Hijos</a></li>
-            <li><a href="#two" data-toggle="tab">Hermanos</a></li>
-            <li><a href="#four" data-toggle="tab">Metter</a></li>
-            <li><a href="#five" data-toggle="tab">Imagenes</a></li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="one" style="padding: 10px;">
-              <%= render partial: "/admin/canines/children"%>
-            </div>
-            <div class="tab-pane" id="two" style="padding: 10px;">
-              <%= render partial: "/admin/canines/siblings"%>
-            </div>
-            <div class="tab-pane" id="four"  style="padding: 10px;">
-              <%= render partial: "/admin/canino_characteristics/index"%>
-            </div>
-            <div class="tab-pane" id="five"  style="padding: 10px;">
-              <%= render partial: "/admin/canines/images"%>
-            </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+      <!-- tabs -->
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#one" data-toggle="tab">Hijos</a></li>
+          <li><a href="#two" data-toggle="tab">Hermanos</a></li>
+          <li><a href="#four" data-toggle="tab">Metter</a></li>
+          <li><a href="#five" data-toggle="tab">Imagenes</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="one" style="padding: 10px;">
+            <%= render partial: "/admin/canines/children"%>
+          </div>
+          <div class="tab-pane" id="two" style="padding: 10px;">
+            <%= render partial: "/admin/canines/siblings"%>
+          </div>
+          <div class="tab-pane" id="four"  style="padding: 10px;">
+            <%= render partial: "/admin/canino_characteristics/index"%>
+          </div>
+          <div class="tab-pane" id="five"  style="padding: 10px;">
+            <%= render partial: "/admin/canines/images"%>
           </div>
         </div>
-        <!-- /tabs -->
-    </div>
+      </div>
+      <!-- /tabs -->
   </div>
 </div>

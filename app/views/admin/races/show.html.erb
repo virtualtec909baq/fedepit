@@ -1,20 +1,39 @@
-<div class="row">
-	<div class="col-md-12"><h2><%= @race.name%></h2></div>
-	<div class="col-md-12">
-		<p class="lead"><%= @race.description%></p>
-		<%= link_to "PDF", @race.pdf.url, :target => "_blank", :class => "btn btn-danger btn_white btn-block" %>
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-12"><h2><%= @race.name%></h2></div>
+		<div class="col-md-4"><%= link_to "PDF", @race.pdf.url, :target => "_blank", :class => "btn btn-warning btn_white btn-block", :disabled => @race.pdf.blank? %></div>
+		<div class="col-md-4"><%= link_to "Editar", edit_admin_race_path(@race.id), :class => "btn btn-info btn_white btn-block"%></div>
+		<div class="col-md-4"><%= link_to "Eliminar", admin_race_path(@race.id), method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger btn_white btn-block" %></div>
+		<div class="col-md-12">
+			<br>
+			<p class="lead"><%= @race.description%></p>
+		</div>
 	</div>
 </div>
 <br>
-<div class="jumbotron">
-	<div class="row marketing">
+<table class="table table-striped table-hover table-bordered">
+	<thead>
+		<tr>
+			<td class="center">Image</td>
+			<td class="center">Descripción</td>
+			<th colspan="2"></th>
+		</tr>
+	</thead>
+	<tbody>
 		<% @race.img_races.each do |race|%>
-			<div class="col-md-4">
-				<%= image_tag race.img.url, :class => "thumbnail", :size => '250x250'%>
-			</div>
-			<div class="col-md-8">
-				<%= race.description%>
-			</div>
-		<%end%>	
-	</div>
-</div>
+			<tr>
+				<td><%= image_tag race.img.url, :class => "thumbnail", :size => '100x100'%>
+				</td>
+				<td><%= race.description%></td>
+				<td class="center"><%= link_to edit_admin_article_path(race) do %>
+					<i class="fa fa-edit"></i>
+					<%end%>
+				</td>
+				<td class="center"><%= link_to admin_article_path(race), method: :delete, data: { confirm: 'Desea eliminar este detalle?' } do %>
+					<i class="fa fa-trash-o"></i>
+					<%end%>
+				</td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>

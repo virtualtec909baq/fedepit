@@ -10,10 +10,10 @@
 
     function init() {
       loadElements();
-      var $ = go.GraphObject.make;  // for conciseness in defining templates
+      var $ = go.GraphObject.make; 
       myDiagram =
-      $(go.Diagram, "myDiagram",
-          { // automatically scale the diagram to fit the viewport's size
+      $(go.Diagram, "myDiagram",  
+          { 
           initialAutoScale: go.Diagram.Uniform,
             // start everything in the middle of the viewport
             initialContentAlignment: go.Spot.TopCenter,
@@ -23,7 +23,7 @@
             layout:
             $(go.LayeredDigraphLayout,
               { direction: -180,
-                layerSpacing: 50,
+                layerSpacing: 7,
                 columnSpacing: 40,
                 setsPortSpots: true })
           });
@@ -35,52 +35,33 @@
         {   locationSpot: go.Spot.Center,
           toEndSegmentLength: 30, fromEndSegmentLength: 30
         },
-        $(go.Shape, "Square",
-        {
-          name: "OBJSHAPE",
+        $(go.Shape, "Rectangle",
+        { name: "OBJSHAPE",
           fill: "white",
-          desiredSize: new go.Size(150, 150)
-        }),
+          desiredSize: new go.Size(150, 150)}),
         $(go.TextBlock,
           { margin: 4 },
-          new go.Binding("text", "key")),
-        {
-            toolTip:  //  define a tooltip for each node that displays its information
-            $(go.Adornment, "Auto",
-              $(go.Shape, { fill: "#EFEFCC" }),
-              $(go.TextBlock, { margin: 4 },
-                new go.Binding("text"))
-              )
-          }
-          );
-
-      // define the link template
+          new go.Binding("text", "key")),{});
+      
       myDiagram.linkTemplate =
       $(go.Link,
       {
         selectionAdornmentTemplate:
         $(go.Adornment,
           $(go.Shape,
-            { isPanelMain: true, stroke: "red", strokeWidth: 1.5 }),
+            { isPanelMain: true, stroke: "red", strokeWidth: 1 }),
           $(go.Shape,
             { toArrow: "Standard", fill: "red", stroke: null, scale: 1 })
           ),
-        routing: go.Link.Normal,
+        routing: go.Link.Bezier,
         curve: go.Link.Bezier,
-        toShortLength: 2
+        toShortLength: 4
       },
           $(go.Shape,  //  the link shape
             { name: "OBJSHAPE" }),
           $(go.Shape,  //  the arrowhead
             { name: "ARWSHAPE", toArrow: "Standard" }),
-          {
-            toolTip:  //  define a tooltip for each link that displays its information
-            $(go.Adornment, "Auto",
-              $(go.Shape, { fill: "#EFEFCC" }),
-              $(go.TextBlock, { margin: 4 },
-                new go.Binding("text",  "" ))
-              )
-          }
+          {}
           );
       var linkDataArray = [];
       var arraylength = dataArray.length;
@@ -89,15 +70,9 @@
         var hash = { from: dataArray[i][0], to: dataArray[i][1]};
         linkDataArray.push(hash);
       }
-       console.log(dataArray);
-       console.log(linkDataArray);
-      
-      
       myDiagram.model =
       $(go.GraphLinksModel,
-        { // automatically create node data objects for each "from" or "to" reference
-          // (set this property before setting the linkDataArray)
-          archetypeNodeData: {},
+        {archetypeNodeData: {},
           // process all of the link relationship data
           linkDataArray: linkDataArray
         });
@@ -118,15 +93,8 @@
       var sel = myDiagram.selection.first();
       if (sel !== null) {
         switch (e.id) {
-
           case "Links all": linksAll(sel, 1); break;
           case "Nodes connect": nodesConnect(sel, 1); break;
-          case "Group": containing(sel, 1); break;
-          case "Groups all": containingAll(sel, 1); break;
-          case "Nodes member": childNodes(sel, 1); break;
-          case "Nodes members all": allMemberNodes(sel, 1); break;
-          case "Links member": childLinks(sel, 1); break;
-          case "Links members all": allMemberLinks(sel, 1); break;
         }
       }
 
