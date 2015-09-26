@@ -54,6 +54,7 @@
           new go.Binding("strokeWidth", "thick"))  // shape.strokeWidth = data.thick
       );
       var linkDataArray = [];
+      var nodeDataArray = [];
       var arraylength = dataArray.length;
       for(var i = 0; i<arraylength; i++){  
         var hash = { from: dataArray[i][0], to: dataArray[i][1], color: dataArray[i][2],thick: 2};
