@@ -28,6 +28,14 @@ module ApplicationHelper
 			return "Hembra"
 		end
 	end
+
+	def gender_color(gender)
+		if gender == 1
+			return "blue"
+		else
+			return "pink"
+		end
+	end
 	
 	def get_characteristics(id)
 		if Characteristic.exists?(id)
@@ -98,18 +106,22 @@ module ApplicationHelper
 
 	def get_left_hash(canine)
 		if canine.lft
+			canine_lft = Canine.find(canine.lft)
 			array = []
 			array <<  "#{canine.name}-#{canine.id}"
-			array <<  "#{Canine.find(canine.lft).name}-#{Canine.find(canine.lft).id}" 
+			array <<  "#{canine_lft.name}-#{canine_lft.id}" 
+			array <<  gender_color(canine_lft.gender)
 			return array
 		end
 	end
 	
 	def get_rgt_hash(canine)
 		if canine.rgt
+			canine_rgt = Canine.find(canine.rgt)
 			array = []
 			array <<  "#{canine.name}-#{canine.id}"
-			array <<  "#{Canine.find(canine.rgt).name}-#{Canine.find(canine.rgt).id}" 
+			array <<  "#{canine_rgt.name}-#{canine_rgt.id}" 
+			array <<  gender_color(canine_rgt.gender)
 			return array
 		end
 	end
@@ -117,14 +129,14 @@ module ApplicationHelper
 	def get_ancestor_with_hash(canine)
 		@tree ||= []
 		if !canine.nil?
-			if canine.rgt
-				@tree << get_rgt_hash(canine)
-			end
 			if canine.lft
 				@tree << get_left_hash(canine)
 			end
-			get_ancestor_with_hash(get_left(canine))
+			if canine.rgt
+				@tree << get_rgt_hash(canine)
+			end
 			get_ancestor_with_hash(get_rgt(canine))
+			get_ancestor_with_hash(get_left(canine))
 			return @tree
 		end
 	end
