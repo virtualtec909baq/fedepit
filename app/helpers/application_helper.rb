@@ -129,14 +129,17 @@ module ApplicationHelper
 	def get_ancestor_with_hash(canine)
 		@tree ||= []
 		if !canine.nil?
+			
 			if canine.lft
 				@tree << get_left_hash(canine)
 			end
+			
 			if canine.rgt
 				@tree << get_rgt_hash(canine)
 			end
-			get_ancestor_with_hash(get_rgt(canine))
 			get_ancestor_with_hash(get_left(canine))
+			get_ancestor_with_hash(get_rgt(canine))
+			@tree = @tree.uniq
 			return @tree
 		end
 	end
