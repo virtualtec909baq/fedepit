@@ -31,7 +31,7 @@ module ApplicationHelper
 
 	def gender_color(gender)
 		if gender == 1
-			return "blue"
+			return "#3F9FEB"
 		else
 			return "pink"
 		end
