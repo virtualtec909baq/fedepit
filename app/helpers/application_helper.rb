@@ -93,6 +93,12 @@ module ApplicationHelper
 			return id
 		end
 	end
+
+	def get_canine(id)
+		if Canine.exists?(id) 
+			return  Canine.find(id)
+		end
+	end
 	
 	def get_ancestors(canine)
 		@tree ||= []
@@ -100,8 +106,8 @@ module ApplicationHelper
 			@tree << get_id(canine)
 			get_ancestors(get_left(canine))
 			get_ancestors(get_rgt(canine))
-			return @tree
 		end
+		return @tree
 	end
 
 	def get_left_hash(canine)
@@ -184,7 +190,7 @@ module ApplicationHelper
 			array = []
 			array << canine_left.id
 			array << canine.id
-			array << canine_left.name
+			array << canine_left.id
 			array << canine_left.lof
 			array << gender(canine_left.gender)
 			if canine_left.images.first.blank?
@@ -202,7 +208,7 @@ module ApplicationHelper
 			array = []
 			array << canine_rgt.id
 			array << canine.id
-			array << canine_rgt.name
+			array << canine_rgt.id
 			array << canine_rgt.lof
 			array << gender(canine_rgt.gender)
 			if canine_rgt.images.first.blank?
@@ -248,6 +254,7 @@ module ApplicationHelper
 	end
 
 
+
 	def get_api_pedigree_canine(canine)
 		@tree ||= []
 		if !canine.nil?
@@ -273,9 +280,22 @@ module ApplicationHelper
 			return $level
 		else
 			if !canine.nil?
-				get_nivel(get_left(canine),data,level +1)
-				get_nivel(get_rgt(canine),data, level +1)
+				get_nivel(get_left(canine), data,level +1)
+				get_nivel(get_rgt(canine), data, level +1)
 			end
+		end
+	end
+
+
+	def find_level(root_canine, current, level)
+		if root_canine.nil?
+			return level
+		end
+		if get_id(root_canine) == current 
+			raise level
+		else
+			level_right = find_level(get_canine(root_canine.rgt), current, level + 1)
+			level_left = find_level(get_canine(root_canine.lft), current, level + 1)
 		end
 	end
 
