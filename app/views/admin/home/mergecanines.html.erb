@@ -33,11 +33,11 @@
       <%get_ancestors(@canine).each do |id|%>
         <% @canine = Canine.find(id)%>
         <% nivel(Canine.find(params[:id]), id)%>
-        <%array_canine = [@canine, $level]%>
-        <%array_blood = [@canine.id, nivel_consa($level)]%>
-        <%@array_canine_level << array_canine%>
-        <%@array_canine_temp << @canine.id%>
-        <%@array_level_blood << array_blood%>
+        <% array_canine = [@canine, $level]%>
+        <% array_blood = [@canine.id, nivel_consa($level)]%>
+        <% @array_canine_level << array_canine%>
+        <% @array_canine_temp << @canine.id%>
+        <% @array_level_blood << array_blood%>
       <%end%>
       <% @array_canine_level = @array_canine_level.sort { |a, b| a[1] <=> b[1] }%>
       <% @array_canine_level.each do |canine|%>

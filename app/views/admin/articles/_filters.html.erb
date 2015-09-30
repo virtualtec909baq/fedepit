@@ -1,8 +1,10 @@
 <div class="col-md-12">
 	<div class="row">
 		<%= search_form_for @search, url: admin_articles_path do |f|%>		
-			<div class="col-md-6">
+			<div class="col-md-1">
 				<label>Titulo</label>
+			</div>
+			<div class="col-md-5">
 				<%= f.search_field(:title_cont, class: 'form-control')%>
 			</div>
 			<div class="col-md-2">
@@ -12,10 +14,7 @@
 				<%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
 			</div>
 			<div class="col-md-2">
-				<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-					Agregar Articulo
-				</button> -->
-				<%= link_to "Agregar Articulo", new_admin_article_path %>
+				<%= link_to "Agregar Articulo", new_admin_article_path, class:"btn btn-info btn_white" %>
 			</div>
 		<%end%>
 	</div>

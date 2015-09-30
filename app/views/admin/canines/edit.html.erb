@@ -84,58 +84,69 @@
         </ul>
       </div>
     <% end %>  
-      
-    <div class="col-md-6 form">
+    <div class="col-md-6">
       <%= f.label :tipo_de_ejemplar %><br>
-      <%= f.select :kind, [["Registrar Ejemplar", "0"],["Registro Informativo", "1"]], {prompt: "Escoger Tipo"}, {class: "form-control"}%>
+      <%= f.select :kind, [["Registrar Buevo Ejemplar", "0"],["Crear Ejemplar Informativo", "1"]], {prompt: "Escoger Tipo"}, {class: "form-control"}%>
     </div>
-    <div class="col-md-6 form">
+    <div class="col-md-6 ">
       <%= f.label :Nombre %><br>
       <%= f.autocomplete_field(:name, autocomplete_canine_name_admin_canines_path, :class => "form-control")%>
     </div>
-    <div class="col-md-3 form">
+   <div class="col-md-3">
+      <br>
       <%= f.label :Microchip %><br>
       <%= f.text_field :chip, :class => "form-control"%>
     </div>
-    <div class="col-md-3 form">
+    <div class="col-md-3">
+     <br>
       <%= f.label :color %><br>
       <%= f.collection_select :color, Color.all, :name, :name, {prompt: "Escoger Color"}, {class: "form-control"}%>
     </div> 
-    <div class="col-md-3 form">
+    <div class="col-md-3">
+      <br>
       <%= f.label :razas %><br>
       <%= f.collection_select :race_id, Race.all, :id, :name, {prompt: "Escoger Raza"}, {class: "form-control"}%>
     </div>
-    <div class="col-md-3 form">
+    <div class="col-md-3">
+      <br>
       <%= f.label :genero %><br>
       <%= f.select :gender, [["Macho", "1"],["Hembra", "0"]], {prompt: "Escoger Genero"}, {class: "form-control"}%>
-    <br>
     </div>
-    <div class="col-md-6 form">
-      <%= f.label :propietario %><br>
+    <div class="col-md-4 ">
+      <br>
+      <%= f.label :propietario %>
       <%= f.text_field :propietary, class: "form-control"%>
     </div>
-    <div class="col-md-6 form">
-      <%= f.label :criador %>  <%= link_to "agregar criador", new_admin_breeder_path()%>
+    <div class="col-md-4 ">
+      <br>
+      <%= f.label :criador %> <%= link_to "Agregar criador", new_admin_breeder_path()%>
       <%= f.collection_select :breeder_id, Breeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
     </div>
-    
+    <div class="col-md-4 ">
+      <br>
+      <%= f.label :new_register, "# Otro Registro" %>
+      <%= f.text_field :new_register, class: "form-control"%>
+    </div>
     <div class="col-md-6">
+      <br>
       <%= f.label :father_lof, "Nombre Padre - LOF" %><br>
       <%= f.text_field :father_lof, class: 'form-control' %>
       <%= f.hidden_field :lft%>
     </div>
-    <div class="col-md-6 form">
-      <%= f.label :mother_lof, "Nombre Madre - LOF" %><br>
+    <div class="col-md-6 ">
+      <br>
+      <%= f.label :mother_lof, "Nombre Madre - LOF" %>
       <%= f.text_field :mother_lof, class: 'form-control' %>
       <%= f.hidden_field :rgt%>
-      <br>
     </div>
-    <div class="col-md-6 form">
-      <%= f.label :nacimiento %><br>
+    <div class="col-md-6 ">
+      <br>
+      <%= f.label :nacimiento %>
       <%= f.date_select :birth , class: 'form-control', start_year: 1990, end_year: 2030 %>
     </div>
-    <div class="col-md-6 form">
-      <%= f.label :muerte %><br>
+    <div class="col-md-6 ">
+      <br>
+      <%= f.label :muerte %>
       <%= f.date_select :death , class: 'form-control', start_year: 1990, end_year: 2030%>
     </div>
     <div class="col-md-12">

@@ -16,7 +16,7 @@
   <% @canines.each do |canine| %>
     <% get_ancestors(canine).each do |can|%>
         <% @canine = Canine.find(can)%>
-        <% nivel(canine, can)%>
+        <% find_level(canine, can, 0)%>
         <%array_canine = [@canine, $level]%>
         <%array_blood = [@canine.id, nivel_consa($level)]%>
         <%@array_canine_level << array_canine%>

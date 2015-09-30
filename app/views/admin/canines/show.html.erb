@@ -45,6 +45,11 @@
         </div>
         <br>
         <div class="col-md-12">
+          <span># OTRO REGISTRO:</span>
+          <span><%= @canine.new_register%> </span>
+        </div>
+        <br>
+        <div class="col-md-12">
           <span>Propietario:</span>
           <span><%= @canine.propietary%> </span>
         </div>
@@ -68,7 +73,7 @@
         <br>
         <br>
         <div class="col-md-3">
-          <%= link_to "Eliminar",admin_canine_path(@canine), method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-danger btn-outlined btn-block" %>
+          <%= link_to "Eliminar",admin_canine_path(@canine), method: :delete, data: { confirm: 'Desea eliminar este ejemplar?' }, :class =>"btn btn-danger btn-outlined btn-block" %>
         </div>
         <div class="col-md-3">
           <%= link_to "Modificar", edit_admin_canine_path(@canine), :class =>"btn btn-info btn-outlined btn-block" %>

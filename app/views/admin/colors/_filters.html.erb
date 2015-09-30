@@ -1,8 +1,9 @@
 <div class="col-md-12">
 	<div class="row">
-	<%= search_form_for @search, url: admin_colors_path do |f|%>		
-		<div class="col-md-6">
+	<%= search_form_for @search, url: admin_colors_path do |f|%>		<div class="col-md-1">
 			<label>Name</label>
+		</div>
+		<div class="col-md-5">
 			<%= f.search_field(:name_cont, class: 'form-control')%>
 		</div>
 		<div class="col-md-2">
