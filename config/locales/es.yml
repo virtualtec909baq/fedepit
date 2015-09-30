@@ -97,6 +97,8 @@ es:
       type_breeder: "Tipo Criador"
     attributes:
       canine:
+        gender: "Genero"
+        kind: "tipo de Ejemplar"
         race_id: "Raza"
         breeder_id: "Criador"
         lof: "LOF" 
