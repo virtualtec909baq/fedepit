@@ -12,30 +12,31 @@
     </div>
   </div>
 </div>
-
 <div class="container">
   <% @articles.each do |article| %>
-  <div class="row blog-row-prod">
-    <div class="col-md-1 blog-ico">
-      <p><span class="icon-mic"></span></p>
-      <p class="blog-date"><%= article.created_at.strftime('%b - %d - %Y')%></p>
-    </div>
-    <div class="col-md-5">
-      <a href="shop/store.html">
-        <%if article.img.blank?%>
-        <img alt="" class="img-responsive" src="http://placehold.it/630x300">
-        <%else%>
-        <img alt="" class="img-responsive" src="<%= article.img%>">
-        <%end%>
-      </a>
-    </div>
-    <div class="col-md-6 blog-info-prod">
-      <h3><a href="shop/store.html"><%= article.title.upcase%></a></h3>
-      <p class="blog-desc-prod"><%= article.description%></p>
-      <%= link_to t('.seguir'), article_path(article), :class => "btn btn-primary"  %>
-    </div>
-  </div>
-  <hr>
+    <a href="<%= article_path(article)%>">
+      <div class="col-sm-4 col-xs-6">
+        <div class="panel panel-default">
+          <div class="panel-thumbnail">
+            <% if article.img.blank?%>
+            <img class="img-responsive" src="//placehold.it/450X300">
+            <%else%>
+            <img class="img-responsive" src="<%= article.img_url%>" style="width: 300px; height: 188px;">
+            <%end%>
+          </div>
+          <div class="panel-body" style="padding: 10px;"> 
+            <span class="label label-info pull-right">
+            <%=article.comments.count%></span>
+            <p class="lead"><%= article.title.upcase%></p>
+            <p><%= truncate(article.description, :ommision => "", :length => 40)%><p>
+            <span class="label label-warning pull-right">Seguir Leyendo...</span>
+          </div>
+
+        </div>
+      </div> 
+    </a> 
   <% end %>
+  <div class="col-md-12">
   <%= will_paginate @articles, :locals => { :articles => @articles }, renderer: BootstrapPagination::Rails%>
+  </div>
 </div>

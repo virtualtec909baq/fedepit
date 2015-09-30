@@ -1,6 +1,11 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all.order(created_at: :desc).paginate(page: params[:page], per_page: 4)
+    @search = Article.ransack(params[:q])
+    @articles = @search.result.order(created_at: :desc).paginate(page: params[:page], per_page: 9)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def show

@@ -6248,3 +6248,6 @@ legend {
     font-weight: bolder;
     margin-bottom: 8px;
 }
+.lead {
+	text-align: center;
+}

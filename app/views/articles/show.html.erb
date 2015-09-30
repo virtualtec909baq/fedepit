@@ -12,7 +12,7 @@
         <img alt="" class="img-responsive" src="<%= @article.img%>">
       <%end%>
       <hr>
-      <p class="lead"><%= @article.description%></p>
+      <p class=""><%= @article.description%></p>
       <%- @article.paragraphs.each do |paragraph|%>
         <div class="row">
             <%- if !paragraph.img.blank? %>
