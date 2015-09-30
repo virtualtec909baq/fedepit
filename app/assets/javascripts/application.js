@@ -9,14 +9,16 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery-ui/autocomplete
 //= require autocomplete-rails
-//= require twitter/bootstrap
+//= require twitter/bootstrap/modal
+//= require twitter/bootstrap/dropdown
+//= require twitter/bootstrap/collapse
+//= require twitter/bootstrap/tab
+//= require twitter/bootstrap/carousel
 //= require nested_form_fields
-
 
 
 

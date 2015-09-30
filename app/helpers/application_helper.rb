@@ -190,7 +190,7 @@ module ApplicationHelper
 			array = []
 			array << canine_left.id
 			array << canine.id
-			array << canine_left.id
+			array << canine_left.name
 			array << canine_left.lof
 			array << gender(canine_left.gender)
 			if canine_left.images.first.blank?
@@ -208,7 +208,7 @@ module ApplicationHelper
 			array = []
 			array << canine_rgt.id
 			array << canine.id
-			array << canine_rgt.id
+			array << canine_rgt.name
 			array << canine_rgt.lof
 			array << gender(canine_rgt.gender)
 			if canine_rgt.images.first.blank?
@@ -223,11 +223,11 @@ module ApplicationHelper
 	def get_pedigree_canine(canine)
 		@tree ||= []
 		if !canine.nil?
-			if canine.rgt
-				@tree << get_pedigree_rgt_canine(canine)
-			end
 			if canine.lft
 				@tree << get_pedigree_left_canine(canine)
+			end
+			if canine.rgt
+				@tree << get_pedigree_rgt_canine(canine)
 			end
 			get_pedigree_canine(get_left(canine))
 			get_pedigree_canine(get_rgt(canine))
@@ -292,9 +292,9 @@ module ApplicationHelper
 			return level
 		end
 		if get_id(root_canine) == current 
-			raise level
+			return level
 		else
-			level_right = find_level(get_canine(root_canine.rgt), current, level + 1)
+			level_right = find_level(get_canine(root_canine.rgt), current, level + 1) 
 			level_left = find_level(get_canine(root_canine.lft), current, level + 1)
 		end
 	end

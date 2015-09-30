@@ -1700,7 +1700,6 @@ ul.menu-items li.menu-item:last-child {
 																															}
 																															
 																															.effect-cover {
-																																background-image:url(../assets/hoffman.png);
 																																background-repeat:repeat !important;
 																																width: 100%;
 																																height: 100%;
@@ -1723,7 +1722,11 @@ ul.menu-items li.menu-item:last-child {
 																																color: rgba(255,255,255,0.9);
 																															}
 																															.city-bg h4{
-																																margin-top: 0px;
+																																font-size: 23px;
+																																font-weight: 300;
+																																margin-top: 0;
+																																text-align: justify;
+																																
 																															}
 /********************************************************************************************
 PAGE ABOUT                                                                                                 
@@ -3214,7 +3217,6 @@ PAGE HOME 4
 	z-index: 10;
 	opacity: 0;
 	transition: all 0.3s ease-out 0s;
-	background: url(../assets/transparent_bg.png) 0 0 repeat;
 }
 .home4-portfolio ul li:hover .overlay {
 	opacity:1;
@@ -4081,7 +4083,6 @@ PAGE HOME 5
 					z-index: 10;
 					opacity: 0;
 					transition: all 0.3s ease-out 0s;
-					background: url(../assets/transparent_bg.png) 0 0 repeat;
 				}
 				#latest-blog-index .latest-blog-content:hover .overlay {
 					opacity:1;
@@ -6234,4 +6235,16 @@ legend {
 }
 .form {
     margin-top: 5px;
+}
+.fa-plus-circle {
+    cursor: pointer;
+    color: #1898ab;
+}
+.modal-dialog {
+    margin: 70px auto;
+}
+
+.mybreelist > li {
+    font-weight: bolder;
+    margin-bottom: 8px;
 }

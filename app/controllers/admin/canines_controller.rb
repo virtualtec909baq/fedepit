@@ -10,14 +10,13 @@ class Admin::CaninesController < ApplicationController
   # GET /canines
   # GET /canines.json
   def index
-    @canines = Canine.all
     @search = Canine.ransack(params[:q])
     @canines = @search.result.order(name: :asc).page(params[:page])
     @total_canines = Canine.count
     @canines_week = Canine.where(:created_at => (Time.now - 7.days)..(Time.now)).count
     @canines_day = Canine.where(:created_at => (Time.now.beginning_of_day)..(Time.now.end_of_day)).count
-    @canines_kind_1 = Canine.where(:kind => "1" , :created_at => (Time.now.beginning_of_day)..(Time.now.end_of_day)).count
-    @canines_kind_0 = Canine.where(:kind => "0" , :created_at => (Time.now.beginning_of_day)..(Time.now.end_of_day)).count
+    @canines_kind_1 = Canine.where(:kind => "1").count
+    @canines_kind_0 = Canine.where(:kind => "0").count
     @canine = Canine.new
     respond_to do |format|
       format.html
@@ -88,9 +87,11 @@ end
          end
       end
         format.html { redirect_to admin_canines_path, notice: 'Su Canino se ha creado exitosamente' }
+        format.js
         format.json { render :show, status: :created, location: @canine }
       else
         format.html { render :new }
+        format.js
         format.json { render json: @canine.errors, status: :unprocessable_entity }
      end
    end
@@ -166,7 +167,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def canine_params
-      params.require(:canine).permit(:parent_id,:kind, :lft, :rgt ,:race_id, :breeder_id, :lof, :chip, :name, :gender, :color, :father_lof, :mother_lof, :rate, :birth, :propietary, :death,images_attributes: [:id, :canine_id, :file])
+      params.require(:canine).permit(:parent_id,:kind, :lft, :rgt ,:race_id, :breeder_id, :new_register, :lof, :chip, :name, :gender, :color, :father_lof, :mother_lof, :rate, :birth, :propietary, :death,images_attributes: [:id, :canine_id, :file])
     end
 
     def image_params

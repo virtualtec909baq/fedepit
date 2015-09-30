@@ -32,13 +32,14 @@ class Admin::ColorsController < ApplicationController
   # POST /colors.json
   def create
     @color = Color.new(color_params)
-
     respond_to do |format|
       if @color.save
         format.html { redirect_to admin_colors_path, notice: 'Color was successfully created.' }
+        format.js
         format.json { render :show, status: :created, location: @color }
       else
         format.html { render :new }
+        format.js
         format.json { render json: @color.errors, status: :unprocessable_entity }
       end
     end
