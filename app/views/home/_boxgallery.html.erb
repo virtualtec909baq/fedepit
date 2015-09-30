@@ -1,37 +1,43 @@
-<script src="/assets/slide/modernizr.custom.js"></script>
-<div class="container-slide">
-  <div id="boxgallery" class="boxgallery" data-effect="effect-1">
-    <div class="panel">
-      <img src="/assets/landingPage.jpg" alt="Image 1"/>
-      <div class='slide-middle-txt animated'>
-        <p>We create Digital Experiences</p>
-        <h1>Creative <span class="color-txt">+</span> Innovation</h1>
-      </div>
-    </div>
-    <div class="panel">
-      <img src="/assets/landingPage3.jpg" alt="Image 2"/>
-      <div class='slide-middle-txt animated'>
-        <p>We have g<span class="color-txt">oo</span>d support</p>
-        <h1>G<span class="color-txt">oo</span>d Documentation</h1>
-      </div>
-    </div>
-    <div class="panel">
-      <img src="/assets/landingPage2.jpg" alt="Image 3"/>
-      <div class='slide-middle-txt animated'>
-        <p>ModelView ViewModel</p>
-        <h1>Theme Angular<span class="color-txt">JS</span></h1>
-      </div>
-    </div>
-    <div class="panel">
-      <img src="/assets/landingPage4.jpg" alt="Image 4"/>
-      <div class='slide-middle-txt animated'>
-        <p>we do not stop</p>
-        <h1>updates <span class="color-txt">+</span> new pages </h1>
-      </div>
-    </div>	
-  </div>
-</div>
-<script src="/assets/slide/classie.js"></script>
-<script src="/assets/slide/boxesFx.js"></script>
-<%= javascript_include_tag "script2"%>
+ <!-- Full Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
 
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+                <div class="carousel-caption">
+                    <h2>1900x1080</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <div class="carousel-caption">
+                    <h2>1900x1080</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="carousel-caption">
+                    <h2>1900x1080</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>

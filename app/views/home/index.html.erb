@@ -1,15 +1,7 @@
 <%= render partial: "home/boxgallery"%>
-<div class="callout-box style3">
-  <div class="container">
-    <div class="callout-content">
-      <div class="callout-text">
-      </div>
-    </div>
-  </div>
-</div>
 <div class="city-bg">
     <div class="effect-cover"></div>
-      <div class="well">
+      <div class="well" style="margin-bottom: 0px;">
         <div class="row">
           <div class="container">
               <div class="col-md-8">
@@ -17,7 +9,7 @@
                     <h4><%= t('.who_description')%></h4>
                 </div>
                 <div class="col-md-4 img_quienes">
-                   <img src="/assets/electra112233.jpg" alt="" width="50%" height="50%" class="img-circle">
+                   <img class="img-circle img-responsive img-center" alt="" src="http://placehold.it/200x200">
                 </div>
                 
             </div>
@@ -53,71 +45,36 @@
           </div>
      </div>
 </div>
-<div class="section" id="latest-blog-index">
+<div class="content-section-a">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="col-lg-12 text-center">
-          <h1 class="section-title"><span><%= t('.last_article')%></span></h1>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                  <h2 class="section-heading">MyBreed</h2>
+                    <ul class="mybreelist">
+                      <li>MyBreed una App para todos los que quieren ser diferentes de una manera muy propia.</li>
+                      <li>La forma más fácil de personalizar cada detalle y armar el pedigree de 4 generación</li>
+                      <li>Comparte tu arte en tus redes sociales</li>
+                      <li>Crear tu perfil como criador</li>
+                    </ul>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-6">  <img alt="" src="/assets/google.png" class="img-responsive"></div>
+                      <div class="col-md-6">  <img alt="" src="/assets/io.png" class="img-responsive"></div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img alt="" src="/assets/devise1.png" class="img-responsive">
+                </div>
+            </div>
+
         </div>
-        <% @articles.each do |article| %>
-        <div class="col-sm-4 latest-blog">
-          <div class="latest-blog-content">
-            <div class="img_holder">
-             <div class="overlay"> <a href="blog.html"></a> </div>
-             <%if article.img.blank?%>
-               <img alt="" class="img-responsive" src="http://placehold.it/700x450">
-               <%else%>
-               <img alt="" class="img-responsive" src="<%= article.img%>">
-               <%end%>
-             <span class="onsaleblog">
-              <span> <%= article.comments.count %> <i class="fa fa-comments"></i></span>
-            </span>
-          </div>
-          <div class="blog-l-txt">
-            <h3><%= article.title %></h3>
-            <p><%= article.description %></p>
-              <%= link_to t('.read'), article_path(article), :class => "btn btn-primary"  %>
-          </div>
-        </div>
-      </div>   
-      <% end %>    
+        <!-- /.container -->
+
     </div>
-  </div>
-  <!-- /.row -->
-
-</div>
-<!-- /.container -->
-
-</div>
-<div class="parallax-texture" id="iphone-home5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <img alt="" src="/assets/depth-cart.png">
-        <img alt="" src="/assets/depth-cart-trasp.png" class="img-trasp animated fadeInLeftPhone">
-      </div>
-      <div class="col-md-6 iphone-desc">
-
-        <ul>
-          <li class="animated fadeInDown"><p><span class=" icon-strategy"></span><%= t('.my_breed1')%></p></li>
-          <li class="animated fadeInDown"><p><span class=" icon-phone"></span><%= t('.my_breed2')%> </p></li>
-          <li class="animated fadeInDown"><p><span class=" icon-search"></span><%= t('.my_breed3')%></p></li>
-          <li class="animated fadeInDown"><p><span class=" icon-layers"></span><%= t('.my_breed4')%></p></li>
-          <li class="animated fadeInDown"><p><span class=" icon-expand"></span><%= t('.my_breed5')%></p></li>
-        </ul>
-      </div>
-    </div>
-    <!-- /.container -->
-
-  </div>
-
-</div>
-
-<div class="clear"></div>
 <div class="home5-city-bg-bottom">
-  <div class="well">
+  <div class="well" style="margin-bottom: 0px;">
     <div class="container row-box">
       <div class="col-lg-12 col-md-12">
         <ul class="clients">
@@ -136,26 +93,5 @@
       </div>
     </div>
   </div>
-
 </div>
 
-<script src="/assets/modernizr.js" type="text/javascript"></script>
-<script src="/assets/jquery.appear.js" type="text/javascript"></script>
-
-<!--slide-->
-<script src="/assets/slide/modernizr.custom.js" type="text/javascript"></script>
-<script src="/assets/slide/classie.js" type="text/javascript"></script>
-<script src="/assets/slide/boxesFx.js" type="text/javascript"></script>
-
-<script src="/assets/minislide/jquery.flexslider.js" type="text/javascript"></script>
-
-<!--Carousel Testimonial-->
-<script src="/assets/owl_carousel/owl.carousel.js" type="text/javascript"></script>
-<!--Porfolio-->
-<script src="/assets/gallery/jquery.fancybox.js" type="text/javascript"></script>
-<script src="/assets/gallery/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
-
-<!-- Filter Images-->
-<script src="/assets/isotope.js" type="text/javascript"></script>
-
-<script src="/assets/script.js" type="text/javascript"></script>
