@@ -110,6 +110,17 @@ module ApplicationHelper
 		return @tree
 	end
 
+	def get_ancestors_levels(canine, level)
+		@tree ||= []
+		@tree_2 ||= []
+		if !canine.nil?
+			@tree << "#{get_id(canine)} #{level}"
+			get_ancestors_levels(get_left(canine), level+1)
+			get_ancestors_levels(get_rgt(canine), level+1)
+		end
+		return @tree
+	end
+
 	def get_left_hash(canine)
 		if canine.lft
 			canine_lft = Canine.find(canine.lft)
@@ -139,7 +150,6 @@ module ApplicationHelper
 			if canine.lft
 				@tree << get_left_hash(canine)
 			end
-			
 			if canine.rgt
 				@tree << get_rgt_hash(canine)
 			end
@@ -183,13 +193,12 @@ module ApplicationHelper
 		end
 	end
 
-
-	def get_pedigree_left_canine(canine)
+	def get_pedigree_left_canine(canine, level)
+		array = []
 		if canine.lft
 			canine_left = Canine.find(canine.lft)
-			array = []
-			array << canine_left.id
-			array << canine.id
+			array << "#{canine_left.id}#{level}#{canine_left.try(:lft)}#{canine_left.try(:rgt)}"
+			array << "#{canine.id}#{level-1}#{canine.try(:lft)}#{canine.try(:rgt)}"
 			array << canine_left.name
 			array << canine_left.lof
 			array << gender(canine_left.gender)
@@ -202,12 +211,12 @@ module ApplicationHelper
 		end
 	end
 	
-	def get_pedigree_rgt_canine(canine)
+	def get_pedigree_rgt_canine(canine, level)
+		array = []
 		if canine.rgt
 			canine_rgt = Canine.find(canine.rgt)
-			array = []
-			array << canine_rgt.id
-			array << canine.id
+			array << "#{canine_rgt.id}#{level}#{canine_rgt.try(:lft)}#{canine_rgt.try(:rgt)}"
+			array << "#{canine.id}#{level-1}#{canine.try(:lft)}#{canine.try(:rgt)}"
 			array << canine_rgt.name
 			array << canine_rgt.lof
 			array << gender(canine_rgt.gender)
@@ -220,19 +229,20 @@ module ApplicationHelper
 		end
 	end
 
-	def get_pedigree_canine(canine)
+	def get_pedigree_canine(canine, level)
 		@tree ||= []
 		if !canine.nil?
 			if canine.lft
-				@tree << get_pedigree_left_canine(canine)
+				@tree << get_pedigree_left_canine(canine, level)
 			end
 			if canine.rgt
-				@tree << get_pedigree_rgt_canine(canine)
+				@tree << get_pedigree_rgt_canine(canine, level)
 			end
-			get_pedigree_canine(get_left(canine))
-			get_pedigree_canine(get_rgt(canine))
-			return @tree
+			get_pedigree_canine(get_left(canine), level +1)
+			get_pedigree_canine(get_rgt(canine), level +1)
 		end
+		return @tree
+
 	end
 
 	def get_api_pedigree_rgt_canine(canine)
@@ -286,20 +296,7 @@ module ApplicationHelper
 		end
 	end
 
-
-	def find_level(root_canine, current, level)
-		if root_canine.nil?
-			return level
-		end
-		if get_id(root_canine) == current 
-			return level
-		else
-			level_right = find_level(get_canine(root_canine.rgt), current, level + 1) 
-			level_left = find_level(get_canine(root_canine.lft), current, level + 1)
-		end
-	end
-
-	def nivel_consa(level)
+	 	def nivel_consa(level)
 		@count = 100
 		i = 1
 		for i in i..level
