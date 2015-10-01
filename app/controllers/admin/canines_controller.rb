@@ -43,7 +43,7 @@ class Admin::CaninesController < ApplicationController
 end
   
   def pedigree
-    @array_ancestor = get_pedigree_canine(@canine)
+    @array_ancestor = get_pedigree_canine(@canine, 1)
   end
 
   # GET /canines/new
@@ -148,12 +148,10 @@ end
     end
 
     def init
-      if params[:canine][:kind] == '0'
-        o = [('a'..'z'), ('1'..'9'), ('A'..'Z')].map { |i| i.to_a }.flatten
-        string = (0...5).map { o[rand(o.length)] }.join
-        val = string+Time.now.strftime('%H%S%L')
-        params[:canine][:lof] = val
-      end
+      o = [('a'..'z'), ('1'..'9'), ('A'..'Z')].map { |i| i.to_a }.flatten
+      string = (0...5).map { o[rand(o.length)] }.join
+      val = string+Time.now.strftime('%H%S%L')
+      params[:canine][:lof] = val
     end
 
     def ancestors
