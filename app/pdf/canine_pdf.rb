@@ -271,7 +271,7 @@ class CaninePdf< Prawn::Document
 						bounding_box([575,155],:width =>400,:height =>370) do
 							transparent(0) { stroke_bounds } 
 							text "	NOMBRE : #{canine_rgt_1.name.upcase}", :size => 10
-							move_down 
+							move_down 5
 							if canine_rgt_1.kind == "0"
 								text "LOF : #{canine_rgt_1.lof}", :size => 10
 							else
