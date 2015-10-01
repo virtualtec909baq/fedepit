@@ -3,23 +3,26 @@
 <h3 id="data_init" data-array="<%= @array_ancestor%>"class="center"><%=  link_to @canine.name.upcase, admin_canine_path(@canine.id)%></h3>
 <div id="canine"></div>
 <script type="text/javascript">
-   dataArray = $('#data_init').data("array");
-   var array = [{ id: "<%= @canine.id%>", parentId: null, Name: "<%= @canine.name%>", Lof: "<%= @canine.lof%>", Genero: "<%= gender(@canine.gender)%>",pic: "<%= pic_canine(@canine)%>"}];
-   var arraylength = dataArray.length;
-    for(var i = 0; i<arraylength; i++){  
+    var dataArray = $('#data_init').data("array");
+    var arraylength = dataArray.length;
+    
+    var array = [{ id: "<%=@canine.id%>0<%=@canine.try(:lft)%><%=@canine.try(:rgt)%>", parentId: null, Name: "<%= @canine.name%>", Lof: "<%= @canine.id%>0", Genero: "<%= gender(@canine.gender)%>",pic: "<%= pic_canine(@canine)%>"}];
+    
+    for(var i = 0; i<arraylength; i++){
         var hash = { id: dataArray[i][0], parentId: dataArray[i][1], Name: dataArray[i][2],Lof:dataArray[i][3],Genero: dataArray[i][4], pic: dataArray[i][5]};
         array.push(hash);
     }
-  $("#canine").getOrgChart({  
+
+    $("#canine").getOrgChart({  
         editable: false,
         searchable: false,
         movable: false, 
         zoomable: true,
         orientation: getOrgChart.RO_LEFT, 
-        clickEvent: function(sender, args){
-          window.location.href = "http://166.62.89.40/admin/canines/" + args.id;
-          return false;
-        },
+        // clickEvent: function(sender, args){
+        //   window.location.href = "http://166.62.89.40/admin/canines/" + args.id;
+        //   return false;
+        // },
         levelSeparation: 15,
         siblingSeparation: 1,
         subtreeSeparation: 2,
