@@ -1,6 +1,8 @@
-<div class="modal-body">
-  <%= form_for @breeder , url: admin_breeders_path(@breeder), method: :post do |f| %>
-    <% if @breeder.errors.any? %>
+<%= form_for @breeder , url: admin_breeders_path(@breeder), method: :post do |f| %>
+  <div class="row">
+    <div class="col-md-12"><h2>Nuevo Criador</h2></div>
+    <div class="col-md-12">
+      <% if @breeder.errors.any? %>
       <div class="alert alert-danger alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>No se puede crear el metter:</strong>
         <ul>
@@ -10,60 +12,65 @@
         </ul>
       </div>
     <% end %>
-  <div class="field">
+    </div>
+    
+    <div class="col-md-6">
     <%= f.label :Tipo_Criador %><br>
     <%= f.collection_select :type_breeder_id, TypeBreeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :Nombre %><br>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :Telefono %><br>
     <%= f.text_field :phone, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :Correo %><br>
     <%= f.text_field :email, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :Pais %><br>
     <%= f.text_field :country, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :Ciudad %><br>
     <%= f.text_field :city, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :Direeción %><br>
     <%= f.text_field :adrress, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :Nombre_Criadero %><br>
     <%= f.text_field :name_breed, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :facebook %><br>
     <%= f.text_field :facebook, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :twitter %><br>
     <%= f.text_field :twitter, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :instagram %><br>
     <%= f.text_field :instagram, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :web %><br>
     <%= f.text_field :web, class: 'form-control' %>
   </div>  
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :Imagen %><br>
     <%= f.file_field :img %>
   </div>
-  <div class="actions">
+
+  <div class="col-md-12">
+  <br>
     <%= f.submit :class =>"btn btn-primary btn-block" %>
   </div>
-  <% end %>
-</div>
+  </div>
+<%end%>
+
