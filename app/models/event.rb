@@ -9,9 +9,7 @@ class Event < ActiveRecord::Base
   validates :date, presence: true 
   validates :place, presence: true 
   validates :type_event, presence: true 
-  validates_length_of :description, :maximum => 200
-  validates_length_of :description, :minimum => 50
-
+  
   # relation
   belongs_to :type_event
   
