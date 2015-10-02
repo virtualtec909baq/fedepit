@@ -23,7 +23,8 @@
         <thead>
           <tr>
             <th class="center">ID</th>
-            <th class="center"><%= sort_link @search, :description, "Descripcion"%></th>
+            <th class="center"><%= sort_link @search, :title, "Titulo"%></th>
+            <th class="center"><%= sort_link @search, :desciption, "desciption"%></th>
           </tr>
         </thead>
         <tbody>
@@ -31,12 +32,16 @@
           <tr >
             <td class="center"><%= video.id %></td>
             <td class="center"><%= link_to video.title, video_path(video.id), :class => "link_to"  %></td>
+            <td class="center"><%= truncate(video.description, :ommision => "", :length => 40) %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
     <%= will_paginate @videos, :locals => { :videos => @videos }, renderer: BootstrapPagination::Rails%>
-  <%end%>
+    <% else %>
+      <br>
+      <h2>Por Favor seleccione una categoria para ver los videos</h2>
+    <%end%>
 </div>
 
 
