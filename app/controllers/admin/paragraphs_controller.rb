@@ -19,7 +19,7 @@ class Admin::ParagraphsController < ApplicationController
 
     respond_to do |format|
       if @paragraph.save
-        format.html { redirect_to admin_articles_path, notice: 'Type event was successfully created.' }
+        format.html { redirect_to admin_articles_path, notice: 'Su Parrafo fue creado.' }
         format.json { render :show, status: :created, location: @paragraph }
       else
         format.html { render :new }
@@ -35,7 +35,7 @@ class Admin::ParagraphsController < ApplicationController
     puts "aquiiiii"
     respond_to do |format|
       if @paragraph.update(type_category_params)
-        format.html { redirect_to admin_article_path(@paragraph.article_id), notice: 'Type event was successfully updated.' }
+        format.html { redirect_to admin_article_path(@paragraph.article_id), notice: 'Su Parrafo fue modificado correctamente.' }
         format.json { render :show, status: :ok, location: @paragraph }
       else
         format.html { render :edit }
