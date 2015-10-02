@@ -4,15 +4,12 @@ class Canine < ActiveRecord::Base
 	belongs_to :breeder
 	belongs_to :race
 	has_many   :images
-	has_many   :feature
-	has_many :events, :through => :canine_events
-  	has_many :canine_events
-
+	
   	has_many :characteristics, :through => :canino_characteristics
   	has_many :canino_characteristics  
 	self.per_page = 15
 
-	has_many :images
+	has_many :images, :dependent => :destroy
    	accepts_nested_attributes_for :images
 	
 	# validates
