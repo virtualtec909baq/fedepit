@@ -96,6 +96,8 @@ es:
       paragraph: "Párrafo"
       type_breeder: "Tipo Criador"
     attributes:
+      type_event:
+        name: "Nombre"
       event:
         name: "Nombre"
         description: "Descripción"

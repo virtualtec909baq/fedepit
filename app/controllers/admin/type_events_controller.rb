@@ -38,7 +38,7 @@ class Admin::TypeEventsController < ApplicationController
         format.html { redirect_to admin_type_events_path, notice: 'Type event was successfully created.' }
         format.json { render :show, status: :created, location: @type_event }
       else
-        format.html { render :new }
+        format.js
         format.json { render json: @type_event.errors, status: :unprocessable_entity }
       end
     end
