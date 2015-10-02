@@ -105,3 +105,7 @@ es:
         name: "Nombre" 
         gende: "Genero"
         birt: "Nacimiento"
+      video:
+        title: "Nombre"
+        description: "Descripción"
+        type_category_id: "Tipo de Categoria"
