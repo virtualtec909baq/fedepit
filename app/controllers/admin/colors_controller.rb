@@ -34,7 +34,7 @@ class Admin::ColorsController < ApplicationController
     @color = Color.new(color_params)
     respond_to do |format|
       if @color.save
-        format.html { redirect_to admin_colors_path, notice: 'Color was successfully created.' }
+        format.html { redirect_to admin_colors_path, notice: 'El color fue creador' }
         format.js
         format.json { render :show, status: :created, location: @color }
       else
@@ -50,7 +50,7 @@ class Admin::ColorsController < ApplicationController
   def update
     respond_to do |format|
       if @color.update(color_params)
-        format.html { redirect_to admin_colors_path, notice: 'color event was successfully updated.' }
+        format.html { redirect_to admin_colors_path, notice: 'El color fue modificado' }
         format.json { render :show, status: :ok, location: @color }
       else
         format.html { render :edit }

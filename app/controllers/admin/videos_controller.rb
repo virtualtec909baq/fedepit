@@ -56,9 +56,9 @@ class Admin::VideosController < ApplicationController
         format.json { render :show, status: :ok, location: @video }
         format.js
       else
+        flash[:notice] = 'Video no puede ser modificado'
         format.html { render :edit }
         format.js
-        format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
   end

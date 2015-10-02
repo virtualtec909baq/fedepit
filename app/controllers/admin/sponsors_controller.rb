@@ -28,7 +28,7 @@ class Admin::SponsorsController < ApplicationController
     @sponsor = Sponsor.new(sponsor_params)
     respond_to do |format|
       if @sponsor.save
-        format.html { redirect_to admin_sponsors_path, notice: 'Sponsor was successfully created.' }
+        format.html { redirect_to admin_sponsors_path, notice: 'El patrocinador fue creado' }
         format.json { render :show, status: :created, location: @sponsor }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::SponsorsController < ApplicationController
   def update
     respond_to do |format|
       if @sponsor.update(sponsor_params)
-        format.html { redirect_to admin_sponsors_path, notice: 'Sponsor was successfully updated.' }
+        format.html { redirect_to admin_sponsors_path, notice: 'El patrocinador fue Modificado' }
         format.json { render :show, status: :ok, location: @sponsor }
       else
         format.html { render :edit }

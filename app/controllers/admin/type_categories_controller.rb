@@ -35,7 +35,7 @@ class Admin::TypeCategoriesController < ApplicationController
 
     respond_to do |format|
       if @type_category.save
-        format.html { redirect_to admin_type_categories_path, notice: 'Type event was successfully created.' }
+        format.html { redirect_to admin_type_categories_path, notice: 'la categoria del video fue creada' }
         format.json { render :show, status: :created, location: @type_category }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class Admin::TypeCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @type_category.update(type_category_params)
-        format.html { redirect_to admin_type_categories_path, notice: 'Type event was successfully updated.' }
+        format.html { redirect_to admin_type_categories_path, notice: 'la categoria del video fue modificada' }
         format.json { render :show, status: :ok, location: @type_category }
       else
         format.html { render :edit }

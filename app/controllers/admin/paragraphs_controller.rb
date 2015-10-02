@@ -49,7 +49,7 @@ class Admin::ParagraphsController < ApplicationController
   def destroy
     @paragraph.destroy
     respond_to do |format|
-      format.html { redirect_to admin_article_path(@paragraph.article_id), notice: 'Type event was successfully destroyed.' }
+      format.html { redirect_to admin_article_path(@paragraph.article_id), notice: 'El Parrafo fue elimiado' }
       format.json { head :no_content }
     end
   end

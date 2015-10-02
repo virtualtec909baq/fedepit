@@ -41,7 +41,7 @@ class Admin::RacesController < ApplicationController
         # if !params[:imges].blank?
           
         # end
-        format.html { redirect_to admin_races_path, notice: 'Race was successfully created.' }
+        format.html { redirect_to admin_races_path, notice: 'La raza fue creada' }
         format.json { render :show, status: :created, location: @race }
       else
         format.html { render :new }

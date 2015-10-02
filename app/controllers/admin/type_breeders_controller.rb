@@ -32,13 +32,13 @@ class Admin::TypeBreedersController < ApplicationController
   # POST /type_breeders.json
   def create
     @type_breeder = TypeBreeder.new(type_breeder_params)
-
     respond_to do |format|
       if @type_breeder.save
-        format.html { redirect_to admin_type_breeders_url, notice: 'Type breeder was successfully created.' }
+        format.html { redirect_to admin_type_breeders_url, notice: 'El tipo criador fue creador' }
         format.json { render :show, status: :created, location: @type_breeder }
       else
         format.html { render :new }
+        format.js
         format.json { render json: @type_breeder.errors, status: :unprocessable_entity }
       end
     end
@@ -49,9 +49,10 @@ class Admin::TypeBreedersController < ApplicationController
   def update
     respond_to do |format|
       if @type_breeder.update(type_breeder_params)
-        format.html { redirect_to admin_type_breeders_url, notice: 'Type breeder was successfully updated.' }
+        format.html { redirect_to admin_type_breeders_url, notice: 'El tipo criador fue modificado' }
         format.json { render :show, status: :ok, location: @type_breeder }
       else
+        flash[:notice] = 'Tipo de criador no puede ser modificado'
         format.html { render :edit }
         format.json { render json: @type_breeder.errors, status: :unprocessable_entity }
       end

@@ -35,7 +35,7 @@ class Admin::BreedersController < ApplicationController
 
     respond_to do |format|
       if @breeder.save
-        format.html { redirect_to admin_breeders_path, notice: 'breeder was successfully created.' }
+        format.html { redirect_to admin_breeders_path, notice: 'Criado fue creado' }
         format.json { render :show, status: :created, location: @breeder }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class Admin::BreedersController < ApplicationController
   def update
     respond_to do |format|
       if @breeder.update(breeder_params)
-        format.html { redirect_to admin_breeders_path, notice: 'breeder was successfully updated.' }
+        format.html { redirect_to admin_breeders_path, notice: 'Criado fue modificado' }
         format.json { render :show, status: :ok, location: @breeder }
       else
         format.html { render :edit }

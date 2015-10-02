@@ -34,7 +34,7 @@ class Admin::PublicitiesController < ApplicationController
 
     respond_to do |format|
       if @publicity.save
-        format.html { redirect_to admin_publicities_path, notice: 'Publicity was successfully created.' }
+        format.html { redirect_to admin_publicities_path, notice: 'Publicidad Creada' }
         format.json { render :show, status: :created, location: @publicity }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class Admin::PublicitiesController < ApplicationController
    def update
     respond_to do |format|
       if @publicity.update(publicity_params)
-        format.html { redirect_to admin_publicities_path, notice: 'publicity was successfully updated.' }
+        format.html { redirect_to admin_publicities_path, notice: 'La publicidad fue modificada' }
         format.json { render :show, status: :ok, location: @publicity }
       else
         format.html { render :edit }
