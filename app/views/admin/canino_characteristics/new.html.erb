@@ -32,7 +32,7 @@
 				</div>
 			<%end%>
 			<%- @characteristics.each do |characteristic|%>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<span class="bold"> <%= characteristic.name%> </span>
 					<%= f.hidden_field :characteristic_id, :value => characteristic.id %>
 					<%- if characteristic.measure_id.blank? %>
