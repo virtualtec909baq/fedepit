@@ -19,7 +19,7 @@ class Admin::ParagraphsController < ApplicationController
 
     respond_to do |format|
       if @paragraph.save
-        format.html { redirect_to admin_articles_path, notice: 'Su Parrafo fue creado.' }
+        format.html { redirect_to admin_article_path(@paragraph.article_id), notice: 'Su Parrafo fue creado.' }
         format.json { render :show, status: :created, location: @paragraph }
       else
         format.html { render :new }
