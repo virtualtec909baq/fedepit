@@ -1,8 +1,6 @@
 <%= form_for(@category_championship) do |f| %>
   <% if @category_championship.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@category_championship.errors.count, "error") %> prohibited this category_championship from being saved:</h2>
-
       <ul>
       <% @category_championship.errors.full_messages.each do |message| %>
         <li><%= message %></li>

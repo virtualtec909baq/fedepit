@@ -10,8 +10,6 @@
     <%= form_for @video , url: admin_video_path(@video), :id => @video.id , method: :put do |f| %>
     <% if @video.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this breeder from being saved:</h2>
-
       <ul>
         <% @video.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -26,6 +24,10 @@
     <div class="field">
       <%= f.label :url %><br>
       <%= f.text_field :url, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :tipo_video %><br>
+      <%= f.collection_select :type_category_id, TypeCategory.all, :id, :description, {prompt: " "}, {class: "form-control"}%>
     </div>
     <div class="field">
       <%= f.label :Decripción %><br>

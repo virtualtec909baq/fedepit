@@ -5,8 +5,6 @@
     <%= form_for @article , url: admin_article_path(@article), :id => @article.id , method: :put do |f| %>
     <% if @article.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this breeder from being saved:</h2>
-
       <ul>
         <% @article.errors.full_messages.each do |message| %>
         <li><%= message %></li>
