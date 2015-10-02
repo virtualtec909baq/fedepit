@@ -2,8 +2,6 @@ class Admin::ParagraphsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_type_event, only: [:show, :edit, :update, :destroy]
 
-
-
   # GET /type_events/new
   def new
     @paragraph = Paragraph.new
@@ -11,6 +9,7 @@ class Admin::ParagraphsController < ApplicationController
 
   # GET /type_events/1/edit
   def edit
+    puts "@paragraph"
   end
 
   # POST /type_events
@@ -33,9 +32,10 @@ class Admin::ParagraphsController < ApplicationController
   # PATCH/PUT /type_events/1
   # PATCH/PUT /type_events/1.json
   def update
+    puts "aquiiiii"
     respond_to do |format|
       if @paragraph.update(type_category_params)
-        format.html { redirect_to admin_article_path(params[:article_id]), notice: 'Type event was successfully updated.' }
+        format.html { redirect_to admin_article_path(@paragraph.article_id), notice: 'Type event was successfully updated.' }
         format.json { render :show, status: :ok, location: @paragraph }
       else
         format.html { render :edit }
@@ -49,7 +49,7 @@ class Admin::ParagraphsController < ApplicationController
   def destroy
     @paragraph.destroy
     respond_to do |format|
-      format.html { redirect_to admin_article_path(params[:article_id]), notice: 'Type event was successfully destroyed.' }
+      format.html { redirect_to admin_article_path(@paragraph.article_id), notice: 'Type event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
