@@ -1,6 +1,17 @@
 <div class="setup-content" id="step-2">
     <%= form_for @paragraph , url: admin_paragraph_path(@paragraph) , :id => @paragraph.id, method: :put do |f| %>
-        <h3 class="center"> EDITAR  </h3>
+        <h3 class="center"> EDITAR </h3>
+        <% if @paragraph.errors.any? %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>No se puede modificar el parafo:</strong>
+                <ul>
+                  <% @paragraph.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+              </ul>
+          </div>
+        <% end %>
         <div class="input_fields_wrap">
             <div class="form-group">
                 <label class="control-label">Descripción</label>
