@@ -21,7 +21,7 @@
             <% if article.img.blank?%>
             <img class="img-responsive" src="//placehold.it/450X300">
             <%else%>
-            <img class="img-responsive" src="<%= article.img_url%>" style="width: 300px; height: 188px;">
+            <img class="img-responsive" src="<%= article.img_url%>" style="width: auto; height: 188px;">
             <%end%>
           </div>
           <div class="panel-body" style="padding: 10px;"> 
