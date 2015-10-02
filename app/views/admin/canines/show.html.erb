@@ -79,7 +79,7 @@
           <%= link_to "Modificar", edit_admin_canine_path(@canine), :class =>"btn btn-info btn-outlined btn-block" %>
         </div>
         <div class="col-md-3">
-          <a role="button" href="<%= admin_pedigree_path(@canine)%>" class="btn btn-success btn-outlined btn-block">Pedigree</a>
+          <%= link_to "Pedigree", admin_pedigree_path(@canine), :class =>"btn btn-success btn-outlined btn-block", :disabled => @array_ancestor.zero? %>
         </div>
         
         <div class="col-md-3">

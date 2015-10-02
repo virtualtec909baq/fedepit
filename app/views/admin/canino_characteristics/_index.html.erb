@@ -1,8 +1,11 @@
+<%- if params[:controller].split("/").first == "admin"%>
 <%= link_to "Agregar Metter", new_admin_canino_characteristic_path(canine_id: params[:id]), :class => "pull-right btn btn-primary btn-outlined btn-block"%>
-<br>
+<%end%>
 <%- if @canino_characteristics.empty?%>
-  <h1 class="center">NO TIENE METTER CREADO</h1>
+      <h1 class="center" style="text-align: center; margin-top: 40px;">NO TIENE METTER CREADO</h1>
 <%else%>
+  <br>
+  <br>
   <table class="table table-striped table-hover table-bordered">
     <thead>
       <th class="center">CARACTERISTICA</th>
@@ -15,6 +18,7 @@
         <tr >
           <td class="center"> <%= get_characteristics(can_char.characteristic_id)  %></td>
           <td class="center"> <%= get_characteristic_detail(can_char.value) %></td>
+          <%- if params[:controller].split("/").first == "admin"%>
           <td class="center">
             <%= link_to edit_admin_canino_characteristic_path(can_char) do %>
               <i class="fa fa-edit"></i>
@@ -25,6 +29,7 @@
               <i class="fa fa-trash-o"></i>
             <%end%>
           </td>
+          <%end%>
         </tr>
       <%end%>
     </tbody>

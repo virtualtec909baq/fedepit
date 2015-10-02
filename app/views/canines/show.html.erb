@@ -1,0 +1,86 @@
+<div class="container">
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-12"><h2><%= @canine.name%></h2></div>
+    <div class="col-md-4">
+        <%if @canine.images.last.blank? %>
+          <%= image_tag "placeholder.png", :class => "thumbnail img-responsive"%>
+        <%else%>
+          <%= image_tag @canine.images.last.file, :class => "thumbnail img-responsive"%>
+        <%end%>
+    </div>
+    <div class="col-md-4">
+        <span>Raza:</span>
+        <%-if !@canine.race_id.blank?%>
+          <span><%= @canine.race.name%> </span>
+        <%end%>
+        <br>
+        <span>Sexo:</span>
+        <span><%= gender(@canine.gender)%></span>
+        <br>
+        <span>Color:</span>
+        <span><%= @canine.color%></span>
+        <br>
+        <span>Nacimiento:</span>
+        <span><%= @canine.birth%></span>
+        <br>
+        <span>LOF:</span>
+        <span><%= @canine.lof%></span>
+        <br>
+        <span># OTRO REGISTRO:</span>
+        <span><%= @canine.new_register%> </span>
+    </div>
+    <div class="col-md-4">
+      <span>Propietario:</span>
+      <span><%= @canine.propietary%> </span>
+      <br>
+      <span>Criador:</span>
+      <%-if !@canine.breeder_id.blank?%>
+      <span><%= @canine.breeder.name%> </span>
+      <%end%>
+      <br>
+      <span>Microchip:</span>
+      <span><%= @canine.chip%> </span>
+      <br>
+      <span>Fecha de registor:</span>
+      <span><%= @canine.created_at.strftime("%m-%d-%Y")%> </span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to "Pedigree", admin_pedigree_path(@canine), :class =>"btn btn-success btn-outlined btn-block", :disabled => @array_ancestor.zero? %>
+    </div>
+    <div class="col-md-6">
+      <%= link_to "Diagrama De Flechas", admin_endogamia_path(@canine), :class =>"btn btn-info btn-outlined btn-block", :disabled => @array_ancestor.zero? %>
+    </div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+      <!-- tabs -->
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#one" data-toggle="tab">Hijos</a></li>
+          <li><a href="#two" data-toggle="tab">Hermanos</a></li>
+          <li><a href="#four" data-toggle="tab">Metter</a></li>
+          <li><a href="#five" data-toggle="tab">Imagenes</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="one" style="padding: 10px;">
+            <%= render partial: "/admin/canines/children"%>
+          </div>
+          <div class="tab-pane" id="two" style="padding: 10px;">
+            <%= render partial: "/admin/canines/siblings"%>
+          </div>
+          <div class="tab-pane" id="four"  style="padding: 10px;">
+            <%= render partial: "/admin/canino_characteristics/index"%>
+          </div>
+          <div class="tab-pane" id="five"  style="padding: 10px;">
+            <%= render partial: "/admin/canines/images"%>
+          </div>
+        </div>
+      </div>
+      <!-- /tabs -->
+  </div>
+</div>
+</div>

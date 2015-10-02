@@ -1,4 +1,5 @@
 class CaninesController < ApplicationController
+  include ApplicationHelper
   def index
     @canines = Canine.all
     @search = Canine.ransack(params[:q])
@@ -27,10 +28,21 @@ class CaninesController < ApplicationController
     @canines = @search.result(distinct: true)
   end
 
-  def show
+   def show
     @canine = Canine.find(params[:id])
-    @images = @canine.images
-  end
+   @images = @canine.images
+   @array_ancestor = get_ancestor_with_hash(@canine).count
+   @canino_characteristics = CaninoCharacteristic.where(canine_id: params[:id]).order(created_at: :asc)
+   respond_to do |format|
+     format.html
+     format.pdf do
+        pdf = CaninePdf.new(@canine)
+        send_data pdf.render, filename: "generate_table.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+     end
+   end
+end
 
   def realizarcruce
     @feature = Feature.new
