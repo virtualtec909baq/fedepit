@@ -1,37 +1,29 @@
-<div class="row">
-  <div class='col-md-9'>
-    <%= link_to "Editar Video", edit_admin_video_path(@video), :class => "btn btn-primary"%>
-    <div class="blog-info-prod">
-      <div class="pull-right">
-        <h5><i class="fa fa-clock-o"></i> <%= @video.created_at.strftime('%b  %d  %Y')%></h5>
+<div class="container">
+  <div class="row">
+    <br>
+    <div class="col-md-8">
+      <h1><%= @video.title%></h1>
+      <%= link_to "Editar Video", edit_admin_video_path(@video)%>
+      <hr>
+      <p><i class="fa fa-calendar"></i></span> <%= @video.created_at.strftime('%b  %d  %Y')%></p>
+      <hr>
+      <div class="video-container">
+         <iframe src="http://www.youtube.com/embed/<%=@video.url%>" frameborder="0" width="617" height="315"></iframe>
       </div>
-      <div class="page-header">
-        <h1><%= @video.title%></h1>
-      </div>
-      <a href="#">
-        <%if @video.url.blank?%>
-          <img src="http://placehold.it/1000x500" class="img-responsive" alt=""/>
-        <%else%>
-          <iframe width="810" height="415" src="https://www.youtube.com/embed/<%= @video.url%>" frameborder="0" allowfullscreen></iframe>
-        <%end%>
-      </a>
-      <br>
-      <p class="blog-desc-prod"><%= @video.description%></p>
+      <p class=""><%= @video.description%></p>
     </div>
-  </div>
-  <div class='col-md-3'>
-    <div class="blog-info-prod">
-      <h2 class="t-title-office"><span>Ultimos Videos</span></h2>
-      <ul class='post-lateral'>
-        <% @videos.each do |video| %>
-        <li>
-          <div>
-            <p><%= video.title %></p><p class='post-data'> <%= @video.created_at.strftime('%b  %d  %Y') %></p>
-            <%= link_to t('.Ir al video'), admin_article_path(video)%>
-          </div>
-        </li>
-       <% end %>
-      </ul>
-    </div>    
+    <div class="col-md-4">
+      <div class="well">
+        <h4>Ultimos Video</h4>
+        <div class="row">
+          <div class="col-lg-6">
+            <ul class="list-unstyled">
+              <% @videos.each do |video| %>
+                <li><a href="<%= video_path(video.id)%>"><%= video.title%></a>
+                <%end%> 
+            </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
