@@ -1,6 +1,6 @@
 class Publicity < ActiveRecord::Base
 	
-	after_initialize :init
+	after_create :init
 	# default for will_paginate
 	self.per_page = 15
 	# validates

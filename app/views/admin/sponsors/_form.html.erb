@@ -7,7 +7,8 @@
         <h4 class="modal-title" id="myModalLabel">Agregar Patrocinadores</h4>
       </div>
       <div class="modal-body">
-        <%= form_for :sponsor , url: admin_sponsors_path(@sponsor) , method: :post do |f| %>
+        <%= form_for :sponsor , url: admin_sponsors_path(@sponsor) , remote: true,method: :post do |f| %>
+        <div id="erros"></div>
         <div class="field">
           <%= f.label :Nombre %><br>
           <%= f.text_field :name, class: 'form-control' %>

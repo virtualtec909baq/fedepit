@@ -1,6 +1,6 @@
 class Admin::SponsorsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_sponsor, only: [:show, :edit, :update, :destroy]
+  before_action :set_sponsor, only: [:show, :edit, :update, :destroy, :change_status]
 
   # GET /sponsors
   # GET /sponsors.json
@@ -32,6 +32,7 @@ class Admin::SponsorsController < ApplicationController
         format.json { render :show, status: :created, location: @sponsor }
       else
         format.html { render :new }
+        format.js
         format.json { render json: @sponsor.errors, status: :unprocessable_entity }
       end
     end
@@ -52,9 +53,10 @@ class Admin::SponsorsController < ApplicationController
   end
 
   def change_status 
-    @sponsor = Sponsor.find(params[:id])
+    puts  @sponsor.status
     val = @sponsor.status == true ? false : true
-    @sponsor.update_attribute(:status, val)  
+    puts val
+    @sponsor.update_attribute(:status, val)
     respond_to do |format|
       flash[:notice] = 'Patrocinador Modificado'
       format.html { redirect_to admin_sponsors_path }
@@ -66,7 +68,7 @@ class Admin::SponsorsController < ApplicationController
   def destroy
     @sponsor.destroy
     respond_to do |format|
-      format.html { redirect_to admin_sponsors_path, notice: 'Sponsor was successfully destroyed.' }
+      format.html { redirect_to admin_sponsors_path, notice: 'El patrocinador fue eliminado.' }
       format.json { head :no_content }
     end
   end

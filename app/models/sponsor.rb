@@ -1,11 +1,11 @@
 class Sponsor < ActiveRecord::Base
-  
-	after_initialize :init
+  after_create :init
 	# default for will_paginate
   self.per_page = 10
   # validates
 	validates :name, presence: true 
   validates :image, presence: true
+  validates :email, presence: true
   validates :url, presence: true
 	# img_uploader
   	mount_uploader :image, SponsorUploader

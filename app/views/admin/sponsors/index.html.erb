@@ -21,7 +21,7 @@
   </thead>
   <tbody>
     <% @sponsors.each do |sponsor| %>
-    <%- if sponsor.status %>
+    <%- if !sponsor.status %>
       <tr >
     <else>
       <tr class="danger">

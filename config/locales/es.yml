@@ -96,6 +96,10 @@ es:
       paragraph: "Párrafo"
       type_breeder: "Tipo Criador"
     attributes:
+      sponsor:
+        name: "Nombre"
+        image: "Imagen"
+        email: "Email"
       breeder:
         name: "Nombre"
         type_breeder_id: "Tipo de criador"
