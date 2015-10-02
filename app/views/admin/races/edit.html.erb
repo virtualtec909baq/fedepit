@@ -4,7 +4,7 @@
     <% if @race.errors.any? %>
       <div class="alert alert-danger alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>No se puede crear esta raza:</strong>
+        <strong>No se puede modificar esta raza:</strong>
         <ul>
           <% @race.errors.full_messages.each do |message| %>
             <li><%= message %></li>
