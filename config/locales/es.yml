@@ -96,6 +96,9 @@ es:
       paragraph: "Párrafo"
       type_breeder: "Tipo Criador"
     attributes:
+      article:
+        title: "Título"
+        description: "Descripción"
       color:
         name: "Nombre"
       race:

@@ -7,7 +7,8 @@
         <h4 class="modal-title" id="myModalLabel">Agregar Categoria</h4>
       </div>
       <div class="modal-body">
-      <%= form_for @type_category , url: admin_type_categories_path , method: :post do |f| %>
+      <%= form_for @type_category , url: admin_type_categories_path , remote: true ,method: :post do |f| %>
+      <div id="erros"></div>
       <div class="field">
         <%= f.label :description %><br>
         <%= f.text_field :description, class: 'form-control' %>

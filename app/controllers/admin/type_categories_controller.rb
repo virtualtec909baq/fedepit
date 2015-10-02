@@ -1,6 +1,6 @@
 class Admin::TypeCategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_type_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_type_category, only: [:show, :edit, :update, :destroy]
 
   # GET /type_events
   # GET /type_events.json
@@ -32,13 +32,12 @@ class Admin::TypeCategoriesController < ApplicationController
   # POST /type_events.json
   def create
     @type_category = TypeCategory.new(type_category_params)
-
     respond_to do |format|
       if @type_category.save
         format.html { redirect_to admin_type_categories_path, notice: 'la categoria del video fue creada' }
         format.json { render :show, status: :created, location: @type_category }
       else
-        format.html { render :new }
+        format.js
         format.json { render json: @type_category.errors, status: :unprocessable_entity }
       end
     end
@@ -63,14 +62,14 @@ class Admin::TypeCategoriesController < ApplicationController
   def destroy
     @type_category.destroy
     respond_to do |format|
-      format.html { redirect_to admin_type_categories_path, notice: 'Type event was successfully destroyed.' }
+      format.html { redirect_to admin_type_categories_path, notice: 'la categoria del video fue destruida' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_type_event
+    def set_type_category
       @type_category = TypeCategory.find(params[:id])
     end
 
