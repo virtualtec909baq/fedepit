@@ -1,12 +1,21 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="page-header">
-      <h1><%= @type_breeder.name%></h1>
+      <h1>Editar Criador</h1>
     </div>
   </div>
 </div>
 <div class="modal-body">
 	<%= form_for @type_breeder , url: admin_type_breeder_path(@type_breeder), :id => @type_breeder.id , method: :put do |f| %>
+	<% if @type_breeder.errors.any? %>
+		<div id="error_explanation">
+			<ul>
+				<% @type_breeder.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<%end%>
 	<div class="field">
 		<%= f.label :name %><br>
 		<%= f.text_field :name, class: 'form-control' %>

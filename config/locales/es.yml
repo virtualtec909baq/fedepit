@@ -96,6 +96,8 @@ es:
       paragraph: "Párrafo"
       type_breeder: "Tipo Criador"
     attributes:
+      type_breeder:
+        name: "Nombre"
       canine:
         gender: "Genero"
         kind: "tipo de Ejemplar"
