@@ -1,16 +1,18 @@
 <br>
-<br>
 <div class="row">
   <div class="col-md-12">
+    <h2 class="center"> Editar Articulo</h2>
     <%= form_for @article , url: admin_article_path(@article), :id => @article.id , method: :put do |f| %>
     <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% @article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>No se puede modificar este articulo:</strong>
+          <ul>
+            <% @article.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
     <% end %>
     <div class="field">
       <%= f.label :Titulo %><br>

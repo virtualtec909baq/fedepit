@@ -1,8 +1,8 @@
-<div class="errors"></div>
 <%= form_for @article ,  remote: true, url: admin_articles_path(@article) , method: :post do |f| %>
     <div class="col-xs-12">
         <div class="col-md-12">
             <h3 class="center"> TITULO Y UNA BREVE DESCRIPCION</h3>
+            <div class="errors"></div>
             <div class="fileUpload btn btn-primary pull-right">
                 <span>Imagen de Portada</span>
                 <%= f.file_field :img , :class => "upload"%>
