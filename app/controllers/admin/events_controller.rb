@@ -39,6 +39,7 @@ class Admin::EventsController < ApplicationController
         format.html { redirect_to admin_events_path, notice: 'El evento fue creador' }
         format.json { render :show, status: :created, location: @event }
       else
+        format.js
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end

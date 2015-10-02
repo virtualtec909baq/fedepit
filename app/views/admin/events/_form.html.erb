@@ -7,7 +7,8 @@
         <h4 class="modal-title" id="myModalLabel">Agregar Evento</h4>
       </div>
       <div class="modal-body">
-      <%= form_for @event , url: admin_events_path(@event) , method: :post do |f| %>
+      <%= form_for @event , url: admin_events_path(@event) , remote: true,method: :post do |f| %>
+      <div id="erros"></div>
       <div class="field">
         <%= f.label :Tipo_Evento %><br>
          <%= f.collection_select :type_event_id, TypeEvent.all, :id, :name, {prompt: " "}, {class: "form-control"}%>

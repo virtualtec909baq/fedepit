@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :breeders, only: [:index, :show]
   resources :canines, only: [:index, :show]
   resources :championships, only: [:index]
-  resources :events, only: [:index]
+  resources :events, only: [:index, :show]
   resources :videos, only: [:index, :show]
   
   match 'home/send_mail', to: 'home#send_mail', via: 'post'

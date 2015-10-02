@@ -96,6 +96,12 @@ es:
       paragraph: "Párrafo"
       type_breeder: "Tipo Criador"
     attributes:
+      event:
+        name: "Nombre"
+        description: "Descripción"
+        date: "Fecha"
+        place: "Lugar"
+        type_event: "Tipo de evento"
       sponsor:
         name: "Nombre"
         image: "Imagen"

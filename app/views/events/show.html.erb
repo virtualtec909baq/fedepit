@@ -3,7 +3,6 @@
     <br>
     <div class="col-md-8">
       <h1><%= @event.name%></h1>
-      <%= link_to "Editar Evento", edit_admin_event_path(@event)%>
       <hr>
       <div class="row">
         <div class="col-md-6"><p><i class="fa fa-calendar"></i></span> <%= @event.date.strftime('%b  %d  %Y')%></p></div>      
