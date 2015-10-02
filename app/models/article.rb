@@ -4,8 +4,8 @@ class Article < ActiveRecord::Base
   	# validates
 	  validates :title, presence: true 
   	validates :description, presence: true 
-    validates_length_of :description, :maximum => 200
-    validates_length_of :description, :minimum => 2000
+    validates_length_of :description, :maximum => 2000
+    validates_length_of :description, :minimum => 200
   	# img_uploader
     mount_uploader :img, ArticleUploader
     

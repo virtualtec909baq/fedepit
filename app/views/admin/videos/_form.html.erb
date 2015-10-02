@@ -7,7 +7,8 @@
         <h4 class="modal-title" id="myModalLabel">Agregar Video</h4>
       </div>
       <div class="modal-body">
-        <%= form_for :video , url: admin_videos_path(@video), method: :post do |f| %>
+        <%= form_for :video , url: admin_videos_path(@video), remote: true, method: :post do |f| %>
+          <div id="erros"></div>
           <div class="field">
             <%= f.label :Nombre %><br>
             <%= f.text_field :title, class: 'form-control' %>
@@ -18,7 +19,7 @@
           </div>
           <div class="field">
             <%= f.label :tipo_video %><br>
-            <%= f.collection_select :type_category, TypeCategory.all, :id, :description, {prompt: " "}, {class: "form-control"}%>
+            <%= f.collection_select :type_category_id, TypeCategory.all, :id, :description, {prompt: " "}, {class: "form-control"}%>
           </div>
           <div class="field">
             <%= f.label :Descripción %><br>

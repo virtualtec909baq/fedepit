@@ -30,15 +30,17 @@ class Admin::VideosController < ApplicationController
 
   # POST /videos
   # POST /videos.json
+ 
   def create
     @video = Video.new(video_params)
-
     respond_to do |format|
       if @video.save
-        format.html { redirect_to admin_videos_path, notice: 'El video ha sido creado.' }
-        format.json { render :show, status: :created, location: @video }
+        flash[:notice] = 'Video Creado'
+        format.html { redirect_to admin_video_path(@video) }
+        format.json { render :show, status: :ok, location: @video }
+        format.js
       else
-        format.html { render :new }
+        format.js
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
@@ -48,12 +50,14 @@ class Admin::VideosController < ApplicationController
   # PATCH/PUT /videos/1.json
   def update
     respond_to do |format|
-      if @video.update(video_params)
+      if @video.save(video_params)
         flash[:notice] = 'Video modificado'
         format.html { redirect_to admin_video_path(@video) }
         format.json { render :show, status: :ok, location: @video }
+        format.js
       else
         format.html { render :edit }
+        format.js
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end

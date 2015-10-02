@@ -8,8 +8,9 @@ class Video < ActiveRecord::Base
 	validates :title, presence: true 
   	validates :description, presence: true 
   	validates :url, presence: true 
-  	validates_length_of :description, :maximum => 200
-	validates_length_of :description, :minimum => 2000
+  	validates :type_category_id, presence: true 
+  	validates_length_of :description, :maximum => 2000
+	validates_length_of :description, :minimum => 200
 
   	belongs_to :type_category
 
