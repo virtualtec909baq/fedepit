@@ -33,7 +33,6 @@ class Admin::EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
     respond_to do |format|
       if @event.save
         format.html { redirect_to admin_events_path, notice: 'El evento fue creador' }
