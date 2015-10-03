@@ -6,7 +6,7 @@
     var dataArray = $('#data_init').data("array");
     var arraylength = dataArray.length;
     
-    var array = [{ id: "<%=@canine.id%>0<%=@canine.try(:lft)%><%=@canine.try(:rgt)%>", parentId: null, Name: "<%= @canine.name%>", Lof: "<%= @canine.id%>0", Genero: "<%= gender(@canine.gender)%>",pic: "<%= pic_canine(@canine)%>"}];
+    var array = [{ id: "<%=@canine.id%>0<%=@canine.try(:lft)%><%=@canine.try(:rgt)%>", parentId: null, Name: "<%= @canine.name%>", Lof: "<%= @canine.lof%>0", Genero: "<%= gender(@canine.gender)%>",pic: "<%= pic_canine(@canine)%>"}];
     
     for(var i = 0; i<arraylength; i++){
         var hash = { id: dataArray[i][0], parentId: dataArray[i][1], Name: dataArray[i][2],Lof:dataArray[i][3],Genero: dataArray[i][4], pic: dataArray[i][5]};
