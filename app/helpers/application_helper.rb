@@ -245,19 +245,19 @@ module ApplicationHelper
 
 	end
 
-	def get_api_pedigree_rgt_canine(canine)
+	def get_api_pedigree_rgt_canine(canine, level)
 		if canine.rgt
 			canine_rgt = Canine.find(canine.rgt)
-			array = ["from", "#{canine.id}" ,"to", "#{canine_rgt.id}", "nombre", "#{canine_rgt.name}", "lof", "#{canine_rgt.lof}", "gen", "#{canine_rgt.gender}"]
+			array = ["level","#{level}","from", "#{canine.id}" ,"to", "#{canine_rgt.id}", "nombre", "#{canine_rgt.name}", "img", "#{pic_canine(canine_rgt)}", "gen", "#{canine_rgt.gender}"]
       		canine_hash = Hash[*array]
 			return canine_hash
 		end
 	end
 
-	def get_api_pedigree_lft_canine(canine)
+	def get_api_pedigree_lft_canine(canine, level)
 		if canine.lft
 			canine_lft = Canine.find(canine.lft)
-			array = ["from", "#{canine.id}" ,"to", "#{canine_lft.id}", "nombre", "#{canine_lft.name}", "lof", "#{canine_lft.lof}", "gen", "#{canine_lft.gender}"]
+			array = ["level","#{level}","from", "#{canine.id}" ,"to", "#{canine_lft.id}" ,"nombre", "#{canine_lft.name}", "img", "#{pic_canine(canine_lft)}", "gen", "#{canine_lft.gender}"]
       		canine_hash = Hash[*array]
 			return canine_hash
 		end
@@ -265,18 +265,33 @@ module ApplicationHelper
 
 
 
-	def get_api_pedigree_canine(canine)
+	def get_api_pedigree_canine(canine, level)
 		@tree ||= []
 		if !canine.nil?
-			if canine.rgt
-				@tree << get_api_pedigree_rgt_canine(canine)
-			end
 			if canine.lft
-				@tree << get_api_pedigree_lft_canine(canine)
+				@tree << get_api_pedigree_lft_canine(canine, level)
 			end
-			get_api_pedigree_canine(get_left(canine))
-			get_api_pedigree_canine(get_rgt(canine))
+			if canine.rgt
+				@tree << get_api_pedigree_rgt_canine(canine, level)
+			end
+			get_api_pedigree_canine(get_left(canine), level + 1)
+			get_api_pedigree_canine(get_rgt(canine), level + 1)
 			return @tree
+		end
+	end
+
+	def get_api_pedigree_canine_complex(canine, level)
+		@tree_2 ||= []
+		if !canine.nil?
+			if canine.lft
+				@tree_2 << get_api_pedigree_lft_canine(canine, level)
+			end
+			if canine.rgt
+				@tree_2 << get_api_pedigree_rgt_canine(canine, level)
+			end
+			get_api_pedigree_canine_complex(get_left(canine), level + 1)
+			get_api_pedigree_canine_complex(get_rgt(canine), level + 1)
+			return @tree_2
 		end
 	end
 
