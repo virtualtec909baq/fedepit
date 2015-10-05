@@ -63,6 +63,35 @@
     };
   });
   </script>
+  <script>
+  var projects_3 = [];
+  <% @breeders = Breeder.all%>
+  <%@breeders.each do |breeder|%>
+    projects_3.push({ value: '<%=breeder.name%>',label: '<%=breeder.name%>', desc: '<%=breeder.id%>'})
+  <%end%>
+      
+  $(function() {
+    
+    $( "#canine_breeder" ).autocomplete({
+      minLength: 0,
+      source: projects_3,
+      focus: function( event, ui ) {
+        $( "#canine_breeder" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#canine_breeder" ).val( ui.item.label );
+        $( "#canine_breeder_id" ).val( ui.item.desc );
+        return false;
+      }
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.label + "</a>" )
+        .appendTo( ul );
+    };
+  });
+  </script>
 <div class="row">
   <div class="col-md-12">
     <h3>Nuevo Ejemplar</h3>
@@ -70,8 +99,6 @@
   </div>
   <%= form_for @canine , url: admin_canines_path(@canine) , :html => { :multipart => true } do |f| %>
     <% if @canine.errors.any? %>
-      <br>
-      <br>
       <br>
       <br>
       <div class="alert alert-danger alert-dismissible" role="alert">
@@ -86,8 +113,9 @@
     <% end %>  
       
     <div class="col-md-6">
-      <%= f.label :tipo_de_ejemplar %><br>
-      <%= f.select :kind, [["Registrar Nuevo Ejemplar", "0"],["Crear Ejemplar Informativo", "1"]], {prompt: "Escoger Tipo"}, {class: "form-control"}%>
+      <%= f.label :criador %> <%= link_to "Agregar criador", new_admin_breeder_path()%>
+      <%= f.text_field :breeder, class: 'form-control' %>
+      <%= f.hidden_field :breeder_id%>
     </div>
     <div class="col-md-6">
       <%= f.label :Nombre %><br>
@@ -95,8 +123,8 @@
     </div>
     <div class="col-md-3">
       <br>
-      <%= f.label :Microchip %><br>
-      <%= f.text_field :chip, :class => "form-control"%>
+      <%= f.label :tipo_de_ejemplar %><br>
+      <%= f.select :kind, [["Registrar Nuevo Ejemplar", "0"],["Crear Ejemplar Informativo", "1"]], {prompt: "Escoger Tipo"}, {class: "form-control"}%>
     </div>
     <div class="col-md-3">
      <br>
@@ -120,8 +148,8 @@
     </div>
     <div class="col-md-4 ">
       <br>
-      <%= f.label :criador %> <%= link_to "Agregar criador", new_admin_breeder_path()%>
-      <%= f.collection_select :breeder_id, Breeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
+      <%= f.label :Microchip %><br>
+      <%= f.text_field :chip, :class => "form-control"%>
     </div>
     <div class="col-md-4 ">
       <br>
