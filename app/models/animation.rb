@@ -9,7 +9,7 @@ class Animation < ActiveRecord::Base
   	validates :description, presence: true 
   	validates :url, presence: true 
   	validates :type_category_id, presence: true 
-  	validates_length_of :description, :maximum => 2000
+  	validates_length_of :description, :maximum => 900
 	  
   	belongs_to :type_category
 end
