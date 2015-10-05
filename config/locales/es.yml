@@ -86,15 +86,16 @@ es:
       clear: "Limpiar"
   activerecord:
     models:
+      animation: "Video"
       race: "Raza"
       article: "Artículo"
       breeder: "Criador"
       canine: "Ejemplar"
       comment: "Comentario"
       event: "Evento"
-      video: "Video"
       paragraph: "Párrafo"
       type_breeder: "Tipo Criador"
+      type_category: "Categoria Video"
     attributes:
       type_event:
         name: "Nombre"
@@ -132,7 +133,7 @@ es:
         name: "Nombre" 
         gende: "Genero"
         birt: "Nacimiento"
-      video:
+      animation:
         title: "Nombre"
         description: "Descripción"
         type_category_id: "Tipo de Categoria"

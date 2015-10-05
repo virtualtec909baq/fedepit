@@ -1,4 +1,4 @@
-class Video < ActiveRecord::Base
+class Animation < ActiveRecord::Base
 	include PublicActivity::Model
 	tracked owner: ->(controller, model) { controller && controller.current_user }
 	
@@ -12,5 +12,4 @@ class Video < ActiveRecord::Base
   	validates_length_of :description, :maximum => 2000
 	  
   	belongs_to :type_category
-
 end

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
   devise_for :users
-  resources :category_championships
   resources :varieties
   resources :scores
   resources :shows
@@ -9,9 +8,11 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
   resources :breeders, only: [:index, :show]
   resources :canines, only: [:index, :show]
-  resources :championships, only: [:index]
   resources :events, only: [:index, :show]
   resources :videos, only: [:index, :show]
+  resources :tournaments, only: [:index, :show]
+  resources :animations, only: [:index, :show]
+
   
   match 'home/send_mail', to: 'home#send_mail', via: 'post'
   get :index2, to: 'canines#index2', as: :index2
@@ -36,7 +37,7 @@ Rails.application.routes.draw do
       get :autocomplete_canine_lof, :on => :collection
       resources :images, :only => [:create, :destroy, :update]
     end
-    resources :championships
+    resources :tournaments
     resources :paragraphs
     resources :type_categories
     resources :colors
@@ -51,6 +52,7 @@ Rails.application.routes.draw do
     resources :videos
     resources :characteristics
     resources :canino_characteristics
+    resources :animations
     
     match 'breeders/send_mail_attachments', to: 'breeders#send_mail_attachments', via: 'post'
     get "home/:id/mergecanines", to:"home#mergecanines", as: "mergecanines"

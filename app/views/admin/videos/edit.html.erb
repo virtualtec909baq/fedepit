@@ -29,8 +29,6 @@
     </div>
     <div class="field">
       <%= f.label :tipo_video %><br>
-      <%= f.collection_select :type_category_id, TypeCategory.all, :id, :description, {prompt: " "}, {class: "form-control"}%>
-    </div>
     <div class="field">
       <%= f.label :Decripción %><br>
       <%= f.text_area :description, class: 'form-control' %>

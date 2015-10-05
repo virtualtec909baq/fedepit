@@ -1,0 +1,14 @@
+<%= form_for @tournament , url: admin_tournaments_path(@ctournament), :remote => true , method: :post do |f| %>
+      <div id="erros"></div>
+      <div class="field">
+        <%= f.label :name,"Nombre" %><br>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :description,"Descripción" %><br>
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+      <div class="actions">
+          <%= f.submit :class =>"btn btn-primary btn-block" %>
+      </div>
+      <% end %>

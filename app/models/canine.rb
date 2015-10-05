@@ -10,7 +10,7 @@ class Canine < ActiveRecord::Base
 	self.per_page = 15
 
 	has_many :images, :dependent => :destroy
-   	accepts_nested_attributes_for :images
+   	accepts_nested_attributes_for :images, allow_destroy: true
 	
 	# validates
 	validates_uniqueness_of :lof
