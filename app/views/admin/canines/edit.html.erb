@@ -160,11 +160,11 @@
       <%else%>
         <span class="label label-danger">AGREGA IMAGENES A TU EJEMPLAR</span>
       <%end%>
-      <%= f.nested_fields_for :images do |ff|%>
-        <%= ff.file_field :file , :class => "upload pull-right"%> 
-        <%= ff.remove_nested_fields_link do%>
-          <i class="fa fa-trash-o"></i>
-        <%end%>
+        <%= f.nested_fields_for :images, Image.new do |ff|%>
+          <%= ff.file_field :file , :class => "upload pull-right"%> 
+          <%= ff.remove_nested_fields_link do%>
+            <i class="fa fa-trash-o"></i>
+          <%end%>
       <%end%>
       <br>
     </div>
