@@ -86,8 +86,13 @@ es:
       clear: "Limpiar"
   activerecord:
     models:
+      position: "Puestos"
+      category_race_variety: "Gestionar Campeonatos"
+      spectacle: "Show"
+      tournament: "Campeonato"
       animation: "Video"
       race: "Raza"
+      variety: "Variedad"
       article: "Artículo"
       breeder: "Criador"
       canine: "Ejemplar"
@@ -97,6 +102,23 @@ es:
       type_breeder: "Tipo Criador"
       type_category: "Categoria Video"
     attributes:
+      position: 
+        place: "No. Puesto"
+      category_race_variety:
+        race_id: "Raza"
+        variety_id: "Variedad"
+        category_id: "Categoria"
+        tournament_id: "Campeonato"
+      tournament:
+        name: "Nombre"
+        description: "Descripción"
+      spectacle: 
+        name: "Nombre"
+        description: "Descripción"
+      category:
+        name: "Nombre"
+      variety:
+        name: "Nombre"
       type_event:
         name: "Nombre"
       event:

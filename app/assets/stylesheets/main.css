@@ -6266,3 +6266,6 @@ legend {
     width: 100%;
     height: 100%;
 }
+.fa.fa-star {
+    color: #f1c40f;
+}

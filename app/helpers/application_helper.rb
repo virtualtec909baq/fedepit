@@ -29,6 +29,30 @@ module ApplicationHelper
 		end
 	end
 
+	def get_variety(variety_id)
+		if Variety.exists?(variety_id)
+			return Variety.find(variety_id).name
+		else
+			return "Variedad sin nombre"
+		end
+	end
+
+	def get_category(category_id)
+		if Category.exists?(category_id)
+			return Category.find(category_id).name
+		else
+			return "Categoria sin nombre"
+		end
+	end
+
+	def get_tournament(tournament_id)
+		if Tournament.exists?(tournament_id)
+			return Tournament.find(tournament_id).name
+		else
+			return "Campeonato sin nombre"
+		end
+	end
+
 	def gender(gender)
 		if gender == 1
 			return "Macho"

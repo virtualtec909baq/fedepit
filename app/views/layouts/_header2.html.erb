@@ -29,7 +29,16 @@
         </li>
         <li><a href="<%= admin_races_path%>">Razas</a></li>
         <li><a href="<%= admin_colors_path%>">Color</a></li>
-        <li><a href="<%= admin_tournaments_path%>">Campeonatos</a></li> 
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Torneos<b class="caret"></b></a>
+          <ul class="dropdown-menu vertical-li">
+            <li><a href="<%= admin_category_race_varieties_path%>">Gestionar Campeonatos</a></li>
+            <li><a href="<%= admin_categories_path%>">Ver Categorias</a></li>
+            <li><a href="<%= admin_tournaments_path%>">Ver Campeonatos</a></li>
+            <li><a href="<%= admin_varieties_path%>">Ver Variedades</a></li>
+            <li><a href="<%= admin_spectacles_path%>">Ver Show</a></li>
+            <li><a href="<%= admin_positions_path%>">Ver puestos</a></li>
+          </ul>
+        </li>
         <li><a href="<%= admin_articles_path%>">Articulos</a></li>
 
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Videos<b class="caret"></b></a>
