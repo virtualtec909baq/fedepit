@@ -21,6 +21,14 @@ module ApplicationHelper
         return photo
 	end
 	
+	def get_race(race_id)
+		if Race.exists?(race_id)
+			return Race.find(race_id).name
+		else
+			return "Raza sin nombre"
+		end
+	end
+
 	def gender(gender)
 		if gender == 1
 			return "Macho"
@@ -248,7 +256,7 @@ module ApplicationHelper
 	def get_api_pedigree_rgt_canine(canine, level)
 		if canine.rgt
 			canine_rgt = Canine.find(canine.rgt)
-			array = ["level","#{level}","from", "#{canine.id}" ,"to", "#{canine_rgt.id}", "nombre", "#{canine_rgt.name}", "img", "#{pic_canine(canine_rgt)}", "sex", "#{canine_rgt.gender}"]
+			array = ["level","#{level}","race","#{get_race(canine_rgt.race_id)}","from", "#{canine.id}" ,"to", "#{canine_rgt.id}", "nombre", "#{canine_rgt.name}", "img", "#{pic_canine(canine_rgt)}", "sex", "#{canine_rgt.gender}"]
       		canine_hash = Hash[*array]
 			return canine_hash
 		end
@@ -257,7 +265,7 @@ module ApplicationHelper
 	def get_api_pedigree_lft_canine(canine, level)
 		if canine.lft
 			canine_lft = Canine.find(canine.lft)
-			array = ["level","#{level}","from", "#{canine.id}" ,"to", "#{canine_lft.id}" ,"nombre", "#{canine_lft.name}", "img", "#{pic_canine(canine_lft)}", "sex", "#{canine_lft.gender}"]
+			array = ["level","#{level}","race","#{get_race(canine_lft.race_id)}","from","#{canine.id}" ,"to", "#{canine_lft.id}" ,"nombre", "#{canine_lft.name}", "img", "#{pic_canine(canine_lft)}", "sex", "#{canine_lft.gender}"]
       		canine_hash = Hash[*array]
 			return canine_hash
 		end
