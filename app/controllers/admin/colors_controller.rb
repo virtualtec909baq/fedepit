@@ -6,7 +6,7 @@ class Admin::ColorsController < ApplicationController
   # GET /colors.json
   def index
     @search = Color.ransack(params[:q])
-    @colors = @search.result.order(created_at: :desc).page(params[:page])
+    @colors = @search.result.order(name: :asc).page(params[:page])
     @color = Color.new
     respond_to do |format|
       format.html
