@@ -4,22 +4,20 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Agregar Varidad</h4>
+        <h4 class="modal-title" id="myModalLabel">Agregar Categoria</h4>
       </div>
       <div class="modal-body">
-        <%= form_for :variety , url: admin_varieties_path(@variety), remote: true, method: :post do |f| %>
+        <%= form_for :category , url: admin_categories_path(@variety), remote: true, method: :post do |f| %>
           <div id="erros"></div>
           <div class="field">
             <%= f.label :Nombre %><br>
             <%= f.text_field :name, class: 'form-control' %>
           </div>
           <div class="actions">
-            <%= f.submit "Guardar Varidad",  :class  =>"btn btn-primary btn-block" %>
+            <%= f.submit "Guardar Categoria",  :class  =>"btn btn-primary btn-block" %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-

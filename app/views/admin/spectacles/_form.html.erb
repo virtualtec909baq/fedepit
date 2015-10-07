@@ -1,12 +1,13 @@
+<!-- Modal -->
 <div class="modal fade" id="myModalColor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Agregar Campeonato</h4>
+        <h4 class="modal-title" id="myModalLabel">Agregar Color</h4>
       </div>
       <div class="modal-body">
-      <%= form_for @tournament , url: admin_tournaments_path(@ctournament), :remote => true , method: :post do |f| %>
+      <%= form_for @spectacle , url: admin_spectacles_path(@spectacle), :remote => true , method: :post do |f| %>
       <div id="erros"></div>
       <div class="field">
         <%= f.label :name %><br>
@@ -14,7 +15,7 @@
       </div>
       <div class="field">
         <%= f.label :description %><br>
-        <%= f.text_field :description, class: 'form-control' %>
+        <%= f.text_area :description, class: 'form-control' , rows: 3%>
       </div>
       <div class="actions">
           <%= f.submit :class =>"btn btn-primary btn-block" %>

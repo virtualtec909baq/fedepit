@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="page-header">
-      <h1>Variedades Campeonatos</h1>
+      <h1>Variedades Categoria</h1>
     </div>
     <div class="box-purchase">
-      <%= render :partial => "admin/varieties/filters"%>
+       <%= render :partial => "admin/categories/filters"%>
     </div>
   </div>
 </div>
@@ -17,14 +17,14 @@
     </tr>
   </thead>
   <tbody>
-    <% @varieties.each do |variety| %>
+    <% @categories.each do |category| %>
     <tr>
-      <td><%= variety.name %></td>
-      <td class="center"><%= link_to edit_admin_variety_path(variety) do %>
+      <td><%= category.name %></td>
+      <td class="center"><%= link_to edit_admin_category_path(category) do %>
         <i class="fa fa-edit"></i>
         <%end%>
       </td>
-      <td class="center"><%= link_to admin_variety_path(variety), method: :delete, data: { confirm: 'Desea eliminar este variedad?' } do %>
+      <td class="center"><%= link_to admin_category_path(category), method: :delete, data: { confirm: 'Desea eliminar este categoria?' } do %>
         <i class="fa fa-trash-o"></i>
         <%end%>
       </td>
@@ -32,7 +32,5 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @varieties, :locals => { :varieties => @varieties }, renderer: BootstrapPagination::Rails%>
-
-
+<%= will_paginate @categories, :locals => { :categories => @categories }, renderer: BootstrapPagination::Rails%>
 

@@ -1,0 +1,43 @@
+<!-- Modal -->
+<div class="modal fade" id="myModalVideos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Agregar Gestor de Campeonatos</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for :category_race_variety , url: admin_category_race_varieties_path(@category_race_variety), remote: true, method: :post do |f| %>
+          <div id="erros"></div>
+          <div class="field">
+            <div class="field">
+              <%= f.label :race_id %><br>
+              <%= f.collection_select :race_id, Race.all, :id, :name, {prompt: "Escoger Raza"}, {class: "form-control"}%>
+            </div>
+            <div class="field">
+              <%= f.label :variety_id %><br>
+              <%= f.collection_select :variety_id, Variety.all, :id, :name, {prompt: "Escoger Variedad"}, {class: "form-control"}%>
+            </div>
+            <div class="field">
+              <%= f.label :category_id %><br>
+              <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Escoger Categoria"}, {class: "form-control"}%>
+            </div>
+            <div class="field">
+              <%= f.label :tournament_id %><br>
+              <%= f.collection_select :tournament_id, Tournament.all, :id, :name, {prompt: "Escoger Campeonato"}, {class: "form-control"}%>
+            </div>
+            <div class="field">
+              <br>
+              <span>¿Esta Seleccion puntua en el campeonato seleccionado?</span>
+              <%= f.check_box :punctuation %>
+            </div>
+          </div>
+          <div class="actions">
+            <%= f.submit "Guardar Gestor",  :class  =>"btn btn-primary btn-block" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

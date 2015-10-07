@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="page-header">
+      <h1>Editar Color</h1>
+    </div>
+  </div>
+</div>
+<div class="modal-body">
+	<%= form_for @category_race_variety , url: admin_category_race_variety_path(@category_race_variety), :id => @category_race_variety.id , method: :put do |f| %>
+	<% if @category_race_variety.errors.any? %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>No se puede modificar el Gestor de campeonatos:</strong>
+        <ul>
+          <% @category_race_variety.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+	<div class="field">
+            <div class="field">
+              <%= f.label :race_id %><br>
+              <%= f.collection_select :race_id, Race.all, :id, :name, {prompt: "Escoger Raza"}, {class: "form-control"}%>
+            </div>
+            <div class="field">
+              <%= f.label :variety_id %><br>
+              <%= f.collection_select :variety_id, Variety.all, :id, :name, {prompt: "Escoger Variedad"}, {class: "form-control"}%>
+            </div>
+            <div class="field">
+              <%= f.label :category_id %><br>
+              <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Escoger Categoria"}, {class: "form-control"}%>
+            </div>
+            <div class="field">
+              <%= f.label :tournament_id %><br>
+              <%= f.collection_select :tournament_id, Tournament.all, :id, :name, {prompt: "Escoger Campeonato"}, {class: "form-control"}%>
+            </div>
+            <div class="field">
+              <br>
+              <span>¿Esta Seleccion puntua en el campeonato seleccionado?</span>
+              <%= f.check_box :punctuation %>
+            </div>
+          </div>
+	<div class="actions">
+		<%= f.submit :class =>"btn btn-primary btn-block" %>
+	</div>
+	<% end %>
+</div>
+
