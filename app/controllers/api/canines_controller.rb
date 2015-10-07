@@ -15,7 +15,7 @@ class Api::CaninesController < ApplicationController
     # creando el hash
     @canines_list = []
     @canines.each do |canine|
-      a = ["id", "#{canine.id}","nombre", "#{canine.name}", "img", "#{pic_canine(canine)}", "sex", "#{canine.gender}",]
+      a = ["id", "#{canine.id}","race", "#{get_race(canine.race_id)}" ,"nombre", "#{canine.name}", "img", "#{pic_canine(canine)}", "sex", "#{canine.gender}",]
       h = Hash[*a]
       @canines_list << h
     end
