@@ -1,4 +1,4 @@
-class Variety < ActiveRecord::Base
+class Category < ActiveRecord::Base
 	include PublicActivity::Model
 	tracked owner: ->(controller, model) { controller && controller.current_user }
 	# default for will_paginate
