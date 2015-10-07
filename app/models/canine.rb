@@ -1,6 +1,8 @@
 class Canine < ActiveRecord::Base
 	include PublicActivity::Model
 	tracked owner: ->(controller, model) { controller && controller.current_user }
+	scope :without, -> { where("lft IS NOT ? OR rgt IS NOT ?", nil, nil)}
+	
 	belongs_to :breeder
 	belongs_to :race
 	has_many   :images
