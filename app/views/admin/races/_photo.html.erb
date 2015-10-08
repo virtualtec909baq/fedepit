@@ -1,0 +1,14 @@
+<br>
+<table>
+	<% @race.img_races.each do |race|%>
+		<tr>
+			<td><%= image_tag race.img.url, :class => "thumbnail", :size => '100x100'%>
+			</td>
+			<td><%= race.description%></td>
+			<td class="center"><%= link_to admin_img_race_path(:img_race_id => race.id), method: :delete, data: { confirm: 'Desea eliminar este detalle?' } do %>
+				<i class="fa fa-trash-o"></i>
+				<%end%>
+			</td>
+		</tr>
+	<%end%>
+</table>

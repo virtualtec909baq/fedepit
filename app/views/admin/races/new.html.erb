@@ -1,51 +1,57 @@
-<h1>Agregar Raza</h1>
-<hr>
-<%= form_for @race, url: admin_races_path(@race),html: {multipart: true} do |f| %>
-  <% if @race.errors.any? %>
-      <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>No se puede crear esta raza:</strong>
-        <ul>
-          <% @race.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Nueva raza</h2>
+  </div>
+  <%= form_for @race, url: admin_races_path(@race),html: {multipart: true} do |f| %>
+      <% if @race.errors.any? %>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>No se puede crear esta raza:</strong>
+          <ul>
+            <% @race.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="col-md-6">
+        <%= f.label :name%><br>
+        <%= f.text_field :name, class: 'form-control' %>
       </div>
-    <% end %>  
-  <div class="form-group">
-    <%= f.label :name, "Nombre"%><br>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :description, "Descripción"%><br>
-    <%= f.text_area :description, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :pdf, "PDF" %><br>
-    <%= f.file_field :pdf %>
-  </div>
-  <%= f.add_nested_fields_link :img_races, 'Agregar Descripción de la Raza', class: 'btn btn-info', role: 'button'%>
-  <br>
-  <br>
-  <div class="panel-body">
-    <%= f.nested_fields_for :img_races do |ff| %>
-      <div class="field_images row">
-        <div class="col-md-5">
-          <%= ff.label :description, "Descripción"%>
-          <%= ff.text_field :description, class: 'form-control'%>
-        </div>
-        <div class="col-md-6">
-          <%= ff.label :Img, "Image"%>
-          <%= ff.file_field :img%>
-        </div>
-        <div class="col-md-1">
-          <%= ff.remove_nested_fields_link do%>
-            <i class="fa fa-trash-o"></i>
-          <%end%>
-        </div>
+      <div class="col-md-6">
+        <%= f.label :pdf, "PDF" %><br>
+        <%= f.file_field :pdf %>
+      </div> 
+      <div class="col-md-12">
+        <%= f.label :description%><br>
+        <%= f.text_area :description, class: 'form-control' %>
+        <br>
+        <%= f.add_nested_fields_link :img_races, 'AGREGAR DESCRIPCION', class: 'btn btn-info', role: 'button'%>
+        <%= f.nested_fields_for :img_races do |ff| %>
+          <div class="field_images row">
+             <div class="col-md-1">
+              <br>
+              <%= ff.remove_nested_fields_link do%>
+              <i class="fa fa-trash-o"></i>
+              <%end%>
+            </div>
+            <div class="col-md-5">
+              <br>
+              <%= ff.label :description, "Descripción"%>
+              <%= ff.text_field :description, class: 'form-control'%>
+            </div>
+            <div class="col-md-6">
+              <br>
+              <%= ff.label :Img, "Image"%>
+              <%= ff.file_field :img%>
+            </div>
+          </div>
+        <%end%> 
       </div>
-    <%end%>
-  </div>
-  <br>
-  <%= f.submit :class =>"btn btn-primary btn-block" %>
-<% end %>
+      
+      <div class="col-md-12">
+        <br>
+        <%= f.submit :class =>"btn btn-primary btn-block" %>
+      </div>
+  <%end%>
+</div>

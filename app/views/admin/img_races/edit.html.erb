@@ -1,0 +1,19 @@
+<div class="row">
+  <%= form_for @image , url: admin_race_img_race_path(id: params[:id], :race_id => params[:race_id] ), method: :put do |f| %>
+      <div class="col-md-12"><h2>Editar Descripcion</h2></div>
+      <div class="col-md-6">
+        <br>
+        <%= f.label :description, "Descripción"%>
+        <%= f.text_field :description, class: 'form-control'%>
+      </div>
+      <div class="col-md-6">
+        <br>
+        <%= f.label :Img, "Image"%>
+        <%= f.file_field :img%>
+      </div>
+      <div class="col-md-12">
+        <br>
+        <%= f.submit :class =>"btn btn-primary btn-block" %>
+      </div>
+  <% end %>
+</div>

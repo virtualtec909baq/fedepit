@@ -9,7 +9,7 @@ class Race < ActiveRecord::Base
   	# validates
 	validates :name, presence: true 
 	validates :description, presence: true
-	validates_length_of :description, :maximum => 150
+	validates_length_of :description, :maximum => 350
   	# pdf_uploader
 	mount_uploader :pdf, RaceUploader	 
 end

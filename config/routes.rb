@@ -36,7 +36,9 @@ Rails.application.routes.draw do
     resources :comments
     resources :events
     resources :publicities
-    resources :races
+    resources :races do 
+      resources :img_races
+    end
     resources :sponsors
     resources :type_breeders
     resources :type_championships

@@ -1,12 +1,6 @@
 <div class="row">
-  <div class="col-lg-12">
-    <div class="page-header">
-      <h1>Editar Color</h1>
-    </div>
-  </div>
-</div>
-<div class="modal-body">
 	<%= form_for @color , url: admin_color_path(@color), :id => @color.id , method: :put do |f| %>
+  <div class="col-md-12"><h2>Editar Color</h2></div>
 	<% if @color.errors.any? %>
       <div class="alert alert-danger alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -18,11 +12,11 @@
         </ul>
       </div>
     <% end %>
-	<div class="field">
+	<div class="col-md-12">
 		<%= f.label :name %><br>
 		<%= f.text_field :name, class: 'form-control' %>
 	</div>
-	<div class="actions">
+	<div class="col-md-12">
 		<%= f.submit :class =>"btn btn-primary btn-block" %>
 	</div>
 	<% end %>

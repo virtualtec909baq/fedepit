@@ -94,8 +94,7 @@
   </script>
 <div class="row">
   <div class="col-md-12">
-    <h3>Nuevo Ejemplar</h3>
-    <hr>
+    <h2>Nuevo Ejemplar</h2>
   </div>
   <%= form_for @canine , url: admin_canines_path(@canine) , :html => { :multipart => true } do |f| %>
     <% if @canine.errors.any? %>

@@ -8,13 +8,13 @@
 				<%= f.search_field(:title_cont, class: 'form-control')%>
 			</div>
 			<div class="col-md-2">
-				<%= f.submit :class =>"btn btn btn-primary btn-block"%>
+				<%= f.submit :class =>"btn btn btn-success btn-block"%>
 			</div>
 			<div class="col-md-2">
 				<%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
 			</div>
 			<div class="col-md-2">
-				<%= link_to "Agregar Articulo", new_admin_article_path, class:"btn btn-info btn_white" %>
+				<%= link_to "Agregar", new_admin_article_path, class:"btn btn-info btn_white btn-block" %>
 			</div>
 		<%end%>
 	</div>
