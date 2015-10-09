@@ -1,4 +1,4 @@
-<%= search_form_for @search, url: admin_canines_path do |f|%>	
+<%= search_form_for @search, url: canines_path do |f|%>	
 	<div class="col-md-2">
 		<label>Nombre O LOF</label>
 	</div>	
@@ -12,5 +12,4 @@
 		<%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
 	</div>
 <%end%>
-<hr>
 
