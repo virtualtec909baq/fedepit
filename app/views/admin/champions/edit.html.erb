@@ -1,0 +1,41 @@
+<div class="row">
+	<%= form_for @champion , url: admin_champion_path(@champion), :id => @champion.id , method: :put do |f| %>
+  <div class="col-md-12"><h2>Editar Campeon</h2></div>
+    	<% if @champion.errors.any? %>
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>No se puede modificar el Campeon:</strong>
+            <ul>
+              <% @champion.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="col-md-12">
+          <%= f.label :canine_id %><br>
+          <%= f.collection_select :canine_id, Canine.all, :id, :name, {prompt: "Escoger Ejemplar"}, {class: "form-control"}%>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :category_race_variety_id %><br>
+          <%= f.collection_select :category_race_variety_id, CategoryRaceVariety.all, :id, :name, {prompt: "Escoger Categoria"}, {class: "form-control"}%>
+          <%= f.label :spectacle_id %><br>
+          <%= f.collection_select :spectacle_id, Spectacle.all, :id, :name, {prompt: "Escoger Show"}, {class: "form-control"}%>
+          <%= f.label :winner %><br>
+          <%= f.text_field :winner, class: 'form-control' %>
+          <%= f.label :date %><br>
+          <%= f.date_select :date, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :points %><br>
+          <%= f.text_field :points, class: 'form-control' %>
+          <%= f.label :position %><br>
+          <%= f.collection_select :position, Position.all, :place, :place, {prompt: "Escoger puesto"}, {class: "form-control"}%>
+        </div>
+        <div class="col-md-12">
+          <br>
+          <%= f.submit :class =>"btn btn-primary btn-block" %>
+        </div>
+    	 
+	<% end %>
+</div>

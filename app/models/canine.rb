@@ -8,7 +8,11 @@ class Canine < ActiveRecord::Base
 	has_many   :images
 	
   	has_many :characteristics, :through => :canino_characteristics
-  	has_many :canino_characteristics  
+  	has_many :canino_characteristics 
+
+  	has_many :category_race_varieties, :through => :champions
+  	has_many :champions 
+
 	self.per_page = 15
 
 	has_many :images, :dependent => :destroy

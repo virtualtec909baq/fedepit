@@ -12,6 +12,22 @@ module ApplicationHelper
 		end
 	end
 
+	def get_show(spectacle_id)
+		if Spectacle.exists?(spectacle_id)
+			return Spectacle.find(spectacle_id).name
+		else
+			return "Show sin nombre"
+		end
+	end
+	
+	def get_show(spectacle_id)
+		if Spectacle.exists?(spectacle_id)
+			return Spectacle.find(spectacle_id).name
+		else
+			return "Show sin nombre"
+		end
+	end
+
 	def pic_canine(canine)
 		if canine.images.first.blank?
           	photo =  ActionController::Base.helpers.asset_path("placeholder2.png")

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get :autocomplete_canine_lof, :on => :collection
       resources :images, :only => [:create, :destroy, :update]
     end
+    resources :champions
     resources :positions
     resources :spectacles
     resources :category_race_varieties

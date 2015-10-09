@@ -107,7 +107,16 @@ es:
       paragraph: "PARRAFO"
       type_breeder: "TIPO DE CRIADOR"
       type_category: "CATEGORIA VIDEO"
+      champion: "CAMPEONATO"
     attributes:
+      champion: 
+        canine_id: "Canino"
+        category_race_variety_id: "Categoria"
+        spectacle_id: "Show"
+        date: "Fecha"
+        points: "Puntos Ganados"
+        position: "Puesto Ocupado"
+        winner: "Ganador"
       position: 
         place: "No. Puesto"
       category_race_variety:

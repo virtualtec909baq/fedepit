@@ -1,0 +1,43 @@
+<!-- Modal -->
+<div class="modal fade" id="myModalColor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Agregar Campeon</h4>
+      </div>
+      <div class="modal-body">
+      <%= form_for @champion , url: admin_champions_path(@champion), remote: true, method: :post do |f| %>
+      <div id="erros"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.label :canine_id %><br>
+          <%= f.collection_select :canine_id, Canine.all, :id, :name, {prompt: "Escoger Ejemplar"}, {class: "form-control"}%>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :category_race_variety_id %><br>
+          <%= f.collection_select :category_race_variety_id, CategoryRaceVariety.all, :id, :name, {prompt: "Escoger Categoria"}, {class: "form-control"}%>
+          <%= f.label :spectacle_id %><br>
+          <%= f.collection_select :spectacle_id, Spectacle.all, :id, :name, {prompt: "Escoger Show"}, {class: "form-control"}%>
+          <%= f.label :winner %><br>
+          <%= f.text_field :winner, class: 'form-control' %>
+          <%= f.label :date %><br>
+          <%= f.date_select :date, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :points %><br>
+          <%= f.text_field :points, class: 'form-control' %>
+          <%= f.label :position %><br>
+          <%= f.collection_select :position, Position.all, :place, :place, {prompt: "Escoger puesto"}, {class: "form-control"}%>
+        </div>
+        
+        <div class="col-md-12">
+          <br>
+          <%= f.submit :class =>"btn btn-primary btn-block" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

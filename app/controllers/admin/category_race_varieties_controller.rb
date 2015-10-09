@@ -1,6 +1,6 @@
 class Admin::CategoryRaceVarietiesController < ApplicationController
   before_action :set_category_race_variety, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /category_race_varieties
   # GET /category_race_varieties.json
   def index
@@ -72,6 +72,7 @@ class Admin::CategoryRaceVarietiesController < ApplicationController
   end
 
   private
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_category_race_variety
       @category_race_variety = CategoryRaceVariety.find(params[:id])
