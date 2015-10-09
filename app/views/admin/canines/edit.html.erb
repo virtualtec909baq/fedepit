@@ -1,6 +1,8 @@
 <script>
   var projects = [];
   <% @canines = Canine.where(gender: "1")%>
+  <% @can= Canine.where(:id =>  params[:id])%>
+  <% @canines = @canines - @can%>
   <%@canines.each do |canine|%>
     projects.push({ value: '<%=canine.name%>',label: '<%=canine.name%>', desc: '<%=canine.id%>'})
   <%end%>
@@ -34,6 +36,8 @@
   <script>
   var projects_2 = [];
   <% @canines = Canine.where(gender: "0")%>
+  <% @can= Canine.where(id: params[:id])%>
+  <% @canines = @canines - @can%>
   <%@canines.each do |canine|%>
     projects_2.push({ value: '<%=canine.name%>',label: '<%=canine.name%>', desc: '<%=canine.id%>'})
   <%end%>

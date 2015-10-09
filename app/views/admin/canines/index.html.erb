@@ -1,3 +1,24 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#caninestable .deleteLink").on("click",function() {
+      if (confirm('Desea eliminar este ejemplar')) {
+        var tr = $(this).closest('tr');
+        tr.css("background-color","#C9302C");
+        tr.fadeOut(400, function(){
+          tr.remove();
+        });
+        var id = $(this).data('id');
+        $.ajax({
+          type: "DELETE",
+          url: "/admin/canines/"+id
+        })
+        return false;
+      }else{
+        return false;
+      }
+    });
+  });
+</script>
 <div class="row">
   <div class="col-lg-12">
     <div class="page-header">
@@ -17,7 +38,7 @@
   </div>
 </div>
 <hr>
-<table class="table table-striped table-hover table-bordered">
+<table class="table table-striped table-hover table-bordered" id="caninestable">
   <thead>
     <tr>
       <th class="center"><%= sort_link @search, :name, "Nombre"%></th>
@@ -57,10 +78,7 @@
         <i class="fa fa-edit"></i>
         <%end%>
       </td>
-      <td class="center"><%= link_to admin_canine_path(canine), method: :delete, data: { confirm: 'Desea eliminar este ejemplar?' } do %>
-        <i class="fa fa-trash-o"></i>
-        <%end%>
-      </td>
+      <td class="center"><a class="deleteLink" href="" data-id="<%= canine.id%>"><i class="fa fa-trash-o"></i></a></td>
     </tr>
     <% end %>
   </tbody>

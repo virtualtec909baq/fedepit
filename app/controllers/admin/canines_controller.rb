@@ -120,6 +120,7 @@ end
     @canine.destroy
     respond_to do |format|
       flash[:notice] = 'Ejemplar eliminado'
+      format.js {}
       format.html { redirect_to admin_canines_path}
       format.json { head :no_content }
     end
