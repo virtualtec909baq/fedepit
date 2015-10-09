@@ -1,6 +1,6 @@
 <div class="jumbotron" style="padding: 0px;">
 <div class="cardheader"></div>
-  <div class="row" style="margin: 0px; position: relative; bottom: 125px;"> 
+  <div class="row" style="margin: 0px; position: relative; bottom: 120px;"> 
     <div class="col-md-12 center">
         <span class="center_span"><%=@canine.name.upcase%></span>
     </div>
@@ -26,10 +26,7 @@
           <span># OTRO REGISTRO:</span>
           <span><%= @canine.new_register%> </span><br>
           <span>CRIADOR:</span>
-          <%-if !@canine.breeder_id.blank?%>
-            <span><%= @canine.breeder.name%></span>
-          <%end%>
-          <br>
+          <span><%= get_breeder(@canine.breeder_id)%></span><br>
           <span>MICROCHIP:</span>
           <span><%= @canine.chip%> </span><br>
           <span>Fecha de registor:</span>

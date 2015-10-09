@@ -20,6 +20,14 @@ module ApplicationHelper
 		end
 	end
 	
+	def get_breeder(breeder_id)
+		if Breeder.exists?(breeder_id)
+			return Breeder.find(breeder_id).name
+		else
+			return "Criador sin nombre"
+		end
+	end
+
 	def get_show(spectacle_id)
 		if Spectacle.exists?(spectacle_id)
 			return Spectacle.find(spectacle_id).name

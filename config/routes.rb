@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   match 'home/send_mail', to: 'home#send_mail', via: 'post'
   get "home/contactus", to:"home#contactus"
+  get "canines/:id/endogamia", to:"canines#endogamia", as: "endogamia"
+  get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
   
   namespace :api, defaults: { format: :json } do

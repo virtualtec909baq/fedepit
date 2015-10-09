@@ -1,0 +1,16 @@
+<%= search_form_for @search, url: admin_canines_path do |f|%>	
+	<div class="col-md-2">
+		<label>Nombre O LOF</label>
+	</div>	
+	<div class="col-md-4">
+		<%= f.search_field(:name_or_lof_cont, class: 'form-control', placeholder: "buscar ejemplar")%>
+	</div>
+	<div class="col-md-3">
+		<%= f.submit :class =>"btn btn btn-success btn-block"%>
+	</div>
+	<div class="col-md-3">
+		<%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
+	</div>
+<%end%>
+<hr>
+
