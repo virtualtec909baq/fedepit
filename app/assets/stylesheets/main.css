@@ -6269,3 +6269,32 @@ legend {
 .fa.fa-star {
     color: #f1c40f;
 }
+.ranking {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.name {
+    color: white;
+    font-size: 3em;
+}
+.col-md-12.center {
+    text-align: center;
+}
+
+.cardheader {
+   	background-color: #1898AB;
+    background-size: cover;
+    height: 135px;
+    position: relative;
+    bottom: 45px;
+}
+
+.center_span {
+    color: white;
+    font-size: 2em;
+    text-align: center;
+}
+.label {
+	padding: 0.5em 0.6em 0.3em;
+}

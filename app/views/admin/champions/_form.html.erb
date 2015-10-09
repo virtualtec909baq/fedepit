@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-md-12">
           <%= f.label :canine_id %><br>
-          <%= f.collection_select :canine_id, Canine.all, :id, :name, {prompt: "Escoger Ejemplar"}, {class: "form-control"}%>
+          <%= f.collection_select :canine_id, Canine.all.order(name: :asc), :id, :name, {prompt: "Escoger Ejemplar"}, {class: "form-control"}%>
         </div>
         <div class="col-md-6">
           <%= f.label :category_race_variety_id %><br>

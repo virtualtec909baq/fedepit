@@ -28,18 +28,22 @@ class Admin::CaninesController < ApplicationController
   # GET /canines/1.json
  
   def show
-   @images = @canine.images
-   @array_ancestor = get_ancestor_with_hash(@canine).count
-   @canino_characteristics = CaninoCharacteristic.where(canine_id: params[:id]).order(created_at: :asc)
-   respond_to do |format|
-     format.html
-     format.pdf do
-        pdf = CaninePdf.new(@canine)
-        send_data pdf.render, filename: "generate_table.pdf",
-                              type: "application/pdf",
-                              disposition: "inline"
-     end
-   end
+    @images = @canine.images
+    @array_ancestor = get_ancestor_with_hash(@canine).count
+    @ranking = 0
+    @canine.champions.each do |category|
+      @ranking = @ranking + category.points
+    end
+    @canino_characteristics = CaninoCharacteristic.where(canine_id: params[:id]).order(created_at: :asc)
+      respond_to do |format|
+       format.html
+       format.pdf do
+          pdf = CaninePdf.new(@canine)
+          send_data pdf.render, filename: "generate_table.pdf",
+                                type: "application/pdf",
+                                disposition: "inline"
+      end
+    end
 end
   
   def pedigree
