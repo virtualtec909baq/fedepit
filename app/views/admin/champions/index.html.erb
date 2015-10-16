@@ -30,7 +30,7 @@
   <tbody>
      <% @champions.each do |champion| %>
     <tr >
-      <td class="center"><%= champion.canine.name %></td>
+      <td class="center"><%= link_to champion.canine.name, admin_canine_path(champion.canine.id) %></td>
       <td class="center"><%= get_race(champion.canine.race_id) %></td>
       <td class="center"><%= gender(champion.canine.gender)  %></td>
       <td class="center"><%= get_variety(champion.category_race_variety.variety_id)   %></td>
