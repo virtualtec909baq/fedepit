@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show]
   resources :tournaments, only: [:index, :show]
   resources :animations, only: [:index, :show]
+  resources :champions, only: [:index, :show]
 
   match 'home/send_mail', to: 'home#send_mail', via: 'post'
   get "home/contactus", to:"home#contactus"
@@ -42,6 +43,8 @@ Rails.application.routes.draw do
     resources :races do 
       resources :img_races
     end
+    resources :grades
+    resources :standards
     resources :sponsors
     resources :type_breeders
     resources :type_championships
@@ -52,15 +55,16 @@ Rails.application.routes.draw do
     resources :animations
     
     match 'breeders/send_mail_attachments', to: 'breeders#send_mail_attachments', via: 'post'
-    get "breeders/send_email", to:"breeders#send_email"
-    get "home/:id/mergecanines", to:"home#mergecanines", as: "mergecanines"
+    get "breeders/send_email" => 'breeders#send_email', :as => "send_email"
+    get "canines/:id/mergecanines", to:"canines#mergecanines", as: "merge"
     get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
     get "canines/:id/endogamia", to:"canines#endogamia", as: "endogamia"
-    get "home/realizarcruce", to:"home#realizarcruce", as: "realizarcruce"
     put "canino_characteristics/:id/update_metter", to: "canino_characteristics#update_metter", as: "update_metter"
     put "comments/:id/change_status", to: "comments#change_status", as: "change_status_comments"
     put "sponsors/:id/change_status", to: "sponsors#change_status", as: "change_status"
     post "home/enviar_cruce", to: "home#enviar_cruce", as: "enviar_cruce"
+    get "home/realizarcruce", to:"home#realizarcruce", as: "realizarcruce"
+    get "home/:id/mergecanines", to:"home#mergecanines", as: "mergecanines"
   end
 
 end

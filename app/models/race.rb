@@ -3,6 +3,7 @@ class Race < ActiveRecord::Base
 	tracked owner: ->(controller, model) { controller && controller.current_user }
 	has_many :canines, :dependent => :nullify
 	has_many :img_races, :dependent => :destroy
+	has_many :standards
 	accepts_nested_attributes_for :img_races, allow_destroy: true,:reject_if  => :all_blank
 	# default for will_paginate
   	self.per_page = 15

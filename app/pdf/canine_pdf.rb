@@ -7,8 +7,8 @@ class CaninePdf< Prawn::Document
 		
 		# array pedigree
 		@array_canine_level = []
-		
-		get_ancestors(@canine).each do |canine|
+		ancestor = get_ancestors(@canine, 0)
+		ancestor.each do |canine|
 			@array_canine_level << canine
 		end
 		
