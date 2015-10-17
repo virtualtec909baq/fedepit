@@ -306,6 +306,18 @@ end
           @canine_rgt_rgt_rgtname = canine_rgt_rgt_rgt.name
           @canine_rgt_rgt_rgtpic = pic_canine(canine_rgt_rgt_rgt)
           @canine_rgt_rgt_rgtid = canine_rgt_rgt_rgt.id
+          if canine_rgt_rgt_rgt.lft
+            canine_rgt_rgt_rgt_lft = Canine.find(canine_rgt_rgt_rgt.lft)
+            @canine_rgt_rgt_rgt_lftname = canine_rgt_rgt_rgt_lft.name
+          else
+            @canine_rgt_rgt_rgt_lftname = ""
+          end
+          if canine_rgt_rgt_rgt_rgt
+            canine_rgt_rgt_rgt_rgt = Canine.find(canine_rgt_rgt_rgt_rgt)
+            @canine_rgt_rgt_rgt_rgtname = canine_rgt_rgt_rgt_rgt.name
+          else
+            @canine_rgt_rgt_rgt_rgtname = ""
+          end
         else
           @canine_rgt_rgt_rgtname = ""
           @canine_rgt_rgt_rgtpic = ""
