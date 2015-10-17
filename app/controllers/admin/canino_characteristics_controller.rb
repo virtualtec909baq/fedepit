@@ -32,8 +32,7 @@ class Admin::CaninoCharacteristicsController < ApplicationController
   # POST /characteristics.json
   def create
     if params[:canine_id] == "0"
-      canine_characteristic = CaninoCharacteristic.all.order(temporal_id: :desc).first
-      temporal_id = canine_characteristic.temporal_id
+      temporal_id = CaninoCharacteristic.where.not(:temporal_id => nil).last.temporal_id
       temporal_id = temporal_id.to_i + 1
       params[:characteristics].each do |key , value|
         CaninoCharacteristic.create( characteristic_id: key, value: value, temporal_canine_name: params[:canine], temporal_id: temporal_id)
