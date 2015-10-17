@@ -6298,3 +6298,33 @@ legend {
 .label {
 	padding: 0.5em 0.6em 0.3em;
 }
+.male {
+        background-color: #DEDADA;
+        color: #000000;
+        font-family: Arial;
+        font-size: 8pt;
+        text-align: center;
+        vertical-align: middle;
+        border-collapse: collapse; 
+        border: 1px solid #000000;
+    }
+
+    .female {
+        background-color: #FFFFFF;
+        color: #000000;
+        font-family: Arial;
+        font-size: 8pt;
+        text-align: center;
+        vertical-align: middle;
+        border-collapse: collapse; 
+        border: 1px solid #000000;
+    }
+
+i.fa.fa-mars {
+    color: #337AB7;
+    font-size: 20px !important;
+}
+i.fa.fa-venus {
+    color: #DEC3DC;
+    font-size: 20px !important;
+}
