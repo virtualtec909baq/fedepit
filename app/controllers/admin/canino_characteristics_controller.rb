@@ -5,10 +5,13 @@ class Admin::CaninoCharacteristicsController < ApplicationController
 
   def index
     if params[:index]
-      @canines = Canine.find_by_sql "SELECT canines.id, canines.name, canines.lof FROM canines LEFT JOIN canino_characteristics ON canines.id = canino_characteristics.canine_id WHERE canino_characteristics.canine_id IS NULL ORDER BY name ASC"
+      @canines = Canine.find_by_sql "SELECT canines.id, canines.name FROM canines LEFT JOIN canino_characteristics ON canines.id = canino_characteristics.canine_id WHERE canino_characteristics.canine_id IS NULL ORDER BY name ASC"
       @canines = @canines.paginate(:page =>  params[:page], :per_page => 15)
     elsif params[:index_2]
-      @canines = Canine.find_by_sql "SELECT canines.id, canines.name, canines.lof FROM canines LEFT JOIN canino_characteristics ON canines.id = canino_characteristics.canine_id  WHERE canino_characteristics.canine_id IS NOT NULL GROUP BY canines.id ORDER BY canines.name ASC "
+      @canines = Canine.find_by_sql "SELECT canines.id, canines.name FROM canines LEFT JOIN canino_characteristics ON canines.id = canino_characteristics.canine_id  WHERE canino_characteristics.canine_id IS NOT NULL GROUP BY canines.id ORDER BY canines.name ASC "
+      @canines = @canines.paginate(:page =>  params[:page], :per_page => 15)
+    elsif params[:q]
+      @canines = Canine.find_by_sql "SELECT canines.id, canines.name FROM canines LEFT JOIN canino_characteristics ON canines.id = canino_characteristics.canine_id WHERE canino_characteristics.canine_id IS NULL AND canines.name ILIKE '%#{params[:q][:name_cont]}%' ORDER BY name ASC"
       @canines = @canines.paginate(:page =>  params[:page], :per_page => 15)
     end
   end
