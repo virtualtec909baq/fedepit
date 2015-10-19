@@ -38,7 +38,9 @@ class Admin::CaninoCharacteristicsController < ApplicationController
       temporal_id = CaninoCharacteristic.where.not(:temporal_id => nil).last.temporal_id
       temporal_id = temporal_id.to_i + 1
       params[:characteristics].each do |key , value|
-        CaninoCharacteristic.create( characteristic_id: key, value: value, temporal_canine_name: params[:canine], temporal_id: temporal_id)
+        unless value.empty?
+          CaninoCharacteristic.create( characteristic_id: key, value: value, temporal_canine_name: params[:canine], temporal_id: temporal_id)
+        end
       end
       respond_to do |format|
           flash[:notice] = 'Metter Creado Puede Crear uno nuevo'
@@ -46,7 +48,9 @@ class Admin::CaninoCharacteristicsController < ApplicationController
       end
     else
       params[:characteristics].each do |key , value|
-          CaninoCharacteristic.create(canine_id: params[:canine_id], characteristic_id: key, value: value)
+          unless value.empty?
+            CaninoCharacteristic.create(canine_id: params[:canine_id], characteristic_id: key, value: value)
+          end
       end
       respond_to do |format|
           flash[:notice] = 'Metter Creado'
