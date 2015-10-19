@@ -101,11 +101,15 @@ module ApplicationHelper
 		end
 	end
 
-	def get_characteristic_detail(id)
+	def get_characteristic_detail(id, characteristic_measure_id)
 		if CharacteristicDetail.exists?(id)
 			return CharacteristicDetail.find(id).description
 		else
-			return id
+			if Measure.exists?(characteristic_measure_id)
+				return "#{id} #{Measure.find(characteristic_measure_id).unit}"
+			else
+				return id
+			end
 		end
 	end
 
