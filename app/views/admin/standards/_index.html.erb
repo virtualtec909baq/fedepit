@@ -1,0 +1,29 @@
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th class="center">Nombre</th>
+      <th class="center">Razas</th>
+      <th class="center">Caracteristicas</th>
+      <th>Rango</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @standards.each do |standard| %>
+    <tr >
+      <td class="center"><%= standard.description %></td>
+      <td class="center"><%= get_race(standard.race_id)%></td>
+      <td class="center"><%= get_characteristics(standard.characteristic_id) %></td>
+      <td class="center"><%= standard.rg_lt%> a <%= standard.rg_gteq%> <%=standard.characteristic.measure.unit%>
+      </td>
+      <td class="center"><%= link_to edit_admin_standard_path(standard) do %>
+        <i class="fa fa-edit"></i>
+        <%end%>
+      </td>
+      <td class="center"><%= link_to admin_standard_path(standard), method: :delete, data: { confirm: 'Desea eliminar este Estandar de raza?' } do %>
+        <i class="fa fa-trash-o"></i>
+        <%end%>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

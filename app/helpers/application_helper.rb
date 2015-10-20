@@ -1,17 +1,5 @@
 module ApplicationHelper
 
-	def ihash(h)
-		h.each_pair do |k,v|
-			if v.is_a?(Hash)
-				puts "key: #{k} recursing..."
-				ihash(v)
-			else
-	      	# MODIFY HERE! Look for what you want to find in the hash here
-	      	puts "key: #{k} value: #{v}"
-	  		end
-		end
-	end
-
 	def get_show(spectacle_id)
 		if Spectacle.exists?(spectacle_id)
 			return Spectacle.find(spectacle_id).name
@@ -101,18 +89,24 @@ module ApplicationHelper
 		end
 	end
 
-	def get_characteristic_detail(id, characteristic_measure_id)
+	def get_characteristic_detail(id, canine_race_id, canine_characteristic_id, age)
 		if CharacteristicDetail.exists?(id)
 			return CharacteristicDetail.find(id).description
 		else
-			if Measure.exists?(characteristic_measure_id)
-				return "#{id} #{Measure.find(characteristic_measure_id).unit}"
-			else
-				return id
+			standards = Standard.where(:race_id =>  canine_race_id, :characteristic_id => canine_characteristic_id)
+			unless standards.empty? 
+				startd = standards.detect {|n| n.rg_lt <= id and n.rg_gteq >=id}
+				unless startd.nil?
+					return startd.description
+				else 	
+					return id
+				end 
+			else 
+			  	return id
 			end
 		end
 	end
-
+	
 	def children(id)
 		return @children = Canine.where("(lft = ? OR rgt = ?)", id, id)
 	end

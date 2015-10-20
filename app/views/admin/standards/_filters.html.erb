@@ -1,0 +1,32 @@
+<div class="col-md-12">
+	<div class="row">
+	<%= search_form_for @search, url: admin_standards_path do |f|%>		<div class="col-md-1">
+			<label>Estandar</label>
+		</div>
+		<div class="col-md-5">
+			<%= f.search_field(:description_cont, class: 'form-control')%>
+		</div>
+		<div class="col-md-1">
+			<label>Raza</label>
+		</div>
+		<div class="col-md-5">
+			<%= f.collection_select :race_id_eq, Race.all.order(name: :asc), :id, :name, {prompt: "Escoger Raza"}, {class: "form-control"}%>
+		</div>
+		<div class="col-md-4">
+			<br>
+			<%= f.submit :class =>"btn btn btn-success btn-block"%>
+		</div>
+		<div class="col-md-4">
+			<br>
+			<%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
+		</div>
+		<div class="col-md-4">
+			<br>
+			<button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#myModalColor">	Agregar
+			</button>
+		</div>
+	<%end%>
+	
+	</div>
+</div>	
+<%= render :partial => "form"%>

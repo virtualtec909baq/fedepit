@@ -17,6 +17,7 @@ class Admin::RacesController < ApplicationController
   # GET /races/1
   # GET /races/1.json
   def show
+    @standards = @race.standards
   end
 
   # GET /races/new

@@ -1,0 +1,49 @@
+<!-- Modal -->
+<div class="modal fade" id="myModalColor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Agregar Estandar de Raza</h4>
+      </div>
+      <div class="modal-body">
+      <%= form_for @standard , url: admin_standards_path(@standard), :remote => true , method: :post do |f| %>
+      <div id="erros"></div>
+      <div class="field">
+        <%= f.label :description %><br>
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :race_id %><br>
+        <%= f.collection_select :race_id, Race.all.order(name: :asc), :id, :name, {prompt: "Escoger Raza"}, {class: "form-control"}%>
+      </div>
+       <div class="field">
+        <%= f.label :characteristic_id %><br>
+        <%= f.collection_select :characteristic_id, Characteristic.where.not(measure_id: nil).order(name: :asc), :id, :name, {prompt: "Escoger Caracteristica"}, {class: "form-control"}%>
+      </div>
+      <div class="field">
+        <%= f.label :rg_lt %><br>
+        <%= f.number_field :rg_lt, class: 'form-control'%>
+      </div>
+      <div class="field">
+        <%= f.label :rg_gteq %><br>
+        <%= f.number_field :rg_gteq, class: 'form-control'%>
+      </div>
+      <div class="field">
+        <%= f.label :age_lt %><br>
+        <%= f.number_field :age_lt, class: 'form-control'%>
+      </div>
+      <div class="field">
+        <%= f.label :age_gteq %><br>
+        <%= f.number_field :age_gteq, class: 'form-control'%>
+      </div>
+      <div class="actions">
+          <%= f.submit :class =>"btn btn-primary btn-block" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+

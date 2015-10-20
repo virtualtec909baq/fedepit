@@ -91,6 +91,7 @@ es:
       clear: "Limpiar"
   activerecord:
     models:
+      standard: "ESTANDAR"
       img_race: "DESCRIPICION RAZA"
       position: "PUESTO"
       category_race_variety: "GESTION CAMPEONATO"
@@ -109,6 +110,14 @@ es:
       type_category: "CATEGORIA VIDEO"
       champion: "CAMPEONATO"
     attributes:
+      standard:
+        description: "Descripción"
+        race_id: "Raza"
+        characteristic_id: "Caracteristica"
+        rg_lt: "Rango Min"
+        rg_gteq: "Rango Max"
+        age_lt: "Edad Min (Meses)"
+        age_gteq: "Edad Max (Meses)"
       champion: 
         canine_id: "Canino"
         category_race_variety_id: "Categoria"
