@@ -1,6 +1,6 @@
 class Admin::CaninoCharacteristicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_feature, only: [:show, :edit, :update, :destroy, :update_metter]
+  before_action :set_feature, only: [:show, :edit, :update, :destroy, :update_metter, :approve]
 
 
   def index
@@ -13,12 +13,14 @@ class Admin::CaninoCharacteristicsController < ApplicationController
     elsif params[:q]
       @canines = Canine.find_by_sql "SELECT canines.id, canines.name FROM canines LEFT JOIN canino_characteristics ON canines.id = canino_characteristics.canine_id WHERE canino_characteristics.canine_id IS NULL AND canines.name ILIKE '%#{params[:q][:name_cont]}%' ORDER BY name ASC"
       @canines = @canines.paginate(:page =>  params[:page], :per_page => 15)
+    elsif params[:approve]
+      @canine_characteristics = CaninoCharacteristic.where.not(temporal_id: nil, status: true).select("DISTINCT ON (temporal_owner) *").order(temporal_owner: :asc).paginate(:page =>  params[:page], :per_page => 15)
     end
   end
 
   def new
     if params[:edit]
-      @canine_characteristic = CaninoCharacteristic.where.not(:temporal_id => nil).select("DISTINCT ON (temporal_id) *")
+      @canine_characteristic = CaninoCharacteristic.where.not(:temporal_id => nil, status: false).select("DISTINCT ON (temporal_id) *")
     end
     
     if params[:canine_id] == "0"
@@ -35,11 +37,16 @@ class Admin::CaninoCharacteristicsController < ApplicationController
   # POST /characteristics.json
   def create
     if params[:canine_id] == "0"
-      temporal_id = CaninoCharacteristic.where.not(:temporal_id => nil).last.temporal_id
+      temporal_id = CaninoCharacteristic.where.not(:temporal_id => nil)
+      if temporal_id.empty?
+        temporal_id = CaninoCharacteristic.last.id
+      else
+        temporal_id = temporal_id.last.temporal_id
+      end
       temporal_id = temporal_id.to_i + 1
       params[:characteristics].each do |key , value|
         unless value.empty?
-          CaninoCharacteristic.create( characteristic_id: key, value: value, temporal_canine_name: params[:canine], temporal_id: temporal_id)
+          CaninoCharacteristic.create( characteristic_id: key, value: value, temporal_canine_name: params[:canine], temporal_id: temporal_id, status: true)
         end
       end
       respond_to do |format|
@@ -71,6 +78,15 @@ class Admin::CaninoCharacteristicsController < ApplicationController
     respond_to do |format|
         flash[:notice] = 'Metter Asociado'
         format.js { js_redirect_to(admin_canine_path(params[:canine_id]))}
+    end
+  end
+
+  def approve
+    @canino_characteristics = CaninoCharacteristic.where(temporal_id: @canino_characteristic.temporal_id)
+    @canino_characteristics.update_all(:status => true)
+    respond_to do |format|
+      flash[:notice] = 'Metter Activado'
+      format.html { redirect_to admin_canino_characteristics_path(:approve => true) }
     end
   end
 

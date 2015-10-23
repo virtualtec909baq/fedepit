@@ -1,11 +1,29 @@
-<h2>Formulario Metter</h2>
 <%- if params[:edit]%>
 	<%= form_for :canino_characteristic, :html => {:id => 'canino_characteristic_form'} do |f| %>
-	<%= f.collection_select :value, @canine_characteristic, :id, :temporal_canine_name, {prompt: "Selecciona Canino"}, {class: "form-control find_selected"}%>
+	<%- if @canine_characteristic.empty?%>
+		<div class="error-template">
+			<h1>Oops!</h1>
+			<i class="fa fa-frown-o fa-6" style="font-size: 17em ! important;"></i>
+			<h2> Metter No encontrado !</h2>
+			<div class="error-details">
+				No Hemos encontrado que has creado ningun metter
+			</div>
+			<div class="error-actions">
+				<a href="/admin/canino_characteristics/new?canine_id=0" class="btn btn-primary"> Ir Crear Nuevo Metter</a>
+			</div>
+		</div>
+	<%else%>
+		<h2>Formulario Metter</h2>
+		<a href="#" data-toggle="tooltip" class= "pull-right" data-placement="bottom" title="Selecciona el metter que has creado anteriormente para el ejemplar que has escogido!"><i class="fa fa-question"></i></a>
+		<%= f.collection_select :value, @canine_characteristic, :id, :temporal_canine_name, {prompt: "Selecciona Canino"}, {class: "form-control find_selected"}%>
+		<br>
+		<button id="button_canino_characteristic" class="btn btn-primary btn-block">Adicionar Metter</button>
+	<%end%>
 	<% end %>
-	<button id="button_canino_characteristic">Adicionar Metter</button>  
+	<br>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			$('[data-toggle="tooltip"]').tooltip();   
 			var characteristic_id;
 			var canine_id = <%= params[:canine_id]%>;
 			$("#button_canino_characteristic").click(function(){

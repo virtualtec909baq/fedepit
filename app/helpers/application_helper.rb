@@ -107,6 +107,17 @@ module ApplicationHelper
 		end
 	end
 	
+	def get_ancestor_id(canine)
+		@tree_id ||= []
+		if !canine.nil?
+			@tree_id << get_id(canine)
+			puts @tree_id.inspect
+			get_ancestor_id(get_left(canine))
+			get_ancestor_id(get_rgt(canine))
+		end
+		return @tree_id
+	end
+
 	def children(id)
 		return @children = Canine.where("(lft = ? OR rgt = ?)", id, id)
 	end
@@ -160,6 +171,22 @@ module ApplicationHelper
 			@tree << get_id(canine)
 			get_ancestors(get_left(canine))
 			get_ancestors(get_rgt(canine))
+		end
+		return @tree
+	end
+
+	def get_ancestor_level(canine, level)
+		@tree ||= []
+		if !canine.nil? and level <= 5
+			if canine.gender == 1
+				array = ["#{level}/#{nivel_consa(level)}/#{level}-", get_canine(canine)]
+			else
+      			array = ["#{level}/#{nivel_consa(level)}/-#{level}", get_canine(canine)]
+      		end
+      		canine_hash = Hash[*array]
+			@tree <<  canine_hash 
+			get_ancestors(get_left(canine), level+1)
+			get_ancestors(get_rgt(canine), level+1)
 		end
 		return @tree
 	end

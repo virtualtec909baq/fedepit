@@ -1,0 +1,7 @@
+<%if params[:first]%>
+	$('#table_canine').show();
+	$("#table_canine").html("<%= escape_javascript(render :partial => '/admin/canines/mergecanines', :locals => { :id => params[:id] }) %>");
+<%else%>
+	('#table_canine').show();
+	$('#table_canine').html('<%= escape_javascript(render("/admin/canines/mergecanines")) %>');
+<%end%>

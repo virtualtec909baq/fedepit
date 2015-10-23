@@ -1,0 +1,104 @@
+<div class="breadcrumb-color breadcrumb-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="<%= root_path%>">INICIO</a>
+                    </li>
+                    <li class="active">FEDEPIT REGISTRACION</li>
+                </ol>
+            </div>
+        </div>
+      </div>
+</div>
+<div class="container">
+<%= form_for :canino_characteristic, :html => {:id => 'canino_characteristic_form', :name => "myForm"} do |f| %>
+	<div class="row">
+		<div class="col-md-12"><h2>DATOS PERSONALES</h2></div>
+		<div class="col-md-4">
+			<%= f.label :temporal_owner, "Nombre Propietario"%>
+			<%= f.text_field :temporal_owner, :class => "form-control required"%>
+		</div>
+		<div class="col-md-4">
+			<%= f.label :temporal_phone, "Telefono Propietario"%>
+			<%= f.text_field :temporal_phone, :class => "form-control required"%>
+		</div>
+		<div class="col-md-4">
+			<%= f.label :temporal_email, "Email Propietario"%>
+			<%= f.text_field :temporal_email, :class => "form-control required"%>
+		</div>
+		<div class="col-md-12"><h2>DATOS DEL EJEMPLAR</h2></div>
+		<div class="col-md-4">
+			<%= f.label :temporal_canine_name, "Nombre Canino"%>
+			<%= f.text_field :temporal_canine_name, :class => "form-control required"%>
+			<%= f.label :temporal_birth, "Fecha de Nacimiento Canino"%>
+			<%= f.text_field :temporal_birth, :class => "form-control required"%>
+		</div>
+		<div class="col-md-4">
+			<%= f.label :temporal_race, "Raza Canino(Variedad)"%>
+			<%= f.text_field :temporal_race, :class => "form-control required"%>
+			<%= f.label :temporal_sex, "Sexo Canino"%>
+			<%= f.select :temporal_sex, [["Masculino", "Masculino"],["Femenino", "Femenino"]], {prompt: "Escoger Sexo"}, {class: "form-control required"}%>
+		</div>
+		<div class="col-md-4">
+			<%= f.label :temporal_lof, "LOF Canino"%>
+			<%= f.text_field :temporal_lof, :class => "form-control required"%>
+			<%= f.label :temporal_color, "Color Canino"%>
+			<%= f.text_field :temporal_color, :class => "form-control required"%>
+		</div>
+		<div class="col-md-12"><h2>CARACTERISTICAS DEL EJEMPLAR</h2></div>
+		<%- @characteristics.each do |characteristic|%>
+			<div class="col-md-4">
+				<span class="bold"> <%= characteristic.name%> </span>
+				<%= f.hidden_field :characteristic_id, :value => characteristic.id %>
+				<%- if characteristic.measure_id.blank? %>
+					<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
+				<%else%>
+					<%= f.text_field :value, :class => "form-control text_fieldn find_selected"%>
+				<%end%>
+			</div>
+		<%end%>
+		<br>
+	</div>
+<% end %>
+<br>
+<button id="button_canino_characteristic" class="btn btn-primary btn-block">Crea Metter</button>  	
+<script type="text/javascript">
+	$(document).ready(function() {
+			var characteristics = {};
+			$("#button_canino_characteristic").click(function(){
+				var canine;
+				var canine_id;
+				var  temporal_owner = $('#canino_characteristic_temporal_owner').val();
+				var  temporal_phone = $('#canino_characteristic_temporal_phone').val();
+				var temporal_email = $('#canino_characteristic_temporal_email').val();
+				var  temporal_canine_name = $('#canino_characteristic_temporal_canine_name').val();
+				var  temporal_birth = $('#canino_characteristic_temporal_birth').val();
+				var temporal_race = $('#canino_characteristic_temporal_race').val();
+				var temporal_sex = $('#canino_characteristic_temporal_sex').val();
+				var temporal_lof = $('#canino_characteristic_temporal_lof').val();
+				var temporal_color = $('#canino_characteristic_temporal_color').val();
+				
+				if ($('#canino_characteristic_value').val()) {
+					canine = $('#canino_characteristic_value').val();
+					canine_id ="0";
+				};
+				if (temporal_owner == null || temporal_owner == "") {
+					alert("Por Favor ingrese el nombre del Propietario");
+				} else{	
+					$('#canino_characteristic_form').find('.find_selected').each(function(){
+						if($("option:selected", this).attr("value") != "" ){
+							characteristics[$(this).prev().val()] = $(this).val();
+						}
+					})
+					$.ajax({
+						type: "POST",
+						url: "/home/create_metter",
+						data: {  characteristics, canine, canine_id, temporal_owner, temporal_phone, temporal_email, temporal_canine_name,temporal_birth, temporal_race, temporal_sex, temporal_lof, temporal_color   },
+					})
+				};	
+			});
+		});
+</script>
+</div>

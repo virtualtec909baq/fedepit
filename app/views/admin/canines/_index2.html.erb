@@ -1,0 +1,27 @@
+<h2>FILTROS</h2>
+<%= form_for :canino_characteristics , :url => admin_canines_path(:index3 => true) do |f| %>
+  <div class="row">
+    <%- @characteristics.each do |characteristic|%>
+      <div class="col-md-4">
+        <%= f.hidden_field :characteristic_id, :value => characteristic.id %>
+        <%- if characteristic.measure_id.blank? %>
+          <span class="bold"> <%= characteristic.name%> </span>
+          <%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
+        <%else%>
+          <span class="bold"> <%= characteristic.name%> </span>
+          <%= f.collection_select :value,  Standard.where(characteristic_id: characteristic.id), :id, :description, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
+        <%end%>
+      </div>
+    <%end%>
+    <div class="col-md-12">
+      <br>
+      <%= f.submit :class =>"btn btn-primary btn-block" %>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+  <h2>Cainos encontrados</h2>
+  <div class="jumbotron" style="padding: 10px;">
+    <h4>No. Caninos encontrados <%= @canines.count%></h4>
+  </div>
+  <table class="table table-striped table-hover table-bordered" id="caninestable">
+    <thead>
+      <tr>
+        <th class="center"><%= sort_link @search, :name, "Nombre"%></th>
+        <th class="center">No. Hijos </th>
+        <th class="center">Cruzar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @canines.each do |canine| %>
+        <tr >
+          <td class="center"><%= link_to canine.name, canine_path(canine), target: '_blank'%></td>
+          <td class="center"><%= link_to_if(has_children(canine.id), " Tiene #{count_children(canine)} hijos,  Ver caracteristicas ",  root_path , target: '_blank') %></td>
+          <td class="center"><%= link_to "Realizar Cruce", admin_mergecanines_path(canine.id)%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @canines, :locals => { :canines => @canines }, renderer: BootstrapPagination::Rails%>

@@ -76,7 +76,7 @@ class Admin::BreedersController < ApplicationController
   def send_mail_attachments
     @name = params[:name]
     @email = params[:email]
-    NotificationMailer.send_email(@name, @email).deliver
+    NotificationMailer.send_email(@name, @email).deliver_now
     redirect_to admin_breeders_send_email_path, notice: 'Formulario enviado'
   end
 

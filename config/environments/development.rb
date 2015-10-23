@@ -32,14 +32,14 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.action_mailer.perform_deliveries = true
   config.assets.raise_runtime_errors = true
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'http://166.62.89.40/' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                  587,
       domain:               'gmail.com',
-      user_name:            "desarrollo@solutek.com.co",
-      password:             "solutek12345",
+      user_name:            "fedepit2015@gmail.com",
+      password:             "Y4S0m0sR1c0s_!",
       authentication:       'plain',
       openssl_verify_mode:  'none',
   }

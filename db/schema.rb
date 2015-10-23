@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921163335) do
+ActiveRecord::Schema.define(version: 20151020222346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,9 +33,11 @@ ActiveRecord::Schema.define(version: 20150921163335) do
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
 
-  create_table "ancestries", force: :cascade do |t|
-    t.integer  "canine_id"
-    t.string   "array_generation"
+  create_table "animations", force: :cascade do |t|
+    t.text     "description"
+    t.string   "title"
+    t.string   "url"
+    t.integer  "type_category_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -87,41 +89,67 @@ ActiveRecord::Schema.define(version: 20150921163335) do
     t.float    "rate"
     t.date     "birth"
     t.date     "death"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "lft"
     t.integer  "rgt"
     t.string   "parent_id"
     t.string   "kind"
     t.string   "color"
+    t.string   "propietary"
+    t.string   "new_register"
+    t.integer  "characteristics_id"
   end
+
+  add_index "canines", ["characteristics_id"], name: "index_canines_on_characteristics_id", using: :btree
 
   create_table "canino_characteristics", force: :cascade do |t|
     t.integer  "characteristic_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.string   "value"
     t.integer  "canine_id"
     t.integer  "temporal_id",          limit: 8
     t.string   "temporal_canine_name"
+    t.integer  "value"
+    t.boolean  "status"
+    t.string   "temporal_race"
+    t.string   "temporal_variety"
+    t.string   "temporal_lof"
+    t.string   "temporal_birth"
+    t.string   "temporal_color"
+    t.string   "temporal_sex"
+    t.string   "temporal_owner"
+    t.string   "temporal_phone"
+    t.string   "temporal_email"
   end
 
-  create_table "category_championships", force: :cascade do |t|
-    t.integer  "race_id"
-    t.integer  "age_min"
-    t.integer  "age_max"
-    t.string   "period"
-    t.integer  "variety_id"
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "category_scores", force: :cascade do |t|
-    t.integer  "category_championship_id"
-    t.integer  "score"
-    t.boolean  "status"
+  create_table "category_race_varieties", force: :cascade do |t|
+    t.integer  "race_id"
+    t.integer  "variety_id"
+    t.integer  "category_id"
+    t.integer  "tournament_id"
+    t.boolean  "punctuation"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "name"
+  end
+
+  create_table "champions", force: :cascade do |t|
+    t.integer  "canine_id"
+    t.integer  "category_race_variety_id"
+    t.integer  "spectacle_id"
+    t.date     "date"
+    t.float    "points"
+    t.string   "position"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "winner"
   end
 
   create_table "characteristic_details", force: :cascade do |t|
@@ -135,6 +163,7 @@ ActiveRecord::Schema.define(version: 20150921163335) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "order"
   end
 
   create_table "colors", force: :cascade do |t|
@@ -154,11 +183,21 @@ ActiveRecord::Schema.define(version: 20150921163335) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "entities", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.integer  "type_event_id"
@@ -169,12 +208,6 @@ ActiveRecord::Schema.define(version: 20150921163335) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "img"
-  end
-
-  create_table "genders", force: :cascade do |t|
-    t.string   "taxonomic"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade do |t|
@@ -206,6 +239,12 @@ ActiveRecord::Schema.define(version: 20150921163335) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "positions", force: :cascade do |t|
+    t.string   "place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "publicities", force: :cascade do |t|
     t.string   "image"
     t.string   "name"
@@ -222,27 +261,11 @@ ActiveRecord::Schema.define(version: 20150921163335) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "ranks", force: :cascade do |t|
-    t.string   "description"
-    t.float    "ri"
-    t.float    "rs"
+  create_table "spectacles", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "scores", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "shows", force: :cascade do |t|
-    t.integer  "entity_id"
-    t.string   "place"
-    t.string   "name"
-    t.date     "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "sponsors", force: :cascade do |t|
@@ -264,10 +287,21 @@ ActiveRecord::Schema.define(version: 20150921163335) do
   create_table "standards", force: :cascade do |t|
     t.integer  "race_id"
     t.integer  "characteristic_id"
-    t.integer  "gender_id"
     t.integer  "standar_type_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.float    "rg_lt"
+    t.float    "rg_gteq"
+    t.integer  "age_lt"
+    t.integer  "age_gteq"
+    t.string   "description"
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "type_breeders", force: :cascade do |t|
@@ -311,16 +345,6 @@ ActiveRecord::Schema.define(version: 20150921163335) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "videos", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "number_seen"
-    t.string   "url"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.text     "description"
-    t.integer  "type_category_id"
   end
 
 end
