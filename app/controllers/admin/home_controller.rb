@@ -11,8 +11,9 @@ class Admin::HomeController < ApplicationController
     name = params[:name]
     email = params[:email]
     NotificationMailer.send_email(name, email).deliver_now
-    redirect_to admin_send_mail_path, notice: 'Envio del Metter'
+    redirect_to admin_send_email_path, notice: 'Envio del Metter'
   end
+
   
   def realizarcruce
      @search = Canine.ransack(params[:q])
