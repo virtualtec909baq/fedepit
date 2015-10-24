@@ -125,7 +125,7 @@ class Admin::CaninesController < ApplicationController
   # DELETE /canines/1.json
 
   def destroy
-    canine_nullify(@canine.id)
+    canine_nullify(@canine)
     @canine.destroy
     respond_to do |format|
       flash[:notice] = 'Ejemplar eliminado'
@@ -432,17 +432,19 @@ class Admin::CaninesController < ApplicationController
     @canine = Canine.find(params[:id])
   end
 
-  def canine_nullify(id)
-    @children_lft = Canine.where("(lft = ?)", id)
-    @children_lft.each do |child|
-      child.update(lft: nil)
-    end
-    @children_lft = Canine.where("(rgt = ?)", id)
-    @children_lft.each do |child|
-      child.update(rgt: nil)
+  def canine_nullify(canine)
+    if canine.gender.zero?
+      @children_rgt = Canine.where(:rgt => canine.id)
+      if !@children_rgt.empty?
+        @children_rgt.update_all(rgt: nil, mother_lof: nil) 
+      end
+    else
+      @children_lft = Canine.where(:lft => canine.id)
+      if !@children_lft.empty?
+        @children_lft.update_all(lft: nil, father_lof: nil)
+      end
     end
   end
-
   
   def init
     o = [('a'..'z'), ('1'..'9'), ('A'..'Z')].map { |i| i.to_a }.flatten

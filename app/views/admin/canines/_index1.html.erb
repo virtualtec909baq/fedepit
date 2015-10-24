@@ -63,13 +63,13 @@
       <td class="center"><%= gender(canine.gender) %></td>
       <%- if Canine.exists?( id: canine.lft)%>
         <%lft = Canine.find(canine.lft)%>
-        <td class="center"><%= link_to canine.father_lof, admin_canine_path(lft) %></td>
+        <td class="center"><%= link_to lft.name, admin_canine_path(lft) %></td>
       <%else%>
         <td class="center"></td>
       <%end%>
        <%- if Canine.exists?( id: canine.rgt)%>
         <%rgt = Canine.find(canine.rgt)%>
-        <td class="center"><%= link_to canine.mother_lof, admin_canine_path(rgt) %></td>
+        <td class="center"><%= link_to rgt.name, admin_canine_path(rgt) %></td>
       <%else%>
         <td class="center"></td>
       <%end%>
