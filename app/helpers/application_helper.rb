@@ -139,14 +139,14 @@ module ApplicationHelper
 
 	
 	def get_left(canine)
-		if canine.lft
+		if Canine.exists?(canine.lft)
 			canine_lft = Canine.find(canine.lft)
 			return canine_lft
 		end
 	end
 	
 	def get_rgt(canine)
-		if canine.rgt
+		if Canine.exists?(canine.rgt)
 			canine_rgt = Canine.find(canine.rgt)
 			return canine_rgt
 		end
@@ -203,7 +203,7 @@ module ApplicationHelper
 	end
 
 	def get_left_hash(canine)
-		if canine.lft
+		if Canine.exists?(canine.lft)
 			canine_lft = Canine.find(canine.lft)
 			array = []
 			array <<  "#{canine.name}-#{canine.id}"
@@ -214,7 +214,7 @@ module ApplicationHelper
 	end
 	
 	def get_rgt_hash(canine)
-		if canine.rgt
+		if Canine.exists?(canine.rgt)
 			canine_rgt = Canine.find(canine.rgt)
 			array = []
 			array <<  "#{canine.name}-#{canine.id}"
