@@ -401,7 +401,7 @@ class Admin::CaninesController < ApplicationController
     else
     @canine_rgt_rgt_rgt_lftname = ""
     end
-    if Canine.exists?(canine_rgt_rgt_rgt_rgt)
+    if Canine.exists?(canine_rgt_rgt_rgt.rgt)
     canine_rgt_rgt_rgt_rgt = Canine.find(canine_rgt_rgt_rgt_rgt)
     @canine_rgt_rgt_rgt_rgtname = canine_rgt_rgt_rgt_rgt.name
     else
