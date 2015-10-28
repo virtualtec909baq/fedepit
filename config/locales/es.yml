@@ -109,6 +109,7 @@ es:
       type_breeder: "TIPO DE CRIADOR"
       type_category: "CATEGORIA VIDEO"
       champion: "CAMPEONATO"
+      color: "COLOR"
     attributes:
       standard:
         description: "Descripción"
