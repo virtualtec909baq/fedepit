@@ -128,7 +128,7 @@
     <div class="col-md-3">
      <br>
       <%= f.label :color %><br>
-      <%= f.collection_select :color, Color.all, :name, :name, {prompt: "Escoger Color"}, {class: "form-control"}%>
+      <%= f.collection_select :color, Color.order(:name :asc).all, :name, :name, {prompt: "Escoger Color"}, {class: "form-control"}%>
     </div> 
     <div class="col-md-3">
       <br>
