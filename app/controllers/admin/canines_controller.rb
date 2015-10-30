@@ -246,26 +246,28 @@ class Admin::CaninesController < ApplicationController
       @canine_lft_rgt_rgtname = canine_lft_rgt_rgt.name
       @canine_lft_rgt_rgtpic = pic_canine(canine_lft_rgt_rgt)
       @canine_lft_rgt_rgtid = canine_lft_rgt_rgt.id
-    if Canine.exists?(canine_lft_rgt_rgt.lft)
-      canine_lft_rgt_rgt_lft = Canine.find(canine_lft_rgt_rgt.lft)
-      @canine_lft_rgt_rgt_lftname = canine_lft_rgt_rgt_lft.name
-      @canine_lft_rgt_rgt_lftid = canine_lft_rgt_rgt_lft.id
-    else
-      @canine_lft_rgt_rgt_lftname = ""
-      @canine_lft_rgt_rgt_lftid = ""
-    end
-    if Canine.exists?(canine_lft_rgt_rgt.rgt)
-      canine_lft_rgt_rgt_rgt = Canine.find(canine_lft_rgt_rgt.rgt)
-      @canine_lft_rgt_rgt_rgtname = canine_lft_rgt_rgt_rgt.name
-      @canine_lft_rgt_rgt_rgtid = canine_lft_rgt_rgt_rgt.id
-    else
-      @canine_lft_rgt_rgt_rgtname = ""
-      @canine_lft_rgt_rgt_rgtid = ""
-    end
+      
+      if Canine.exists?(canine_lft_rgt_rgt.lft)
+        canine_lft_rgt_rgt_lft = Canine.find(canine_lft_rgt_rgt.lft)
+        @canine_lft_rgt_rgt_lftname = canine_lft_rgt_rgt_lft.name
+        @canine_lft_rgt_rgt_lftid = canine_lft_rgt_rgt_lft.id
+      else
+        @canine_lft_rgt_rgt_lftname = ""
+        @canine_lft_rgt_rgt_lftid = ""
+      end
+      
+      if Canine.exists?(canine_lft_rgt_rgt.rgt)
+        canine_lft_rgt_rgt_rgt = Canine.find(canine_lft_rgt_rgt.rgt)
+        @canine_lft_rgt_rgt_rgtname = canine_lft_rgt_rgt_rgt.name
+        @canine_lft_rgt_rgt_rgtid = canine_lft_rgt_rgt_rgt.id
+      else
+        @canine_lft_rgt_rgt_rgtname = ""
+        @canine_lft_rgt_rgt_rgtid = ""
+      end
     else
       @canine_lft_rgt_rgtname = ""
       @canine_lft_rgt_rgtpic =  ""
-      @canine_lft_rgt_rgtid = ""
+      @canine_lft_rgt_rgtid = 0
     end
 
     else
@@ -286,7 +288,7 @@ class Admin::CaninesController < ApplicationController
       canine_rgt = Canine.find(@canine.rgt)
       @canine_rgtname = canine_rgt.name
       @canine_rgtpic = pic_canine(canine_rgt)
-      @canine_rgtid = canine_rgt.id
+      @canine_rgtid = 0
 
     if Canine.exists?(canine_rgt.lft)
       canine_rgt_lft = Canine.find(canine_rgt.lft)

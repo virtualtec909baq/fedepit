@@ -110,6 +110,8 @@ es:
       type_category: "CATEGORIA VIDEO"
       champion: "CAMPEONATO"
       color: "COLOR"
+      sponsor: "PATROCINADOR"
+      publicity: "PUBLICIDAD"
     attributes:
       standard:
         description: "Descripción"

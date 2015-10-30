@@ -30,6 +30,7 @@ class Admin::SponsorsController < ApplicationController
       if @sponsor.save
         format.html { redirect_to admin_sponsors_path, notice: 'El patrocinador fue creado' }
         format.json { render :show, status: :created, location: @sponsor }
+        format.js{}
       else
         format.html { render :new }
         format.js
@@ -53,7 +54,6 @@ class Admin::SponsorsController < ApplicationController
   end
 
   def change_status 
-    puts  @sponsor.status
     val = @sponsor.status == true ? false : true
     puts val
     @sponsor.update_attribute(:status, val)
