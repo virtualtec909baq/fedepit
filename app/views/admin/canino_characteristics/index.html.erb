@@ -1,10 +1,15 @@
 <%unless params[:approve]%>
   <div class="row">
     <div class="col-lg-12">
-      <div class="page-header">
-        <h1>Adicionar Metter A Ejemplares</h1>
-      </div>
-      
+      <%unless params[:index_2]%>
+        <div class="page-header">
+            <h1>Adicionar Metter A Ejemplares</h1>
+        </div>
+      <%else%>
+        <div class="page-header">
+            <h1>Ejemplares Con Metter</h1>
+        </div>
+      <%end%>
     </div>
     <div class="col-lg-12">
       <%= render :partial => "/admin/canino_characteristics/filter"%>

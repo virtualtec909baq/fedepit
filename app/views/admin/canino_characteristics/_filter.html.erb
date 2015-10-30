@@ -1,6 +1,11 @@
 <div class="box-purchase">
 	<div class="row">
-		<form method="get" accept-charset="UTF-8" action="/admin/canino_characteristics" id="canine_search" class="canine_search"><input type="hidden" value="✓" name="utf8">	
+		<%-if params[:index_2] %>
+			<form method="get" accept-charset="UTF-8" action="/admin/canino_characteristics" id="canine_search" class="canine_search"><input type="hidden" value="✓" name="utf8">	
+			<%= hidden_field_tag :index_2 %>
+		<%else%>
+			<form method="get" accept-charset="UTF-8" action="/admin/canino_characteristics" id="canine_search" class="canine_search"><input type="hidden" value="✓" name="utf8">
+		<%end%>
 			<div class="col-md-2">
 				<label>Nombre</label>
 			</div>	
@@ -10,9 +15,15 @@
 			<div class="col-md-3">
 				<input type="submit" class="btn btn btn-success btn-block" value="Buscar" name="commit">
 			</div>
-			<div class="col-md-3">
-				<a href="/admin/canino_characteristics?index=true" class="btn btn-danger btn_white btn-block">Borrar Filtro</a>
-			</div>
+			<%-if params[:index_2] %>
+				<div class="col-md-3">
+					<a href="/admin/canino_characteristics?index_2=true" class="btn btn-danger btn_white btn-block">Borrar Filtro</a>
+				</div>
+			<%else%>
+				<div class="col-md-3">
+					<a href="/admin/canino_characteristics?index=true" class="btn btn-danger btn_white btn-block">Borrar Filtro</a>
+				</div>
+			<%end%>
 		</form>
 	</div>
 </div
