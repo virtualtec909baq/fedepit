@@ -3,7 +3,7 @@ class Admin::CaninesController < ApplicationController
   autocomplete :canine, :name, :extra_data => [:id], :full => true
   autocomplete :canine, :lof, :full => true
   before_action :authenticate_user!
-  before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree, :endogamia]
+  before_action :set_canine, only: [:show, :edit, :update, :destroy, :pedigree, :endogamia, :childrens, :mergecanines]
   before_action :init, only: [:create]
   before_action :ancestors, only: [:create, :update]
 
@@ -54,13 +54,20 @@ class Admin::CaninesController < ApplicationController
   def mergecanines
     @search = Canine.ransack(params[:q])
     @canines = @search.result(distinct: true)
-    @array_canine_temp = get_ancestor_id(@canine)
     @root_canines = []
-    get_ancestors_levels(@canine, 0).each do |key|
+    @ancestors_id = get_ancestors(@canine)
+    get_ancestor_level(@canine, 0).each do |key|
       key.each do |key, val|
         array_key = key.split("/")
-        canine_array = [cor(get_ancestor_id(val)),  val.name, count_of_element(@array_canine_temp, val.id), array_key[0], number_to_percentage(array_key[1]) , array_key[2]]
-         @root_canine = canine_array
+        cor(get_ancestor_id(val))
+        @count_2 ||= 0
+        @graph.searchPath(val.id.to_s,val.rgt.to_s, []) { |path|
+            if path.size != 2
+              @count_2 +=(1/2.to_f) ** (path.size - 1)
+            end
+        }
+        canine_array = [@count_2,  val.name, array_key[0], number_to_percentage(array_key[1]) , array_key[2], array_key[3], count_of_element(@ancestors_id, val.id), val.id]
+        @root_canine = canine_array
       end
       @root_canines << @root_canine
     end
@@ -133,6 +140,10 @@ class Admin::CaninesController < ApplicationController
       format.html { redirect_to admin_canines_path}
       format.json { head :no_content }
     end
+  end
+  
+  def childrens
+     
   end
 
    def pedigree
@@ -404,7 +415,7 @@ class Admin::CaninesController < ApplicationController
     @canine_rgt_rgt_rgt_lftname = ""
     end
     if Canine.exists?(canine_rgt_rgt_rgt.rgt)
-    canine_rgt_rgt_rgt_rgt = Canine.find(canine_rgt_rgt_rgt_rgt)
+    canine_rgt_rgt_rgt_rgt = Canine.find(canine_rgt_rgt_rgt.rgt)
     @canine_rgt_rgt_rgt_rgtname = canine_rgt_rgt_rgt_rgt.name
     else
     @canine_rgt_rgt_rgt_rgtname = ""
