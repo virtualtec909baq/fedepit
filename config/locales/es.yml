@@ -94,7 +94,7 @@ es:
       standard: "ESTANDAR"
       img_race: "DESCRIPICION RAZA"
       position: "PUESTO"
-      category_race_variety: "GESTION CAMPEONATO"
+      category_race_variety: "GESTIÓN CAMPEONATO"
       spectacle: "SHOW"
       tournament: "CAMPEONATO"
       animation: "VIDEO"
@@ -105,7 +105,7 @@ es:
       canine: "EJEMPLAR"
       comment: "COMENTARIO"
       event: "EVENTO"
-      paragraph: "PARRAFO"
+      paragraph: "PÁRRAFO"
       type_breeder: "TIPO DE CRIADOR"
       type_category: "CATEGORIA VIDEO"
       champion: "CAMPEONATO"
@@ -117,14 +117,14 @@ es:
       standard:
         description: "Descripción"
         race_id: "Raza"
-        characteristic_id: "Caracteristica"
+        characteristic_id: "Característica"
         rg_lt: "Rango Min"
         rg_gteq: "Rango Max"
         age_lt: "Edad Min (Meses)"
         age_gteq: "Edad Max (Meses)"
       champion: 
         canine_id: "Canino"
-        category_race_variety_id: "Categoria"
+        category_race_variety_id: "Categoría"
         spectacle_id: "Show"
         date: "Fecha"
         points: "Puntos Ganados"
@@ -135,7 +135,7 @@ es:
       category_race_variety:
         race_id: "Raza"
         variety_id: "Variedad"
-        category_id: "Categoria"
+        category_id: "Categoría"
         tournament_id: "Campeonato"
       tournament:
         name: "Nombre"
@@ -186,4 +186,4 @@ es:
       animation:
         title: "Nombre"
         description: "Descripción"
-        type_category_id: "Tipo de Categoria"
+        type_category_id: "Tipo de Categoría"

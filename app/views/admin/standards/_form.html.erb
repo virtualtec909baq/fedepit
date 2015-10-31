@@ -19,7 +19,7 @@
       </div>
        <div class="field">
         <%= f.label :characteristic_id %><br>
-        <%= f.collection_select :characteristic_id, Characteristic.where.not(measure_id: nil).order(name: :asc), :id, :name, {prompt: "Escoger Caracteristica"}, {class: "form-control"}%>
+        <%= f.collection_select :characteristic_id, Characteristic.where.not(measure_id: nil).order(name: :asc), :id, :name, {prompt: "Escoger Característica"}, {class: "form-control"}%>
       </div>
       <div class="field">
         <%= f.label :rg_lt %><br>
