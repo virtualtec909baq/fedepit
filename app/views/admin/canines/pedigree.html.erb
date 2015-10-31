@@ -1,179 +1,244 @@
- <style type="text/css">
- 	img[src=""] {
-   		display: none;
-	}
+<div class="container">
+     <style type="text/css">
+    img[src=""] {
+        display: none;
+    }
  </style>
  <table border="0" cellpadding="0" width='100%'style="margin-top: 10px;">
  <tr><td>
  <table style="border: 1px solid #000000; border-collapse: collapse;" border="1" cellpadding="0" cellspacing="0" width="100%">
  <tr>
 <td rowspan='16' width='20%' class='male'>
-	<%if @canine.gender = 1%>
-		<i class="fa fa-mars"></i>
-	<%else%>
-		<i class="fa fa-venus"></i>
-	<%end%>
-	<br><img src="<%= pic_canine(@canine)%>" style="width: 150px;"><br>
-	<%= @canine.name%>
+    <%if @canine.gender == 1%>
+        <i class="fa fa-mars"></i>
+    <%else%>
+        <i class="fa fa-venus"></i>
+    <%end%>
+    <br>
+    <img src="<%= pic_canine(@canine)%>" style="width: 150px;"><br>
+    <a href="<%= admin_canine_path(@canine.id)%>"><%= @canine.name%></a>
 </td>
 
 <td rowspan='8' width='20%' class='male'>
-	<i class="fa fa-mars"></i><br>
-	<img src="<%= @canine_lftpic%>" style="width: 90px;"><br>
-	<%= @canine_lftname%>
+    <i class="fa fa-mars"></i><br>
+    <%unless @canine_lftid.blank?%>
+        <img src="<%= @canine_lftpic%>" style="width: 90px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_lftid), @canine_lftname,  admin_canine_path(@canine_lftid)) %>
+    <%end%>
 </td>
 <td rowspan='4' width='20%' class='male'> 
-	<i class="fa fa-mars"></i>
-	<img src="<%= @canine_lft_lftpic%>" style="width: 60px;"><br>
-	<%= @canine_lft_lftname%>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_lft_lftid.blank?%>
+        <img src="<%= @canine_lft_lftpic%>" style="width: 60px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_lft_lftid), @canine_lft_lftname,  admin_canine_path(@canine_lft_lftid)) %>
+    <%end%>
 </td>
 <td rowspan='2' width='20%' class='male'>
-	<br>
-	<i class="fa fa-mars"></i>
-	<img src="<%= @canine_lft_lft_lftpic%>" style="width: 50px;"><br>
-	<%= @canine_lft_lft_lftname%>
+    <br>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_lft_lft_lftid.blank?%>
+        <img src="<%= @canine_lft_lft_lftpic%>" style="width: 50px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_lft_lft_lftid), @canine_lft_lft_lftname,  admin_canine_path(@canine_lft_lft_lftid)) %>
+    <%end%>
 </td>
+
 <td rowspan='1' width='20%' class='male'>
-	<i class="fa fa-mars"></i>
-	<%= @canine_lft_lft_lft_lftname%>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_lft_lft_lft_lftid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_lft_lft_lft_lftid), @canine_lft_lft_lft_lftname,  admin_canine_path(@canine_lft_lft_lft_lftid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='1' width='20%' class='female'>
-	<i class="fa fa-venus"></i>
-	<%= @canine_lft_lft_lft_rgtname%>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_lft_lft_lft_rgtid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_lft_lft_lft_rgtid), @canine_lft_lft_lft_rgtname,  admin_canine_path(@canine_lft_lft_lft_rgtid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='2' width='20%' class='female'>
-	<i class="fa fa-venus"></i>
-	<img src="<%= @canine_lft_lft_rgtpic%>" style="width: 50px;"><br>
-	<%= @canine_lft_lft_rgtname%>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_lft_lft_rgtid.blank?%>
+        <img src="<%= @canine_lft_lft_rgtpic%>" style="width: 50px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_lft_lft_rgtid), @canine_lft_lft_rgtname,  admin_canine_path(@canine_lft_lft_rgtid)) %>
+    <%end%>
 </td>
 <td rowspan='1' width='20%' class='male'>
-	<i class="fa fa-mars"></i>
-	<%= @canine_lft_lft_rgt_lftname%>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_lft_lft_rgt_lftid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_lft_lft_rgt_lftid), @canine_lft_lft_rgt_lftname,  admin_canine_path(@canine_lft_lft_rgt_lftid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='1' width='20%' class='female'>
-	<i class="fa fa-venus"></i>
-	<%= @canine_lft_lft_rgt_rgtname%>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_lft_lft_rgt_rgtid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_lft_lft_rgt_rgtid), @canine_lft_lft_rgt_rgtname,  admin_canine_path(@canine_lft_lft_rgt_rgtid)) %>
+    <%end%>
 </td>
- </tr><tr>
+</tr><tr>
 <td rowspan='4' width='20%' class='female'>
-	<br>
-	<i class="fa fa-venus"></i>
-	<img src="<%= @canine_lft_rgtpic%>" style="width: 60px;"><br>
-	<%= @canine_lft_rgtname%>
+    <br>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_lft_rgtid.blank?%>
+        <img src="<%= @canine_lft_rgtpic%>" style="width: 60px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_lft_rgtid), @canine_lft_rgtname,  admin_canine_path(@canine_lft_rgtid)) %>
+    <%end%>
 </td>
 <td rowspan='2' width='20%' class='male'>
-	<br>
-	<i class="fa fa-mars"></i>
-	<img src="<%= @canine_lft_rgt_lftpic%>" style="width: 50px;"><br>
-	<%= @canine_lft_rgt_lftname%>
+    <br>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_lft_rgt_lftid.blank?%>
+        <img src="<%= @canine_lft_rgt_lftpic%>" style="width: 50px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_lft_rgt_lftid), @canine_lft_rgt_lftname,  admin_canine_path(@canine_lft_rgt_lftid)) %>
+    <%end%>
+
 </td>
 <td rowspan='1' width='20%' class='male'>
-	<i class="fa fa-mars"></i>
-	<%= @canine_lft_rgt_lft_lftname%>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_lft_rgt_lft_lftid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_lft_rgt_lft_lftid), @canine_lft_rgt_lft_lftname,  admin_canine_path(@canine_lft_rgt_lft_lftid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='1' width='20%' class='female'>
-	<i class="fa fa-venus"></i>
-	<%= @canine_lft_rgt_lft_rgtname%>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_lft_rgt_lft_rgtid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_lft_rgt_lft_rgtid), @canine_lft_rgt_lft_rgtname,  admin_canine_path(@canine_lft_rgt_lft_rgtid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='2' width='20%' class='female'>
-	<br>
-	<i class="fa fa-venus"></i>
-	<img src="<%= @canine_lft_rgt_rgtpic%>" style="width: 50px;"><br>
-	<%= @canine_lft_rgt_rgtname%>
+    <br>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_lft_rgt_rgtid.blank?%>
+        <img src="<%= @canine_lft_rgt_rgtpic%>" style="width: 50px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_lft_rgt_rgtid), @canine_lft_rgt_rgtname,  admin_canine_path(@canine_lft_rgt_rgtid)) %>
+    <%end%>
 </td>
 <td rowspan='1' width='20%' class='male'>
-	<i class="fa fa-mars"></i>
-	<%= @canine_lft_rgt_rgt_lftname%>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_lft_rgt_rgt_lftid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_lft_rgt_rgt_lftid), @canine_lft_rgt_rgt_lftname,  admin_canine_path(@canine_lft_rgt_rgt_lftid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='1' width='20%' class='female'>
-	<i class="fa fa-venus"></i>
-	<%= @canine_lft_rgt_rgt_rgtname%>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_lft_rgt_rgt_rgtid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_lft_rgt_rgt_rgtid), @canine_lft_rgt_rgt_rgtname,  admin_canine_path(@canine_lft_rgt_rgt_rgtid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='8' width='20%' class='female'>
-	<i class="fa fa-venus"></i><br>
-	<img src="<%= @canine_rgtpic%>" style="width: 90px;"><br>
-	<%= @canine_rgtname%>
+    <i class="fa fa-venus"></i><br>
+    <%unless @canine_rgtid.blank?%>
+        <img src="<%= @canine_rgtpic%>" style="width: 90px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_rgtid), @canine_rgtname,  admin_canine_path(@canine_rgtid)) %>
+    <%end%>
 </td>
 <td rowspan='4' width='20%' class='male'>
-	<br>
-	<i class="fa fa-mars"></i>
-	<img src="<%= @canine_rgt_lft_lftpic%>" style="width: 60px;"><br>
-	<%= @canine_rgt_lft_lftname%>
+    <br>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_rgt_lftid.blank?%>
+        <img src="<%= @canine_rgt_lftpic%>" style="width: 60px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_rgt_lftid), @canine_rgt_lftname,  admin_canine_path(@canine_rgt_lftid)) %>
+    <%end%>
 </td>
 <td rowspan='2' width='20%' class='male'>
-	<br>
-	<i class="fa fa-mars"></i>
-	<img src="<%= @canine_rgt_lft_lft_lftpic%>" style="width: 50px;"><br>
-	<%= @canine_rgt_lft_lft_lftname%>
+    <br>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_rgt_lft_lftid.blank?%>
+        <img src="<%= @canine_rgt_lft_lftpic%>" style="width: 50px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_rgt_lft_lftid), @canine_rgt_lft_lftname,  admin_canine_path(@canine_rgt_lft_lftid)) %>
+    <%end%>
 </td>
 <td rowspan='1' width='20%' class='male'>
-	<i class="fa fa-mars"></i>
-	<%= @canine_rgt_lft_lft_lft_lftname%>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_rgt_lft_lft_lftid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_rgt_lft_lft_lftid), @canine_rgt_lft_lft_lftname,  admin_canine_path(@canine_rgt_lft_lft_lftid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='1' width='20%' class='female'>
-	<i class="fa fa-venus"></i>
-	<%= @canine_rgt_lft_lft_lft_rgtname%>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_rgt_lft_lft_rgtid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_rgt_lft_lft_rgtid), @canine_rgt_lft_lft_rgtname,  admin_canine_path(@canine_rgt_lft_lft_rgtid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='2' width='20%' class='female'>
-	<br>
-	<i class="fa fa-venus"></i>
-	<img src="<%= @canine_rgt_lft_lft_rgtpic%>" style="width: 50px;"><br>
-	<%= @canine_rgt_lft_lft_rgtname%>
+    <br>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_rgt_lft_rgtid.blank?%>
+        <img src="<%= @canine_rgt_lft_rgtpic%>" style="width: 50px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_rgt_lft_rgtid), @canine_rgt_lft_rgtname,  admin_canine_path(@canine_rgt_lft_rgtid)) %>
+    <%end%>
 </td>
 <td rowspan='1' width='20%' class='male'>
-	<i class="fa fa-mars"></i>
-	<%= @canine_rgt_lft_lft_rgt_lftname%>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_rgt_lft_rgt_lftid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_rgt_lft_rgt_lftid), @canine_rgt_lft_rgt_lftname,  admin_canine_path(@canine_rgt_lft_rgt_lftid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='1' width='20%' class='female'>
-	<i class="fa fa-venus"></i>
-	<%= @canine_rgt_lft_lft_rgt_rgtname%>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_rgt_lft_rgt_rgtid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_rgt_lft_rgt_rgtid), @canine_rgt_lft_rgt_rgtname,  admin_canine_path(@canine_rgt_lft_rgt_rgtid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='4' width='20%' class='female'>
-	<i class="fa fa-venus"></i>
-	<img src="<%= @canine_rgt_rgtpic%>" style="width: 60px;"><br>
-	<%= @canine_rgt_rgtname%>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_rgt_rgtid.blank?%>
+        <img src="<%= @canine_rgt_rgtpic%>" style="width: 60px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_rgt_rgtid), @canine_rgt_rgtname,  admin_canine_path(@canine_rgt_rgtid)) %>
+    <%end%>
 </td>
 <td rowspan='2' width='20%' class='male'>
-	<br>
-	<i class="fa fa-mars"></i>
-	<img src="<%= @canine_rgt_rgt_lftpic%>" style="width: 50px;"><br>
-	<%= @canine_rgt_rgt_lftname%>
+    <br>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_rgt_rgt_lftpic.blank?%>
+        <img src="<%= @canine_rgt_rgt_lftpic%>" style="width: 50px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_rgt_rgt_lftid), @canine_rgt_rgt_lftname,  admin_canine_path(@canine_rgt_rgt_lftid)) %>
+    <%end%>
+    
 </td>
 <td rowspan='1' width='20%' class='male'>
-	<i class="fa fa-mars"></i>
-	<%= @canine_rgt_rgt_lft_lftname%>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_rgt_rgt_lft_lftid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_rgt_rgt_lft_lftid), @canine_rgt_rgt_lft_lftname,  admin_canine_path(@canine_rgt_rgt_lft_lftid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='1' width='20%' class='female'>
-	<i class="fa fa-venus"></i>
-	<%= @canine_rgt_rgt_lft_rgtname%>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_rgt_rgt_lft_rgtid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_rgt_rgt_lft_rgtid), @canine_rgt_rgt_lft_rgtname,  admin_canine_path(@canine_rgt_rgt_lft_rgtid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='2' width='20%' class='female'>
-	<br>
-	<i class="fa fa-venus"></i>
-	<img src="<%= @canine_rgt_rgt_rgtpic%>" style="width: 50px;"><br>
-	<%= @canine_rgt_rgt_rgtname%>
+    <br>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_rgt_rgt_rgtid.blank?%>
+        <img src="<%= @canine_rgt_rgt_rgtpic%>" style="width: 50px;"><br>
+        <%= link_to_if(Canine.exists?(@canine_rgt_rgt_rgtid), @canine_rgt_rgt_rgtname,  admin_canine_path(@canine_rgt_rgt_rgtid)) %>
+    <%end%>
 </td>
 <td rowspan='1' width='20%' class='male'>
-	<i class="fa fa-mars"></i>
-	<%= @canine_rgt_rgt_rgt_lftname%>
+    <i class="fa fa-mars"></i>
+    <%unless @canine_rgt_rgt_rgt_lftid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_rgt_rgt_rgt_lftid), @canine_rgt_rgt_rgt_lftname,  admin_canine_path(@canine_rgt_rgt_rgt_lftid)) %>
+    <%end%>
 </td>
  </tr><tr>
 <td rowspan='1' width='20%' class='female'>
-	<i class="fa fa-venus"></i>
-	<%= @canine_rgt_rgt_rgt_rgtname%>
+    <i class="fa fa-venus"></i>
+    <%unless @canine_rgt_rgt_rgt_rgtid.blank?%>
+        <%= link_to_if(Canine.exists?(@canine_rgt_rgt_rgt_rgtid), @canine_rgt_rgt_rgt_rgtname,  admin_canine_path(@canine_rgt_rgt_rgt_rgtid)) %>
+    <%end%>
 </td>
  </tr><tr>
  </table>
@@ -182,3 +247,8 @@
  <tr>
  </table>
 
+
+
+
+
+</div>

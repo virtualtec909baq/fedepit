@@ -1,6 +1,5 @@
-<h2>FILTROS</h2>
-<%= form_for :canino_characteristics , :url => admin_canines_path(:index3 => true) do |f| %>
-  <div class="row">
+ <div class="col-md-12"><h2>FILTROS</h2></div>
+<%= form_for :canino_characteristics, :url => admin_canines_path(:index3 => true), method: :get do |f| %>
     <%- @characteristics.each do |characteristic|%>
       <div class="col-md-4">
         <%= f.hidden_field :characteristic_id, :value => characteristic.id %>
@@ -15,7 +14,7 @@
     <%end%>
     <div class="col-md-12">
       <br>
-      <%= f.submit :class =>"btn btn-primary btn-block" %>
+      <%= f.submit "Filtrar", :class =>"btn btn-primary btn-block" %>
     </div>
   </div>
 <% end %>

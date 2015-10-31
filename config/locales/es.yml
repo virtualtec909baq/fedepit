@@ -112,6 +112,7 @@ es:
       color: "COLOR"
       sponsor: "PATROCINADOR"
       publicity: "PUBLICIDAD"
+      canino_characteristics: "METTER"
     attributes:
       standard:
         description: "Descripción"

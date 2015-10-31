@@ -1,45 +1,33 @@
-<style type="text/css">
-  .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
-    border-top: 1px solid #ddd;
-    font-weight: 300;
-    line-height: 1.42857;
-    padding: 3px;
-    text-align: center;
-  }
-</style>
 <div class="row">
-  <div class="col-md-12"><h2>Metter</h2></div>
-  <div class="col-md-12">
-    <div class="row">
-      <div class="col-md-6">
-        <table class="table table-striped table-hover table-bordered" id="caninestable">
-  <thead>
-    <tr>
-      <th>NOMBRE</th>
-      <th>COI</th>
-      <th>COUNT</th>
-      <th>MIN GEN</th>
-      <th>MAX GEN</th>
-      <th>% OF BLOOD</th>
-      <th>COR</th>
-      <th>BREADING</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%=@root_canines.each do |canines|%> 
-    <tr>
-      <th style="text-align: left;"><%= canines[0]%></th>
-      <th><%= canines[1]%></th>
-      <th><%= canines[1]%></th>
-      <th><%= canines[2]%></th>
-      <th><%= canines[3]%></th>
-      <th><%= canines[4]%></th>
-      <th><%= canines[3]%></th>
-      <th><%= canines[4]%></th>
-    </tr>
-    <%end%>
-  </tbody>
-</table>
-      </div>
+  <div class="col-md-6">
+    <table class="table table-striped table-hover table-bordered" id="caninestable">
+      <thead>
+        <tr>
+          <th>NOMBRE</th>
+          <th>COI</th>
+          <th>COUNT</th>
+          <th>MIN GEN</th>
+          <th>MAX GEN</th>
+          <th>% OF BLOOD</th>
+          <th>COR</th>
+          <th>BREADING</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@root_canines.each do |canines|%> 
+          <tr style="background-color: <%=canines[5]%>;">
+            <th style="text-align: left;"><%= link_to canines[1], admin_canine_path(canines[7])%></th>
+            <th><%= cor(get_ancestor_id(canines[0]))%></th>
+            <th><%= canines[6]%></th>
+            <th><%= canines[2]%></th>
+            <th></th>
+            <th><%= canines[3]%></th>
+            <th></th>
+            <th style="text-align: center;"><%= canines[4]%></th>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
   </div>
+
 </div>

@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title h4_class" id="myModalLabel">CARACTERÍSTICAS HEREDADAS DEL <%= @canine.name.upcase%></h4>
+</div>
+<br>
+<%@hijo_e =  children_characteristic(@canine).map{|x, cont| x.canino_characteristics.count }.count{|x|x > 0} %>
+<span class="label label-primary" style="font-weight: bold; font-size: 12px; margin-right: 10px;">No. Hijos: <%= children_characteristic(@canine).count%>
+</span>
+<span class="label label-success" style="font-weight: bold; font-size: 12px;">No. Hijos Evaluados : <%= @hijo_e%>
+</span>
+<hr>
+<%-if children_characteristic_detail(@canine).count > 0%>
+	<table class="table table-striped table-hover table-bordered" id="caninestable">
+		<thead>
+			<tr>
+	  			<th >Detalle</th>
+	  			<th >Porcentaje</th>
+	  		</tr>
+		</thead>
+		<tbody>
+			<%children_characteristic_detail(@canine).each do |key, value|%>
+				<tr >
+					<th ><%= key%></th>
+					<th ><%= number_to_percentage(((value.to_f * 100)/ @hijo_e), precision: 0)%></th>
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
+<%else%>
+	<h3>NO SE PUEDEN ANALIZAR LAS CARACTERISTICAS DE SUS HIJOS, NO TIENEN CREADO UN METTER</h3>
+<%end%>
+	
+
+ 
+

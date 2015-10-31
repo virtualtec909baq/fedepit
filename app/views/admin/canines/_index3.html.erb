@@ -13,8 +13,8 @@
     <tbody>
       <% @canines.each do |canine| %>
         <tr >
-          <td class="center"><%= link_to canine.name, canine_path(canine), target: '_blank'%></td>
-          <td class="center"><%= link_to_if(has_children(canine.id), " Tiene #{count_children(canine)} hijos,  Ver caracteristicas ",  root_path , target: '_blank') %></td>
+          <td class="center"><%= link_to canine.name, admin_canine_path(canine), target: '_blank'%></td>
+          <td class="center"><%= link_to_if(has_children(canine.id), " Tiene #{count_children(canine)} hijos,  Ver caracteristicas ",  admin_childrens_path(canine.id)) %></td>
           <td class="center"><%= link_to "Realizar Cruce", admin_mergecanines_path(canine.id)%></td>
         </tr>
       <% end %>

@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     match 'home/send_mail_attachments', to: 'home#send_mail_attachments', via: 'post'
     put "canino_characteristics/:id/approve", to: "canino_characteristics#approve", as: "approve"
     get "home/send_email" => 'home#send_email', :as => "send_email"
+    get "canines/:id/childrens", to:"canines#childrens", as: "childrens"
     get "canines/:id/mergecanines", to:"canines#mergecanines", as: "mergecanines"
     get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
     get "canines/:id/endogamia", to:"canines#endogamia", as: "endogamia"

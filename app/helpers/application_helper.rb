@@ -1,5 +1,5 @@
 module ApplicationHelper
-
+	include ActionView::Helpers::NumberHelper
 	def get_show(spectacle_id)
 		if Spectacle.exists?(spectacle_id)
 			return Spectacle.find(spectacle_id).name
@@ -64,7 +64,8 @@ module ApplicationHelper
 			return "Campeonato sin nombre"
 		end
 	end
-
+	
+	
 	def gender(gender)
 		if gender == 1
 			return "Macho"
@@ -111,7 +112,6 @@ module ApplicationHelper
 		@tree_id ||= []
 		if !canine.nil?
 			@tree_id << get_id(canine)
-			puts @tree_id.inspect
 			get_ancestor_id(get_left(canine))
 			get_ancestor_id(get_rgt(canine))
 		end
@@ -122,6 +122,15 @@ module ApplicationHelper
 		return @children = Canine.where("(lft = ? OR rgt = ?)", id, id)
 	end
 
+	def children_characteristic(canine)
+		if canine.gender == 1
+			@children = Canine.includes(:canino_characteristics).where("(lft = ?)", canine.id)
+		elsif canine.gender == 0
+			@children = Canine.includes(:canino_characteristics).where("(rgt = ?)", canine.id)
+		end
+		return @children
+	end
+
 	def has_children(id)
 		@children = Canine.where("(lft = ? OR rgt = ?)", id, id)
 		if !@children.empty?
@@ -129,6 +138,30 @@ module ApplicationHelper
 		else
 			return false
 		end
+	end
+
+	def count_children(canine)
+		@canine = canine
+		if has_children(@canine)
+			@total_children = @children.count
+			return @total_children
+		else
+			return 0 
+		end
+	end
+
+	def children_characteristic_detail(canine)
+		@b = Hash.new(0)
+		array = []
+		children(canine.id).each do |children|
+			children.canino_characteristics.each do |characteristic|
+				array << "#{get_characteristics(characteristic.characteristic_id)} #{get_characteristic_detail(characteristic.value, characteristic.canine.race_id, characteristic.characteristic_id, 0)}"
+			end
+		end
+		array.each do |v|
+			@b[v] += 1
+		end
+		return @b
 	end
 	
 	def siblings(id)
@@ -160,7 +193,7 @@ module ApplicationHelper
 	end
 
 	def get_canine(id)
-		if Canine.exists?(id) 
+		if Canine.find(id)
 			return  Canine.find(id)
 		end
 	end
@@ -176,31 +209,21 @@ module ApplicationHelper
 	end
 
 	def get_ancestor_level(canine, level)
-		@tree ||= []
+		@tree_get_ancestors ||= []
 		if !canine.nil? and level <= 5
 			if canine.gender == 1
-				array = ["#{level}/#{nivel_consa(level)}/#{level}-", get_canine(canine)]
+				array = ["#{level}/#{nivel_consa(level)}/#{level}-/#CEE2F2", get_canine(canine)]
 			else
-      			array = ["#{level}/#{nivel_consa(level)}/-#{level}", get_canine(canine)]
+      			array = ["#{level}/#{nivel_consa(level)}/-#{level}/#FAF0FA", get_canine(canine)]
       		end
       		canine_hash = Hash[*array]
-			@tree <<  canine_hash 
-			get_ancestors(get_left(canine), level+1)
-			get_ancestors(get_rgt(canine), level+1)
+			@tree_get_ancestors <<  canine_hash 
+			get_ancestor_level(get_left(canine), level+1)
+			get_ancestor_level(get_rgt(canine), level+1)
 		end
-		return @tree
+		return @tree_get_ancestors
 	end
 
-	def get_ancestors_levels(canine, level)
-		@tree ||= []
-		@tree_2 ||= []
-		if !canine.nil?
-			@tree << "#{get_id(canine)} #{level}"
-			get_ancestors_levels(get_left(canine), level+1)
-			get_ancestors_levels(get_rgt(canine), level+1)
-		end
-		return @tree
-	end
 
 	def get_left_hash(canine)
 		if Canine.exists?(canine.lft)
@@ -344,8 +367,6 @@ module ApplicationHelper
 		end
 	end
 
-
-
 	def get_api_pedigree_canine(canine, level)
 		@tree ||= []
 		if !canine.nil?
@@ -392,7 +413,7 @@ module ApplicationHelper
 		end
 	end
 
-	 	def nivel_consa(level)
+	def nivel_consa(level)
 		@count = 100
 		i = 1
 		for i in i..level
@@ -402,7 +423,7 @@ module ApplicationHelper
 	end
 
 	def count_of_element array, element
-  		array.inject(0) { |count, e| count += 1 if e == element; count }
+		array.inject(0) { |count, e| count += 1 if e == element; count }
 	end
 
 	def cor(array)
@@ -418,62 +439,10 @@ module ApplicationHelper
 				@graph.addEdge(a.to_s,canine.rgt.to_s)
 			end
 		end
-		return @graph.inspect
+		return @graph
 	end
 
-	def count_children(canine)
-		@canine = canine
-		if has_children(@canine)
-			@total_children = @children.count
-			return @total_children
-		else
-			return 0 
-		end
-	end
-
-
-
-	def enviar_cruce(canine)
-		@canine = canine
-		if has_children(@canine)
-			@array_child_features = []
-			@array_prom_features = []	
-			@children = children(@canine)
-			@array_count_features = []
-			@features_count = Hash.new(0)
-			@newhash ||= []
-			
-			@children.each do |child|
-				if child.feature
-					feature_json = child.feature.as_json(except: [:id, :created_at, :updated_at, :canine_id, :canine_name])
-					feature_json.each do |key , value|
-						if !value.nil?
-							create_json = [key, value]	
-							@hash_to_json = Hash[*create_json]
-							@array_child_features << @hash_to_json
-						end
-					end
-					$total_children = @children.count
-				end
-			end
-			@array_child_features.each do |array_feature|
-				array_feature.each do |key,value_hash|
-					create_hash_whit_values_matriz = [key, value_hash]
-					hash_hash_whit_values_matriz = Hash[*create_hash_whit_values_matriz]
-					@array_prom_features << hash_hash_whit_values_matriz
-				end
-			end
-			@array_prom_features.each do |key|
-				key.each do |key, value|
-					@features_count["#{key}-#{value}"] += 1
-				end
-        	end
-        	if !@array_prom_features.empty?
-				@features_count = @features_count.sort_by {|key, value| key}
-				return @features_count
-			end
-		end
-	end
+	
 end
 
 
