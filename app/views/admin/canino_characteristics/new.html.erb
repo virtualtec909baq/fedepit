@@ -17,16 +17,16 @@
 		<a href="#" data-toggle="tooltip" class= "pull-right" data-placement="bottom" title="Selecciona el metter que has creado anteriormente para el ejemplar que has escogido!"><i class="fa fa-question"></i></a>
 		<%= f.collection_select :value, @canine_characteristic, :id, :temporal_canine_name, {prompt: "Selecciona Canino"}, {class: "form-control find_selected"}%>
 		<br>
-		<button id="button_canino_characteristic" class="btn btn-primary btn-block">Adicionar Metter</button>
+		<!-- <a href="#sign_up" id="button_canino_characteristic" class="btn btn-primary btn-block">Adicionar Metter</a> -->
+		<a class="sign_new btn btn-primary btn-block" href="#sign_up">Adicionar Metter</a>
 	<%end%>
 	<% end %>
 	<br>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('[data-toggle="tooltip"]').tooltip();   
 			var characteristic_id;
 			var canine_id = <%= params[:canine_id]%>;
-			$("#button_canino_characteristic").click(function(){
+			$('a[href="#sign_up"]').click(function(){
 				$('#canino_characteristic_form').find('.find_selected').each(function(){
 					if($("option:selected", this).attr("value") != "" ){
 						characteristic_id =  $(this).val();

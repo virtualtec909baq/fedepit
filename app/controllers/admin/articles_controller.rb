@@ -38,7 +38,7 @@ class Admin::ArticlesController < ApplicationController
     @article = Article.new(article_params)
     respond_to do |format|
       if @article.save
-        flash[:notice] = 'Articulo creado'
+        flash[:notice] = 'Artículo creado'
         format.html { redirect_to admin_article_path(article_id: @article.id) }
         format.json { render :show, status: :created, location: @article }
       else
@@ -54,7 +54,7 @@ class Admin::ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        flash[:notice] = 'Articulo modificado'
+        flash[:notice] = 'Artículo modificado'
         format.html { redirect_to admin_article_path(@article) }
         format.json { render :show, status: :ok, location: @article }
       else
@@ -69,7 +69,7 @@ class Admin::ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      flash[:notice] = 'Articulo eliminado'
+      flash[:notice] = 'Artículo eliminado'
       format.html { redirect_to admin_articles_path}
       format.json { head :no_content }
     end

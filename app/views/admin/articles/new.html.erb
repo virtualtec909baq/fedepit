@@ -9,21 +9,21 @@
             </div>
             <br>
             <div class="form-group">
-                <label class="control-label">Titulo Articulo</label>
-                <%= f.text_field :title, class: 'form-control' , :maxlength =>"100" ,:required => false, :placeholder => "Ingrese el nombre del articulo"%>
+                <label class="control-label">Titulo Artículo</label>
+                <%= f.text_field :title, class: 'form-control' , :maxlength =>"100" ,:required => false, :placeholder => "Ingrese el nombre del Artículo"%>
             </div>
             <div class="form-group">
                 <label class="control-label">Decripcion</label>
-                <%= f.text_area :description, class: 'form-control', :placeholder =>"Breve descripcion del articulo", rows: 4 %>
+                <%= f.text_area :description, class: 'form-control', :placeholder =>"Breve descripción del Artículo", rows: 4 %>
             </div>
-            <%= f.add_nested_fields_link :paragraphs, 'Agregar Parrafos', :class =>"btn btn-primary pull-right"%>
+            <%= f.add_nested_fields_link :paragraphs, 'Agregar Párrafos', :class =>"btn btn-primary pull-right"%>
             <br>
             <br>
             <%= f.nested_fields_for :paragraphs do |ff|%>
                 <div class="row">
                     
                     <div class="col-md-7">
-                        <%= ff.text_area :description, class: 'form-control', :placeholder =>"detalle del parrafo" , rows: 3%>
+                        <%= ff.text_area :description, class: 'form-control', :placeholder =>"detalle del párrafo" , rows: 3%>
                     </div>
                     <div class="col-md-1">
                         <%= ff.remove_nested_fields_link do%>
