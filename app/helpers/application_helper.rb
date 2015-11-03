@@ -247,9 +247,9 @@ module ApplicationHelper
 		end
 	end
 
-	def get_ancestor_with_hash(canine)
+	def get_ancestor_with_hash(canine, level)
 		@tree ||= []
-		if !canine.nil?
+		if !canine.nil? and level <= 5
 			
 			if canine.lft
 				@tree << get_left_hash(canine)
@@ -257,8 +257,8 @@ module ApplicationHelper
 			if canine.rgt
 				@tree << get_rgt_hash(canine)
 			end
-			get_ancestor_with_hash(get_left(canine))
-			get_ancestor_with_hash(get_rgt(canine))
+			get_ancestor_with_hash(get_left(canine), level+1)
+			get_ancestor_with_hash(get_rgt(canine), level+1)
 			@tree = @tree.uniq
 			return @tree
 		end

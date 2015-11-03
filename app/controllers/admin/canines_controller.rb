@@ -33,7 +33,7 @@ class Admin::CaninesController < ApplicationController
 
   def show
     @images = @canine.images
-    @array_ancestor = get_ancestor_with_hash(@canine).count
+    @array_ancestor = get_ancestor_with_hash(@canine, 0).count
     @ranking = 0
     @canine.champions.each do |category|
       @ranking = @ranking + category.points
@@ -86,7 +86,7 @@ class Admin::CaninesController < ApplicationController
   end
 
   def endogamia
-    @array_ancestor = get_ancestor_with_hash(@canine)
+    @array_ancestor = get_ancestor_with_hash(@canine, 0)
   end
 
 

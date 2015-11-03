@@ -14,26 +14,27 @@
       myDiagram =
       $(go.Diagram, "myDiagram",  
           { 
-          initialAutoScale: go.Diagram.Uniform,
-            initialContentAlignment: go.Spot.TopCenter,
-            allowCopy: false,
+          initialAutoScale: go.Diagram.UniformToFill,
+            initialContentAlignment: go.Spot.Center ,
+            allowDrop: true,
+            allowZoom: true,
             layout:
             $(go.LayeredDigraphLayout,
               { direction: -180,
-                layerSpacing: 7,
+                layerSpacing: 10,
                 columnSpacing: 40,
                 setsPortSpots: true })
           });
       myDiagram.nodeTemplate =
       $(go.Node, "Auto",
         new go.Binding("location", "loc"),
-        {   locationSpot: go.Spot.Center,
+        { locationSpot: go.Spot.Center,
           toEndSegmentLength: 30, fromEndSegmentLength: 30
         },
-        $(go.Shape, "RoundedRectangle",
+        $(go.Shape, "Rectangle",
         { name: "OBJSHAPE",
           fill: "white",
-          desiredSize: new go.Size(150, 150)}),
+          desiredSize: new go.Size(250, 250)}),
         $(go.TextBlock,
           { margin: 4 },
           new go.Binding("text", "key")),{});
@@ -67,6 +68,7 @@
         });
       myDiagram.addDiagramListener("ChangedSelection",
        function() { updateHighlights(getRadioButton()); } );
+
     }
 
     function updateHighlights(e) {
@@ -130,6 +132,10 @@
     }
 </script>
 <div class="container">
+  <div>
+  <input id="ZoomOut" type="button" value="-" onclick="myDiagram.commandHandler.decreaseZoom()" class= "btn btn-warning btn-outlined">
+  <input id="ZoomIn" type="button" value="+" onclick="myDiagram.commandHandler.increaseZoom()" class="btn btn-warning btn-outlined">
+</div>
   <div id="data_init" data-array="<%=@array_ancestor%>">
     <div id="displays" >
       <div id="myDiagram" style="height: 1800px;"></div>

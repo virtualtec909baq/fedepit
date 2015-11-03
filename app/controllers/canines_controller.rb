@@ -13,7 +13,7 @@ class CaninesController < ApplicationController
 
   def endogamia
     @canine = Canine.find(params[:id])
-    @array_ancestor = get_ancestor_with_hash(@canine)
+    @array_ancestor = get_ancestor_with_hash(@canine, 0)
   end
   
   def pedigree
@@ -307,7 +307,7 @@ class CaninesController < ApplicationController
   def show
     @canine = Canine.find(params[:id])
     @images = @canine.images
-    @array_ancestor = get_ancestor_with_hash(@canine).count
+    @array_ancestor = get_ancestor_with_hash(@canine, 0).count
     @ranking = 0
     @canine.champions.each do |category|
       @ranking = @ranking + category.points
