@@ -12,10 +12,8 @@
 <table class="table table-striped table-hover table-bordered">
   <thead>
     <tr>
-      <th class="center"><%= sort_link @search, :type_breeder_id, "Tipo Criador"%></th>
       <th class="center"><%= sort_link @search, :name, "Nombre"%></th>
-      <th class="center">Telefono</th>
-      <th class="center">Correo</th>
+      <th class="center"><%= sort_link @search, :type_breeder_id, "Tipo Criador"%></th>
       <th class="center">Criadero</th>
       <th colspan="3"></th>
     </tr>
@@ -23,10 +21,8 @@
   <tbody>
     <% @breeders.each do |breeder| %>
     <tr>
-      <td class="center"><%= breeder.type_breeder.name %></td>
       <td class="center"><%= link_to breeder.name, admin_breeder_path(breeder), :class => "link_to"  %></td>
-      <td ><%= breeder.phone %></td>
-      <td ><%= breeder.email %></td>
+      <td class="center"><%= breeder.type_breeder.name %></td>
       <td ><%= breeder.name_breed %></td>
       <td class="center"><%= link_to edit_admin_breeder_path(breeder) do %>
         <i class="fa fa-edit"></i>
