@@ -66,6 +66,32 @@
         .appendTo( ul );
     };
   });
+  var projects_4 = [];
+  <% @colors = Color.all.order(name: :asc)%>
+  <%@colors.each do |color|%>
+    projects_4.push({ value: '<%=color.name%>',label: '<%=color.name%>', desc: '<%=color.name%>'})
+  <%end%>
+  $(function() {
+    
+    $( "#canine_color" ).autocomplete({
+      minLength: 0,
+      source: projects_4,
+      focus: function( event, ui ) {
+        $( "#canine_color" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#canine_color" ).val( ui.item.label );
+        $( "#canine_color" ).val( ui.item.desc );
+        return false;
+      }
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.label + "</a>" )
+        .appendTo( ul );
+    };
+  });
   </script>
 <div class="row">
   <div class="col-md-12">
@@ -103,8 +129,8 @@
     </div>
     <div class="col-md-3">
      <br>
-      <%= f.label :color %><br>
-      <%= f.collection_select :color, Color.all, :name, :name, {prompt: "Escoger Color"}, {class: "form-control"}%>
+      <%= f.label :color %> 
+      <%= f.text_field :color, class: 'form-control' %>
     </div> 
     <div class="col-md-3">
       <br>

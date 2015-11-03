@@ -1,6 +1,6 @@
 <script>
   var projects = [];
-  <% @canines = Canine.where(gender: "1")%>
+  <% @canines = Canine.where(gender: "1").order(name: :asc)%>
   <%@canines.each do |canine|%>
     projects.push({ value: '<%=canine.name%>',label: '<%=canine.name%>', desc: '<%=canine.id%>'})
   <%end%>
@@ -33,7 +33,7 @@
   
   <script>
   var projects_2 = [];
-  <% @canines = Canine.where(gender: "0")%>
+  <% @canines = Canine.where(gender: "0").order(name: :asc)%>
   <%@canines.each do |canine|%>
     projects_2.push({ value: '<%=canine.name%>',label: '<%=canine.name%>', desc: '<%=canine.id%>'})
   <%end%>
@@ -65,7 +65,7 @@
   </script>
   <script>
   var projects_3 = [];
-  <% @breeders = Breeder.all%>
+  <% @breeders = Breeder.all.order(name: :asc)%>
   <%@breeders.each do |breeder|%>
     projects_3.push({ value: '<%=breeder.name%>',label: '<%=breeder.name%>', desc: '<%=breeder.id%>'})
   <%end%>
@@ -82,6 +82,33 @@
       select: function( event, ui ) {
         $( "#canine_breeder" ).val( ui.item.label );
         $( "#canine_breeder_id" ).val( ui.item.desc );
+        return false;
+      }
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.label + "</a>" )
+        .appendTo( ul );
+    };
+  });
+
+  var projects_4 = [];
+  <% @colors = Color.all.order(name: :asc)%>
+  <%@colors.each do |color|%>
+    projects_4.push({ value: '<%=color.name%>',label: '<%=color.name%>', desc: '<%=color.name%>'})
+  <%end%>
+  $(function() {
+    
+    $( "#canine_color" ).autocomplete({
+      minLength: 0,
+      source: projects_4,
+      focus: function( event, ui ) {
+        $( "#canine_color" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#canine_color" ).val( ui.item.label );
+        $( "#canine_color" ).val( ui.item.desc );
         return false;
       }
     })
@@ -127,8 +154,8 @@
     </div>
     <div class="col-md-3">
      <br>
-      <%= f.label :color %><br>
-      <%= f.collection_select :color, Color.all.order(name: :asc), :name, :name, {prompt: "Escoger Color"}, {class: "form-control"}%>
+      <%= f.label :color %> 
+      <%= f.text_field :color, class: 'form-control' %>
     </div> 
     <div class="col-md-3">
       <br>
