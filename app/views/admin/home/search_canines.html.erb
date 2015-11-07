@@ -1,0 +1,49 @@
+  <br>
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Mostrar Filtros</button>
+  <div id="demo" class="collapse">
+  	<h2 id="canines_filters">Filtros</h2>
+  	<div class="well">
+		<%= form_for :canine, :html => {:id => 'canino_characteristic_form'} do |f| %>
+			<div class="row">
+				<%- @characteristics.each do |characteristic|%>
+					<div class="col-md-4">
+						<span class="bold"> <%= characteristic.name%> </span>
+						<%= f.hidden_field :characteristic_id, :value => characteristic.id %>
+							<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
+					</div>
+				<%end%>
+				<br>
+			</div>
+		<% end %>
+		<br>
+		<button id="button_canino_characteristic" class="btn btn-primary btn-block"><i class="fa fa-filter"></i>Filtrar</button>
+	</div>
+  </div> 	
+<script type="text/javascript">
+	$(document).ready(function() {
+		var characteristics = [];
+		 var characteristicDetail = [];
+		$("#button_canino_characteristic").click(function(){
+			$('#canino_characteristic_form').find('.find_selected').each(function(){
+				if($("option:selected", this).attr("value") != "" ){
+					characteristics.push($(this).prev().val());
+					characteristicDetail.push($(this).val());
+					// characteristics[$(this).prev().val()] = $(this).val();
+				}
+			})
+			if (characteristics.length === 0) {
+				alert("seleccione caracteristicas para filtrar");
+				return false;
+			} else{
+				$.ajax({
+					type: "GET",
+					url: "/admin/home/search_canines",
+					data: {characteristics,characteristicDetail } ,
+				})
+			};
+		});
+	});
+</script>
+<div id="table_canine">
+	<%= render partial: '/admin/home/index_canines' %>
+</div>

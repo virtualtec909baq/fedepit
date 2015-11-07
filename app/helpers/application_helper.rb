@@ -198,30 +198,63 @@ module ApplicationHelper
 		end
 	end
 	
-	def get_ancestors(canine)
+	def get_ancestors(canine, level)
 		@tree ||= []
-		if !canine.nil?
+		if !canine.nil? and level <= 4
 			@tree << get_id(canine)
-			get_ancestors(get_left(canine))
-			get_ancestors(get_rgt(canine))
+			get_ancestors(get_left(canine), level+1)
+			get_ancestors(get_rgt(canine), level+1)
 		end
 		return @tree
+	end
+	def get_ancestors_2(canine, level)
+		@tree_2 ||= []
+		if !canine.nil? and level <= 4
+			@tree_2 << get_id(canine)
+			get_ancestors_2(get_left(canine), level+1)
+			get_ancestors_2(get_rgt(canine), level+1)
+		end
+		return @tree_2
 	end
 
 	def get_ancestor_level(canine, level)
 		@tree_get_ancestors ||= []
+		@tree_get_ancestors_2 ||= []
 		if !canine.nil? and level <= 5
+			array_2 = ["canine_id", get_id(canine),"level", level, "nivel_consa",nivel_consa(level) ]
 			if canine.gender == 1
 				array = ["#{level}/#{nivel_consa(level)}/#{level}-/#CEE2F2", get_canine(canine)]
 			else
       			array = ["#{level}/#{nivel_consa(level)}/-#{level}/#FAF0FA", get_canine(canine)]
       		end
+      		canine_hash_2 = Hash[*array_2]
       		canine_hash = Hash[*array]
 			@tree_get_ancestors <<  canine_hash 
+			@tree_get_ancestors_2 <<  canine_hash_2 
 			get_ancestor_level(get_left(canine), level+1)
 			get_ancestor_level(get_rgt(canine), level+1)
 		end
 		return @tree_get_ancestors
+	end
+
+	def get_ancestor_level_2(canine, level)
+		@tree_get_ancestors_canine_2 ||= []
+		@tree_get_ancestors_2_2 ||= []
+		if !canine.nil? and level <= 5
+			array_2 = ["canine_id", get_id(canine),"level", level, "nivel_consa",nivel_consa(level) ]
+			if canine.gender == 1
+				array = ["#{level}/#{nivel_consa(level)}/#{level}-/#CEE2F2", get_canine(canine)]
+			else
+      			array = ["#{level}/#{nivel_consa(level)}/-#{level}/#FAF0FA", get_canine(canine)]
+      		end
+      		canine_hash_2 = Hash[*array_2]
+      		canine_hash = Hash[*array]
+			@tree_get_ancestors_canine_2 <<  canine_hash 
+			@tree_get_ancestors_2_2 <<  canine_hash_2 
+			get_ancestor_level_2(get_left(canine), level+1)
+			get_ancestor_level_2(get_rgt(canine), level+1)
+		end
+		return @tree_get_ancestors_canine_2
 	end
 
 
@@ -425,21 +458,44 @@ module ApplicationHelper
 	def count_of_element array, element
 		array.inject(0) { |count, e| count += 1 if e == element; count }
 	end
+	def get_ancestors_cor(canine, level)
+		@tree_get_ancestors_cor ||= []
+		if !canine.nil? and level <= 5
+			@tree_get_ancestors_cor << get_id(canine)
+			get_ancestors(get_left(canine), level+1)
+			get_ancestors(get_rgt(canine), level+1)
+		end
+		return @tree_get_ancestors_cor
+	end
 
 	def cor(array)
 		@graph = Graph.new
 		array.each do |a|
 			canine = Canine.find(a)
 			if canine.lft and canine.rgt
-				@graph.addEdge(a.to_s,canine.lft.to_s)
-				@graph.addEdge(a.to_s,canine.rgt.to_s)
+				@graph.addEdge(a,canine.lft)
+				@graph.addEdge(a,canine.rgt)
 			elsif canine.lft
-				@graph.addEdge(a.to_s,canine.lft.to_s)
+				@graph.addEdge(a,canine.lft)
 			elsif canine.rgt
-				@graph.addEdge(a.to_s,canine.rgt.to_s)
+				@graph.addEdge(a,canine.rgt)
 			end
+			@count_2 ||= 0
+			@graph.searchPath(a,canine.rgt, []) { |path|
+				if path.size != 2
+					@count_2 +=(1/2.to_f) ** (path.size - 1)
+            	end
+            }
 		end
-		return @graph
+		result = @count_2 * 100
+		if result > 100 and result < 500
+			n1 = number_to_percentage(@count_2 , precision: 2)
+		elsif result > 100
+			n1 = number_to_percentage(@count_2 * 10 , precision: 2) 
+		else
+			n1 = number_to_percentage(@count_2 * 100 , precision: 2) 
+		end
+		return  n1
 	end
 
 	

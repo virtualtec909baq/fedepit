@@ -309,9 +309,7 @@ class CaninesController < ApplicationController
     @images = @canine.images
     @array_ancestor = get_ancestor_with_hash(@canine, 0).count
     @ranking = 0
-    @canine.champions.each do |category|
-      @ranking = @ranking + category.points
-    end
+    @canine.champions.each do |category| @ranking = @ranking + category.points end
     @canino_characteristics = CaninoCharacteristic.where(canine_id: params[:id]).order(created_at: :asc)
     respond_to do |format|
      format.html

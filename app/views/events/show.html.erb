@@ -3,18 +3,17 @@
     <br>
     <div class="col-md-8">
       <h1><%= @event.name%></h1>
+      <% if @event.img.blank?%>
+        <img class="img-responsive" src="//placehold.it/900X300">
+      <%else%>
+        <img class="img-responsive" src="<%= @event.img_url%>" style="width: 900px; height: 300px;">
+      <%end%>
       <hr>
       <div class="row">
         <div class="col-md-6"><p><i class="fa fa-calendar"></i></span> <%= @event.date.strftime('%b  %d  %Y')%></p></div>      
         <div class="col-md-6"><p><i class="fa fa-map-marker"></i></span> <%= @event.place%></p></div>
       </div>
       <hr>
-      <div class="center">
-        <%unless @event.img.blank?%>
-          <img alt="" class="img-responsive" src="<%= @event.img%>">
-        <%end%>
-      </div>
-      <br>
       <p class=""><%= @event.description%></p>
     </div>
     <div class="col-md-4">

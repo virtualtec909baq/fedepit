@@ -37,11 +37,13 @@
     </div>
   </div>
   <div class="row" style="margin-top: 0px; margin-right: 0px; margin-left: 0px; position: relative; top: -46px;">
-    <div class="col-md-6">
+    <div class="col-md-3">
       <%= link_to "PEDIGREE", pedigree_path(@canine), :class =>"btn btn-success btn-outlined btn-block", :disabled => @array_ancestor.zero? %>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-3">
       <%= link_to "DIAGRAMA DE FLECHA", endogamia_path(@canine), :class =>"btn btn-warning btn-outlined pull-right hidden-xs btn-block", :disabled => @array_ancestor.zero? %>
+    </div>
+    <div class="col-md-3">
     </div>
   </div>
 </div>

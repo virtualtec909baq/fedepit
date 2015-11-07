@@ -1,6 +1,8 @@
-<%-if !notice.blank?%>
-	<div class="alert alert-warning alert-dismissible" role="alert">
-	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	  <strong><%= notice%></strong>
-	</div>
+<%-if !notice.blank? and params[:controller] != 'home' %>
+	<%- unless params[:controller] == 'admin/canines' %>
+		<div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  	<strong><%= notice%></strong>
+		</div>
+	<%end%>
 <%end%>

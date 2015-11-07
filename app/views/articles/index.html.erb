@@ -15,13 +15,13 @@
 <div class="container">
   <% @articles.each do |article| %>
     <a href="<%= article_path(article)%>">
-      <div class="col-sm-4 col-xs-6">
+      <div class="col-sm-4 col-xs-12">
         <div class="panel panel-default">
           <div class="panel-thumbnail">
             <% if article.img.blank?%>
             <img class="img-responsive" src="//placehold.it/450X300">
             <%else%>
-            <img class="img-responsive" src="<%= article.img_url%>" style="width: auto; height: 188px;">
+            <img class="img-responsive" src="<%= article.img_url%>" style="width: 450px; height: 230px;">
             <%end%>
           </div>
           <div class="panel-body" style="padding: 10px;"> 

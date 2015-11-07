@@ -1,5 +1,5 @@
  <div class="col-md-12"><h2>FILTROS</h2></div>
-<%= form_for :canino_characteristics, :url => admin_canines_path(:index3 => true), method: :get do |f| %>
+<%= form_for :canino_characteristics, :url => admin_canines_path(:index3 => true), method: :post do |f| %>
     <%- @characteristics.each do |characteristic|%>
       <div class="col-md-4">
         <%= f.hidden_field :characteristic_id, :value => characteristic.id %>

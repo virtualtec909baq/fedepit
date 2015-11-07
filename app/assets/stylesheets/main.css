@@ -17,12 +17,11 @@ body {
 }
 
 h1 {
-	font-family: 'Open sans', sans-serif;
-	font-weight: 700;
-	font-size: 26px;
-	line-height:20px;
-	text-transform: uppercase;
-	margin-bottom: 20px;
+    font-family: "Open sans",sans-serif;
+    font-size: 26px;
+    line-height: 28px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 h2 {
@@ -3400,6 +3399,7 @@ PAGE HOME 4
 	margin-top: 0px;
 }
 
+
 /*Portfolio Animation*/
 
 .my-gallery-animation.ng-enter, 
@@ -6335,4 +6335,20 @@ i.fa.fa-venus {
 .h4_class {
     text-align: center;
 }
+#dvLoading{
+	display: none;
+	background:#000 url(/assets/loading.gif) no-repeat center center;
+	height: 6px;
+	width: 81px;
+}
+.canine_name {
+    width: 10px;
+}
+.text_field_hiden {
+    display: none;
+}
 .ui-autocomplete { height: 200px; overflow-y: scroll; overflow-x: hidden;}
+.center {
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,28 +1,42 @@
+<%@root_canines_2  = []%>
+<%@canine_last = @canines.last%>
+<%@tree.clear%>
+<%@ancestors_id_2 = get_ancestors_2(@canine_last,0)%>
+<%@root_canines = []%>
+<%get_ancestor_level_2(@canine_last, 0).each do |key|%>
+  <%key.each do |key, val|%>
+    <%array_key = key.split("/")%>
+    <%canine_array_2 = [val,  val.name, array_key[0], number_to_percentage(array_key[1], precision: 3) , array_key[2], array_key[3], count_of_element(@ancestors_id_2, val.id), val.id]%>
+   <% @root_canine_2 = canine_array_2%>
+  <%end%>
+ <%@root_canines_2 << @root_canine_2%>
+<%end%>
 <table class="table table-striped table-hover table-bordered" id="caninestable">
-  <thead>
-    <tr>
-      <th>NOMBRE</th>
-      <th>COI</th>
-      <th>COUNT</th>
-      <th>MIN GEN</th>
-      <th>MAX GEN</th>
-      <th>% OF BLOOD</th>
-      <th>COR</th>
-      <th>BREADING</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%@root_canines.each do |canines|%> 
-    <tr>
-      <th style="text-align: left;"><%= canines[0]%></th>
-      <th><%= canines[1]%></th>
-      <th><%= canines[1]%></th>
-      <th><%= canines[2]%></th>
-      <th><%= canines[3]%></th>
-      <th><%= canines[4]%></th>
-      <th><%= canines[3]%></th>
-      <th><%= canines[4]%></th>
-    </tr>
-    <%end%>
-  </tbody>
-</table>
+      <thead>
+        <tr>
+          <th>NOMBRE</th>
+          <th>COI</th>
+          <th>COUNT</th>
+          <th>MIN GEN</th>
+          <th>MAX GEN</th>
+          <th>% OF BLOOD</th>
+          <th>COR</th>
+          <th>BREADING</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@root_canines_2.each do |canines|%> 
+          <tr style="background-color: <%=canines[5]%>;">
+            <th class='canine_name' style="text-align: left;"><%= link_to canines[1], admin_canine_path(canines[7]), :target=>"_blank"%></th>
+            <th class="endogamia<%= canines[7]%>">
+              <%= link_to "calcular endogamia", admin_calculate_endogamia_path(canines[7]) , :remote => true, class:"btn btn-danger btn_white btn-block"%></th>
+            <th><%= canines[6]%></th>
+            <th><%= canines[2]%></th>
+            <th><%=@tree_get_ancestors_2.select {|f| f["canine_id"]  == canines[7]}.map{|x| x['level']}.last%></th>
+            <th><%= canines[3]%></th>
+            <th><%= number_to_percentage(@tree_get_ancestors_2.select {|f| f["canine_id"]  == canines[7]}.map{|x| x['nivel_consa']}.reduce(:+))%></th>
+            <th style="text-align: center;"><%= canines[4]%></th>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
