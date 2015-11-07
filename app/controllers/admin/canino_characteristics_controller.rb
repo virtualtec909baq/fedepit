@@ -29,7 +29,8 @@ class Admin::CaninoCharacteristicsController < ApplicationController
       @query_1 = Characteristic.all 
       @query_2 = Canine.find(params[:canine_id]).characteristics 
       @characteristics = @query_1 - @query_2
-      @characteristics = @characteristics.sort_by &:order
+      @characteristics = @characteristics.sort_by! { |c| c.order }
+
     end
   end
 
