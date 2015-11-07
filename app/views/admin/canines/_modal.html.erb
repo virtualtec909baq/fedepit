@@ -26,13 +26,13 @@
             </div>
             <div class="col-md-6">
               <%= f.label :color %><br>
-              <%= f.collection_select :color, Color.all, :name, :name, {prompt: "Escoger Color"}, {class: "form-control"}%>
+              <%= f.collection_select :color, Color.all.order(name: :asc), :name, :name, {prompt: "Escoger Color"}, {class: "form-control"}%>
               <%= f.label :razas %><br>
-              <%= f.collection_select :race_id, Race.all, :id, :name, {prompt: "Escoger Raza"}, {class: "form-control"}%>
+              <%= f.collection_select :race_id, Race.all.order(name: :asc), :id, :name, {prompt: "Escoger Raza"}, {class: "form-control"}%>
               <%= f.label :new_register, "# Otro Registro" %>
               <%= f.text_field :new_register, class: "form-control"%>
               <%= f.label :criador %>
-                <%= f.collection_select :breeder_id, Breeder.all, :id, :name, {prompt: " "}, {class: "form-control"}%>
+                <%= f.collection_select :breeder_id, Breeder.all.order(name: :asc), :id, :name, {prompt: " "}, {class: "form-control"}%>
             </div>
 
           </div>

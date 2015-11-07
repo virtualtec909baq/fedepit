@@ -23,7 +23,7 @@
           <div class="col-lg-6">
             <ul class="list-unstyled">
               <% @events.each do |event| %>
-                <li><a href="<%= admin_event_path(event.id)%>"><%= event.name%></a>
+                <li><a href="<%= event_path(event.id)%>"><%= event.name%></a>
                 <%end%> 
             </ul>
         </div>
