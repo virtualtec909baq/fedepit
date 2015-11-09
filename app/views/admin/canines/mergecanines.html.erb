@@ -1,37 +1,34 @@
 <script>
-  var projects = [];
-  <%- gender = Canine.find(params[:id]).gender%>
-  <% @canines = Canine.where.not(gender: gender).order(name: :asc)%>
-  <%@canines.each do |canine|%>
-    projects.push({ value: '<%=canine.name%>',label: '<%=canine.name%>', desc: '<%=canine.id%>'})
-  <%end%>
-  <%@canines.each do |canine|%>
-    projects.push({ value: '<%=canine.lof%>',label: '<%=canine.lof%>', desc: '<%=canine.id%>'})
-  <%end%>
+    var projects = [];
+    <%- gender = Canine.find(params[:id]).gender%>
+    var canineId = <%=params[:id] %>
+    <% @canines = Canine.where.not(gender: gender).order(name: :asc)%>
+    <%@canines.each do |canine|%>
+      projects.push({ value: '<%=canine.name%>',label: '<%=canine.name%>', desc: '<%=canine.id%>'})
+    <%end%>
+    $(function() {
       
-  $(function() {
-    
-    $( "#name_cont" ).autocomplete({
-      minLength: 0,
-      source: projects,
-      focus: function( event, ui ) {
-        $( "#name_cont" ).val( ui.item.label );
-        return false;
-      },
-      select: function( event, ui ) {
-        $( "#name_cont" ).val( ui.item.label );
-        $( "#q_id_eq" ).val( ui.item.desc );
-        return false;
-      }
-    })
-    .autocomplete( "instance" )._renderItem = function( ul, item ) {
-      return $( "<li>" )
-        .append( "<a>" + item.label + "</a>" )
-        .appendTo( ul );
-    };
-  });
- 
-  </script>
+      $( "#name_cont" ).autocomplete({
+        minLength: 0,
+        source: projects,
+        focus: function( event, ui ) {
+          $( "#name_cont" ).val( ui.item.label );
+          return false;
+        },
+        select: function( event, ui ) {
+          $( "#name_cont" ).val( ui.item.label );
+          $( "#q_id_eq" ).val( ui.item.desc );
+          $('#myLink').attr('href','/admin/canines/'+ canineId +'/pedigree_complex?id_2='+ $( "#q_id_eq" ).val());
+          return false;
+        }
+      })
+      .autocomplete( "instance" )._renderItem = function( ul, item ) {
+        return $( "<li>" )
+          .append( "<a>" + item.label + "</a>" )
+          .appendTo( ul );
+      };
+    });
+</script>
 <div class="row">
     <div class="col-md-12">
       <h2>Cruce</h2>
@@ -39,8 +36,7 @@
     <div class="col-md-12">
      <div class="row">
         <div class="col-md-6">
-          <a id='myLink' href='#' data-key='{"param1":"value1", "param2":"value2"}' >Link Text</a>
-          <%= link_to "Cruzar Ejemplares", admin_pedigree_complex_path(params[:id], id_2: params[:id]), :class => "btn btn-info btn_white btn-block"%>
+          <a id='myLink' href='#' class="btn btn-info btn_white btn-block">Cruzar Ejemplares</a>
           <br>
         </div>
         <%= search_form_for @search, url: admin_mergecanines_path , remote: true do |f|%> 
@@ -49,7 +45,7 @@
             <%= f.text_field :id_eq, :class => "text_field_hiden"%>
           </div>
           <div class="col-md-2">
-            <%= f.submit "Refrescar", :class => "btn btn-primary btn_white btn-block"%>
+            <%= f.submit "Refrescar", :class => "btn btn-primary btn_white btn-block", :id => 'refresh'%>
           </div>
         <%end%>
         <br>
