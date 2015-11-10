@@ -94,7 +94,7 @@ module ApplicationHelper
 		if Characteristic.exists?(characteristic_id)
 			characteristic = Characteristic.find(characteristic_id)
 			if characteristic.color
-				return Color.find(characteristic_id).name
+				return Color.find(value).name
 			elsif characteristic.measure_id.blank?
 				return CharacteristicDetail.find(value).description
 			else
