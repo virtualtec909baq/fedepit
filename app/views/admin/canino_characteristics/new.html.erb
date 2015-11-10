@@ -49,11 +49,18 @@
 					<%= f.text_field :value, :class => "form-control"%>
 				</div>
 			<%end%>
+				<div class="col-md-12">
+					<%= f.label :observations, "Observaciones"%>
+					<%= f.text_field :observations, :class => "form-control"%>
+					<hr>
+				</div>
 			<%- @characteristics.each do |characteristic|%>
 				<div class="col-md-4">
 					<span class="bold"> <%= characteristic.name%> </span>
 					<%= f.hidden_field :characteristic_id, :value => characteristic.id %>
-					<%- if characteristic.measure_id.blank? %>
+					<%if characteristic.color == true %>
+						<%= f.collection_select :value, Color.all.order(name: :asc), :id, :name, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
+					<%- elsif characteristic.measure_id.blank? %>
 						<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
 					<%else%>
 						<%= f.text_field :value, :class => "form-control text_fieldn find_selected"%>
@@ -73,6 +80,7 @@
 				var canine_id;
 				if ($('#canino_characteristic_value').val()) {
 					canine = $('#canino_characteristic_value').val();
+					observations = $('#canino_characteristic_observations').val();
 					canine_id = <%= params[:canine_id]%>;
 				} else{
 					canine_id = <%= params[:canine_id]%>;
@@ -86,7 +94,7 @@
 				$.ajax({
 					type: "POST",
 					url: "/admin/canino_characteristics",
-					data: {  characteristics, canine, canine_id},
+					data: {  characteristics, canine, canine_id, observations},
 				})
 			});
 		});

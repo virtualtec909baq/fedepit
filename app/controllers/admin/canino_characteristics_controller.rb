@@ -44,9 +44,10 @@ class Admin::CaninoCharacteristicsController < ApplicationController
         temporal_id = temporal_id.last.temporal_id
       end
       temporal_id = temporal_id.to_i + 1
+
       params[:characteristics].each do |key , value|
         unless value.empty?
-          CaninoCharacteristic.create( characteristic_id: key, value: value, temporal_canine_name: params[:canine], temporal_id: temporal_id, status: true)
+          CaninoCharacteristic.create( characteristic_id: key, value: value, temporal_canine_name: params[:canine], temporal_id: temporal_id, observations: params[:observations])
         end
       end
       respond_to do |format|

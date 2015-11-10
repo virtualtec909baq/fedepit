@@ -47,12 +47,19 @@
 			<%= f.label :temporal_color, "Color Canino"%>
 			<%= f.text_field :temporal_color, :class => "form-control required"%>
 		</div>
+		<div class="col-md-12">
+			<%= f.label :observations, "Observaciones"%>
+			<%= f.text_field :observations, :class => "form-control"%>
+			<hr>
+		</div>
 		<div class="col-md-12"><h2>CARACTERISTICAS DEL EJEMPLAR</h2></div>
 		<%- @characteristics.each do |characteristic|%>
 			<div class="col-md-4">
 				<span class="bold"> <%= characteristic.name%> </span>
 				<%= f.hidden_field :characteristic_id, :value => characteristic.id %>
-				<%- if characteristic.measure_id.blank? %>
+				<%if characteristic.color == true %>
+						<%= f.collection_select :value, Color.all.order(name: :asc), :id, :name, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
+				<%- elsif characteristic.measure_id.blank? %>
 					<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
 				<%else%>
 					<%= f.text_field :value, :class => "form-control text_fieldn find_selected"%>
