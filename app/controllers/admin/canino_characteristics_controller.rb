@@ -53,7 +53,7 @@ class Admin::CaninoCharacteristicsController < ApplicationController
 
       params[:characteristics].each do |key , value|
         unless value.empty?
-          CaninoCharacteristic.create( characteristic_id: key, value: value, temporal_canine_name: params[:canine], temporal_id: temporal_id, observations: params[:observations])
+          CaninoCharacteristic.create( characteristic_id: key, value: value, temporal_canine_name: params[:canine], temporal_id: temporal_id, observations: params[:observations], status: true)
         end
       end
       respond_to do |format|

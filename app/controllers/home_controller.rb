@@ -31,7 +31,7 @@ class HomeController < ApplicationController
     temporal_id = temporal_id.to_i + 1
     params[:characteristics].each do |key , value|
       unless value.empty?
-        CaninoCharacteristic.create( characteristic_id: key, value: value,temporal_id: temporal_id, temporal_owner: params[:temporal_owner], temporal_phone: params[:temporal_phone], temporal_email: params[:temporal_email], temporal_sex: params[:temporal_sex], temporal_color: params[:temporal_color], temporal_birth: params[:temporal_birth], temporal_lof: params[:temporal_lof],temporal_race: params[:temporal_race], temporal_canine_name: params[:temporal_canine_name], observations: params[:observations])
+        CaninoCharacteristic.create( characteristic_id: key, value: value,temporal_id: temporal_id, temporal_owner: params[:temporal_owner], temporal_phone: params[:temporal_phone], temporal_email: params[:temporal_email], temporal_sex: params[:temporal_sex], temporal_color: params[:temporal_color], temporal_birth: params[:temporal_birth], temporal_lof: params[:temporal_lof],temporal_race: params[:temporal_race], temporal_canine_name: params[:temporal_canine_name], observations: params[:observations], status: false)
       end
     end
     respond_to do |format|
