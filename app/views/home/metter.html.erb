@@ -62,7 +62,7 @@
 				<%- elsif characteristic.measure_id.blank? %>
 					<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
 				<%else%>
-					<%= f.text_field :value, :class => "form-control text_fieldn find_selected"%>
+					<%= f.number_field :value, :class => "form-control numbe_field find_selected"%>
 				<%end%>
 			</div>
 		<%end%>
@@ -74,6 +74,12 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 			var characteristics = {};
+			$(".numbe_field").keypress(function (e) {
+			if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+		        $("#errmsg").html("Digits Only").show().fadeOut("slow");
+		        return false;
+		    	}
+			});
 			$("#button_canino_characteristic").click(function(){
 				var canine;
 				var canine_id;

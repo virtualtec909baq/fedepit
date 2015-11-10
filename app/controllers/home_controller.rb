@@ -18,7 +18,7 @@ class HomeController < ApplicationController
   end
 
   def metter
-   @characteristics =  Characteristic.all
+   @characteristics =  Characteristic.all.order(order: :asc)
   end
 
   def create_metter
