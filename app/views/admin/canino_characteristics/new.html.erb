@@ -49,11 +49,13 @@
 					<%= f.text_field :value, :class => "form-control"%>
 				</div>
 			<%end%>
+			<%if @observations%>
 				<div class="col-md-12">
 					<%= f.label :observations, "Observaciones"%>
 					<%= f.text_field :observations, :class => "form-control"%>
 					<hr>
 				</div>
+			<%end%>
 			<%- @characteristics.each do |characteristic|%>
 				<div class="col-md-4">
 					<span class="bold"> <%= characteristic.name%> </span>

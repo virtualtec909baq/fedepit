@@ -26,10 +26,12 @@ class Admin::CaninoCharacteristicsController < ApplicationController
     if params[:canine_id] == "0"
       @characteristics = Characteristic.all.order(order: :asc)
     else
+      canine = Canine.find(params[:canine_id])
       @query_1 = Characteristic.all 
-      @query_2 = Canine.find(params[:canine_id]).characteristics 
+      @query_2 = canine.characteristics 
       @characteristics = @query_1 - @query_2
       @characteristics = @characteristics.sort_by &:order
+      @observations = CaninoCharacteristic.where(canine_id:canine.id).first.observations.empty?
     end
   end
 
@@ -57,7 +59,7 @@ class Admin::CaninoCharacteristicsController < ApplicationController
     else
       params[:characteristics].each do |key , value|
           unless value.empty?
-            CaninoCharacteristic.create(canine_id: params[:canine_id], characteristic_id: key, value: value)
+            CaninoCharacteristic.create(canine_id: params[:canine_id], characteristic_id: key, value: value, observations: params[:observations])
           end
       end
       respond_to do |format|
