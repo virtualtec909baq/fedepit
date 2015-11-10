@@ -86,6 +86,7 @@
 				var temporal_sex = $('#canino_characteristic_temporal_sex').val();
 				var temporal_lof = $('#canino_characteristic_temporal_lof').val();
 				var temporal_color = $('#canino_characteristic_temporal_color').val();
+				var observations = $('#canino_characteristic_observations').val();
 				
 				if ($('#canino_characteristic_value').val()) {
 					canine = $('#canino_characteristic_value').val();
@@ -102,7 +103,7 @@
 					$.ajax({
 						type: "POST",
 						url: "/home/create_metter",
-						data: {  characteristics, canine, canine_id, temporal_owner, temporal_phone, temporal_email, temporal_canine_name,temporal_birth, temporal_race, temporal_sex, temporal_lof, temporal_color   },
+						data: {  characteristics, canine, canine_id, temporal_owner, temporal_phone, temporal_email, temporal_canine_name,temporal_birth, temporal_race, temporal_sex, temporal_lof, temporal_color , observations  },
 					})
 				};	
 			});
