@@ -14,7 +14,7 @@
 						<%elsif characteristic.color == true %>
 							<%= f.collection_select :value, Color.all.order(name: :asc), :id, :name, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
 						<%else%>
-							<%= f.text_field :value, :class => "form-control text_fieldn find_selected"%>
+							<%= f.collection_select :value, Standard.where(characteristic_id: characteristic.id), :id, :name, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
 						<%end%>
 					</div>
 				<%end%>
