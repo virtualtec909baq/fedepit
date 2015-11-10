@@ -31,7 +31,11 @@ class Admin::CaninoCharacteristicsController < ApplicationController
       @query_2 = canine.characteristics 
       @characteristics = @query_1 - @query_2
       @characteristics = @characteristics.sort_by &:order
-      @observations = CaninoCharacteristic.where(canine_id:canine.id).first.observations.empty?
+      if CaninoCharacteristic.where(canine_id:canine.id).empty?
+        @observations = true
+      else
+        @observations = false
+      end
     end
   end
 

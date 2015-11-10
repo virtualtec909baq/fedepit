@@ -49,7 +49,7 @@
 					<%= f.text_field :value, :class => "form-control"%>
 				</div>
 			<%end%>
-			<%if @observations%>
+			<%unless @observations%>
 				<div class="col-md-12">
 					<%= f.label :observations, "Observaciones"%>
 					<%= f.text_field :observations, :class => "form-control"%>
