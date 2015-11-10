@@ -38,7 +38,7 @@ class Admin::CaninesController < ApplicationController
     @canine.champions.each do |category|
       @ranking = @ranking + category.points
     end
-    @canino_characteristics = CaninoCharacteristic.where(canine_id: params[:id])
+    @canino_characteristics = CaninoCharacteristic.where(canine_id: params[:id]).order(created_at: :asc)
     respond_to do |format|
       format.html
       format.pdf do
