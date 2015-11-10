@@ -90,22 +90,24 @@ module ApplicationHelper
 		end
 	end
 
-	def get_characteristic_detail(id, canine_race_id, canine_characteristic_id, age)
-		if Characteristic.exists?(id)
-			characteristic = Characteristic.find(id)  
-			if characteristic.measure_id.blank?
-				return CharacteristicDetail.find(id).description
-			else 
-				standards = Standard.where(:race_id =>  canine_race_id, :characteristic_id => canine_characteristic_id)
+	def get_characteristic_detail(characteristic_id, race_id, value)
+		if Characteristic.exists?(characteristic_id)
+			characteristic = Characteristic.find(characteristic_id)
+			if characteristic.color
+				return Color.find(characteristic_id).name
+			elsif characteristic.measure_id.blank?
+				return CharacteristicDetail.find(value).description
+			else
+				standards = Standard.where(:race_id =>  race_id, :characteristic_id => characteristic_id)
 				unless standards.empty? 
 					startd = standards.detect {|n| n.rg_lt <= id and n.rg_gteq >=id}
 					unless startd.nil?
 						return startd.description
 					else 	
-						return id
+						return "#{value} #{characteristic.measure.unit}"
 					end 
 				else 
-				  	return id
+				  	return "#{value} #{characteristic.measure.unit}"
 				end
 			end
 		end

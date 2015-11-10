@@ -80,9 +80,9 @@
 			$("#button_canino_characteristic").click(function(){
 				var canine;
 				var canine_id;
+				observations = $('#canino_characteristic_observations').val();
 				if ($('#canino_characteristic_value').val()) {
 					canine = $('#canino_characteristic_value').val();
-					observations = $('#canino_characteristic_observations').val();
 					canine_id = <%= params[:canine_id]%>;
 				} else{
 					canine_id = <%= params[:canine_id]%>;

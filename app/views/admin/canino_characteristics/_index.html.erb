@@ -19,7 +19,7 @@
       <%@canino_characteristics.each do |can_char|%>
         <tr >
           <td class="center"> <%= get_characteristics(can_char.characteristic_id ) %></td>
-          <td class="center"> <%= get_characteristic_detail(can_char.value, @canine.race_id, can_char.characteristic_id, @canine.birth)  %></td>
+          <td class="center"> <%= get_characteristic_detail(can_char.characteristic_id, @canine.race_id, can_char.value)  %></td>
 
           <%- if params[:controller].split("/").first == "admin"%>
           <td class="center">
