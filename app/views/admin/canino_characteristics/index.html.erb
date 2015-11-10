@@ -40,7 +40,7 @@
       </table>
     </div>
     <div class="col-lg-12">
-     
+     <%= will_paginate @canines, :locals => { :canines => @canines }, renderer: BootstrapPagination::Rails%>
     </div>
   </div>
 <%else%>
