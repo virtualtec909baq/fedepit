@@ -1,7 +1,7 @@
 <%= form_for @article ,  remote: true, url: admin_articles_path(@article) , method: :post do |f| %>
     <div class="col-xs-12">
         <div class="col-md-12">
-            <h3 class="center"> TITULO Y UNA BREVE DESCRIPCION</h3>
+            <h2 class="center"> TÍTULO Y UNA BREVE DESCRIPCIÓN</h2>
             <div class="errors"></div>
             <div class="fileUpload btn btn-primary pull-right">
                 <span>Imagen de Portada</span>
@@ -9,11 +9,11 @@
             </div>
             <br>
             <div class="form-group">
-                <label class="control-label">Titulo Artículo</label>
+                <label class="control-label">Título Artículo</label>
                 <%= f.text_field :title, class: 'form-control' , :maxlength =>"100" ,:required => false, :placeholder => "Ingrese el nombre del Artículo"%>
             </div>
             <div class="form-group">
-                <label class="control-label">Decripcion</label>
+                <label class="control-label">Decripción</label>
                 <%= f.text_area :description, class: 'form-control', :placeholder =>"Breve descripción del Artículo", rows: 4 %>
             </div>
             <%= f.add_nested_fields_link :paragraphs, 'Agregar Párrafos', :class =>"btn btn-primary pull-right"%>
