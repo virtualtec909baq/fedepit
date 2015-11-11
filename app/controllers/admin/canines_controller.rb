@@ -118,6 +118,12 @@ class Admin::CaninesController < ApplicationController
   def update
     respond_to do |format|
       if @canine.update(canine_params)
+        if params[:father_lof].blank?
+          @canine.update(lft: nil)
+        end
+        if params[:mother_lof].blank?
+          @canine.update(rgt: nil)
+        end
         format.html { redirect_to admin_canine_path, notice: 'El Canino se ha modificado correctamente' }
         format.json { render :show, status: :ok, location: @canine }
       else
