@@ -160,7 +160,7 @@ module ApplicationHelper
 		array = []
 		children(canine.id).each do |children|
 			children.canino_characteristics.each do |characteristic|
-				array << "#{get_characteristics(characteristic.characteristic_id)} #{get_characteristic_detail(characteristic.value, characteristic.canine.race_id, characteristic.characteristic_id, 0)}"
+				array << "#{get_characteristics(characteristic.characteristic_id)} #{get_characteristic_detail(characteristic.value, characteristic.canine.race_id, characteristic.characteristic_id)}"
 			end
 		end
 		array.each do |v|
