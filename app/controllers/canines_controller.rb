@@ -11,6 +11,10 @@ class CaninesController < ApplicationController
     end
   end
 
+  def childrens
+    @canine = Canine.find(params[:id])
+  end
+
   def endogamia
     @canine = Canine.find(params[:id])
     @array_ancestor = get_ancestor_with_hash(@canine, 0)

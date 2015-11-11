@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "home/search_canines" => 'home#search_canines', :as => "search_canines"
   get "canines/:id/endogamia", to:"canines#endogamia", as: "endogamia"
   get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
+  get "canines/:id/childrens", to:"canines#childrens", as: "childrens"
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
   
   namespace :api, defaults: { format: :json } do
