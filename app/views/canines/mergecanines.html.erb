@@ -1,0 +1,94 @@
+<script>
+    var projects = [];
+    <%- gender = Canine.find(params[:id]).gender%>
+    var canineId = <%=params[:id] %>
+    <% @canines = Canine.where.not(gender: gender).order(name: :asc)%>
+    <%@canines.each do |canine|%>
+      projects.push({ value: '<%=canine.name%>',label: '<%=canine.name%>', desc: '<%=canine.id%>'})
+    <%end%>
+    $(function() {
+      
+      $( "#name_cont" ).autocomplete({
+        minLength: 0,
+        source: projects,
+        focus: function( event, ui ) {
+          $( "#name_cont" ).val( ui.item.label );
+          return false;
+        },
+        select: function( event, ui ) {
+          $( "#name_cont" ).val( ui.item.label );
+          $( "#q_id_eq" ).val( ui.item.desc );
+          $('#myLink').attr('href','/canines/'+ canineId +'/pedigree_complex?id_2='+ $( "#q_id_eq" ).val());
+          return false;
+        }
+      })
+      .autocomplete( "instance" )._renderItem = function( ul, item ) {
+        return $( "<li>" )
+          .append( "<a>" + item.label + "</a>" )
+          .appendTo( ul );
+      };
+    });
+</script>
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+        <h2>Cruce</h2>
+      </div>
+      <div class="col-md-12">
+       <div class="row">
+          <div class="col-md-6">
+            <a id='myLink' href='#' class="btn btn-info btn_white btn-block">Cruzar Ejemplares</a>
+            <br>
+          </div>
+          <%= search_form_for @search, url: mergecanines_path , remote: true do |f|%> 
+            <div class="col-md-4">
+              <input type="text" id='name_cont' name="fname" class="form-control" placeholder='BUSCAR EJEMPLAR'>
+              <%= f.text_field :id_eq, :class => "text_field_hiden"%>
+            </div>
+            <div class="col-md-2">
+              <%= f.submit "Refrescar", :class => "btn btn-primary btn_white btn-block", :id => 'refresh'%>
+            </div>
+          <%end%>
+          <br>
+        </div>
+      </div>
+    <div class="col-md-6">
+      <table class="table table-striped table-hover table-bordered" id="caninestable">
+        <thead>
+          <tr>
+            <th>NOMBRE</th>
+            <th>COI</th>
+            <th>COUNT</th>
+            <th>MIN GEN</th>
+            <th>MAX GEN</th>
+            <th>% OF BLOOD</th>
+            <th>COR</th>
+            <th>BREADING</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@root_canines.each do |canines|%> 
+            <tr style="background-color: <%=canines[5]%>;">
+              <th class='canine_name' style="text-align: left;"><%= link_to canines[1], canine_path(canines[7]), :target=>"_blank"%></th>
+              <th class="endogamia<%= canines[7]%>">
+                <%= link_to "calcular endogamia", calculate_endogamia_path(canines[7]) , :remote => true, class:"btn btn-danger btn_white btn-block"%></th>
+              <th><%= canines[6]%></th>
+              <th><%= canines[2]%></th>
+              <th><%=@tree_get_ancestors_2.select {|f| f["canine_id"]  == canines[7]}.map{|x| x['level']}.last%></th>
+              <th><%= canines[3]%></th>
+              <th><%= number_to_percentage(@tree_get_ancestors_2.select {|f| f["canine_id"]  == canines[7]}.map{|x| x['nivel_consa']}.reduce(:+))%></th>
+              <th style="text-align: center;"><%= canines[4]%></th>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6" style="padding-left: 177px;" >
+      <div id="table_endogamia_canines" style="display: none;">
+          <%= render partial: '/canines/mergecanines' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

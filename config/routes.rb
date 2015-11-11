@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get "canines/:id/endogamia", to:"canines#endogamia", as: "endogamia"
   get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
   get "canines/:id/childrens", to:"canines#childrens", as: "childrens"
+  get "canines/:id/mergecanines", to:"canines#mergecanines", as: "mergecanines"
+  get "canines/:id/calculate_endogamia", to:"canines#calculate_endogamia", as: "calculate_endogamia"
+  get "canines/:id/pedigree_complex", to:"canines#pedigree_complex", as: "pedigree_complex"
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
   
   namespace :api, defaults: { format: :json } do

@@ -1,0 +1,5 @@
+<% @tree = []%>
+<% puts @tree.inspect%>
+<% ancestors = get_ancestors(@canine,0)%>
+$('#endogamia<%= @canine.id%> > a').hide();
+$('.endogamia<%= @canine.id%>').html("<%= cor(ancestors)%>");
