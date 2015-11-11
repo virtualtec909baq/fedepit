@@ -44,6 +44,13 @@
       <%= link_to "DIAGRAMA DE FLECHA", endogamia_path(@canine), :class =>"btn btn-warning btn-outlined pull-right hidden-xs btn-block", :disabled => @array_ancestor.zero? %>
     </div>
     <div class="col-md-3">
+      <a class="twitter-share-button btn btn-info btn-outlined btn-block white-btn"
+      href="https://twitter.com/intent/tweet?url=<%=request.original_url %>&text=Mira mi ejemplar de fedepit"
+        data-counturl="<%= request.original_url%>">
+        Tweet</a>
+    </div>
+    <div class="col-md-3">
+      <a class="btn btn-fb btn-outlined btn-block white-btn" href="http://www.facebook.com/share.php?u=<%= request.original_url%>&title= Mira mi ejemplar de fedepit">Facebook</a>
     </div>
   </div>
 </div>

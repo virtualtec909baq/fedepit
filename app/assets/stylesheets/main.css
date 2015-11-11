@@ -6352,3 +6352,14 @@ i.fa.fa-venus {
     font-weight: bold;
     text-align: center;
 }
+
+.btn-fb {
+    background-color: #3B5998;
+    border-color: #3B5998;
+    color: #fff;
+}
+.btn-fb:hover, .btn-fb:focus, .btn-fb.focus{
+	background-color: #34497E;
+    border-color: #34497E;
+	color: #fff;
+}
