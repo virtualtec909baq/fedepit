@@ -1,6 +1,6 @@
 <%= form_for @breeder , url: admin_breeder_path(@breeder), :id => @breeder.id , method: :put do |f| %>
   <div class="row">
-  <div class="col-md-12"><h2>Nuevo Criador</h2></div>
+  <div class="col-md-12"><h2>Editar Criador</h2></div>
     <div class="col-md-12">
       <% if @breeder.errors.any? %>
       <div class="alert alert-danger alert-dismissible" role="alert">
@@ -23,7 +23,7 @@
     <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="col-md-6">
-    <%= f.label :Telefono %><br>
+    <%= f.label :Teléfono %><br>
     <%= f.text_field :phone, class: 'form-control' %>
   </div>
   <div class="col-md-6">
@@ -31,7 +31,7 @@
     <%= f.text_field :email, class: 'form-control' %>
   </div>
   <div class="col-md-6">
-    <%= f.label :Pais %><br>
+    <%= f.label :País %><br>
     <%= f.text_field :country, class: 'form-control' %>
   </div>
   <div class="col-md-6">
@@ -64,7 +64,13 @@
   </div>  
   <div class="col-md-6">
     <%= f.label :Imagen %><br>
-    <%= f.file_field :img %>
+    <%- if f.object && f.object.img && f.object.img%>
+        <%= image_tag(f.object.img.to_s, :transformation => 'hint', alt: f.object.img.to_s, :class => "img-responsive") %>
+        <br>
+        <%= f.file_field :img %>
+      <%else%>
+        <%= f.file_field :img %>
+      <%end %>
   </div>
 
   <div class="col-md-12">
