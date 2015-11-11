@@ -1,0 +1,71 @@
+<div class="breadcrumb-color breadcrumb-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="<%= root_path%>">INICIO</a>
+                    </li>
+                    <li class="active">Filtros</li>
+                </ol>
+            </div>
+        </div>
+      </div>
+</div>
+<div class="container">	
+	<br>
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Mostrar Filtros</button>
+	<div id="demo" class="collapse">
+		<h2 id="canines_filters">Filtros</h2>
+		<div class="well">
+			<%= form_for :canine, :html => {:id => 'canino_characteristic_form'} do |f| %>
+			<div class="row">
+				<%- @characteristics.each do |characteristic|%>
+				<div class="col-md-4">
+					<span class="bold"> <%= characteristic.name%> </span>
+					<%= f.hidden_field :characteristic_id, :value => characteristic.id %>
+					<%- if characteristic.measure_id.blank? %>
+					<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
+					<%elsif characteristic.color == true %>
+					<%= f.collection_select :value, Color.all.order(name: :asc), :id, :name, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
+					<%else%>
+					<%= f.collection_select :value, Standard.where(characteristic_id: characteristic.id), :id, :name, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
+					<%end%>
+				</div>
+				<%end%>
+				<br>
+			</div>
+			<% end %>
+			<br>
+			<button id="button_canino_characteristic" class="btn btn-primary btn-block"><i class="fa fa-filter"></i>Filtrar</button>
+		</div>
+	</div> 	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var characteristics = [];
+			var characteristicDetail = [];
+			$("#button_canino_characteristic").click(function(){
+				$('#canino_characteristic_form').find('.find_selected').each(function(){
+					if($("option:selected", this).attr("value") != "" ){
+						characteristics.push($(this).prev().val());
+						characteristicDetail.push($(this).val());
+					// characteristics[$(this).prev().val()] = $(this).val();
+				}
+			})
+				if (characteristics.length === 0) {
+					alert("seleccione caracteristicas para filtrar");
+					return false;
+				} else{
+					$.ajax({
+						type: "GET",
+						url: "/home/search_canines",
+						data: {characteristics,characteristicDetail } ,
+					})
+				};
+			});
+		});
+	</script>
+	<div id="table_canine">
+		<%= render partial: '/home/index_canines' %>
+	</div>
+</div>

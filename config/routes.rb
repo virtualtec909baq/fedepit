@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   match 'home/create_metter', to: 'home#create_metter', via: 'post'
   get "home/contactus", to:"home#contactus"
   get "home/metter", to:"home#metter", as: "metter"
+  get "home/search_canines" => 'home#search_canines', :as => "search_canines"
   get "canines/:id/endogamia", to:"canines#endogamia", as: "endogamia"
   get "canines/:id/pedigree", to:"canines#pedigree", as: "pedigree"
   put "articles/:id/denounce", to: "articles#denounce", as: "denounce"
