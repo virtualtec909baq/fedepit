@@ -65,7 +65,7 @@
 					<%- elsif characteristic.measure_id.blank? %>
 						<%= f.collection_select :value, characteristic.characteristic_details, :id, :description, {prompt: "Escoger"}, {class: "form-control find_selected"}%>
 					<%else%>
-						<%= f.number_field :value, :class => "form-control numbe_field find_selected"%>
+						<%= f.number_field :value, :class => "form-control numbe_field find_selected", :min =>"0"%>
 					<%end%>
 				</div>
 			<%end%>
@@ -73,7 +73,7 @@
 		</div>
 	<% end %>
 	<br>
-	<button id="button_canino_characteristic" class="btn btn-primary btn-block">Crea Metter</button>  	
+	<button id="button_canino_characteristic" class="btn btn-primary btn-block">CREAR METTER</button>  	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(".numbe_field").keypress(function (e) {
