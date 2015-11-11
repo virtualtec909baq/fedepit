@@ -13,7 +13,7 @@
       </div>
 </div>
 <div class="container">
-<%= form_for :canino_characteristic, :html => {:id => 'canino_characteristic_form', :name => "myForm"} do |f| %>
+<%= form_for :Ejemplar_characteristic, :html => {:id => 'Ejemplar_characteristic_form', :name => "myForm"} do |f| %>
 	<div class="row">
 		<div class="col-md-12"><h2>DATOS PERSONALES</h2></div>
 		<div class="col-md-4">
@@ -21,7 +21,7 @@
 			<%= f.text_field :temporal_owner, :class => "form-control required"%>
 		</div>
 		<div class="col-md-4">
-			<%= f.label :temporal_phone, "Telefono Propietario"%>
+			<%= f.label :temporal_phone, "Teléfono Propietario"%>
 			<%= f.text_field :temporal_phone, :class => "form-control required"%>
 		</div>
 		<div class="col-md-4">
@@ -30,21 +30,21 @@
 		</div>
 		<div class="col-md-12"><h2>DATOS DEL EJEMPLAR</h2></div>
 		<div class="col-md-4">
-			<%= f.label :temporal_canine_name, "Nombre Canino"%>
+			<%= f.label :temporal_canine_name, "Nombre Ejemplar"%>
 			<%= f.text_field :temporal_canine_name, :class => "form-control required"%>
-			<%= f.label :temporal_birth, "Fecha de Nacimiento Canino"%>
+			<%= f.label :temporal_birth, "Fecha de Nacimiento Ejemplar"%>
 			<%= f.text_field :temporal_birth, :class => "form-control required"%>
 		</div>
 		<div class="col-md-4">
-			<%= f.label :temporal_race, "Raza Canino(Variedad)"%>
+			<%= f.label :temporal_race, "Raza Ejemplar(Variedad)"%>
 			<%= f.text_field :temporal_race, :class => "form-control required"%>
-			<%= f.label :temporal_sex, "Sexo Canino"%>
+			<%= f.label :temporal_sex, "Sexo Ejemplar"%>
 			<%= f.select :temporal_sex, [["Masculino", "Masculino"],["Femenino", "Femenino"]], {prompt: "Escoger Sexo"}, {class: "form-control required"}%>
 		</div>
 		<div class="col-md-4">
-			<%= f.label :temporal_lof, "LOF Canino"%>
+			<%= f.label :temporal_lof, "LOF Ejemplar"%>
 			<%= f.text_field :temporal_lof, :class => "form-control required"%>
-			<%= f.label :temporal_color, "Color Canino"%>
+			<%= f.label :temporal_color, "Color Ejemplar"%>
 			<%= f.text_field :temporal_color, :class => "form-control required"%>
 		</div>
 		<div class="col-md-12">
@@ -52,7 +52,7 @@
 			<%= f.text_field :observations, :class => "form-control"%>
 			<hr>
 		</div>
-		<div class="col-md-12"><h2>CARACTERISTICAS DEL EJEMPLAR</h2></div>
+		<div class="col-md-12"><h2>CARACTERÍSTICAS DEL EJEMPLAR</h2></div>
 		<%- @characteristics.each do |characteristic|%>
 			<div class="col-md-4">
 				<span class="bold"> <%= characteristic.name%> </span>
@@ -70,7 +70,7 @@
 	</div>
 <% end %>
 <br>
-<button id="button_canino_characteristic" class="btn btn-primary btn-block">Crea Metter</button>  	
+<button id="button_Ejemplar_characteristic" class="btn btn-primary btn-block">CREAR METTER</button>  	
 <script type="text/javascript">
 	$(document).ready(function() {
 			var characteristics = {};
@@ -80,28 +80,28 @@
 		        return false;
 		    	}
 			});
-			$("#button_canino_characteristic").click(function(){
+			$("#button_Ejemplar_characteristic").click(function(){
 				var canine;
 				var canine_id;
-				var  temporal_owner = $('#canino_characteristic_temporal_owner').val();
-				var  temporal_phone = $('#canino_characteristic_temporal_phone').val();
-				var temporal_email = $('#canino_characteristic_temporal_email').val();
-				var  temporal_canine_name = $('#canino_characteristic_temporal_canine_name').val();
-				var  temporal_birth = $('#canino_characteristic_temporal_birth').val();
-				var temporal_race = $('#canino_characteristic_temporal_race').val();
-				var temporal_sex = $('#canino_characteristic_temporal_sex').val();
-				var temporal_lof = $('#canino_characteristic_temporal_lof').val();
-				var temporal_color = $('#canino_characteristic_temporal_color').val();
-				var observations = $('#canino_characteristic_observations').val();
+				var  temporal_owner = $('#Ejemplar_characteristic_temporal_owner').val();
+				var  temporal_phone = $('#Ejemplar_characteristic_temporal_phone').val();
+				var temporal_email = $('#Ejemplar_characteristic_temporal_email').val();
+				var  temporal_canine_name = $('#Ejemplar_characteristic_temporal_canine_name').val();
+				var  temporal_birth = $('#Ejemplar_characteristic_temporal_birth').val();
+				var temporal_race = $('#Ejemplar_characteristic_temporal_race').val();
+				var temporal_sex = $('#Ejemplar_characteristic_temporal_sex').val();
+				var temporal_lof = $('#Ejemplar_characteristic_temporal_lof').val();
+				var temporal_color = $('#Ejemplar_characteristic_temporal_color').val();
+				var observations = $('#Ejemplar_characteristic_observations').val();
 				
-				if ($('#canino_characteristic_value').val()) {
-					canine = $('#canino_characteristic_value').val();
+				if ($('#Ejemplar_characteristic_value').val()) {
+					canine = $('#Ejemplar_characteristic_value').val();
 					canine_id ="0";
 				};
 				if (temporal_owner == null || temporal_owner == "") {
 					alert("Por Favor ingrese el nombre del Propietario");
 				} else{	
-					$('#canino_characteristic_form').find('.find_selected').each(function(){
+					$('#Ejemplar_characteristic_form').find('.find_selected').each(function(){
 						if($("option:selected", this).attr("value") != "" ){
 							characteristics[$(this).prev().val()] = $(this).val();
 						}
