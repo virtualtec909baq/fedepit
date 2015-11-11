@@ -276,7 +276,11 @@
         <%children_characteristic_detail(@canine).each do |key, value|%>
             <tr >
                 <th ><%= key%></th>
-                <th ><%= number_to_percentage(((value.to_f * 100)/ @hijo_e), precision: 0)%></th>
+                <th >
+                <%unless @hijo_e == 0%>
+                 <%= number_to_percentage(((value.to_f * 100)/ @hijo_e), precision: 0)%>
+                <%end%>
+                </th>
             </tr>
         <%end%>
     </tbody>
@@ -284,7 +288,11 @@
         <%children_characteristic_detail(@canine_2).each do |key, value|%>
             <tr >
                 <th ><%= key%></th>
-                <th ><%= number_to_percentage(((value.to_f * 100)/ @hijo_e), precision: 0)%></th>
+                <th >
+                    <%unless @hijo_e_2 == 0%>
+                        <%= number_to_percentage(((value.to_f * 100)/ @hijo_e_2), precision: 0)%>
+                    <%end%>
+                </th>
             </tr>
         <%end%>
     </tbody>
