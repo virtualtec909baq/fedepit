@@ -120,7 +120,7 @@
   });
   </script>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12" onload="new_canine.reset();">
     <h2>Nuevo Ejemplar</h2>
   </div>
   <%= form_for @canine , url: admin_canines_path(@canine) , :html => { :multipart => true } do |f| %>
