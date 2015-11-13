@@ -16,11 +16,12 @@
         <tr>
           <th>NOMBRE</th>
           <th>COI</th>
+          <th>COR</th>
           <th>COUNT</th>
           <th>MIN GEN</th>
           <th>MAX GEN</th>
           <th>% OF BLOOD</th>
-          <th>COR</th>
+          
           <th>BREADING</th>
         </tr>
       </thead>
@@ -31,10 +32,10 @@
             <th class="endogamia<%= canines[7]%>">
               <%= link_to "calcular endogamia", admin_calculate_endogamia_path(canines[7]) , :remote => true, class:"btn btn-danger btn_white btn-block"%></th>
             <th><%= canines[6]%></th>
+            <th><%= number_to_percentage(@tree_get_ancestors_2_2.select {|f| f["canine_id"]  == canines[7]}.map{|x| x['nivel_consa']}.reduce(:+))%></th>
             <th><%= canines[2]%></th>
-            <th><%=@tree_get_ancestors_2.select {|f| f["canine_id"]  == canines[7]}.map{|x| x['level']}.last%></th>
+            <th><%=@tree_get_ancestors_2_2.select {|f| f["canine_id"]  == canines[7]}.map{|x| x['level']}.last%></th>
             <th><%= canines[3]%></th>
-            <th><%= number_to_percentage(@tree_get_ancestors_2.select {|f| f["canine_id"]  == canines[7]}.map{|x| x['nivel_consa']}.reduce(:+))%></th>
             <th style="text-align: center;"><%= canines[4]%></th>
           </tr>
         <%end%>
