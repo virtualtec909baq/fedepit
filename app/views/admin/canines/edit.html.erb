@@ -122,6 +122,18 @@
       <%= f.label :Nombre %><br>
       <%= f.autocomplete_field(:name, autocomplete_canine_name_admin_canines_path, :class => "form-control")%>
     </div>
+    <div class="col-md-6">
+      <br>
+      <%= f.label :father_lof, "Nombre Padre - LOF" %><br>
+      <%= f.text_field :father_lof, class: 'form-control' %>
+      <%= f.hidden_field :lft%>
+    </div>
+    <div class="col-md-6 ">
+      <br>
+      <%= f.label :mother_lof, "Nombre Madre - LOF" %>
+      <%= f.text_field :mother_lof, class: 'form-control' %>
+      <%= f.hidden_field :rgt%>
+    </div>
    <div class="col-md-3">
       <br>
       <%= f.label :Microchip %><br>
@@ -156,18 +168,6 @@
       <br>
       <%= f.label :new_register, "# Otro Registro" %>
       <%= f.text_field :new_register, class: "form-control"%>
-    </div>
-    <div class="col-md-6">
-      <br>
-      <%= f.label :father_lof, "Nombre Padre - LOF" %><br>
-      <%= f.text_field :father_lof, class: 'form-control' %>
-      <%= f.hidden_field :lft%>
-    </div>
-    <div class="col-md-6 ">
-      <br>
-      <%= f.label :mother_lof, "Nombre Madre - LOF" %>
-      <%= f.text_field :mother_lof, class: 'form-control' %>
-      <%= f.hidden_field :rgt%>
     </div>
     <div class="col-md-6 ">
       <br>
