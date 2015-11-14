@@ -63,7 +63,7 @@
           <th>MAX GEN</th>
           <th>% OF BLOOD</th>
           
-          <th>BREADING</th>
+          <th>BREEDING</th>
         </tr>
       </thead>
       <tbody>
@@ -72,8 +72,9 @@
             <th class='canine_name' style="text-align: left;"><%= link_to canines[1], admin_canine_path(canines[7]), :target=>"_blank"%></th>
             <th class="endogamia<%= canines[7]%>">
               <%= link_to "calcular endogamia", admin_calculate_endogamia_path(canines[7]) , :remote => true, class:"btn btn-danger btn_white btn-block"%></th>
-            <th><%= canines[6]%></th>
+            
             <th><%= number_to_percentage(@tree_get_ancestors_2.select {|f| f["canine_id"]  == canines[7]}.map{|x| x['nivel_consa']}.reduce(:+))%></th>
+            <th><%= canines[6]%></th>
             <th><%= canines[2]%></th>
             <th><%=@tree_get_ancestors_2.select {|f| f["canine_id"]  == canines[7]}.map{|x| x['level']}.last%></th>
             <th><%= canines[3]%></th>

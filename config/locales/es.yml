@@ -91,6 +91,7 @@ es:
       clear: "Limpiar"
   activerecord:
     models:
+      comment: "COMENTARIO"
       standard: "ESTANDAR"
       img_race: "DESCRIPICIóN RAZA"
       position: "PUESTO"
