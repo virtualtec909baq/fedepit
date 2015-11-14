@@ -5,7 +5,7 @@
         <h1>Campeones</h1>
       </div>
       <div class="box-purchase">
-        
+        <%= render partial: "/champions/filters"%>
       </div>
     
     <hr>
@@ -44,7 +44,7 @@
         <% end %>
       </tbody>
     </table>
-    <%= will_paginate @canines, :locals => { :canines => @canines }, renderer: BootstrapPagination::Rails%>
+    <%= will_paginate @champions, :locals => { :champions => @champions }, renderer: BootstrapPagination::Rails%>
     </div>
   </div>
 </div>

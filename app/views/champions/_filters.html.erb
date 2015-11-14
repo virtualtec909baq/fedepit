@@ -1,0 +1,14 @@
+<%= search_form_for @search, url: champions_path do |f|%>	
+	<div class="col-md-2">
+		<label>Nombre</label>
+	</div>	
+	<div class="col-md-4">
+		<%= f.search_field(:canine_name_cont, class: 'form-control', placeholder: "BUSCAR EJEMPLAR POR NOMBRE")%>
+	</div>
+	<div class="col-md-3">
+		<%= f.submit :class => "btn btn-info btn_white btn-block" %>
+	</div>
+	<div class="col-md-3">
+		<%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
+	</div>
+<%end%>

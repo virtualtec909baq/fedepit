@@ -7,7 +7,6 @@ class ChampionsController < ApplicationController
     @champions = Champion.all
     @search = Champion.ransack(params[:q])
     @champions = @search.result.order(created_at: :ASC).paginate(page: params[:page], per_page: 12)
-    
   end
 
   # GET /champions/1
