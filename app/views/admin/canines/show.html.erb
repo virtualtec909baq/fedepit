@@ -49,7 +49,7 @@
       <%= link_to "Pedigree", admin_pedigree_path(@canine), :class =>"btn btn-success btn-outlined btn-block", :disabled => @array_ancestor.zero? %>
     </div>
     <div class="col-md-3">
-      <%= link_to "Certificado", admin_canine_path(@canine, :format => "pdf"), :class => "btn btn-warning btn-outlined btn-block" %>
+      <%= link_to "Certificado", admin_canine_path(@canine, :format => "pdf"), :class => "btn btn-warning btn-outlined btn-block", :target => "_blank" %>
     </div>
   </div>
 </div>
