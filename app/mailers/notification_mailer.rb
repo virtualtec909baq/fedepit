@@ -6,7 +6,7 @@ class NotificationMailer < ActionMailer::Base
         @name = name
         @email = email
         @body = body
-        mail(to: "mmfredyh@hotmail.com",from: email, subject: 'Fedepit Notificación de #{@name}')
+        mail(to: "mmfredyh@hotmail.com",from: email, subject: 'Fedepit Notificación')
     end
 
     def send_email(name, email)
