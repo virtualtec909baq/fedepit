@@ -6,7 +6,7 @@ class NotificationMailer < ActionMailer::Base
         @name = name
         @email = email
         @body = body
-        mail(to: "jenniffer54@gmail.com",from: email, subject: 'Contact Request')
+        mail(to: "mmfredyh@hotmail.com",from: email, subject: 'Fedepit Notificación de #{@name}')
     end
 
     def send_email(name, email)
