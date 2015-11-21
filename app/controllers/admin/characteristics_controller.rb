@@ -31,10 +31,10 @@ class Admin::CharacteristicsController < ApplicationController
   # POST /features
   # POST /features.json
   def create
-    @characteristic = Characteristic.new
+    @characteristic = Characteristic.new(feature_params)
      respond_to do |format|
       if @characteristic.save
-        format.html { redirect_to admin_characteristic_path, notice: 'Metter fue creado' }
+        format.html { redirect_to admin_characteristic_path(@characteristic), notice: 'Metter fue creado' }
         format.json { render :show, status: :created, location: @characteristic }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class Admin::CharacteristicsController < ApplicationController
     respond_to do |format|
       if @characteristic.update(feature_params)
         flash[:notice] = 'Metter Modificado'
-        format.html { redirect_to admin_features_path(:metter => true) }
+        format.html { redirect_to admin_characteristic_path() }
         format.json { render :show, status: :ok, location: @characteristic }
       else
         format.html { render :edit }

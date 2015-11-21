@@ -1,4 +1,4 @@
- <%= form_for @characteristic , url: admin_characteristics_path , method: :post do |f| %>
+<%= form_for @characteristic , url: admin_characteristics_path(@characteristic),  method: :post do |f| %>
 		measure_id
 		<%= f.text_field :measure_id%><br>
 		name
