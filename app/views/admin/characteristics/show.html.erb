@@ -1,0 +1,8 @@
+<%= link_to "editar", edit_admin_characteristic_path(@characteristic)%>
+<%= link_to admin_characteristic_path(@characteristic), method: :delete, data: { confirm: 'Desea eliminar este color?' } do %>
+        <i class="fa fa-trash-o"></i>
+        <%end%>
+<%= @characteristic.measure_id%><br>
+<%=@characteristic.name%><br>
+<%=@characteristic.order%><br>
+<%=@characteristic.color%><br>

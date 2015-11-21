@@ -1,0 +1,11 @@
+<%= form_for @characteristic , url: admin_champion_path(@characteristic), :id => @characteristic.id , method: :put do |f| %>
+		measure_id
+		<%= f.text_field :measure_id%><br>
+		name
+		<%=f.text_field :name%><br>
+		order
+		<%=f.text_field :order%><br>
+		color
+		<%=f.text_field :color%><br>
+		<%= f.submit %>
+<%end%>

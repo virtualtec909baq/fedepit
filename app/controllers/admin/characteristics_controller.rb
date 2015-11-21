@@ -31,14 +31,14 @@ class Admin::CharacteristicsController < ApplicationController
   # POST /features
   # POST /features.json
   def create
-    @feature = Feature.new(feature_params)
+    @characteristic = Characteristic.new
      respond_to do |format|
-      if @feature.save
-        format.html { redirect_to admin_features_path, notice: 'Metter fue creado' }
-        format.json { render :show, status: :created, location: @feature }
+      if @characteristic.save
+        format.html { redirect_to admin_characteristic_path, notice: 'Metter fue creado' }
+        format.json { render :show, status: :created, location: @characteristic }
       else
         format.html { render :new }
-        format.json { render json: @feature.errors, status: :unprocessable_entity }
+        format.json { render json: @characteristic.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,15 +47,13 @@ class Admin::CharacteristicsController < ApplicationController
   # PATCH/PUT /features/1.json
   def update
     respond_to do |format|
-      if @feature.update(feature_params)
-        @canine_name = Canine.find(@feature.canine_id).name
-        @feature.update(:canine_name => @canine_name)
+      if @characteristic.update(feature_params)
         flash[:notice] = 'Metter Modificado'
         format.html { redirect_to admin_features_path(:metter => true) }
-        format.json { render :show, status: :ok, location: @feature }
+        format.json { render :show, status: :ok, location: @characteristic }
       else
         format.html { render :edit }
-        format.json { render json: @feature.errors, status: :unprocessable_entity }
+        format.json { render json: @characteristic.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,9 +61,9 @@ class Admin::CharacteristicsController < ApplicationController
   # DELETE /features/1
   # DELETE /features/1.json
   def destroy
-    @feature.destroy
+    @characteristic.destroy
     respond_to do |format|
-      format.html { redirect_to admin_canine_path, notice: 'Metter Eliminado' }
+      format.html { redirect_to admin_canines_path, notice: 'Metter Eliminado' }
       format.json { head :no_content }
     end
   end
@@ -73,11 +71,11 @@ class Admin::CharacteristicsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_feature
-      @feature = Feature.find(params[:id])
+      @characteristic = Characteristic.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_params
-      params.require(:feature).permit!
+      params.require(:characteristic).permit!
     end
 end
