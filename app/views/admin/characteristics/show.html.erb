@@ -6,3 +6,8 @@
 <%=@characteristic.name%><br>
 <%=@characteristic.order%><br>
 <%=@characteristic.color%><br>
+
+<%@characteristic_details.each do |characteristic_detail|%>
+	<%= characteristic_detail.description%> - <%= characteristic_detail.id%>
+	<%= AssociationCharacteristic.where(characteristic_detail_id:characteristic_detail.id ).inspect%> <br>
+<%end%>

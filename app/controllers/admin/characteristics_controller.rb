@@ -17,6 +17,7 @@ class Admin::CharacteristicsController < ApplicationController
   # GET /features/1
   # GET /features/1.json
   def show
+    @characteristic_details = @characteristic.characteristic_details
   end
 
   # GET /features/new
