@@ -9,7 +9,7 @@ class Admin::ParagraphsController < ApplicationController
 
   # GET /type_events/1/edit
   def edit
-    puts "@paragraph"
+    
   end
 
   # POST /type_events
@@ -32,7 +32,7 @@ class Admin::ParagraphsController < ApplicationController
   # PATCH/PUT /type_events/1
   # PATCH/PUT /type_events/1.json
   def update
-    puts "aquiiiii"
+
     respond_to do |format|
       if @paragraph.update(type_category_params)
         format.html { redirect_to admin_article_path(@paragraph.article_id), notice: 'Su Parrafo fue modificado correctamente.' }

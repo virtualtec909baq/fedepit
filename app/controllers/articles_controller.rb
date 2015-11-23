@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
   def denounce
     @comment = Comment.find(params[:comment_id])
     val = @comment.report + 1
-    puts val
+  
     @comment.update(:report => val )
     respond_to do |format|
       flash[:notice] = 'Se ha reportado'

@@ -60,7 +60,7 @@ Rails.application.routes.draw do
     resources :characteristics
     resources :canino_characteristics
     resources :animations
-    
+    resources :characteristics
     match 'home/send_mail_attachments', to: 'home#send_mail_attachments', via: 'post'
     put "canino_characteristics/:id/approve", to: "canino_characteristics#approve", as: "approve"
     get "home/send_email" => 'home#send_email', :as => "send_email"

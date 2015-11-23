@@ -34,7 +34,7 @@ class Admin::RacesController < ApplicationController
   # POST /races
   # POST /races.json
   def create
-    puts params[:img_races].inspect
+   
     @race = Race.new(race_params)
     
     respond_to do |format|

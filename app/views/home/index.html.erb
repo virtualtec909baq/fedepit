@@ -5,11 +5,28 @@
         <div class="row">
           <div class="container">
               <div class="col-md-8">
-                    <h2><%= t('.who_we_are')%></h2>
-                    <h4><%= t('.who_description')%></h4>
+                    <h2 class="center"><%= t('.who_we_are')%></h2>
+                    <h4>
+                      FEDEPIT es el registro canino que se enfoca en la culturizacion del criador y aficionado al mundo profesional de los perros de raza. Es el único registro del mundo que de manera personalizada participa en la formación de criterios que le permitirán al criador y aficionado hacer aportes serios a nuestras razas.
+                      <br>
+                      <br>
+                      Tenemos un gran número de herramientas a su disposición que le facilitaran el proceso de cría y el manejo de información. FEDEPIT es el único registro en el mundo con tecnología  de punta capaz de administrar el banco de genes de las diferentes razas. Un modelo exitoso del cual otros registros se quieren valer para implantarlo en países como los Estados Unidos. Somos una fuente de producción donde se origina el conocimiento necesario para mejorar los proyectos de cada criador convirtiéndolos en experimentados canofilos dispuestos a mejorar producción tras producción nuestras razas.
+                      <br>
+                      <br>
+                      En FEDEPIT no sólo tendrá acceso a información sobre cría y selección, aquí aprenderá a manejar su mascota en diferentes áreas, desde un adiestramiento básico, deporte, manejo del perro de exposición, salud, reproducción etc...
+                      <br>
+                      <br>
+                      En FEDEPIT la sabiduría te promueve.
+                      <br>
+                      <br>
+                      Bienvenidos!
+
+                    </h4>
                 </div>
                 <div class="col-md-4 img_quienes">
-                   <img class="img-circle img-responsive img-center" alt="" src="http://placehold.it/200x200">
+                   <br>
+                   <br>
+                   <img class="img-responsive" alt="" src="http://placehold.it/400x750">
                 </div>
                 
             </div>
@@ -33,7 +50,7 @@
                         <p><%= canine.name.upcase %> <br> <%= canine.try(:race).try(:name) %> <br> <%= canine.try(:breeder).try(:name) %></p>
                     </div>
                   </div>
-                  <p><%= canine.name %></p>
+                  <p><%= link_to canine.name, canine_path(canine.id)%></p>
                 </div> 
                 <% end %>
             </div>

@@ -71,9 +71,8 @@ es:
       place_email: "Tu correo electronico"
       place_message: "Escribe el mensaje que deseas enviar"
     index:
-      who_description: "Somos la Federación Intenacional de Registros Para Perros Tipo Pit FEDEPIT reconocidas o no por el American Kennel Club o la Federación Cinológica Internacional."
       who_we_are: "Quienes Somos"
-      dogs: "Ejemplares mas visto"
+      dogs: "Ejemplares mas vistos"
       more: "Ver mas..."
       last_article: "Ultimos articulos"
       read: "Seguir leyendo"

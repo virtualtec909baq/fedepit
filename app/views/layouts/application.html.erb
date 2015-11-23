@@ -17,7 +17,6 @@
 		<%= render partial: "layouts/share"%>
 		<%- unless params[:controller].split("/").first == "admin" %>
 	    	<%= render partial: "layouts/header"%>
-	    	<%= puts params.inspect%>
 	    <%else%>
 	    	<%= render partial: "layouts/header2"%>
 	    <%end%>
