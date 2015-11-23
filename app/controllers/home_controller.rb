@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
   	@sponsors = Sponsor.where(status: true).last(5).reverse
   	@articles = Article.last(3).reverse	
-  	@canines  = Canine.find_by_sql "SELECT canines.id, canines.name FROM canines LEFT JOIN images ON canines.id = images.canine_id WHERE images.canine_id IS NOT NULL LIMIT 5"
+  	@canines  = Canine.find_by_sql "SELECT canines.id, canines.name FROM canines LEFT JOIN images ON canines.id = images.canine_id WHERE images.canine_id IS NOT NULL LIMIT"
     @canines = @canines.uniq
   end
   
