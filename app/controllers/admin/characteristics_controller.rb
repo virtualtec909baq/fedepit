@@ -8,6 +8,7 @@ class Admin::CharacteristicsController < ApplicationController
     @canines = Canine.all
     @search = Canine.ransack(params[:q])
     @canines = @search.result.order(name: :asc).page(params[:page])
+    @characteristics = Characteristic.all.order(order: :asc)
     respond_to do |format|
       format.html
       format.js
