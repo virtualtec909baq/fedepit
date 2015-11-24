@@ -9,7 +9,7 @@
 	<tbody>
 		 <% @characteristics.each do |c| %>
 		 	 <tr>
-		 	 	<td><%= c.id%></td>
+		 	 	<td><%= link_to c.id, edit_admin_characteristic_path(c)%></td>
 		 	 	<td><%= c.name%></td>
 		 	 	<td><%= c.order%></td>
 		 	 </tr>
