@@ -1,5 +1,6 @@
 module ApplicationHelper
 	include ActionView::Helpers::NumberHelper
+	
 	def get_show(spectacle_id)
 		if Spectacle.exists?(spectacle_id)
 			return Spectacle.find(spectacle_id).name
@@ -503,6 +504,22 @@ module ApplicationHelper
 		return  n1
 	end
 
+	def newline(canine_name)
+		
+		array_canine_name = canine_name.split(' ')
+		if array_canine_name.length >= 5
+			@name = ''
+			array_canine_name.in_groups(2, false).each do |array|
+				array << "\n"
+				array.each do |a|
+					@name = @name +" "+a.to_s 
+				end
+			end
+		else
+			@name = canine_name
+		end
+		return @name
+	end
 	
 end
 
