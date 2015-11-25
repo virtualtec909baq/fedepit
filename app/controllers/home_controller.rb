@@ -19,7 +19,7 @@ class HomeController < ApplicationController
   end
 
   def search_canines
-    @characteristics = Characteristic.all.order(order: :asc)
+    @characteristics = Characteristic.all.order(position: :asc)
     if params[:characteristics] or params[:characteristicDetail]
       characteristics = params[:characteristics]
       characteristic_detail = params[:characteristicDetail]
@@ -40,7 +40,7 @@ class HomeController < ApplicationController
   end
 
   def metter
-   @characteristics =  Characteristic.all.order(order: :asc)
+   @characteristics =  Characteristic.all.order(position: :asc)
   end
 
   def create_metter

@@ -5,7 +5,7 @@ class Admin::HomeController < ApplicationController
   end
 
   def search_canines
-    @characteristics = Characteristic.all.order(order: :asc)
+    @characteristics = Characteristic.all.order(position: :asc)
     if params[:characteristics] or params[:characteristicDetail]
       characteristics = params[:characteristics]
       characteristic_detail = params[:characteristicDetail]

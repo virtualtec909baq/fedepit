@@ -1,13 +1,15 @@
-<%= link_to "editar", edit_admin_characteristic_path(@characteristic)%>
-<%= link_to admin_characteristic_path(@characteristic), method: :delete, data: { confirm: 'Desea eliminar este color?' } do %>
-        <i class="fa fa-trash-o"></i>
-        <%end%>
-<%= @characteristic.measure_id%><br>
-<%=@characteristic.name%><br>
-<%=@characteristic.order%><br>
-<%=@characteristic.color%><br>
-
-<%@characteristic_details.each do |characteristic_detail|%>
-	<%= characteristic_detail.description%> - <%= characteristic_detail.id%>
-	<%= AssociationCharacteristic.where(characteristic_detail_id:characteristic_detail.id ).inspect%> <br>
-<%end%>
+<div class="row">
+	<div class="col-md-12"><h2 ><%=@characteristic.name%></h2></div>
+	<div class="col-md-4"> <%= link_to "EDITAR", edit_admin_characteristic_path(@characteristic), :class =>"btn btn-warning btn-outlined btn-block" %></div>
+	<div class="col-md-4"> <%= link_to "BORRAR", admin_characteristic_path(@characteristic), method: :delete, data: { confirm: 'Desea eliminar este caracteristica?' }, :class =>"btn btn-warning btn-danger btn-block" %></div>
+	<%- if @characteristic.measure_id.blank?%>
+		<div class="col-md-4">
+			<%= link_to "AGREGAR OPCIONES", admin_options_path(@characteristic), :class =>"btn btn-warning btn-outlined btn-block" %>
+		</div>
+	<%end%>
+	<ul>
+		<%@characteristic.characteristic_details.each do |characteristic_detail|%>
+			<li ><%= characteristic_detail.description%></li>
+		<%end%>
+	</ul>
+</div>

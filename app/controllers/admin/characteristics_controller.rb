@@ -5,14 +5,26 @@ class Admin::CharacteristicsController < ApplicationController
   # GET /features
   # GET /features.json
   def index
-    @canines = Canine.all
-    @search = Canine.ransack(params[:q])
-    @canines = @search.result.order(name: :asc).page(params[:page])
-    @characteristics = Characteristic.all.order(order: :asc)
+    @characteristics = Characteristic.all.order(position: :asc)
     respond_to do |format|
       format.html
       format.js
     end
+  end
+
+  def sort
+    @characteristics = Characteristic.all
+    @characteristics.each do |characteristic|
+      characteristic.position = params['characteristic'].index(characteristic.id.to_s) + 1
+      characteristic.save
+    end
+  end
+
+  def options
+  end
+
+  def create_options
+    puts params.inspect
   end
 
   # GET /features/1
@@ -36,7 +48,7 @@ class Admin::CharacteristicsController < ApplicationController
     @characteristic = Characteristic.new(feature_params)
      respond_to do |format|
       if @characteristic.save
-        format.html { redirect_to admin_characteristic_path(@characteristic), notice: 'Metter fue creado' }
+        format.html { redirect_to admin_characteristic_path(@characteristic), notice: 'Características fue creada' }
         format.json { render :show, status: :created, location: @characteristic }
       else
         format.html { render :new }
@@ -50,8 +62,8 @@ class Admin::CharacteristicsController < ApplicationController
   def update
     respond_to do |format|
       if @characteristic.update(feature_params)
-        flash[:notice] = 'Metter Modificado'
-        format.html { redirect_to admin_characteristic_path() }
+        flash[:notice] = 'Características Modificada'
+        format.html { redirect_to admin_characteristics_path(index_1: true) }
         format.json { render :show, status: :ok, location: @characteristic }
       else
         format.html { render :edit }
@@ -65,7 +77,7 @@ class Admin::CharacteristicsController < ApplicationController
   def destroy
     @characteristic.destroy
     respond_to do |format|
-      format.html { redirect_to admin_canines_path, notice: 'Metter Eliminado' }
+      format.html { redirect_to admin_characteristics_path(index_1: true), notice: 'Características Eliminada' }
       format.json { head :no_content }
     end
   end

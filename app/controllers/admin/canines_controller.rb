@@ -14,7 +14,7 @@ class Admin::CaninesController < ApplicationController
     @canines = @search.result.order(name: :asc)
     @canines = @canines.uniq.page(params[:page])
     @total_canines = @canines.count
-    @characteristics = Characteristic.all.order(order: :asc)
+    @characteristics = Characteristic.all.order(position: :asc)
     unless params[:merge_canines]
       @canines_week = Canine.where(:created_at => (Time.now - 7.days)..(Time.now)).count
       @canines_day = Canine.where(:created_at => (Time.now.beginning_of_day)..(Time.now.end_of_day)).count

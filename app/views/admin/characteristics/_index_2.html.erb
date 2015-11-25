@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="page-header">
+      <h1>Orderna las Características del formulario metter</h1>
+    </div>
+  </div>
+</div>
+<ul id="sortable" style="padding: 0px;">
+	<% @characteristics.each do |c| %>
+		<li id="characteristic_<%= c.id %>" class="characteristic">
+			<span><i class="fa fa-arrows-v"></i><%= c.name%></span>
+		</li>
+	<%end%>
+</ul>
+<script type="text/javascript">
+	$('#sortable').sortable({
+	    axis: 'y',
+	    update: function (event, ui) {
+	    	$.ajax({
+	    		url: '/admin/characteristics/sort',
+	            data: $('#sortable').sortable('serialize'),
+              	type: 'POST'
+            });
+
+	    }
+	});
+</script>

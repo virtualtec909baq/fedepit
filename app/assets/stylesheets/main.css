@@ -6363,3 +6363,12 @@ i.fa.fa-venus {
     border-color: #34497E;
 	color: #fff;
 }
+.characteristic{
+    	list-style-type: none;
+    	list-style-type: none;
+		border: #EEEEEE solid 1px;
+		margin-bottom: 2px;
+		background-color: #F6F6F6;
+		padding: 5px;
+		cursor: pointer;
+	}

@@ -12,6 +12,7 @@
  *
  *= require bootstrap_and_overrides
  *= require jquery-ui/autocomplete
+ *= require jquery-ui/sortable
  *= require jquery-ui/base
  *= require main
  *= require responsive

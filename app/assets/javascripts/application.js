@@ -11,7 +11,7 @@
 // about supported directives.
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui/autocomplete
+//= require jquery-ui
 //= require autocomplete-rails
 //= require twitter/bootstrap/modal
 //= require twitter/bootstrap/dropdown

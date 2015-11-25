@@ -24,13 +24,13 @@ class Admin::CaninoCharacteristicsController < ApplicationController
     end
     
     if params[:canine_id] == "0"
-      @characteristics = Characteristic.all.order(order: :asc)
+      @characteristics = Characteristic.all.order(position: :asc)
     else
       canine = Canine.find(params[:canine_id])
       @query_1 = Characteristic.all 
       @query_2 = canine.characteristics 
       @characteristics = @query_1 - @query_2
-      @characteristics = @characteristics.sort_by &:order
+      @characteristics = @characteristics.sort_by &:position
       if CaninoCharacteristic.where(canine_id:canine.id).empty?
         @observations = true
       else

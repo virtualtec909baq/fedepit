@@ -90,6 +90,7 @@ es:
       clear: "Limpiar"
   activerecord:
     models:
+      characteristic: "CARACTERISTICA"
       comment: "COMENTARIO"
       standard: "ESTANDAR"
       img_race: "DESCRIPICIóN RAZA"
@@ -114,6 +115,9 @@ es:
       publicity: "PUBLICIDAD"
       canino_characteristics: "METTER"
     attributes:
+      characteristic:
+        name: "Nombre"
+        position: "Orden"
       standard:
         description: "Descripción"
         race_id: "Raza"

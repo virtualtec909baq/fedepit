@@ -29,6 +29,7 @@ gem 'prawn'
 gem 'nested_form_fields'
 gem 'sshkit', '~> 1.4.0'
 gem 'public_activity'
+gem 'acts_as_list'
 
 group :development do
   gem 'capistrano', '~> 3.1.0'

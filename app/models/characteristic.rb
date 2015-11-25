@@ -1,4 +1,5 @@
 class Characteristic < ActiveRecord::Base
+	acts_as_list
 	include PublicActivity::Model
 	tracked owner: ->(controller, model) { controller && controller.current_user }
 	has_many :standards
@@ -7,4 +8,5 @@ class Characteristic < ActiveRecord::Base
   	has_many :characteristic_details, :through => :association_characteristics
   	has_many :association_characteristics 
 	belongs_to :measure
+	validates :name, presence: true , :on => :create
 end

@@ -1,0 +1,52 @@
+<h2>Agregar Opciones</h2>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+		var counter = 2;
+		$("#addButton").click(function () {
+			if(counter>10){
+				alert("Only 10 textboxes allow");
+				return false;
+			}   
+			var newTextBoxDiv = $(document.createElement('div'))
+			.attr("id", 'TextBoxDiv' + counter);
+			newTextBoxDiv.after().html('<label>Opción #'+ counter + ' : </label>' +
+				'<input type="text" class="form-control"  name="textbox' + counter + 
+				'" id="textbox' + counter + '" value="" >');
+
+			newTextBoxDiv.appendTo("#TextBoxesGroup");
+			counter++;
+		});
+
+		$("#removeButton").click(function () {
+			if(counter==1){
+				alert("No more textbox to remove");
+				return false;
+			}   
+			counter--;
+			$("#TextBoxDiv" + counter).remove();
+		});
+
+		$("#getButtonValue").click(function () {
+			var msg = '';
+			for(i=1; i<counter; i++){
+				msg += "\n Opción #" + i + " : " + $('#textbox' + i).val();
+			}
+			alert(msg.lenght);
+		});
+	});
+</script>
+</head><body>
+
+<div id='TextBoxesGroup'>
+	<input type='button' value='Agregar Opción' id='addButton'class=" btn btn-primary pull-right" >
+	<input type='button' value='Eliminar Opción' id='removeButton'class=" btn btn-danger pull-right" style="margin-right: 10px;">
+	<br>
+	<div id="TextBoxDiv1">
+		<label>Opción #1 : </label><input type='textbox' id='textbox1' class="form-control">
+	</div>
+</div>
+<br>
+<input type='button' value='GUARDAR LAS OPCIONES' id="getButtonValue" class="btn btn-primary btn-block"></button> 

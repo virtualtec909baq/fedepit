@@ -1,11 +1,46 @@
-<%= form_for @characteristic , url: admin_characteristic_path(@characteristic), :id => @characteristic.id , method: :put do |f| %>
-		measure_id
-		<%= f.text_field :measure_id%><br>
-		name
-		<%=f.text_field :name%><br>
-		order
-		<%=f.text_field :order%><br>
-		color
-		<%=f.text_field :color%><br>
-		<%= f.submit %>
-<%end%>
+<div class="row">
+	<%= form_for @characteristic , url: admin_characteristic_path(@characteristic), :id => @characteristic.id , method: :put do |f| %>
+		<div class="col-md-12"><h2>Editar características</h2></div>
+		<% if @characteristic.errors.any? %>
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<strong>No se puede modificar el características:</strong>
+			<ul>
+				<% @characteristic.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		<div class="col-md-12">
+			<%= f.label :nombre %><br>
+			<%= f.text_field :name, class: 'form-control' %>
+		</div>
+		<div class="col-md-6">
+			<br>
+			<label>¿Es una característica numérica?</label>
+			<%= f.check_box :order%> &nbsp;(Sí)
+			<br>
+			<label>¿Es una caracterisica que tendra colores?</label>
+			<%= f.check_box :color%> &nbsp;(Sí)
+		</div>
+		<div class="col-md-6">
+			<br>
+			<%= f.label :orden %><br>
+			<%= f.number_field :position, :class => "form-control numbe_field find_selected", :min =>"0"%>
+		</div>
+
+		<div class="col-md-12">
+			<br>
+			<%= f.submit :class =>"btn btn-primary btn-block" %>
+		</div>
+	<% end %>
+</div>
+
+<script type="text/javascript">
+	$(".numbe_field").keypress(function (e) {
+				if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+					return false;
+				}
+			});
+</script>
