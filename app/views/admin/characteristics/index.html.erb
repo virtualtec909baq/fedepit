@@ -1,5 +1,5 @@
-<%- if params[:index_1]%>
-  <%= render :partial => "admin/characteristics/index_1"%>
-<%elsif params[:index_2]%>
+<%- if params[:index_2]%>
   <%= render :partial => "admin/characteristics/index_2"%>
+<%else%>
+  <%= render :partial => "admin/characteristics/index_1"%>
 <%end%>

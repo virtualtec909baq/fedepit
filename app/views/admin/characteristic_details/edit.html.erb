@@ -1,0 +1,24 @@
+<div class="row">
+  <%= form_for @characteristic_detail , url: admin_characteristic_detail_path(@characteristic_detail), :id => @characteristic_detail.id , method: :put do |f| %>
+      <div class="col-md-12"><h2>Editar Color</h2></div>
+      <% if @characteristic_detail.errors.any? %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>No se puede modificar la Opción:</strong>
+        <ul>
+          <% @characteristic_detail.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <div class="col-md-12">
+        <label>Opción</label><br>
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+      <div class="col-md-12">
+        <br>
+        <%= f.submit :class =>"btn btn-primary btn-block" %>
+      </div>
+  <% end %>
+</div>

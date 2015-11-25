@@ -6,6 +6,10 @@ class Admin::CharacteristicsController < ApplicationController
   # GET /features.json
   def index
     @characteristics = Characteristic.all.order(position: :asc)
+    unless params[:index_2]
+      @search = Characteristic.ransack(params[:q])
+      @characteristics = @search.result.order(name: :asc).page(params[:page])
+    end
     respond_to do |format|
       format.html
       format.js
@@ -24,7 +28,16 @@ class Admin::CharacteristicsController < ApplicationController
   end
 
   def create_options
-    puts params.inspect
+    @characteristic_details = params[:characteristic_details]
+    @characteristic_details.each do |characteristic_detail|
+      unless characteristic_detail.empty?
+        @characteristic_detail = CharacteristicDetail.create(description: characteristic_detail)
+      AssociationCharacteristic.create(characteristic_detail_id: @characteristic_detail.id, characteristic_id: params[:characteristic_id] )
+      end
+    end
+    respond_to do |format|
+      format.js { js_redirect_to(admin_characteristic_path(params[:characteristic_id]))}
+    end
   end
 
   # GET /features/1

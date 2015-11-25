@@ -3,4 +3,5 @@ class CharacteristicDetail < ActiveRecord::Base
 	tracked owner: ->(controller, model) { controller && controller.current_user }
 	has_many :characteristics, :through => :association_characteristics
   	has_many :association_characteristics 
+  	validates :description, presence: true
 end

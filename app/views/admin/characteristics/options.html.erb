@@ -30,11 +30,16 @@ $(document).ready(function(){
 		});
 
 		$("#getButtonValue").click(function () {
-			var msg = '';
+			var characteristic_details = [];
+			var characteristic_id = <%= params[:id]%>;
 			for(i=1; i<counter; i++){
-				msg += "\n Opción #" + i + " : " + $('#textbox' + i).val();
+				characteristic_details.push($('#textbox' + i).val());
 			}
-			alert(msg.lenght);
+			$.ajax({
+				type: "POST",
+				url: "/admin/characteristics/create_options",
+				data: {  characteristic_id, characteristic_details},
+			})
 		});
 	});
 </script>

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="page-header">
-      <h1>Colores</h1>
+      <h1>Características</h1>
     </div>
     <div class="box-purchase">
       <%= render :partial => "admin/characteristics/filters"%>
@@ -38,3 +38,4 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @characteristics, :locals => { :characteristics => @characteristics }, renderer: BootstrapPagination::Rails%>

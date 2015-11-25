@@ -61,7 +61,9 @@ Rails.application.routes.draw do
     resources :canino_characteristics
     resources :animations
     resources :characteristics
+    resources :characteristic_details
     post "characteristics/sort", to: "characteristics#sort"
+    post "characteristics/create_options", to: "characteristics#create_options"
     get "characteristics/:id/options", to:"characteristics#options", as: "options"
     match 'home/send_mail_attachments', to: 'home#send_mail_attachments', via: 'post'
     put "canino_characteristics/:id/approve", to: "canino_characteristics#approve", as: "approve"

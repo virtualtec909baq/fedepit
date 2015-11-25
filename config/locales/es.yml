@@ -90,6 +90,7 @@ es:
       clear: "Limpiar"
   activerecord:
     models:
+      characteristic_detail: "OPCIÓN"
       characteristic: "CARACTERISTICA"
       comment: "COMENTARIO"
       standard: "ESTANDAR"
@@ -115,6 +116,8 @@ es:
       publicity: "PUBLICIDAD"
       canino_characteristics: "METTER"
     attributes:
+      characteristic_detail:
+        description: "Descripción"
       characteristic:
         name: "Nombre"
         position: "Orden"
