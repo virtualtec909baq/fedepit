@@ -3,8 +3,6 @@
 	<%@canine.images.each do |image|%>
 		<tr>
 			<td><%= image_tag image.file_url, :class => "thumbnail", :size => '108x81'%></td>
-		<i class="fa fa-trash-o"></i>
-    <%end%></td>
 		</tr>
 	<%end%>
 </table>
