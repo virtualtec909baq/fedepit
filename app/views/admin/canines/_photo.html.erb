@@ -3,9 +3,9 @@
 	<%@canine.images.each do |image|%>
 		<tr>
 			<td><%= image_tag image.file_url, :class => "thumbnail", :size => '108x81'%></td>
-			<td><%= link_to admin_canine_image_path(canine_id: @canine.id, id: image.id ), method: :delete, data: { confirm: 'Desea eliminar este la imagen?' } do %>
+			<!-- <td><%= link_to admin_canine_image_path(canine_id: @canine.id, id: image.id ), method: :delete, data: { confirm: 'Desea eliminar este la imagen?' } do %>
         <i class="fa fa-trash-o"></i>
-    <%end%></td>
+    <%end%> --></td>
 		</tr>
 	<%end%>
 </table>
