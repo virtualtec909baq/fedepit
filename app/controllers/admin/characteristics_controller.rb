@@ -32,7 +32,7 @@ class Admin::CharacteristicsController < ApplicationController
     @characteristic_details.each do |characteristic_detail|
       unless characteristic_detail.empty?
         @characteristic_detail = CharacteristicDetail.create(description: characteristic_detail)
-      AssociationCharacteristic.create(characteristic_detail_id: @characteristic_detail.id, characteristic_id: params[:characteristic_id] )
+        AssociationCharacteristic.create(characteristic_detail_id: @characteristic_detail.id, characteristic_id: params[:characteristic_id] )
       end
     end
     respond_to do |format|
@@ -59,6 +59,9 @@ class Admin::CharacteristicsController < ApplicationController
   # POST /features.json
   def create
     @characteristic = Characteristic.new(feature_params)
+    unless params[:characteristic][:num].blank?
+     @characteristic.measure_id = 1 
+    end
      respond_to do |format|
       if @characteristic.save
         format.html { redirect_to admin_characteristic_path(@characteristic), notice: 'Características fue creada' }
@@ -75,6 +78,11 @@ class Admin::CharacteristicsController < ApplicationController
   def update
     respond_to do |format|
       if @characteristic.update(feature_params)
+        if @characteristic.num == true
+          @characteristic.update(measure_id: 1 )
+        else
+          @characteristic.update(measure_id: nil )
+        end
         flash[:notice] = 'Características Modificada'
         format.html { redirect_to admin_characteristics_path(index_1: true) }
         format.json { render :show, status: :ok, location: @characteristic }
