@@ -1,23 +1,200 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
-en:
-  hello: "Hello world"
+  en:
+    layouts:
+      header:
+        contact: "Contacts"
+        home: "Home"
+        pedigree: "Pedigree"
+        canines: "Search Dogs"
+        merge: "Merge Dogs"
+        article: "Articles"
+        video: "Videos"
+        championship: "Championships"
+        event: "Events"
+        breeder: "Breeders"
+        admin: "Admin"
+        lenguaje: "Change Language"
+        spanish: "Spanish"
+        english: "English"
+      footer:
+        todos_derechos: "All rights reserved 2015"
+    canines:
+      filters:
+        name: "Name O LOF"
+        clear: "Clear Filters"
+        more: "More.."
+      index:
+        search: "SEARCH BY NAME OR LOF"
+    articles:
+      index:
+        home: "home"
+        article: "Articles"
+        seguir: "Keep reading"
+      show:
+        comment: "Comments"
+        reciente: "Recent Articles"
+        seguir: "Keep reading"
+      comments:
+        comment: "Comments"
+    videos:
+      index:
+        home: "Home"
+        video: "Videos"
+    events:
+      index:
+        home: "Home"
+        event: "Events"
+    breeders:
+      index:
+        home: "Home"
+        Breeder: "Breeders"
+        detail: "Details"
+      show: 
+        country: "Country"
+        city: "City"
+        address: "Address"
+        email: "Email"
+        phone: "Phone"
+        name_breed: "Breeding Name"
+        fb: "Facebook"
+        tw: "Twitter"
+        inst: "Instagram"
+        web: "Web"
+    admin:
+      home:
+        feature:
+          bite_crusade_inside_false: "Mordida cruzada interior mala"    
+    home:
+      contactus:
+        home: "Home"
+        contact: "Contacts"
+        name: "Name"
+        email: "Email"
+        message: "Message"
+        send: "Send"
+        place_name: "Place your name"
+        place_email: "Place your email"
+        place_message: "Write the message you want to send"
+      index:
+        who_we_are: "Who we are"
+        dogs: "Most viewed"
+        more: "More..."
+        last_article: "Latest Articless"
+        read: "Keep reading"
+        my_breed1: "My Breed an App for all who want to be different in a very own way"
+        my_breed2: "The easiest way to customize every detail and assemble the 4 generation pedigree"
+        my_breed3: "Share your art on your social networks"
+        my_breed4: "Create your profile as breeder"
+        my_breed5: "Download it now and play in google play store"
+    canine:
+      index:
+        home: "Home"
+        pedigree: "Pedigree"
+        name: "Name o LOF"
+        search: "Search"
+        clear: "Clear"
+    activerecord:
+      models:
+        characteristic_detail: "OPTIONS"
+        characteristic: "CHARACTERISTIC"
+        comment: "COMMENT"
+        standard: "STANDARD"
+        img_race: "BREED DESCRIPTION"
+        position: "POSITION"
+        category_race_variety: "MANAGEMENT CHAMPIONSHIP"
+        spectacle: "SHOW"
+        tournament: "CHAMPIONSHIP"
+        animation: "VIDEO"
+        race: "BREED"
+        variety: "VARIETY"
+        article: "ARTICLES"
+        breeder: "BREEDS"
+        canine: "DOGS"
+        comment: "COMMENTS"
+        event: "EVENTS"
+        paragraph: "PARAGRAPH"
+        type_breeder: "BREED TYPE"
+        type_category: "VIDEO CATEGORY"
+        champion: "CHAMPION"
+        color: "COLOR"
+        sponsor: "SPONSOR"
+        publicity: "PUBLICITY"
+        canino_characteristics: "METTER"
+      attributes:
+        characteristic_detail:
+          description: "DESCRIPTION"
+        characteristic:
+          name: "NAME"
+          position: "POSITION"
+        standard:
+          description: "DESCRIPTION"
+          race_id: "BREED"
+          characteristic_id: "characteristic"
+          rg_lt: "Range Min"
+          rg_gteq: "Range Max"
+          age_lt: "Age Min (Months)"
+          age_gteq: "Age Max (Months)"
+        champion: 
+          canine_id: "Dog"
+          category_race_variety_id: "category"
+          spectacle_id: "Show"
+          date: "Date"
+          points: "Total Points Won"
+          position: "Position held"
+          winner: "Winner"
+        position: 
+          place: "Place"
+        category_race_variety:
+          race_id: "Breed"
+          variety_id: "Variety"
+          category_id: "Category"
+          tournament_id: "Championships"
+        tournament:
+          name: "Name"
+          description: "Description"
+        spectacle: 
+          name: "Name"
+          description: "Description"
+        category:
+          name: "Name"
+        variety:
+          name: "Name"
+        type_event:
+          name: "Name"
+        event:
+          name: "Name"
+          description: "Description"
+          date: "Date"
+          place: "Place"
+          type_event: "Event Type"
+        sponsor:
+          name: "Name"
+          image: "Imagen"
+          email: "Email"
+        breeder:
+          name: "Name"
+          type_breeder_id: "Type breeder"
+        article:
+          title: "Title"
+          description: "Description"
+        color:
+          name: "Name"
+        race:
+          name: "Name"
+          description: "Description"
+        type_category:
+          description: "Name"
+        type_breeder:
+          name: "Name"
+        canine:
+          gender: "Gender"
+          kind: "Kind"
+          race_id: "Breed"
+          breeder_id: "Breeder"
+          lof: "LOF" 
+          name: "Name" 
+          gende: "Gender"
+          birt: "Birth"
+        animation:
+          title: "Name"
+          description: "Description"
+          type_category_id: "Type Category"

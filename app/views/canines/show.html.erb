@@ -40,10 +40,10 @@
   </div>
   <div class="row" style="margin-top: 0px; margin-right: 0px; margin-left: 0px; position: relative; top: -46px;">
     <div class="col-md-3">
-      <%= link_to "PEDIGREE", pedigree_path(@canine), :class =>"btn btn-success btn-outlined btn-block", :disabled => @array_ancestor.zero? %>
+      <%= link_to "PEDIGREE", pedigree_path(id: @canine.id), :class =>"btn btn-success btn-outlined btn-block", :disabled => @array_ancestor.zero? %>
     </div>
     <div class="col-md-3">
-      <%= link_to "DIAGRAMA DE FLECHA", endogamia_path(@canine), :class =>"btn btn-warning btn-outlined pull-right hidden-xs btn-block", :disabled => @array_ancestor.zero? %>
+      <%= link_to "DIAGRAMA DE FLECHA", endogamia_path(id: @canine.id), :class =>"btn btn-warning btn-outlined pull-right hidden-xs btn-block", :disabled => @array_ancestor.zero? %>
     </div>
     <div class="col-md-3">
       <a class="twitter-share-button btn btn-info btn-outlined btn-block white-btn"

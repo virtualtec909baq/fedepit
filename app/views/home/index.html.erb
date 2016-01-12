@@ -7,20 +7,35 @@
               <div class="col-md-12">
                     <h2 class="center"><%= t('.who_we_are')%></h2>
                     <h4>
-                      FEDEPIT es el registro canino que se enfoca en la culturizacion del criador y aficionado al mundo profesional de los perros de raza. Es el único registro del mundo que de manera personalizada participa en la formación de criterios que le permitirán al criador y aficionado hacer aportes serios a nuestras razas.
-                      <br>
-                      <br>
-                      Tenemos un gran número de herramientas a su disposición que le facilitaran el proceso de cría y el manejo de información. FEDEPIT es el único registro en el mundo con tecnología  de punta capaz de administrar el banco de genes de las diferentes razas. Un modelo exitoso del cual otros registros se quieren valer para implantarlo en países como los Estados Unidos. Somos una fuente de producción donde se origina el conocimiento necesario para mejorar los proyectos de cada criador convirtiéndolos en experimentados canofilos dispuestos a mejorar producción tras producción nuestras razas.
-                      <br>
-                      <br>
-                      En FEDEPIT no sólo tendrá acceso a información sobre cría y selección, aquí aprenderá a manejar su mascota en diferentes áreas, desde un adiestramiento básico, deporte, manejo del perro de exposición, salud, reproducción etc...
-                      <br>
-                      <br>
-                      En FEDEPIT la sabiduría te promueve.
-                      <br>
-                      <br>
-                      Bienvenidos!
-
+                      <%if params[:locale] == "en"%>
+                        FEDEPIT canine search is focusing on the acculturation of the breeder and hobbyist to the professional world of purebred dogs. It is the only world record personalized way involved in the formation of criteria that will allow the amateur breeder and make serious contributions to our races.
+                        <br>
+                        <br>
+                        We have a number of tools at their disposal that will facilitate the breeding process and information management. FEDEPIT is the only registry in the world with technology capable of delivering the gene pool of the different races. A successful model which other records assert want to implement it in countries like the United States. We are a source of knowledge production where the need arises to improve the projects of each breeder experienced canofilos making them willing to improve production output after our races.
+                        <br>
+                        <br>
+                        In FEDEPIT not only have access to information on breeding and selection, here you will learn to handle your pet in different areas, from basic training, sport, show dog handling, health, reproduction etc ...
+                        <br>
+                        <br>
+                        In wisdom you FEDEPIT promoted.
+                        <br>
+                        <br>
+                        Welcome!
+                       <%-else%>
+                          FEDEPIT es el registro canino que se enfoca en la culturizacion del criador y aficionado al mundo profesional de los perros de raza. Es el único registro del mundo que de manera personalizada participa en la formación de criterios que le permitirán al criador y aficionado hacer aportes serios a nuestras razas.
+                          <br>
+                          <br>
+                          Tenemos un gran número de herramientas a su disposición que le facilitaran el proceso de cría y el manejo de información. FEDEPIT es el único registro en el mundo con tecnología  de punta capaz de administrar el banco de genes de las diferentes razas. Un modelo exitoso del cual otros registros se quieren valer para implantarlo en países como los Estados Unidos. Somos una fuente de producción donde se origina el conocimiento necesario para mejorar los proyectos de cada criador convirtiéndolos en experimentados canofilos dispuestos a mejorar producción tras producción nuestras razas.
+                          <br>
+                          <br>
+                          En FEDEPIT no sólo tendrá acceso a información sobre cría y selección, aquí aprenderá a manejar su mascota en diferentes áreas, desde un adiestramiento básico, deporte, manejo del perro de exposición, salud, reproducción etc...
+                          <br>
+                          <br>
+                          En FEDEPIT la sabiduría te promueve.
+                          <br>
+                          <br>
+                          Bienvenidos!
+                      <%end%>
                     </h4>
                 </div>
                 <!-- <div class="col-md-4 img_quienes">
@@ -50,7 +65,7 @@
                         <p><%= canine.name.upcase %> <br> <%= canine.try(:race).try(:name) %> <br> <%= canine.try(:breeder).try(:name) %></p>
                     </div>
                   </div>
-                  <p><%= link_to canine.name, canine_path(canine.id)%></p>
+                  <p><%= link_to canine.name, canine_path(id: canine.id)%></p>
                 </div> 
                 <% end %>
             </div>
@@ -65,10 +80,17 @@
                 <div class="col-lg-5 col-sm-6">
                   <h2 class="section-heading">MyBreed</h2>
                     <ul class="mybreelist">
-                      <li>MyBreed una App para todos los que quieren ser diferentes de una manera muy propia.</li>
-                      <li>La forma más fácil de personalizar cada detalle y armar el pedigree de 4 generación</li>
-                      <li>Comparte tu arte en tus redes sociales</li>
-                      <li>Crear tu perfil como criador</li>
+                      <%if params[:locale] == "en"%>
+                        <li>My Breed an App for all who want to be different in a very own way.</li>
+                        <li>The easiest way to customize every detail and assemble the 4 generation pedigree.</li>
+                        <li>Share your art on your social networks.</li>
+                        <li>Create your profile as breeder.</li>
+                      <%else%>
+                        <li>MyBreed una App para todos los que quieren ser diferentes de una manera muy propia.</li>
+                        <li>La forma más fácil de personalizar cada detalle y armar el pedigree de 4 generación.</li>
+                        <li>Comparte tu arte en tus redes sociales</li>
+                        <li>Crear tu perfil como criador</li>
+                      <%end%>
                     </ul>
                     <br>
                     <div class="row">

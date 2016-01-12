@@ -1,196 +1,209 @@
-es:
-  helpers:
-    submit:
-      create: "CREAR %{model}"
-      submit: "GUARDAR %{model}"
-      update: "ACTUALIZAR %{model}"
-  will_paginate:
-    previous_label: "&#8592; Anterior"
-    next_label: "Siguiente &#8594;"
-    page_gap: "&hellip;"
-  layouts:
-    header:
-      contact: "Contactenos"
-      home: "Inicio"
-      pedigree: "Pedigree"
-      article: "Articulos"
-      video: "Videos"
-      championship: "Campeones"
-      event: "Eventos"
-      breeder: "Criadores"
-    footer:
-      todos_derechos: "Todos los derechos reservados 2015"
-  articles:
-    index:
-      home: "Inicio"
-      article: "Articulos"
-      seguir: "Seguir leyendo"
-    show:
-      comment: "Comentarios"
-      reciente: "Articulos recientes"
-      seguir: "Seguir leyendo"
-    comments:
-      comment: "Comentarios"
-  videos:
-    index:
-      home: "Inicio"
-      video: "Videos"
-  events:
-    index:
-      home: "Inicio"
-      event: "Eventos"
-  breeders:
-    index:
-      home: "Inicio"
-      Breeder: "Criadores"
-      detail: "Detalle"
-    show: 
-      country: "Pais"
-      city: "Ciudad"
-      address: "Direccion residencia"
-      email: "Correo"
-      phone: "Telefono"
-      name_breed: "Nombre criadero"
-      fb: "Facebook"
-      tw: "Twitter"
-      inst: "Instagram"
-      web: "Web"
-  admin:
+  es:
+    helpers:
+      submit:
+        create: "CREAR %{model}"
+        submit: "GUARDAR %{model}"
+        update: "ACTUALIZAR %{model}"
+    will_paginate:
+      previous_label: "&#8592; Anterior"
+      next_label: "Siguiente &#8594;"
+      page_gap: "&hellip;"  
+    layouts:
+      header:
+        contact: "Contactenos"
+        home: "Inicio"
+        pedigree: "Pedigree"
+        canines: "Buscar Ejemplares"
+        merge: "Cruzar Ejemplares"
+        article: "Articulos"
+        video: "Videos"
+        championship: "Campeones"
+        event: "Eventos"
+        breeder: "Criadores"
+        admin: "Admin"
+        lenguaje: "Cambiar Idioma"
+        spanish: "Español"
+        english: "Ingles"
+      footer:
+        todos_derechos: "Todos los derechos reservados 2015"
+    canines:
+      filters:
+        name: "Nombre O LOF"
+        clear: "Borrar Filtro"
+        more: "Ver Más .."
+      index:
+        search: "BUSCAR EJEMPLAR POR NOMBRE O POR LOF"
+    articles:
+      index:
+        home: "Inicio"
+        article: "Articulos"
+        seguir: "Seguir leyendo"
+      show:
+        comment: "Comentarios"
+        reciente: "Articulos recientes"
+        seguir: "Seguir leyendo"
+      comments:
+        comment: "Comentarios"
+    videos:
+      index:
+        home: "Inicio"
+        video: "Videos"
+    events:
+      index:
+        home: "Inicio"
+        event: "Eventos"
+    breeders:
+      index:
+        home: "Inicio"
+        Breeder: "Criadores"
+        detail: "Detalle"
+      show: 
+        country: "Pais"
+        city: "Ciudad"
+        address: "Direccion residencia"
+        email: "Correo"
+        phone: "Telefono"
+        name_breed: "Nombre criadero"
+        fb: "Facebook"
+        tw: "Twitter"
+        inst: "Instagram"
+        web: "Web"
+    admin:
+      home:
+        feature:
+          bite_crusade_inside_false: "Mordida cruzada interior mala"    
     home:
-      feature:
-        bite_crusade_inside_false: "Mordida cruzada interior mala"    
-  home:
-    contactus:
-      home: "Inicio"
-      contact: "Contactenos"
-      name: "Nombre"
-      email: "Correo"
-      message: "Mensaje"
-      send: "Enviar"
-      place_name: "Tu nombre"
-      place_email: "Tu correo electronico"
-      place_message: "Escribe el mensaje que deseas enviar"
-    index:
-      who_we_are: "Quienes Somos"
-      dogs: "Ejemplares mas vistos"
-      more: "Ver mas..."
-      last_article: "Ultimos articulos"
-      read: "Seguir leyendo"
-      my_breed1: "MyBreed una App para todos los que quieren ser diferentes de una manera muy propia"
-      my_breed2: "La forma más fácil de personalizar cada detalle y  armar el pedigree de 4 generación"
-      my_breed3: "Comparte tu arte en tus redes sociales"
-      my_breed4: "Crear tu perfil como criador"
-      my_breed5: "Descargala ya en google play y play store"
-  canine:
-    index:
-      home: "Inicio"
-      pedigree: "Pedigree"
-      name: "Nombre o LOF"
-      search: "Buscar"
-      clear: "Limpiar"
-  activerecord:
-    models:
-      characteristic_detail: "OPCIÓN"
-      characteristic: "CARACTERISTICA"
-      comment: "COMENTARIO"
-      standard: "ESTANDAR"
-      img_race: "DESCRIPICIóN RAZA"
-      position: "PUESTO"
-      category_race_variety: "GESTIÓN CAMPEONATO"
-      spectacle: "SHOW"
-      tournament: "CAMPEONATO"
-      animation: "VIDEO"
-      race: "RAZA"
-      variety: "VARIEDAD"
-      article: "ARTÍCULO"
-      breeder: "CRIADOR"
-      canine: "EJEMPLAR"
-      comment: "COMENTARIO"
-      event: "EVENTO"
-      paragraph: "PÁRRAFO"
-      type_breeder: "TIPO DE CRIADOR"
-      type_category: "CATEGORÍA VIDEO"
-      champion: "CAMPEONATO"
-      color: "COLOR"
-      sponsor: "PATROCINADOR"
-      publicity: "PUBLICIDAD"
-      canino_characteristics: "METTER"
-    attributes:
-      characteristic_detail:
-        description: "Descripción"
-      characteristic:
+      contactus:
+        home: "Inicio"
+        contact: "Contactenos"
         name: "Nombre"
-        position: "Orden"
-      standard:
-        description: "Descripción"
-        race_id: "Raza"
-        characteristic_id: "Característica"
-        rg_lt: "Rango Min"
-        rg_gteq: "Rango Max"
-        age_lt: "Edad Min (Meses)"
-        age_gteq: "Edad Max (Meses)"
-      champion: 
-        canine_id: "Canino"
-        category_race_variety_id: "Categoría"
-        spectacle_id: "Show"
-        date: "Fecha"
-        points: "Puntos Ganados"
-        position: "Puesto Ocupado"
-        winner: "Ganador"
-      position: 
-        place: "No. Puesto"
-      category_race_variety:
-        race_id: "Raza"
-        variety_id: "Variedad"
-        category_id: "Categoría"
-        tournament_id: "Campeonato"
-      tournament:
-        name: "Nombre"
-        description: "Descripción"
-      spectacle: 
-        name: "Nombre"
-        description: "Descripción"
-      category:
-        name: "Nombre"
-      variety:
-        name: "Nombre"
-      type_event:
-        name: "Nombre"
-      event:
-        name: "Nombre"
-        description: "Descripción"
-        date: "Fecha"
-        place: "Lugar"
-        type_event: "Tipo de evento"
-      sponsor:
-        name: "Nombre"
-        image: "Imagen"
-        email: "Email"
-      breeder:
-        name: "Nombre"
-        type_breeder_id: "Tipo de criador"
-      article:
-        title: "Título"
-        description: "Descripción"
-      color:
-        name: "Nombre"
-      race:
-        name: "Nombre"
-        description: "Descripción"
-      type_category:
-        description: "Nombre"
-      type_breeder:
-        name: "Nombre"
-      canine:
-        gender: "Genero"
-        kind: "tipo de Ejemplar"
-        race_id: "Raza"
-        breeder_id: "Criador"
-        lof: "LOF" 
-        name: "Nombre" 
-        gende: "Genero"
-        birt: "Nacimiento"
-      animation:
-        title: "Nombre"
-        description: "Descripción"
-        type_category_id: "Tipo de Categoría"
+        email: "Correo"
+        message: "Mensaje"
+        send: "Enviar"
+        place_name: "Tu nombre"
+        place_email: "Tu correo electronico"
+        place_message: "Escribe el mensaje que deseas enviar"
+      index:
+        who_we_are: "Quienes Somos"
+        dogs: "Ejemplares mas vistos"
+        more: "Ver más..."
+        last_article: "Últimos artículos"
+        read: "Seguir leyendo"
+        my_breed1: "MyBreed una App para todos los que quieren ser diferentes de una manera muy propia"
+        my_breed2: "La forma más fácil de personalizar cada detalle y  armar el pedigree de 4 generación"
+        my_breed3: "Comparte tu arte en tus redes sociales"
+        my_breed4: "Crear tu perfil como criador"
+        my_breed5: "Descargala ya en google play y play store"
+    canine:
+      index:
+        home: "Inicio"
+        pedigree: "Pedigree"
+        name: "Nombre o LOF"
+        search: "Buscar"
+        clear: "Limpiar"
+    activerecord:
+      models:
+        characteristic_detail: "OPCIÓN"
+        characteristic: "CARACTERISTICA"
+        comment: "COMENTARIO"
+        standard: "ESTANDAR"
+        img_race: "DESCRIPICIóN RAZA"
+        position: "PUESTO"
+        category_race_variety: "GESTIÓN CAMPEONATO"
+        spectacle: "SHOW"
+        tournament: "CAMPEONATO"
+        animation: "VIDEO"
+        race: "RAZA"
+        variety: "VARIEDAD"
+        article: "ARTÍCULO"
+        breeder: "CRIADOR"
+        canine: "EJEMPLAR"
+        comment: "COMENTARIO"
+        event: "EVENTO"
+        paragraph: "PÁRRAFO"
+        type_breeder: "TIPO DE CRIADOR"
+        type_category: "CATEGORÍA VIDEO"
+        champion: "CAMPEONATO"
+        color: "COLOR"
+        sponsor: "PATROCINADOR"
+        publicity: "PUBLICIDAD"
+        canino_characteristics: "METTER"
+      attributes:
+        characteristic_detail:
+          description: "Descripción"
+        characteristic:
+          name: "Nombre"
+          position: "Orden"
+        standard:
+          description: "Descripción"
+          race_id: "Raza"
+          characteristic_id: "Característica"
+          rg_lt: "Rango Min"
+          rg_gteq: "Rango Max"
+          age_lt: "Edad Min (Meses)"
+          age_gteq: "Edad Max (Meses)"
+        champion: 
+          canine_id: "Canino"
+          category_race_variety_id: "Categoría"
+          spectacle_id: "Show"
+          date: "Fecha"
+          points: "Puntos Ganados"
+          position: "Puesto Ocupado"
+          winner: "Ganador"
+        position: 
+          place: "No. Puesto"
+        category_race_variety:
+          race_id: "Raza"
+          variety_id: "Variedad"
+          category_id: "Categoría"
+          tournament_id: "Campeonato"
+        tournament:
+          name: "Nombre"
+          description: "Descripción"
+        spectacle: 
+          name: "Nombre"
+          description: "Descripción"
+        category:
+          name: "Nombre"
+        variety:
+          name: "Nombre"
+        type_event:
+          name: "Nombre"
+        event:
+          name: "Nombre"
+          description: "Descripción"
+          date: "Fecha"
+          place: "Lugar"
+          type_event: "Tipo de evento"
+        sponsor:
+          name: "Nombre"
+          image: "Imagen"
+          email: "Email"
+        breeder:
+          name: "Nombre"
+          type_breeder_id: "Tipo de criador"
+        article:
+          title: "Título"
+          description: "Descripción"
+        color:
+          name: "Nombre"
+        race:
+          name: "Nombre"
+          description: "Descripción"
+        type_category:
+          description: "Nombre"
+        type_breeder:
+          name: "Nombre"
+        canine:
+          gender: "Genero"
+          kind: "tipo de Ejemplar"
+          race_id: "Raza"
+          breeder_id: "Criador"
+          lof: "LOF" 
+          name: "Nombre" 
+          gende: "Genero"
+          birt: "Nacimiento"
+        animation:
+          title: "Nombre"
+          description: "Descripción"
+          type_category_id: "Tipo de Categoría"

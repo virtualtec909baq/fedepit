@@ -1,8 +1,8 @@
 <% children(@canine.id).each do |canine|%>
   <%- if params[:controller].split("/").first == "admin"%>
-    <a href="<%= admin_canine_path(canine.id)%>">
+    <a href="<%= admin_canine_path(id: canine.id)%>">
   <%else%>
-    <a href="<%= canine_path(canine.id)%>">
+    <a href="<%= canine_path(id: canine.id)%>">
   <%end%>
     <div class="alert alert-success row" style="margin-left: 0px; margin-right: 0px;">
       <div class="col-md-2">

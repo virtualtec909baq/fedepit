@@ -22,9 +22,9 @@ class Admin::CaninoCharacteristicsController < ApplicationController
     if params[:edit]
       @canine_characteristic = CaninoCharacteristic.where.not(:temporal_id => nil, status: false).select("DISTINCT ON (temporal_id) *")
     end
-    
     if params[:canine_id] == "0"
       @characteristics = Characteristic.all.order(position: :asc)
+      @characteristics_count =  @characteristics.in_groups(3, false)
     else
       canine = Canine.find(params[:canine_id])
       @query_1 = Characteristic.all 

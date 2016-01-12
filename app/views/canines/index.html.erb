@@ -12,15 +12,14 @@
                             <div class="panel-thumbnail">
                                 <img class="img-responsive" src="<%= pic_canine(canine)%>"style="margin: 0px auto; width: 200px; height: 300px;">
                             </div>
-                            <div style="padding: 10px;" class="panel-body"> 
-                                <hr>
+                            <div style="padding: 10px;" class="panel-body">   <hr>
                                 <span class="label label-info pull-right">
                                 <%@ranking = 0%>
                                 <%@canine.champions.each do |category| @ranking = @ranking + category.points end%>
                                 Ranking <%= @ranking.to_i%></span>
                                 <p class="lead"><%= truncate(canine.name, :ommision => "", :length => 18) %></p>
                                 <p class="center"><%= get_race(canine.race_id)%></p>
-                                <span class=" center label label-warning pull-right"> Ver Ficha Técnica del Ejemplar</span>
+                                <span class=" center label label-warning pull-right"> <%= t('.more')%></span>
                                 </p>
                             </div>
                         </div>
@@ -29,7 +28,7 @@
                 <%end%>
                 <%= will_paginate @canines, :locals => { :canines => @canines }, renderer: BootstrapPagination::Rails%>
                 <%else%>
-                <h2>BUSCAR EJEMPLAR POR NOMBRE O POR LOF</h2>
+                <h2 style="text-align: center;"><%= t('.search')%></h2>
             <%end%>
         </div>
     </div>
