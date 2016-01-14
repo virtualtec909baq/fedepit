@@ -7,9 +7,8 @@ class Sponsor < ActiveRecord::Base
   # validates
 	validates :name, presence: true 
   validates :image, presence: true
-  validates :email, presence: true
-  validates :url, presence: true
-	# img_uploader
+  
+  # img_uploader
   	mount_uploader :image, SponsorUploader
   def init
   	self.status  ||= true
