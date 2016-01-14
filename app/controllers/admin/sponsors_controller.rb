@@ -28,12 +28,12 @@ class Admin::SponsorsController < ApplicationController
     @sponsor = Sponsor.new(sponsor_params)
     respond_to do |format|
       if @sponsor.save
+        format.js{}
         format.html { redirect_to admin_sponsors_path, notice: 'El patrocinador fue creado' }
         format.json { render :show, status: :created, location: @sponsor }
-        format.js{}
       else
-        format.html { render :new }
         format.js
+        format.html { render :new }
         format.json { render json: @sponsor.errors, status: :unprocessable_entity }
       end
     end
