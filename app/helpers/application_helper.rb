@@ -29,7 +29,7 @@ module ApplicationHelper
 		if canine.images.first.blank?
           	photo =  ActionController::Base.helpers.asset_path("placeholder2.png")
         else
-          	photo = canine.images.first.file.main.url
+          	photo = canine.images.first.file.url
         end
         return photo
 	end
