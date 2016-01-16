@@ -29,7 +29,7 @@
             <%=article.comments.count%></span>
             <p class="lead"><%= article.title.upcase%></p>
             <p><%= truncate(article.description, :ommision => "", :length => 38)%><p>
-            <span class="label label-warning pull-right">Seguir Leyendo...</span>
+            <span class="label label-warning pull-right"><%=t ('.seguir')%>...</span>
           </div>
 
         </div>

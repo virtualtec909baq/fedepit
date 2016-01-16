@@ -1,18 +1,33 @@
 <div class="col-md-12">
 	<div class="row">
-		<%= search_form_for @search, url: animations_path do |f|%>		
-			<div class="col-md-3">
-				<label>Seleccione Categoria</label>
-			</div>
-			<div class="col-md-3">
-				<%= f.collection_select :type_category_id_eq, TypeCategory.all, :id, :description, {prompt: "Categorias"}, {class: "form-control"}%>
-			</div>
-			<div class="col-md-3">
-				<%= f.submit :class =>"btn btn btn-primary btn-block"%>
-			</div>
-			<div class="col-md-3">
-				<%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
-			</div>
+		<%= search_form_for @search, url: animations_path do |f|%>
+		    <%if params[:locale] == "en"%>
+		    	<div class="col-md-3">
+					<label>Select category</label>
+				</div>
+				<div class="col-md-3">
+					<%= f.collection_select :type_category_id_eq, TypeCategory.all, :id, :description, {prompt: "Category"}, {class: "form-control"}%>
+				</div>
+				<div class="col-md-3">
+					<%= f.submit :class =>"btn btn btn-primary btn-block"%>
+				</div>
+				<div class="col-md-3">
+					<%= link_to "Clear Filter", request.path, class:"btn btn-danger btn_white btn-block"%>
+				</div>
+   			<%-else%>
+   				<div class="col-md-3">
+					<label>Seleccione Categoria</label>
+				</div>
+				<div class="col-md-3">
+					<%= f.collection_select :type_category_id_eq, TypeCategory.all, :id, :description, {prompt: "Categorias"}, {class: "form-control"}%>
+				</div>
+				<div class="col-md-3">
+					<%= f.submit :class =>"btn btn btn-primary btn-block"%>
+				</div>
+				<div class="col-md-3">
+					<%= link_to "Borrar Filtro", request.path, class:"btn btn-danger btn_white btn-block"%>
+				</div>
+        	<%end%>
 		<%end%>
 	</div>
 </div>	

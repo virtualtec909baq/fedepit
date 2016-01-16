@@ -1,18 +1,37 @@
   <%= form_for :comment , url: admin_comments_path(@comment), method: :post do |f| %>
-    <div class="field">
-      <%= f.label :Nombre_usuario %><br>
-      <%= f.text_field :name_user, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label :Correo_usuario %><br>
-      <%= f.text_field :email_user, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label :Mensaje %><br>
-      <%= f.text_area :message, class: 'form-control' %>
-      <%= f.hidden_field :article_id, :value => "#{params[:id]}" %>
-    </div>
-    <div class="actions">
-      <%= f.submit "ENVIAR COMENTARIO",  :class =>"btn btn-primary btn-block" %>
-    </div>
+    <%if params[:locale] == "en"%>
+      <div class="field">
+        <%= f.label :Username %><br>
+        <%= f.text_field :name_user, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :Email %><br>
+        <%= f.text_field :email_user, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :Message %><br>
+        <%= f.text_area :message, class: 'form-control' %>
+        <%= f.hidden_field :article_id, :value => "#{params[:id]}" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "SEND COMMENT",  :class =>"btn btn-primary btn-block" %>
+      </div>
+    <%-else%>
+      <div class="field">
+        <%= f.label :Nombre_usuario %><br>
+        <%= f.text_field :name_user, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :Correo_usuario %><br>
+        <%= f.text_field :email_user, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :Mensaje %><br>
+        <%= f.text_area :message, class: 'form-control' %>
+        <%= f.hidden_field :article_id, :value => "#{params[:id]}" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "ENVIAR COMENTARIO",  :class =>"btn btn-primary btn-block" %>
+      </div>
+    <%end%>
   <% end %>

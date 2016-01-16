@@ -17,9 +17,13 @@
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-md-12">
-                <h2>Links de formularios FEDEPIT</h2>
-
+                <h2><%=t('.link_title')%></h2>
                 </div>
+                <div class="col-md-12">
+                <h5><%=t('.link_sub')%></h5>
+                </div>
+                <br>
+                <br>
                 <div class="col-md-3"><a href="http://goo.gl/forms/W3dJ55C4Mf" target="_blank">Informe de Monta</a></div>
                 <div class="col-md-3"><a href="http://www.formpl.us/form/0B505BSgfRm8QdURaQzg1WTFXeTQ/" target="_blank">FEDEPIT Registro inicial razas Bulls / Pits</a>
                 </div>
@@ -29,8 +33,15 @@
                 <div class="col-md-3"><a href="http://www.formpl.us/form/0B505BSgfRm8QcWhDVzV2dTd6QkU/" target="_blank">Actualización Certificados/Pedigree FEDEPIT</a></div>
             </div>
         </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+                <h5><%=t('.message_contact')%></h5>
+        </div>
+        <br>
+        <br>
         <div class="col-lg-12">
-            <h2>Contáctenos</h2>
+            <h2><%=t('.contact_title')%></h2>
         </div>
         <div class="col-lg-12">
             <%= form_tag(home_send_mail_path) do %>

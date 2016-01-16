@@ -14,7 +14,7 @@
         home: "Inicio"
         pedigree: "Pedigree"
         canines: "Buscar Ejemplares"
-        merge: "Cruzar Ejemplares"
+        merge: "Cruce Virtual"
         article: "Articulos"
         video: "Videos"
         championship: "Campeones"
@@ -23,7 +23,7 @@
         admin: "Admin"
         lenguaje: "Cambiar Idioma"
         spanish: "Español"
-        english: "Ingles"
+        english: "English"
       footer:
         todos_derechos: "Todos los derechos reservados 2015"
     canines:
@@ -42,16 +42,41 @@
         comment: "Comentarios"
         reciente: "Articulos recientes"
         seguir: "Seguir leyendo"
+        ultimo_articulo: "Ultimos Articulos"
       comments:
         comment: "Comentarios"
+      _form:
+        name: "Nombre_usuario"
     videos:
       index:
         home: "Inicio"
         video: "Videos"
+    animations:
+      index:
+        message_video: "POR FAVOR SELECCIONE UNA CATEGORIA PARA VER LOS VIDEOS"
+        title: "Titulo"
+        description: "Descripción"
+      show:
+        ultimo: "Ultimos Videos"
+    champions:
+      index:
+        campeones: "CAMPEONES"
+        nombre: "Nombre"
+        raza: "Raza"
+        sexo: "Sexo"
+        variedad: "Variedad"
+        categoria: "Categoría"
+        puesto: "Puesto"
+        ganador: "Gananador"
+        puntos: "Puntos"
+        fecha: "Fecha"
     events:
       index:
         home: "Inicio"
         event: "Eventos"
+        seguir: "Seguir leyendo"
+      show:
+        ultimo: "Ultimos Eventos"
     breeders:
       index:
         home: "Inicio"
@@ -75,7 +100,10 @@
     home:
       contactus:
         home: "Inicio"
-        contact: "Contactenos"
+        contact: "Contáctenos"
+        contact_title: "CONTÁCTENOS"
+        link_title: "LINKS DE FORMULARIOS FEDEPIT"
+        message_contact: "Si no encontraste el tema a tratar en los anteriores links , puedes escribir AQUÍ directo al departamento de ayuda FEDEPIT REGISTRÓ CANINO."
         name: "Nombre"
         email: "Correo"
         message: "Mensaje"
@@ -83,6 +111,7 @@
         place_name: "Tu nombre"
         place_email: "Tu correo electronico"
         place_message: "Escribe el mensaje que deseas enviar"
+        link_sub: "Selecciona el formulario necesario  para los trámites según su título."
       index:
         who_we_are: "Quienes Somos"
         dogs: "Ejemplares mas vistos"
@@ -94,6 +123,11 @@
         my_breed3: "Comparte tu arte en tus redes sociales"
         my_breed4: "Crear tu perfil como criador"
         my_breed5: "Descargala ya en google play y play store"
+        my_breed6: "Consulta todos los caninos que estén en la base de datos www.fedepit.com"
+        my_breed7: "Interactúa en los diferentes foros"
+        my_breed8: "Sigue y deja que sigan tu perfil para dar a conocer tus caninos"
+        my_breed9: "Encuentra pareja a tu perro / perra"
+        my_breed10: "Une por nombre a dos perros y promociona el pedigree de 4 generaciones de tus futuros Cachorros en venta"
     canine:
       index:
         home: "Inicio"

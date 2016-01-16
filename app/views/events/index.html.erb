@@ -6,7 +6,7 @@
           <li>
             <a href="<%= root_path%>"><%=t ('.home')%></a>
           </li>
-          <li class="active"> Eventos</li>
+          <li class="active"> <%=t ('.event')%></li>
         </ol>
       </div>
     </div>
@@ -27,7 +27,7 @@
           <div class="panel-body" style="padding: 10px;"> 
             <p class="lead"><%= truncate(event.name, :ommision => "", :length => 45)%></p>
             <p><%= truncate(event.description, :ommision => "", :length => 70)%><p>
-            <span class="label label-warning pull-right">Seguir Leyendo...</span>
+            <span class="label label-warning pull-right"><%=t ('.seguir')%>...</span>
           </div>
 
         </div>

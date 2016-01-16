@@ -19,12 +19,13 @@
     </div>
 
     <%- if params[:q]%>
+    <%if params[:locale] == "en"%>
       <table class="table table-striped table-hover table-bordered">
         <thead>
           <tr>
             <th class="center">ID</th>
-            <th class="center"><%= sort_link @search, :title, "Titulo"%></th>
-            <th class="center"><%= sort_link @search, :desciption, "desciption"%></th>
+            <th class="center"><%= sort_link @search, :title, "Title"%></th>
+            <th class="center"><%= sort_link @search, :desciption, "Desciption"%></th>
           </tr>
         </thead>
         <tbody>
@@ -37,10 +38,32 @@
           <% end %>
         </tbody>
       </table>
+    <%-else%>
+     <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th class="center">ID</th>
+            <th class="center"><%= sort_link @search, :title, "Titulo"%></th>
+            <th class="center"><%= sort_link @search, :desciption, "Descripción"%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @animations.each do |animation| %>
+          <tr >
+            <td class="center"><%= animation.id %></td>
+            <td class="center"><%= link_to animation.title, animation_path(animation.id), :class => "link_to"  %></td>
+            <td class="center"><%= truncate(animation.description, :ommision => "", :length => 40) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <%end%>
+
+
     <%= will_paginate @animations, :locals => { :animations => @animations }, renderer: BootstrapPagination::Rails%>
     <% else %>
       <br>
-      <h2>Por Favor seleccione una categoria para ver los videos</h2>
+      <h2><%= t('.video')%></h2>
     <%end%>
 </div>
 

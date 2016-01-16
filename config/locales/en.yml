@@ -5,10 +5,10 @@
         home: "Home"
         pedigree: "Pedigree"
         canines: "Search Dogs"
-        merge: "Merge Dogs"
+        merge: "Virtual breeding"
         article: "Articles"
         video: "Videos"
-        championship: "Championships"
+        championship: "Ranking Dogs"
         event: "Events"
         breeder: "Breeders"
         admin: "Admin"
@@ -33,16 +33,41 @@
         comment: "Comments"
         reciente: "Recent Articles"
         seguir: "Keep reading"
+        ultimo_articulo: "Latest Articles"
       comments:
         comment: "Comments"
+      _form:
+        name: "Username"
     videos:
       index:
         home: "Home"
         video: "Videos"
+    animations:
+      index:
+        message_video: "PLEASE SELECT A CATEGORY TO SEE THE VIDEOS"
+        title: "Title"
+        description: "Description"
+      show:
+        ultimo: "Latest Videos"
+    champions:
+      index:
+        campeones: "CHAMPIONS"
+        nombre: "Name"
+        raza: "Breed"
+        sexo: "Sex"
+        variedad: "Variety"
+        categoria: "Category"
+        puesto: "Position"
+        ganador: "Winner"
+        puntos: "Points"
+        fecha: "Date"
     events:
       index:
         home: "Home"
         event: "Events"
+        seguir: "Keep reading"
+      show:
+        ultimo: "Latest Events"
     breeders:
       index:
         home: "Home"
@@ -67,6 +92,9 @@
       contactus:
         home: "Home"
         contact: "Contacts"
+        contact_title: "CONTACTS"
+        link_title: "FEDEPIT FORMS LINKS"
+        message_contact: "if you are looking for something different please feel free to contact here FEDEPIT help department."
         name: "Name"
         email: "Email"
         message: "Message"
@@ -74,6 +102,7 @@
         place_name: "Place your name"
         place_email: "Place your email"
         place_message: "Write the message you want to send"
+        link_sub: "By the title you can choose and fill out the form that you need."
       index:
         who_we_are: "Who we are"
         dogs: "Most viewed"
@@ -85,6 +114,11 @@
         my_breed3: "Share your art on your social networks"
         my_breed4: "Create your profile as breeder"
         my_breed5: "Download it now and play in google play store"
+        my_breed6: "See all canines that are in the database www.fedepit.com"
+        my_breed7: "Interacts in different forums"
+        my_breed8: "Follow and let continue your profile to publicize your canine"
+        my_breed9: "Encuentra pareja a tu perro / perra"
+        my_breed10: "Une name two dogs and promotes the pedigree of 4 generations of your future Puppies for Sale"
     canine:
       index:
         home: "Home"
