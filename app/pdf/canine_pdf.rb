@@ -129,6 +129,7 @@ class CaninePdf< Prawn::Document
 			@father = Canine.find(@canine.lft)
 			bounding_box([30,480],:width =>400,:height =>450) do
 				transparent(0) { stroke_bounds } 
+				text "nivel 1.1"
 				if @father.kind == "0"
 					text "LOF : #{@father.lof}", :size => 12
 				else
@@ -144,6 +145,7 @@ class CaninePdf< Prawn::Document
 			@mother = Canine.find(@canine.rgt)
 			bounding_box([30,140],:width =>400,:height =>370) do
 				transparent(0) { stroke_bounds } 
+				text "nivel 1.2"
 				if @mother.kind == "0"
 					text "LOF : #{@mother.lof}", :size => 12
 				else
@@ -153,13 +155,12 @@ class CaninePdf< Prawn::Document
 				text "NOMBRE : #{newline(@mother.name.upcase)} ", :size => 12
 			end
 		end
-		
-		if @array_canine_level.size > 3 
+		#if @array_canine_level.size > 3 
 			if @canine.lft
 				@father = Canine.find(@canine.lft)
 				if @father.lft
 					@father_lft = Canine.find(@father.lft)
-					if @father_lft.lft
+					if @father_lft.present?
 						@father_lft_lft = Canine.find(@father.lft)
 						bounding_box([270,520],:width =>400,:height =>450) do
 							transparent(0) { stroke_bounds } 
@@ -170,8 +171,7 @@ class CaninePdf< Prawn::Document
 							else
 								text "# OTRO REGISTRO : #{@father_lft_lft.new_register}", :size => 10
 							end
-						end
-						
+						end						
 						if @father_lft_lft.lft
 							caninine_left = Canine.find(@father_lft_lft.lft)
 							bounding_box([545,540],:width =>400,:height =>450) do
@@ -197,14 +197,14 @@ class CaninePdf< Prawn::Document
 									text "# OTRO REGISTRO : #{caninine_right.new_register}", :size => 10
 								end
 							end	
-						end
-						
+						end	
 					end
 				end
 				if @father.rgt
 					@father_rgt = Canine.find(@father.rgt)
 					bounding_box([270,440],:width =>400,:height =>450) do
 						transparent(0) { stroke_bounds } 
+						text "nivel 2.2"
 						text "	NOMBRE : #{newline(@father_rgt.name.upcase)}", :size => 11
 						move_down 5
 						text "LOF : #{@father_rgt.lof}", :size => 11
@@ -320,7 +320,7 @@ class CaninePdf< Prawn::Document
 		
 				end
 			end
-		end
+		#end
 	end
 
 
