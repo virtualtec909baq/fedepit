@@ -129,7 +129,6 @@ class CaninePdf< Prawn::Document
 			@father = Canine.find(@canine.lft)
 			bounding_box([30,480],:width =>400,:height =>450) do
 				transparent(0) { stroke_bounds } 
-				text "nivel 1.1"
 				if @father.kind == "0"
 					text "LOF : #{@father.lof}", :size => 12
 				else
@@ -145,7 +144,6 @@ class CaninePdf< Prawn::Document
 			@mother = Canine.find(@canine.rgt)
 			bounding_box([30,140],:width =>400,:height =>370) do
 				transparent(0) { stroke_bounds } 
-				text "nivel 1.2"
 				if @mother.kind == "0"
 					text "LOF : #{@mother.lof}", :size => 12
 				else
@@ -204,8 +202,7 @@ class CaninePdf< Prawn::Document
 					@father_rgt = Canine.find(@father.rgt)
 					bounding_box([270,440],:width =>400,:height =>450) do
 						transparent(0) { stroke_bounds } 
-						text "nivel 2.2"
-						text "	NOMBRE : #{newline(@father_rgt.name.upcase)}", :size => 11
+						text "NOMBRE : #{newline(@father_rgt.name.upcase)}", :size => 11
 						move_down 5
 						text "LOF : #{@father_rgt.lof}", :size => 11
 					end
