@@ -109,7 +109,7 @@ class CaninePdf< Prawn::Document
 			transparent(0) { stroke_bounds }
 			move_down 5 
 			text "De : #{newline(@canine.name.upcase)}", :size => 12
-			if @canine.kind == "0"
+			if @canine.new_register.blank?
 				move_down 8
 				text "LOF : #{@canine.lof}", :size => 12
 			else
@@ -129,7 +129,7 @@ class CaninePdf< Prawn::Document
 			@father = Canine.find(@canine.lft)
 			bounding_box([30,480],:width =>400,:height =>450) do
 				transparent(0) { stroke_bounds } 
-				if @father.kind == "0"
+				if @father.new_register.blank?
 					text "LOF : #{@father.lof}", :size => 12
 				else
 					text "# OTRO REGISTRO : #{@father.new_register}", :size => 12
@@ -144,7 +144,7 @@ class CaninePdf< Prawn::Document
 			@mother = Canine.find(@canine.rgt)
 			bounding_box([30,140],:width =>400,:height =>370) do
 				transparent(0) { stroke_bounds } 
-				if @mother.kind == "0"
+				if @mother.new_register.blank?
 					text "LOF : #{@mother.lof}", :size => 12
 				else
 					text "# OTRO REGISTRO : #{@mother.new_register}", :size => 12
@@ -164,7 +164,7 @@ class CaninePdf< Prawn::Document
 							transparent(0) { stroke_bounds } 
 							text "NOMBRE : #{newline(@father_lft_lft.name.upcase)}", :size => 10
 							move_down 5
-							if @father_lft_lft.kind == "0"
+							if @father_lft_lft.new_register.blank?
 								text "LOF : #{@father_lft_lft.lof}", :size => 10
 							else
 								text "# OTRO REGISTRO : #{@father_lft_lft.new_register}", :size => 10
@@ -176,7 +176,7 @@ class CaninePdf< Prawn::Document
 								transparent(0) { stroke_bounds } 
 								text "NOMBRE : #{newline(caninine_left.name.upcase)}", :size => 10
 								move_down 5
-								if caninine_left.kind == "0"
+								if caninine_left.new_register.blank?
 									text "LOF : #{caninine_left.lof}", :size => 10
 								else
 									text "# OTRO REGISTRO : #{caninine_left.new_register}", :size => 10
@@ -189,7 +189,7 @@ class CaninePdf< Prawn::Document
 								transparent(0) { stroke_bounds } 
 								text "NOMBRE : #{newline(caninine_right.name.upcase)}", :size => 10
 								move_down 5
-								if caninine_right.kind == "0"
+								if caninine_right.new_register.blank?
 									text "LOF : #{caninine_right.lof}", :size => 10
 								else
 									text "# OTRO REGISTRO : #{caninine_right.new_register}", :size => 10
@@ -212,7 +212,7 @@ class CaninePdf< Prawn::Document
 							transparent(0) { stroke_bounds } 
 							text "	NOMBRE : #{newline(caninine_right_lft.name.upcase)}", :size => 11
 							move_down 5
-							if caninine_right_lft.kind == "0"
+							if caninine_right_lft.new_register.blank?
 								text "LOF : #{caninine_right_lft.lof}", :size => 11
 							else
 								text "# OTRO REGISTRO : #{caninine_right_lft.new_register}", :size => 11
@@ -225,7 +225,7 @@ class CaninePdf< Prawn::Document
 							transparent(0) { stroke_bounds } 
 							text "	NOMBRE : #{newline(caninine_right_rgt.name.upcase)}", :size => 11
 							move_down 5
-							if caninine_right_rgt.kind == "0"
+							if caninine_right_rgt.new_register.blank?
 								text "LOF : #{caninine_right_rgt.lof}", :size => 11
 							else
 								text "# OTRO REGISTRO : #{caninine_right_rgt.new_register}", :size => 11
@@ -242,7 +242,7 @@ class CaninePdf< Prawn::Document
 					bounding_box([270,100],:width =>400,:height =>370) do
 						transparent(0) { stroke_bounds } 
 						text "	NOMBRE : #{newline(@mother_rgt.name.upcase)}", :size => 11
-						if @mother_rgt.kind == "0"
+						if @mother_rgt.new_register.blank?
 							text "LOF : #{@mother_rgt.lof}", :size => 11
 						else
 							text "# OTRO REGISTRO : #{@mother_rgt.new_register}", :size => 11
@@ -255,7 +255,7 @@ class CaninePdf< Prawn::Document
 							transparent(0) { stroke_bounds } 
 							text "	NOMBRE : #{newline(canine_rgt.name.upcase)}", :size => 11
 							move_down 5
-							if canine_rgt.kind == "0"
+							if canine_rgt.new_register.blank?
 								text "LOF : #{canine_rgt.lof}", :size => 11
 							else
 								text "# OTRO REGISTRO : #{canine_rgt.new_register}", :size => 11
@@ -269,7 +269,7 @@ class CaninePdf< Prawn::Document
 							transparent(0) { stroke_bounds } 
 							text "	NOMBRE : #{newline(canine_rgt_1.name.upcase)}", :size => 11
 							move_down 5
-							if canine_rgt_1.kind == "0"
+							if canine_rgt_1.new_register.blank?
 								text "LOF : #{canine_rgt_1.lof}", :size => 11
 							else
 								text "# OTRO REGISTRO : #{canine_rgt_1.new_register}", :size => 11
@@ -284,7 +284,7 @@ class CaninePdf< Prawn::Document
 						transparent(0) { stroke_bounds } 
 						text "	NOMBRE : #{newline(@mother_lft.name.upcase)}", :size => 11
 						move_down 5
-						if @mother_lft.kind == "0"
+						if @mother_lft.new_register.blank?
 							text "LOF : #{@mother_lft.lof}", :size => 11
 						else
 							text "# OTRO REGISTRO : #{@mother_lft.new_register}", :size => 11
@@ -295,7 +295,7 @@ class CaninePdf< Prawn::Document
 						bounding_box([545,290],:width =>400,:height =>370) do
 							text "	NOMBRE : #{newline(can_left.name.upcase)}", :size => 11
 							move_down 5
-							if can_left.kind == "0"
+							if can_left.new_register.blank?
 								text "LOF : #{can_left.lof}", :size => 11
 							else
 								text "# OTRO REGISTRO : #{can_left.new_register}", :size => 11
@@ -307,7 +307,7 @@ class CaninePdf< Prawn::Document
 						bounding_box([545,230],:width =>400,:height =>370) do
 							text "	NOMBRE : #{newline(can_right.name.upcase)}", :size => 11
 							move_down 5
-							if can_right.kind == "0"
+							if can_right.new_register.blank?
 								text "LOF : #{can_right.lof}", :size => 11
 							else
 								text "# OTRO REGISTRO : #{can_right.new_register}", :size => 11
