@@ -29,7 +29,7 @@ class CaninePdf< Prawn::Document
 	    	text "COLOR : #{@canine.color}", :size => 13
 	    	move_down 15
 	    	text "NACIMIENTO : #{@canine.birth}", :size => 13
-	    	if @canine.kind == "0"
+	    	if @canine.new_register.blank?
 		    	move_down 15
 		    	text "LOF : #{@canine.lof}", :size => 13
 		    else
