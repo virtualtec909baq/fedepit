@@ -204,7 +204,11 @@ class CaninePdf< Prawn::Document
 						transparent(0) { stroke_bounds } 
 						text "NOMBRE : #{newline(@father_rgt.name.upcase)}", :size => 11
 						move_down 5
-						text "LOF : #{@father_rgt.lof}", :size => 11
+						if @father_rgt.kind == "0"
+							text "LOF : #{@father_rgt.lof}", :size => 11
+						else
+							text "# OTRO REGISTRO : #{@father_rgt.new_register}", :size => 11
+						end
 					end
 					if @father_rgt.lft
 						caninine_right_lft = Canine.find(@father_rgt.lft)
